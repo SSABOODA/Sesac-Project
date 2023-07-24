@@ -14,7 +14,6 @@
 		F7CCFBBA2A6E5800006C6CC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFBB82A6E5800006C6CC8 /* Main.storyboard */; };
 		F7CCFBBC2A6E5801006C6CC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFBBB2A6E5801006C6CC8 /* Assets.xcassets */; };
 		F7CCFBBF2A6E5801006C6CC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFBBD2A6E5801006C6CC8 /* LaunchScreen.storyboard */; };
-		F7CCFBC92A6E83F6006C6CC8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBC82A6E83F6006C6CC8 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		F7CCFBBB2A6E5801006C6CC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7CCFBBE2A6E5801006C6CC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7CCFBC02A6E5801006C6CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7CCFBC82A6E83F6006C6CC8 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +84,6 @@
 				F7CCFBB42A6E5800006C6CC8 /* SceneDelegate.swift */,
 				F7CCFBB62A6E5800006C6CC8 /* ViewController.swift */,
 				F7CCFBB82A6E5800006C6CC8 /* Main.storyboard */,
-				F7CCFBC82A6E83F6006C6CC8 /* TestViewController.swift */,
 				F7CCFBBB2A6E5801006C6CC8 /* Assets.xcassets */,
 				F7CCFBBD2A6E5801006C6CC8 /* LaunchScreen.storyboard */,
 				F7CCFBC02A6E5801006C6CC8 /* Info.plist */,
@@ -211,7 +208,6 @@
 			files = (
 				F7CCFBB72A6E5800006C6CC8 /* ViewController.swift in Sources */,
 				F7CCFBB32A6E5800006C6CC8 /* AppDelegate.swift in Sources */,
-				F7CCFBC92A6E83F6006C6CC8 /* TestViewController.swift in Sources */,
 				F7CCFBB52A6E5800006C6CC8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

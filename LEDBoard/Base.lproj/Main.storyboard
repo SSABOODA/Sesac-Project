@@ -9,38 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Test View Controller-->
-        <scene sceneID="hXs-1v-vRf">
-            <objects>
-                <viewController id="tyT-ov-tQi" customClass="TestViewController" customModule="LEDBoard" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UQ1-uq-7VC">
-                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-bB-v56" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="89" y="70" width="674" height="232"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Fnp-wN-6U0"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Fnp-wN-6U0" firstAttribute="bottom" secondItem="cBm-bB-v56" secondAttribute="bottom" constant="70" id="6SW-WO-FKH"/>
-                            <constraint firstItem="cBm-bB-v56" firstAttribute="leading" secondItem="Fnp-wN-6U0" secondAttribute="leading" constant="30" id="9xt-eh-cl8"/>
-                            <constraint firstItem="cBm-bB-v56" firstAttribute="top" secondItem="Fnp-wN-6U0" secondAttribute="top" constant="70" id="FA6-uy-6qK"/>
-                            <constraint firstItem="Fnp-wN-6U0" firstAttribute="trailing" secondItem="cBm-bB-v56" secondAttribute="trailing" constant="30" id="riH-4J-EZg"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="marqueeLabel" destination="cBm-bB-v56" id="GjB-Nx-4fc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yc1-Pa-IJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="105.63380281690141" y="-826.71755725190837"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -143,9 +111,6 @@
     <designables>
         <designable name="W1C-Bc-G9t">
             <size key="intrinsicContentSize" width="229.66666666666666" height="119.66666666666667"/>
-        </designable>
-        <designable name="cBm-bB-v56">
-            <size key="intrinsicContentSize" width="116.66666666666667" height="60"/>
         </designable>
     </designables>
     <resources>
