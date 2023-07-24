@@ -10,6 +10,33 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="mxJ-39-WkF">
+            <objects>
+                <viewController id="dmj-pb-4bd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wwX-LW-AMu">
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <colorWell contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Aa" translatesAutoresizingMaskIntoConstraints="NO" id="MBd-oB-5dT">
+                                <rect key="frame" x="412" y="84" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </colorWell>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHG-Ha-lZp">
+                                <rect key="frame" x="514" y="81" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VuJ-Cv-tAv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKV-0N-NJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="-743"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LEDBoard" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,6 +51,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="694" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldClicked:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="NBg-c2-25b"/>
+                                        </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wk9-4x-Hbz">
                                         <rect key="frame" x="547.33333333333337" y="5" width="141.66666666666663" height="50"/>
@@ -31,12 +61,20 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-Sz-i3b">
                                                 <rect key="frame" x="0.0" y="0.0" width="68.333333333333329" height="50"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="보내기"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="보내기">
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="senderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="29w-OL-Ki9"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ykk-Rw-ZX4">
                                                 <rect key="frame" x="73.333333333333258" y="0.0" width="68.333333333333314" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Aa"/>
+                                                <connections>
+                                                    <action selector="colorButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nOo-Qe-eme"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -53,19 +91,19 @@
                                     <constraint firstItem="Wk9-4x-Hbz" firstAttribute="top" secondItem="hXb-bv-Kh6" secondAttribute="top" constant="5" id="xlm-aC-flx"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELLO WORLD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG7-zu-Fna">
-                                <rect key="frame" x="126" y="146.66666666666666" width="600" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문구를 입력해주세요✏️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG7-zu-Fna">
+                                <rect key="frame" x="108.66666666666669" y="146.66666666666666" width="634.66666666666652" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="P8G-yb-XVq"/>
-                                    <constraint firstAttribute="width" constant="600" id="pyS-Qz-078"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hXb-bv-Kh6" secondAttribute="trailing" constant="20" id="9g4-8U-yWF"/>
                             <constraint firstItem="hXb-bv-Kh6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HRj-nF-sU3"/>
@@ -73,9 +111,24 @@
                             <constraint firstItem="hXb-bv-Kh6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="fcF-fs-cyM"/>
                             <constraint firstItem="BG7-zu-Fna" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yvr-bt-yFc"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ino-dC-z4x" appends="YES" id="1gA-VU-t5k"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="colorButton" destination="Ykk-Rw-ZX4" id="laK-W4-WtF"/>
+                        <outlet property="mainTextField" destination="dct-uZ-HiI" id="jEa-zi-Dc8"/>
+                        <outlet property="mainTextFieldView" destination="hXb-bv-Kh6" id="nVy-cE-c3l"/>
+                        <outlet property="mainTitleLabel" destination="BG7-zu-Fna" id="5lr-qs-3ym"/>
+                        <outlet property="sendButton" destination="7Cv-Sz-i3b" id="zyE-xF-qnu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ino-dC-z4x">
+                    <connections>
+                        <action selector="tapGestureClicked:" destination="BYZ-38-t0r" id="YUB-8L-L88"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="96.478873239436624" y="3.8167938931297707"/>
         </scene>
