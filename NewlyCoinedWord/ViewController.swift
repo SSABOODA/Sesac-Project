@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     @IBOutlet var descriptionView: UIView!
     @IBOutlet var dotsLabel: UILabel!
     
-    
     @IBOutlet var descriptionLabel: UILabel!
     
     let newlyCoinedWord = [
@@ -47,19 +46,19 @@ class ViewController: UIViewController {
         
     }
     
-    
     // MARK: - IBAction
     
     @IBAction func wordButtonTapped(_ sender: UIButton) {
-        print(sender.tag)
         searchTextField.text = sender.titleLabel?.text
     }
     
     @IBAction func searchTextFieldClicked(_ sender: UITextField) {
+        textFieldAlert(text: sender.text)
         findSearchWord()
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
+        textFieldAlert(text: searchTextField.text)
         findSearchWord()
     }
     
@@ -67,6 +66,18 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func textFieldAlert(text inputText: String?) {
+        if let text = inputText {
+            if (text.isEmpty) || (text.count <= 1) {
+                let alert = UIAlertController(title: "2글자 이상 입력해주세요 😭", message: "", preferredStyle: .alert)
+                let success = UIAlertAction(title: "확인", style: .default) { action in
+                    print("확인 버튼이 눌렀습니다.")
+                    }
+                alert.addAction(success)
+                present(alert, animated: true)
+            }
+        }
+    }
     
     func findSearchWord() {
         if searchTextField.text != nil {
