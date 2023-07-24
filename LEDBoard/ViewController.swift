@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
     
@@ -13,7 +14,7 @@ class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
     @IBOutlet var mainTextField: UITextField!
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var colorButton: UIButton!
-    @IBOutlet var mainTitleLabel: UILabel!
+    @IBOutlet var marqueeLabel: MarqueeLabel!
     
     var color: UIColor?
     let colorPickerVC = UIColorPickerViewController()
@@ -21,11 +22,10 @@ class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         designTextFieldView()
         designButton(buttonName: sendButton)
         designButton(buttonName: colorButton)
-        
+        marqueeLabelSetting()
         colorPickerVC.delegate = self
     }
     
@@ -33,7 +33,6 @@ class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
     @IBAction func tapGestureClicked(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         topViewIsHiddenToggle()
-        
     }
     
     @IBAction func textFieldClicked(_ sender: UITextField) {
@@ -53,12 +52,12 @@ class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
     }
     
     func settingTextAndColor() {
-        mainTitleLabel.text = mainTextField.text
+        marqueeLabel.text = mainTextField.text
         guard let color = color else {
             print(#function, "문제가 발생 했습니다.")
             return
         }
-        mainTitleLabel.textColor = color
+        marqueeLabel.textColor = color
         mainTextField.text = ""
     }
     
@@ -68,8 +67,8 @@ class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
     }
     
     func randomTextColor() {
-        mainTitleLabel.text = mainTextField.text
-        mainTitleLabel.textColor = colorSet.randomElement()!
+        marqueeLabel.text = mainTextField.text
+        marqueeLabel.textColor = colorSet.randomElement()!
         colorButton.tintColor = colorSet.randomElement()!
     }
     
@@ -108,6 +107,11 @@ class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
         name.clipsToBounds = true
     }
 
+    func marqueeLabelSetting() {
+        marqueeLabel.speed = .duration(15) //느림
+//        marqueeLabel.labelize = true
+        marqueeLabel.text = "원하는 문구를 입력해주세요 ✏️ 원하는 문구를 입력해주세요 ✏️"
+    }
 
 }
 

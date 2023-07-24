@@ -9,32 +9,37 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="mxJ-39-WkF">
+        <!--Test View Controller-->
+        <scene sceneID="hXs-1v-vRf">
             <objects>
-                <viewController id="dmj-pb-4bd" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wwX-LW-AMu">
+                <viewController id="tyT-ov-tQi" customClass="TestViewController" customModule="LEDBoard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UQ1-uq-7VC">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <colorWell contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Aa" translatesAutoresizingMaskIntoConstraints="NO" id="MBd-oB-5dT">
-                                <rect key="frame" x="412" y="84" width="28" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </colorWell>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHG-Ha-lZp">
-                                <rect key="frame" x="514" y="81" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-bB-v56" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="89" y="70" width="674" height="232"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="VuJ-Cv-tAv"/>
+                        <viewLayoutGuide key="safeArea" id="Fnp-wN-6U0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fnp-wN-6U0" firstAttribute="bottom" secondItem="cBm-bB-v56" secondAttribute="bottom" constant="70" id="6SW-WO-FKH"/>
+                            <constraint firstItem="cBm-bB-v56" firstAttribute="leading" secondItem="Fnp-wN-6U0" secondAttribute="leading" constant="30" id="9xt-eh-cl8"/>
+                            <constraint firstItem="cBm-bB-v56" firstAttribute="top" secondItem="Fnp-wN-6U0" secondAttribute="top" constant="70" id="FA6-uy-6qK"/>
+                            <constraint firstItem="Fnp-wN-6U0" firstAttribute="trailing" secondItem="cBm-bB-v56" secondAttribute="trailing" constant="30" id="riH-4J-EZg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="marqueeLabel" destination="cBm-bB-v56" id="GjB-Nx-4fc"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fKV-0N-NJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yc1-Pa-IJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96" y="-743"/>
+            <point key="canvasLocation" x="105.63380281690141" y="-826.71755725190837"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -91,12 +96,9 @@
                                     <constraint firstItem="Wk9-4x-Hbz" firstAttribute="top" secondItem="hXb-bv-Kh6" secondAttribute="top" constant="5" id="xlm-aC-flx"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문구를 입력해주세요✏️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG7-zu-Fna">
-                                <rect key="frame" x="108.66666666666669" y="146.66666666666666" width="634.66666666666652" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="P8G-yb-XVq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1C-Bc-G9t" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="109" y="90" width="634" height="232"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -107,9 +109,11 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hXb-bv-Kh6" secondAttribute="trailing" constant="20" id="9g4-8U-yWF"/>
                             <constraint firstItem="hXb-bv-Kh6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HRj-nF-sU3"/>
-                            <constraint firstItem="BG7-zu-Fna" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bQy-kl-0SY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W1C-Bc-G9t" secondAttribute="bottom" constant="50" id="Onc-B8-no3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W1C-Bc-G9t" secondAttribute="trailing" constant="50" id="RTp-fZ-rwC"/>
+                            <constraint firstItem="W1C-Bc-G9t" firstAttribute="top" secondItem="hXb-bv-Kh6" secondAttribute="bottom" constant="10" id="UBg-uD-Lrz"/>
+                            <constraint firstItem="W1C-Bc-G9t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="aYt-xw-UkI"/>
                             <constraint firstItem="hXb-bv-Kh6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="fcF-fs-cyM"/>
-                            <constraint firstItem="BG7-zu-Fna" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yvr-bt-yFc"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ino-dC-z4x" appends="YES" id="1gA-VU-t5k"/>
@@ -119,7 +123,7 @@
                         <outlet property="colorButton" destination="Ykk-Rw-ZX4" id="laK-W4-WtF"/>
                         <outlet property="mainTextField" destination="dct-uZ-HiI" id="jEa-zi-Dc8"/>
                         <outlet property="mainTextFieldView" destination="hXb-bv-Kh6" id="nVy-cE-c3l"/>
-                        <outlet property="mainTitleLabel" destination="BG7-zu-Fna" id="5lr-qs-3ym"/>
+                        <outlet property="marqueeLabel" destination="W1C-Bc-G9t" id="KTm-gj-YDX"/>
                         <outlet property="sendButton" destination="7Cv-Sz-i3b" id="zyE-xF-qnu"/>
                     </connections>
                 </viewController>
