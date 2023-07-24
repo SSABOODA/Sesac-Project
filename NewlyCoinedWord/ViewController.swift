@@ -30,6 +30,13 @@ class ViewController: UIViewController {
         "핑프": "핑거 프린스",
     ]
     
+    let tagWordList = [
+        "스불재",
+        "억텐",
+        "좋댓구알",
+        "핑프"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,12 +44,14 @@ class ViewController: UIViewController {
         designSearchButton()
         designWordButton()
         designDescriptionView()
+        
     }
     
     
     // MARK: - IBAction
     
     @IBAction func wordButtonTapped(_ sender: UIButton) {
+        print(sender.tag)
         searchTextField.text = sender.titleLabel?.text
     }
     
@@ -85,6 +94,7 @@ class ViewController: UIViewController {
             item.layer.borderColor = UIColor.black.cgColor
             item.layer.cornerRadius = 8
             item.setTitleColor(.black, for: .normal)
+            item.setTitle(tagWordList[item.tag], for: .normal)
         }
     }
     

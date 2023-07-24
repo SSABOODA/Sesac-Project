@@ -13,25 +13,12 @@ class WordViewController: UIViewController {
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var wordFirstButton: UIButton!
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        print("GIT TEST2")
-        print("GIT TEST3")
-        print("GIT TEST4")
-        print("GIT Commit & Push")
-        print("README 썼다 :)")
-        
-        
 //        wordFirstButton.titleLabel?.font = .systemFont(ofSize: 20)
 //        wordFirstButton.titleLabel?.textColor = .black
         wordTextField.text = getRandomWord()
         getRandomWord() // 함수 반환값을 사용하지 않아도 경고가 나타나지 않는다.
-        
 //        wordFirstButton.isHidden = true // 사라짐
     }
     
@@ -71,10 +58,5 @@ class WordViewController: UIViewController {
         case "jmt": resultLabel.text = "JONNA 맛있다."
         default: resultLabel.text = "찾는 결과가 없습니다."
         }
-        
-        
-        
     }
-    
-
 }
