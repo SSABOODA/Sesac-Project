@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97DD7BF2CFCE40E4C718A179 /* Pods_LEDBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A0B7CB55B1E7CDB825E8C5 /* Pods_LEDBoard.framework */; };
 		F7CCFBB32A6E5800006C6CC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBB22A6E5800006C6CC8 /* AppDelegate.swift */; };
 		F7CCFBB52A6E5800006C6CC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBB42A6E5800006C6CC8 /* SceneDelegate.swift */; };
 		F7CCFBB72A6E5800006C6CC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBB62A6E5800006C6CC8 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D844612CD954A61BCC9A0B8 /* Pods-LEDBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEDBoard.debug.xcconfig"; path = "Target Support Files/Pods-LEDBoard/Pods-LEDBoard.debug.xcconfig"; sourceTree = "<group>"; };
+		36A0B7CB55B1E7CDB825E8C5 /* Pods_LEDBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LEDBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6D0468CB2463229DFA115E /* Pods-LEDBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEDBoard.release.xcconfig"; path = "Target Support Files/Pods-LEDBoard/Pods-LEDBoard.release.xcconfig"; sourceTree = "<group>"; };
 		F7CCFBAF2A6E5800006C6CC8 /* LEDBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LEDBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7CCFBB22A6E5800006C6CC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7CCFBB42A6E5800006C6CC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97DD7BF2CFCE40E4C718A179 /* Pods_LEDBoard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7CE5405B2631F5EE2FEC90D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36A0B7CB55B1E7CDB825E8C5 /* Pods_LEDBoard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F39336E65D1E23E6E3FEB5E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D844612CD954A61BCC9A0B8 /* Pods-LEDBoard.debug.xcconfig */,
+				CE6D0468CB2463229DFA115E /* Pods-LEDBoard.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F7CCFBA62A6E5800006C6CC8 = {
 			isa = PBXGroup;
 			children = (
 				F7CCFBB12A6E5800006C6CC8 /* LEDBoard */,
 				F7CCFBB02A6E5800006C6CC8 /* Products */,
+				F39336E65D1E23E6E3FEB5E6 /* Pods */,
+				7CE5405B2631F5EE2FEC90D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7CCFBC32A6E5801006C6CC8 /* Build configuration list for PBXNativeTarget "LEDBoard" */;
 			buildPhases = (
+				9B301F35735F24D2E5B2B335 /* [CP] Check Pods Manifest.lock */,
 				F7CCFBAB2A6E5800006C6CC8 /* Sources */,
 				F7CCFBAC2A6E5800006C6CC8 /* Frameworks */,
 				F7CCFBAD2A6E5800006C6CC8 /* Resources */,
+				60AE07FA6DC9B820107EDF32 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60AE07FA6DC9B820107EDF32 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LEDBoard/Pods-LEDBoard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LEDBoard/Pods-LEDBoard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LEDBoard/Pods-LEDBoard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B301F35735F24D2E5B2B335 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LEDBoard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F7CCFBAB2A6E5800006C6CC8 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		F7CCFBC42A6E5801006C6CC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D844612CD954A61BCC9A0B8 /* Pods-LEDBoard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -314,6 +384,7 @@
 		};
 		F7CCFBC52A6E5801006C6CC8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE6D0468CB2463229DFA115E /* Pods-LEDBoard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
