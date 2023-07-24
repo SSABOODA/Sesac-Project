@@ -18,9 +18,14 @@ class WordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         print("GIT TEST2")
         print("GIT TEST3")
         print("GIT TEST4")
+        print("GIT Commit & Push")
+        
+        
 //        wordFirstButton.titleLabel?.font = .systemFont(ofSize: 20)
 //        wordFirstButton.titleLabel?.textColor = .black
         wordTextField.text = getRandomWord()
