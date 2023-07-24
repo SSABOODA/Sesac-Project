@@ -97,10 +97,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1C-Bc-G9t" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="109" y="90" width="634" height="232"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <rect key="frame" x="159" y="90" width="534" height="232"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="forceScrolling" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -110,9 +113,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hXb-bv-Kh6" secondAttribute="trailing" constant="20" id="9g4-8U-yWF"/>
                             <constraint firstItem="hXb-bv-Kh6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HRj-nF-sU3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W1C-Bc-G9t" secondAttribute="bottom" constant="50" id="Onc-B8-no3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W1C-Bc-G9t" secondAttribute="trailing" constant="50" id="RTp-fZ-rwC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W1C-Bc-G9t" secondAttribute="trailing" constant="100" id="RTp-fZ-rwC"/>
                             <constraint firstItem="W1C-Bc-G9t" firstAttribute="top" secondItem="hXb-bv-Kh6" secondAttribute="bottom" constant="10" id="UBg-uD-Lrz"/>
-                            <constraint firstItem="W1C-Bc-G9t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="aYt-xw-UkI"/>
+                            <constraint firstItem="W1C-Bc-G9t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="aYt-xw-UkI"/>
                             <constraint firstItem="hXb-bv-Kh6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="fcF-fs-cyM"/>
                         </constraints>
                         <connections>
@@ -137,6 +140,14 @@
             <point key="canvasLocation" x="96.478873239436624" y="3.8167938931297707"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="W1C-Bc-G9t">
+            <size key="intrinsicContentSize" width="229.66666666666666" height="119.66666666666667"/>
+        </designable>
+        <designable name="cBm-bB-v56">
+            <size key="intrinsicContentSize" width="116.66666666666667" height="60"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

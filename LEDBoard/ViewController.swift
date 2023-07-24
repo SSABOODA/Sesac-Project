@@ -53,12 +53,13 @@ class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
     
     func settingTextAndColor() {
         marqueeLabel.text = mainTextField.text
-        guard let color = color else {
-            print(#function, "문제가 발생 했습니다.")
-            return
+        
+        if let color {
+            marqueeLabel.textColor = color
+            mainTextField.text = ""
+        } else {
+            marqueeLabel.textColor = UIColor.white
         }
-        marqueeLabel.textColor = color
-        mainTextField.text = ""
     }
     
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
@@ -110,7 +111,7 @@ class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
     func marqueeLabelSetting() {
         marqueeLabel.speed = .duration(15) //느림
 //        marqueeLabel.labelize = true
-        marqueeLabel.text = "원하는 문구를 입력해주세요 ✏️ 원하는 문구를 입력해주세요 ✏️"
+        marqueeLabel.text = "원하는 문구를 입력해주세요✏️"
     }
 
 }
