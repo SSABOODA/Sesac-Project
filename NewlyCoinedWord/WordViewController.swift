@@ -24,6 +24,7 @@ class WordViewController: UIViewController {
         print("GIT TEST3")
         print("GIT TEST4")
         print("GIT Commit & Push")
+        print("README 썼다 :)")
         
         
 //        wordFirstButton.titleLabel?.font = .systemFont(ofSize: 20)
