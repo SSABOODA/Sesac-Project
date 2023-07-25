@@ -25,13 +25,14 @@ class TransitionViewController: UIViewController {
         // http(apple -> block) vs https
         // App Transport Security Setting
         var urlString: String = ""
-        if sender.selectedSegmentIndex == 0 {
+        if sender.selectedSegmentIndex == Actor.man.rawValue {
             urlString = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrCa0fKRwgS8a5_2ftkdYuuRdRIpzxC8AFxQ&usqp=CAU"
-        } else if sender.selectedSegmentIndex == 1 {
+        } else if sender.selectedSegmentIndex == Actor.woman.rawValue {
             urlString = "https://i.namu.wiki/i/vjSWu_Vv0e0C8FxY5v1WpXyRuPMMQ9IYAiaighmGyJE7vyy6zx-1i3NT5_OvtEp9m_19TznbOe6bMB3CyAOBLw.webp"
         } else {
             urlString = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrCa0fKRwgS8a5_2ftkdYuuRdRIpzxC8AFxQ&usqp=CAU"
         }
+        
         setImage(urlString)
     }
     

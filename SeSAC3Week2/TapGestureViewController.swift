@@ -9,9 +9,17 @@ import UIKit
 
 class TapGestureViewController: UIViewController {
     
+    
+    
+    
     // 이미지 TapGesture 테스트 하기
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    
+    @IBAction func tapGestureClicked(_ sender: UITapGestureRecognizer) {
+        print(123)
     }
     
     
