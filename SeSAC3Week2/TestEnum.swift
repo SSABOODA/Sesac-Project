@@ -7,6 +7,11 @@
 
 import Foundation
 
+// Class 안에 enum
+// 외부 enum
+
+// -> 컴파일 최적화?
+
 enum Actor: Int {
     case man
     case woman

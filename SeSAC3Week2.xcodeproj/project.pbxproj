@@ -22,6 +22,8 @@
 		F7CCFBD92A6F5B0A006C6CC8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F7CCFBD82A6F5B0A006C6CC8 /* Kingfisher */; };
 		F7CCFBDB2A6F6E05006C6CC8 /* Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFBDA2A6F6E05006C6CC8 /* Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png */; };
 		F7CCFBDD2A6F9359006C6CC8 /* TestEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBDC2A6F9359006C6CC8 /* TestEnum.swift */; };
+		F7CCFBDF2A6F98EA006C6CC8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBDE2A6F98EA006C6CC8 /* CalendarViewController.swift */; };
+		F7CCFBE12A6FA24E006C6CC8 /* LifeCycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBE02A6FA24E006C6CC8 /* LifeCycleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		F7CCFBCC2A6F4B4A006C6CC8 /* TapGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureViewController.swift; sourceTree = "<group>"; };
 		F7CCFBDA2A6F6E05006C6CC8 /* Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png"; sourceTree = "<group>"; };
 		F7CCFBDC2A6F9359006C6CC8 /* TestEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnum.swift; sourceTree = "<group>"; };
+		F7CCFBDE2A6F98EA006C6CC8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		F7CCFBE02A6FA24E006C6CC8 /* LifeCycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 				F7CCFB642A6E3E60006C6CC8 /* TransitionViewController.swift */,
 				F7CCFBDC2A6F9359006C6CC8 /* TestEnum.swift */,
 				F7CCFB562A6E1134006C6CC8 /* Main.storyboard */,
+				F7CCFBE02A6FA24E006C6CC8 /* LifeCycleViewController.swift */,
+				F7CCFBDE2A6F98EA006C6CC8 /* CalendarViewController.swift */,
 				F7CCFBCC2A6F4B4A006C6CC8 /* TapGestureViewController.swift */,
 				F7CCFBCA2A6EBB6F006C6CC8 /* TestViewController.swift */,
 				F7CCFB592A6E1134006C6CC8 /* Assets.xcassets */,
@@ -174,6 +180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CCFBE12A6FA24E006C6CC8 /* LifeCycleViewController.swift in Sources */,
+				F7CCFBDF2A6F98EA006C6CC8 /* CalendarViewController.swift in Sources */,
 				F7CCFBCD2A6F4B4B006C6CC8 /* TapGestureViewController.swift in Sources */,
 				F7CCFBCB2A6EBB6F006C6CC8 /* TestViewController.swift in Sources */,
 				F7CCFB552A6E1134006C6CC8 /* ViewController.swift in Sources */,
