@@ -9,7 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet var emotionButtons: [UIButton]!
     
     var happy: Int = 0
@@ -65,8 +64,6 @@ class ViewController: UIViewController {
         default:
             print("nil")
         }
-        
-        
     }
     
     @IBAction func emotionButtonClicked(_ sender: UIButton) {

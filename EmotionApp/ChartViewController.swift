@@ -37,10 +37,4 @@ class ChartViewController: UIViewController {
             item.clipsToBounds = true
         }
     }
-    
-    
-    
-    
-    
-
 }
