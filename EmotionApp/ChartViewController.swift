@@ -9,15 +9,24 @@ import UIKit
 
 class ChartViewController: UIViewController {
 
-    
     @IBOutlet var charView: [UIView]!
+    @IBOutlet var scoreLabel: [UILabel]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         designCharView()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let emotionList = Emotion.allCases.map { UserDefaults.standard.integer(forKey: "\($0)") }
+        
+        if scoreLabel.count == emotionList.count {
+            for (label, emotionScore) in zip(scoreLabel, emotionList) {
+                label.text = "\(emotionScore)점"
+            }
+        }
     }
     
     // MARK: - design

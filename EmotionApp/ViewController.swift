@@ -45,21 +45,28 @@ class ViewController: UIViewController {
         case Emotion.happy.rawValue:
             score == 0 ? (happy = 0) : (happy += score)
             print("완전행복지수: \(happy)점")
+            UserDefaults.standard.set(happy, forKey: "\(Emotion(rawValue: button.tag)!)")
         case Emotion.good.rawValue:
             score == 0 ? (good = 0) : (good += score)
             print("적당미소지수: \(good)점")
+            UserDefaults.standard.set(good, forKey: "\(Emotion(rawValue: button.tag)!)")
         case Emotion.nomal.rawValue:
             score == 0 ? (nomal = 0) : (nomal += score)
             print("그냥그냥지수: \(nomal)점")
+            UserDefaults.standard.set(nomal, forKey: "\(Emotion(rawValue: button.tag)!)")
         case Emotion.upset.rawValue:
             score == 0 ? (upset = 0) : (upset += score)
             print("좀속상한지수: \(upset)점")
+            UserDefaults.standard.set(upset, forKey: "\(Emotion(rawValue: button.tag)!)")
         case Emotion.depressed.rawValue:
             score == 0 ? (depressed = 0) : (depressed += score)
             print("많이슬픈지수: \(depressed)점")
+            UserDefaults.standard.set(depressed, forKey: "\(Emotion(rawValue: button.tag)!)")
         default:
             print("nil")
         }
+        
+        
     }
     
     @IBAction func emotionButtonClicked(_ sender: UIButton) {
