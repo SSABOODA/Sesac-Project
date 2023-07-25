@@ -10,8 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     
-    
-    @IBOutlet var happyButton: UIButton!
+    @IBOutlet var emotionButtons: [UIButton]!
     
     var happy: Int = 0
     var good: Int = 0
@@ -21,28 +20,50 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pullDownButton(emotionButtons)
     }
     
-    @IBAction func emotionButtonClicked(_ sender: UIButton) {
-        switch sender.tag {
+    func pullDownButton(_ emotionButtons: [UIButton]) {
+        
+        emotionButtons.forEach { item in
+            
+            let score1 = UIAction(title: "1점 주기", handler: { _ in self.addEmotionScore(item, 1) })
+            let score5 = UIAction(title: "5점 주기", handler: { _ in self.addEmotionScore(item, 5) })
+            let score10 = UIAction(title: "10점 주기", handler: { _ in self.addEmotionScore(item, 10) })
+            let scoreReset = UIAction(title: "점수 리셋 하기", handler: { _ in self.addEmotionScore(item, 0) })
+            item.menu = UIMenu(title: "\(Emotion(rawValue: item.tag)!)의 점수 선택하기",
+                                        image: UIImage(systemName: "heart"),
+                                        identifier: nil,
+                                        options: .displayInline,
+                                        children: [score1, score5, score10, scoreReset])
+        }
+    }
+    
+    func addEmotionScore(_ button: UIButton, _ score: Int) {
+        switch button.tag {
         case Emotion.happy.rawValue:
-            happy += 1
+            score == 0 ? (happy = 0) : (happy += score)
             print("완전행복지수: \(happy)점")
         case Emotion.good.rawValue:
-            good += 1
+            score == 0 ? (good = 0) : (good += score)
             print("적당미소지수: \(good)점")
         case Emotion.nomal.rawValue:
-            nomal += 1
+            score == 0 ? (nomal = 0) : (nomal += score)
             print("그냥그냥지수: \(nomal)점")
         case Emotion.upset.rawValue:
-            upset += 1
+            score == 0 ? (upset = 0) : (upset += score)
             print("좀속상한지수: \(upset)점")
         case Emotion.depressed.rawValue:
-            depressed += 1
+            score == 0 ? (depressed = 0) : (depressed += score)
             print("많이슬픈지수: \(depressed)점")
         default:
             print("nil")
         }
+    }
+    
+    @IBAction func emotionButtonClicked(_ sender: UIButton) {
+        addEmotionScore(sender, 1)
     }
 }
 

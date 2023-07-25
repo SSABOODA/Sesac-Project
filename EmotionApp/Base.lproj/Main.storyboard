@@ -96,7 +96,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="작성하기" image="pencil.circle" catalog="system" id="NbL-Je-xnk"/>
                     <connections>
-                        <outlet property="happyButton" destination="eQo-uv-Bg0" id="dtM-8R-vVk"/>
+                        <outletCollection property="emotionButtons" destination="eQo-uv-Bg0" collectionClass="NSMutableArray" id="v4W-DE-Xq0"/>
+                        <outletCollection property="emotionButtons" destination="g3k-vi-YxG" collectionClass="NSMutableArray" id="j7e-uK-ga3"/>
+                        <outletCollection property="emotionButtons" destination="hEy-aj-jUP" collectionClass="NSMutableArray" id="JZg-l5-iHx"/>
+                        <outletCollection property="emotionButtons" destination="fbs-FB-Wkc" collectionClass="NSMutableArray" id="kZU-hM-xos"/>
+                        <outletCollection property="emotionButtons" destination="Xuh-lA-mci" collectionClass="NSMutableArray" id="Bwa-o0-sdR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
