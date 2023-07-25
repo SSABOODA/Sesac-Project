@@ -20,6 +20,7 @@
 		F7CCFAFF2A6D14F7006C6CC8 /* churros@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFAFB2A6D14F7006C6CC8 /* churros@3x.png */; };
 		F7CCFB002A6D14F7006C6CC8 /* icecream@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFAFC2A6D14F7006C6CC8 /* icecream@3x.png */; };
 		F7CCFB012A6D14F7006C6CC8 /* cake@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFAFD2A6D14F7006C6CC8 /* cake@3x.png */; };
+		F7CCFC072A70016E006C6CC8 /* WordsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC062A70016E006C6CC8 /* WordsEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		F7CCFAFB2A6D14F7006C6CC8 /* churros@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "churros@3x.png"; sourceTree = "<group>"; };
 		F7CCFAFC2A6D14F7006C6CC8 /* icecream@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icecream@3x.png"; sourceTree = "<group>"; };
 		F7CCFAFD2A6D14F7006C6CC8 /* cake@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cake@3x.png"; sourceTree = "<group>"; };
+		F7CCFC062A70016E006C6CC8 /* WordsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				F7CCFAC02A6A02AB006C6CC8 /* AppDelegate.swift */,
 				F7CCFAC22A6A02AB006C6CC8 /* SceneDelegate.swift */,
 				F7CCFAC42A6A02AB006C6CC8 /* ViewController.swift */,
+				F7CCFC062A70016E006C6CC8 /* WordsEnum.swift */,
 				F7CCFADB2A6A4AEA006C6CC8 /* WordViewController.swift */,
 				F7CCFAC62A6A02AB006C6CC8 /* Main.storyboard */,
 				F7CCFAD72A6A0F13006C6CC8 /* AutoLayoutPractice.storyboard */,
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7CCFAC52A6A02AB006C6CC8 /* ViewController.swift in Sources */,
+				F7CCFC072A70016E006C6CC8 /* WordsEnum.swift in Sources */,
 				F7CCFAC12A6A02AB006C6CC8 /* AppDelegate.swift in Sources */,
 				F7CCFADC2A6A4AEA006C6CC8 /* WordViewController.swift in Sources */,
 				F7CCFAC32A6A02AB006C6CC8 /* SceneDelegate.swift in Sources */,
