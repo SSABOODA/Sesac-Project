@@ -29,20 +29,17 @@ class ViewController: UIViewController {
         "핑프": "핑거 프린스",
     ]
     
-    let tagWordList = [
-        "스불재",
-        "억텐",
-        "좋댓구알",
-        "핑프"
-    ]
+    var tagWordList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tagWordList = newlyCoinedWord.keys.map {$0}
         
         designSearchStackView()
         designSearchButton()
         designWordButton()
         designDescriptionView()
+        
         
     }
     
