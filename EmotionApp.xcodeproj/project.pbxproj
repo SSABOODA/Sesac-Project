@@ -13,6 +13,8 @@
 		F7CCFBF62A6FAD36006C6CC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFBF42A6FAD36006C6CC8 /* Main.storyboard */; };
 		F7CCFBF82A6FAD37006C6CC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFBF72A6FAD37006C6CC8 /* Assets.xcassets */; };
 		F7CCFBFB2A6FAD37006C6CC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFBF92A6FAD37006C6CC8 /* LaunchScreen.storyboard */; };
+		F7CCFC032A6FBAB1006C6CC8 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC022A6FBAB1006C6CC8 /* ChartViewController.swift */; };
+		F7CCFC052A6FBBF7006C6CC8 /* EmotionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC042A6FBBF7006C6CC8 /* EmotionEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F7CCFBF72A6FAD37006C6CC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7CCFBFA2A6FAD37006C6CC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7CCFBFC2A6FAD37006C6CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7CCFC022A6FBAB1006C6CC8 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		F7CCFC042A6FBBF7006C6CC8 /* EmotionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,9 @@
 			children = (
 				F7CCFBEE2A6FAD36006C6CC8 /* AppDelegate.swift */,
 				F7CCFBF02A6FAD36006C6CC8 /* SceneDelegate.swift */,
+				F7CCFC042A6FBBF7006C6CC8 /* EmotionEnum.swift */,
 				F7CCFBF22A6FAD36006C6CC8 /* ViewController.swift */,
+				F7CCFC022A6FBAB1006C6CC8 /* ChartViewController.swift */,
 				F7CCFBF42A6FAD36006C6CC8 /* Main.storyboard */,
 				F7CCFBF72A6FAD37006C6CC8 /* Assets.xcassets */,
 				F7CCFBF92A6FAD37006C6CC8 /* LaunchScreen.storyboard */,
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CCFC052A6FBBF7006C6CC8 /* EmotionEnum.swift in Sources */,
 				F7CCFBF32A6FAD36006C6CC8 /* ViewController.swift in Sources */,
+				F7CCFC032A6FBAB1006C6CC8 /* ChartViewController.swift in Sources */,
 				F7CCFBEF2A6FAD36006C6CC8 /* AppDelegate.swift in Sources */,
 				F7CCFBF12A6FAD36006C6CC8 /* SceneDelegate.swift in Sources */,
 			);
