@@ -95,6 +95,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="작성하기" image="pencil.circle" catalog="system" id="NbL-Je-xnk"/>
+                    <connections>
+                        <outlet property="happyButton" destination="eQo-uv-Bg0" id="dtM-8R-vVk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
