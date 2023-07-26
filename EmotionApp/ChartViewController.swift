@@ -12,15 +12,15 @@ class ChartViewController: UIViewController {
     @IBOutlet var charView: [UIView]!
     @IBOutlet var scoreLabel: [UILabel]!
     
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         designCharView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let emotionList = Emotion.allCases.map { UserDefaults.standard.integer(forKey: "\($0)") }
+        let emotionList = Emotion.allCases.map { userDefault.integer(forKey: "\($0)") }
         
         if scoreLabel.count == emotionList.count {
             for (label, emotionScore) in zip(scoreLabel, emotionList) {
