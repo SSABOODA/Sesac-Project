@@ -16,3 +16,10 @@ enum Emotion: Int, CaseIterable {
         String(describing: self)
     }
 }
+
+enum EmotionScore: String {
+    case one = "1점 주기"
+    case five = "5점 주기"
+    case ten = "10점 주기"
+    case reset = "점수 리셋 하기"
+}

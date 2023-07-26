@@ -28,10 +28,10 @@ class ViewController: UIViewController {
     func pullDownButton(_ emotionButtons: [UIButton]) {
         
         emotionButtons.forEach { item in
-            let score1 = UIAction(title: "1점 주기", handler: { _ in self.addEmotionScore(item, 1) })
-            let score5 = UIAction(title: "5점 주기", handler: { _ in self.addEmotionScore(item, 5) })
-            let score10 = UIAction(title: "10점 주기", handler: { _ in self.addEmotionScore(item, 10) })
-            let scoreReset = UIAction(title: "점수 리셋 하기", handler: { _ in self.addEmotionScore(item, 0) })
+            let score1 = UIAction(title: EmotionScore.one.rawValue, handler: { _ in self.addEmotionScore(item, 1) })
+            let score5 = UIAction(title: EmotionScore.five.rawValue, handler: { _ in self.addEmotionScore(item, 5) })
+            let score10 = UIAction(title: EmotionScore.ten.rawValue, handler: { _ in self.addEmotionScore(item, 10) })
+            let scoreReset = UIAction(title: EmotionScore.reset.rawValue, handler: { _ in self.addEmotionScore(item, 0) })
             item.menu = UIMenu(title: "\(Emotion(rawValue: item.tag)!)의 점수 선택하기",
                                         image: UIImage(systemName: "heart"),
                                         identifier: nil,
