@@ -20,6 +20,7 @@ class ChartViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         let emotionList = Emotion.allCases.map { userDefault.integer(forKey: "\($0)") }
         
         if scoreLabel.count == emotionList.count {
