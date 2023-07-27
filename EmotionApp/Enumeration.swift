@@ -9,12 +9,11 @@ import Foundation
 
 
 enum Emotion: Int, CaseIterable {
-    case happy, good, nomal, upset, depressed
-    
-    // enum case string return
-    var str: String {
-        String(describing: self)
-    }
+    case happy
+    case good
+    case nomal
+    case upset
+    case depressed
 }
 
 enum EmotionScoreText: String {

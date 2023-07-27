@@ -51,41 +51,36 @@ class ViewController: UIViewController {
         switch value {
         case .happy:
             score == 0 ? (happy = EmotionScore.reset.rawValue) : (happy += score)
-            setUserDefault(happy, "\(value)")
+            UserDefaultsManager.happy = happy
             print("완전행복지수: \(happy)점")
         case .good:
             score == 0 ? (good = EmotionScore.reset.rawValue) : (good += score)
-            setUserDefault(good, "\(value)")
+            UserDefaultsManager.good = good
             print("적당미소지수: \(good)점")
         case .nomal:
             score == 0 ? (nomal = EmotionScore.reset.rawValue) : (nomal += score)
-            setUserDefault(nomal, "\(value)")
+            UserDefaultsManager.nomal = nomal
             print("그냥그냥지수: \(nomal)점")
         case .upset:
             score == 0 ? (upset = EmotionScore.reset.rawValue) : (upset += score)
-            setUserDefault(upset, "\(value)")
+            UserDefaultsManager.upset = upset
             print("좀속상한지수: \(upset)점")
         case .depressed:
             score == 0 ? (depressed = EmotionScore.reset.rawValue) : (depressed += score)
-            setUserDefault(depressed, "\(value)")
+            UserDefaultsManager.depressed = depressed
             print("많이슬픈지수: \(depressed)점")
         }
     }
     
-    func setUserDefault(_ totalScore:Int, _ key:String) {
-        userDefault.set(totalScore, forKey: key)
-    }
-    
     func getUserDefaults() {
-        happy = userDefault.integer(forKey: "happy")
-        good = userDefault.integer(forKey: "good")
-        nomal = userDefault.integer(forKey: "nomal")
-        upset = userDefault.integer(forKey: "upset")
-        depressed = userDefault.integer(forKey: "depressed")
+        happy = UserDefaultsManager.happy
+        good = UserDefaultsManager.good
+        nomal = UserDefaultsManager.nomal
+        upset = UserDefaultsManager.upset
+        depressed = UserDefaultsManager.depressed
     }
     
     @IBAction func emotionButtonClicked(_ sender: UIButton) {
         addEmotionScore(sender, EmotionScore.one.rawValue)
     }
 }
-
