@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         pullDownButton(emotionButtons)
         getUserDefaults()
-        designButtons()
     }
     
     func pullDownButton(_ emotionButtons: [UIButton]) {
@@ -83,13 +82,6 @@ class ViewController: UIViewController {
         nomal = userDefault.integer(forKey: "nomal")
         upset = userDefault.integer(forKey: "upset")
         depressed = userDefault.integer(forKey: "depressed")
-    }
-    
-    
-    func designButtons() {
-        emotionButtons.forEach { item in
-//            item.showsTouchWhenHighlighted = true
-        }
     }
     
     @IBAction func emotionButtonClicked(_ sender: UIButton) {
