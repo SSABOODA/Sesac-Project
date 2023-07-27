@@ -10,20 +10,9 @@ import UIKit
 class SettingTableViewController: UITableViewController {
     
     let settingList = [
-        "allSettingList": [
-            "공지사항",
-            "실험실",
-            "버전 정보",
-        ],
-        "privateSettingList": [
-            "개인/보안",
-            "알림",
-            "채팅",
-            "멀티프로필",
-        ],
-        "etcSettingList": [
-            "고객센터/도움말",
-        ]
+        SettingTitle.allSetting.rawValue: AllSettingContentTitle.allCases.map { $0.rawValue },
+        SettingTitle.privateSetting.rawValue: PrivateSettingContentTitle.allCases.map { $0.rawValue },
+        SettingTitle.etcSetting.rawValue: EtcSettingContentTitle.allCases.map { $0.rawValue }
     ]
     
     override func viewDidLoad() {
@@ -31,16 +20,44 @@ class SettingTableViewController: UITableViewController {
         tableView.rowHeight = 50
     }
 
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return settingList.count
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if section == 0 {
+            return SectionHeader.allSetting.rawValue
+        } else if section == 1 {
+            return SectionHeader.privateSetting.rawValue
+        } else {
+            return SectionHeader.etcSetting.rawValue
+        }
     }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if section == 0 {
+            return settingList[SettingTitle.allSetting.rawValue]!.count
+        } else if section == 1 {
+            return settingList[SettingTitle.privateSetting.rawValue]!.count
+        } else {
+            return settingList[SettingTitle.etcSetting.rawValue]!.count
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellName.settingCell.rawValue)!
+        
+        if indexPath.section == 0 {
+            cell.textLabel?.text = settingList[SettingTitle.allSetting.rawValue]![indexPath.row]
+        } else if indexPath.section == 1 {
+            cell.textLabel?.text = settingList[SettingTitle.privateSetting.rawValue]![indexPath.row]
+        } else {
+            cell.textLabel?.text = settingList[SettingTitle.etcSetting.rawValue]![indexPath.row]
+        }
+        return cell
+    }
     
 
 }
