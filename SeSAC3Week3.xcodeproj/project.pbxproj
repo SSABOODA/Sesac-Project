@@ -19,6 +19,7 @@
 		F7CCFC3C2A72532F006C6CC8 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFC3B2A72532F006C6CC8 /* Setting.storyboard */; };
 		F7CCFC3E2A725738006C6CC8 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC3D2A725738006C6CC8 /* SettingTableViewController.swift */; };
 		F7CCFC422A725DC5006C6CC8 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC412A725DC5006C6CC8 /* Enum.swift */; };
+		F7CCFC442A726130006C6CC8 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC432A726130006C6CC8 /* ShoppingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F7CCFC3B2A72532F006C6CC8 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F7CCFC3D2A725738006C6CC8 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		F7CCFC412A725DC5006C6CC8 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		F7CCFC432A726130006C6CC8 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				F7CCFC3B2A72532F006C6CC8 /* Setting.storyboard */,
 				F7CCFC3D2A725738006C6CC8 /* SettingTableViewController.swift */,
 				F7CCFC412A725DC5006C6CC8 /* Enum.swift */,
+				F7CCFC432A726130006C6CC8 /* ShoppingTableViewController.swift */,
 			);
 			path = Assignment;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				F7CCFC352A7232DE006C6CC8 /* StudyTableViewController.swift in Sources */,
 				F7CCFC372A724967006C6CC8 /* Extension.swift in Sources */,
 				F7CCFC1F2A71FFFA006C6CC8 /* AppDelegate.swift in Sources */,
+				F7CCFC442A726130006C6CC8 /* ShoppingTableViewController.swift in Sources */,
 				F7CCFC212A71FFFA006C6CC8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
