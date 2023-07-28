@@ -40,7 +40,7 @@ class MovieTableViewController: UITableViewController {
     
     @objc func likeButtonClicked(_ sender: UIButton) {
         movie.movie[sender.tag].like.toggle()
-        tableView.reloadData()
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .left)
     }
     
     func showLikeMovieData() {
