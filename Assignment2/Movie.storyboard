@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="quR-sZ-fC7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Mf-i5-klL">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="139" y="-2"/>
         </scene>
-        <!--Movie Table View Controller-->
+        <!--영화 목록 🍿-->
         <scene sceneID="cWC-db-ifG">
             <objects>
                 <tableViewController id="quR-sZ-fC7" customClass="MovieTableViewController" customModule="SeSAC3Week3" customModuleProvider="target" sceneMemberID="viewController">
@@ -131,13 +131,40 @@
                             <outlet property="delegate" destination="quR-sZ-fC7" id="Tem-iz-4Hw"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="영화 목록 🍿" id="oRH-Sc-u5s">
+                        <barButtonItem key="rightBarButtonItem" image="ellipsis.circle" catalog="system" id="AFn-De-aNU">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="moreInformationButtonClicked:" destination="quR-sZ-fC7" id="77J-4G-nvs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tz-4v-DFT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1996.1832061068701" y="-2.1126760563380285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Rr-u1-TNV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Mf-i5-klL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yrc-BK-tOb">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="quR-sZ-fC7" kind="relationship" relationship="rootViewController" id="pJd-o5-uLP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="siS-uW-8al" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1069.4656488549617" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

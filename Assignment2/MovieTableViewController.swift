@@ -31,15 +31,28 @@ class MovieTableViewController: UITableViewController {
         return cell
     }
     
+    @IBAction func moreInformationButtonClicked(_ sender: UIBarButtonItem) {
+        let like = UIAction(title: "즐겨찾기 ❤️", handler: { _ in self.showLikeMovieData() })
+        let revert = UIAction(title: "전체 목록 🍿", handler: { _ in self.revertMovieData() })
+        let buttonMenu = UIMenu(title: "추가 기능", children: [like, revert])
+        sender.menu = buttonMenu
+    }
+    
     @objc func likeButtonClicked(_ sender: UIButton) {
-        print(123)
         movie.movie[sender.tag].like.toggle()
-        print(movie.movie[sender.tag].like)
         tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func showLikeMovieData() {
         print(#function)
+        movie.updateLikeMovieData()
+        tableView.reloadData()
+    }
+    
+    func revertMovieData() {
+        print(#function)
+        movie.revertMovieData()
+        tableView.reloadData()
     }
 
 }
