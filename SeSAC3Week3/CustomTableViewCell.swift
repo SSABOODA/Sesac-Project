@@ -9,6 +9,8 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     
+    static let identifier = "CustomTableViewCell"
+    
     @IBOutlet var backView: UIView!
     @IBOutlet var checkboxImageView: UIImageView!
     

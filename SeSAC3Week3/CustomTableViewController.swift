@@ -22,7 +22,8 @@ class CustomTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
+        // withIdentifier: CustomTableViewCell 클래스의 타입 속성으로 사용
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier) as! CustomTableViewCell
         let row = todo.list[indexPath.row]
         
         // Controller에 있던 UI 코드들 Cell로 뺴기
