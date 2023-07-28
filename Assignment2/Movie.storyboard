@@ -24,32 +24,6 @@
             </objects>
             <point key="canvasLocation" x="139" y="-2"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="914-Lp-q8u">
-            <objects>
-                <viewController id="ULm-Fu-CVI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FBR-ET-tMl">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n8P-WU-Xwx">
-                                <rect key="frame" x="85" y="265" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Wdq-Xi-Sz7"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="btM-K1-aNo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1067" y="-650"/>
-        </scene>
         <!--Movie Table View Controller-->
         <scene sceneID="cWC-db-ifG">
             <objects>
@@ -109,20 +83,43 @@
                                                 <constraint firstItem="TYG-mw-0SU" firstAttribute="leading" secondItem="KeP-Xa-SAv" secondAttribute="leading" id="uAU-9Y-S18"/>
                                             </constraints>
                                         </stackView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mtn-En-b8a">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="155"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHr-af-fYP">
+                                                    <rect key="frame" x="10" y="10" width="30" height="34.333333333333336"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="OL5-5j-Jik"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xHr-af-fYP" firstAttribute="top" secondItem="Mtn-En-b8a" secondAttribute="top" constant="10" id="Sa4-Gf-PPb"/>
+                                                <constraint firstItem="xHr-af-fYP" firstAttribute="leading" secondItem="Mtn-En-b8a" secondAttribute="leading" constant="10" id="lm1-cU-sib"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Mtn-En-b8a" firstAttribute="top" secondItem="vKs-vz-xnv" secondAttribute="top" id="0TE-Ah-FzW"/>
                                         <constraint firstItem="BYO-LU-ch8" firstAttribute="centerY" secondItem="vKs-vz-xnv" secondAttribute="centerY" id="4zL-Mj-aZb"/>
                                         <constraint firstAttribute="trailing" secondItem="KeP-Xa-SAv" secondAttribute="trailing" constant="10" id="AsB-Yq-OUj"/>
                                         <constraint firstItem="KeP-Xa-SAv" firstAttribute="leading" secondItem="BYO-LU-ch8" secondAttribute="trailing" constant="10" id="QAG-9q-chz"/>
+                                        <constraint firstAttribute="bottom" secondItem="Mtn-En-b8a" secondAttribute="bottom" id="RpC-pQ-udN"/>
+                                        <constraint firstItem="KeP-Xa-SAv" firstAttribute="leading" secondItem="Mtn-En-b8a" secondAttribute="trailing" id="Sp0-Vi-Ceh"/>
                                         <constraint firstAttribute="bottom" secondItem="BYO-LU-ch8" secondAttribute="bottom" constant="10" id="fd5-dr-fVh"/>
                                         <constraint firstItem="BYO-LU-ch8" firstAttribute="leading" secondItem="vKs-vz-xnv" secondAttribute="leading" constant="8" id="lai-we-CmF"/>
                                         <constraint firstItem="KeP-Xa-SAv" firstAttribute="height" secondItem="BYO-LU-ch8" secondAttribute="height" multiplier="0.97037" id="lvK-pi-9BP"/>
                                         <constraint firstItem="KeP-Xa-SAv" firstAttribute="centerY" secondItem="vKs-vz-xnv" secondAttribute="centerY" id="oIC-lq-RrM"/>
+                                        <constraint firstItem="Mtn-En-b8a" firstAttribute="leading" secondItem="vKs-vz-xnv" secondAttribute="leading" id="rz9-zY-BFF"/>
                                         <constraint firstItem="BYO-LU-ch8" firstAttribute="top" secondItem="vKs-vz-xnv" secondAttribute="top" constant="10" id="sfg-xF-bii"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="Koe-ky-bR8" id="gwZ-Kd-6xp"/>
+                                    <outlet property="heartButton" destination="xHr-af-fYP" id="Wvg-1v-YNv"/>
                                     <outlet property="mainTitleLabel" destination="1bW-rB-VEi" id="sbs-ON-zi3"/>
                                     <outlet property="movieImageView" destination="BYO-LU-ch8" id="EmZ-a4-hcL"/>
                                     <outlet property="subTitleLabel" destination="TYG-mw-0SU" id="ZMA-8c-31G"/>
@@ -141,9 +138,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,7 +9,7 @@ import UIKit
 
 class MovieTableViewController: UITableViewController {
     
-    let movie = MovieInfo()
+    var movie = MovieInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,21 @@ class MovieTableViewController: UITableViewController {
         let row = movie.movie[indexPath.row]
         cell.configureCell(row: row)
         cell.designCell()
+        
+        cell.heartButton.tag = indexPath.row
+        cell.heartButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         return cell
+    }
+    
+    @objc func likeButtonClicked(_ sender: UIButton) {
+        print(123)
+        movie.movie[sender.tag].like.toggle()
+        print(movie.movie[sender.tag].like)
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
     }
 
 }
