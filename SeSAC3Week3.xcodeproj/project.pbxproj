@@ -24,6 +24,12 @@
 		F7CCFC4C2A73528D006C6CC8 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC4B2A73528D006C6CC8 /* CustomTableViewCell.swift */; };
 		F7CCFC4E2A7389C6006C6CC8 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC4D2A7389C6006C6CC8 /* ToDo.swift */; };
 		F7CCFC502A738A0C006C6CC8 /* ToDoInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC4F2A738A0C006C6CC8 /* ToDoInformation.swift */; };
+		F7CCFC732A73A123006C6CC8 /* Movie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFC722A73A123006C6CC8 /* Movie.storyboard */; };
+		F7CCFC752A73A191006C6CC8 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC742A73A191006C6CC8 /* MovieTableViewController.swift */; };
+		F7CCFC772A73A1FB006C6CC8 /* MovieInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC762A73A1FB006C6CC8 /* MovieInformation.swift */; };
+		F7CCFC792A73A219006C6CC8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC782A73A219006C6CC8 /* Movie.swift */; };
+		F7CCFC7B2A73A3FB006C6CC8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC7A2A73A3FB006C6CC8 /* MovieTableViewCell.swift */; };
+		F7CCFC7D2A73AB4D006C6CC8 /* Enum2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC7C2A73AB4D006C6CC8 /* Enum2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +52,12 @@
 		F7CCFC4B2A73528D006C6CC8 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		F7CCFC4D2A7389C6006C6CC8 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		F7CCFC4F2A738A0C006C6CC8 /* ToDoInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoInformation.swift; sourceTree = "<group>"; };
+		F7CCFC722A73A123006C6CC8 /* Movie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Movie.storyboard; sourceTree = "<group>"; };
+		F7CCFC742A73A191006C6CC8 /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
+		F7CCFC762A73A1FB006C6CC8 /* MovieInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInformation.swift; sourceTree = "<group>"; };
+		F7CCFC782A73A219006C6CC8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		F7CCFC7A2A73A3FB006C6CC8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		F7CCFC7C2A73AB4D006C6CC8 /* Enum2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +74,7 @@
 		F7CCFC122A71FFFA006C6CC8 = {
 			isa = PBXGroup;
 			children = (
+				F7CCFC712A73A104006C6CC8 /* Assignment2 */,
 				F7CCFC3A2A725318006C6CC8 /* Assignment */,
 				F7CCFC1D2A71FFFA006C6CC8 /* SeSAC3Week3 */,
 				F7CCFC1C2A71FFFA006C6CC8 /* Products */,
@@ -106,6 +119,19 @@
 				F7CCFC432A726130006C6CC8 /* ShoppingTableViewController.swift */,
 			);
 			path = Assignment;
+			sourceTree = "<group>";
+		};
+		F7CCFC712A73A104006C6CC8 /* Assignment2 */ = {
+			isa = PBXGroup;
+			children = (
+				F7CCFC722A73A123006C6CC8 /* Movie.storyboard */,
+				F7CCFC742A73A191006C6CC8 /* MovieTableViewController.swift */,
+				F7CCFC7A2A73A3FB006C6CC8 /* MovieTableViewCell.swift */,
+				F7CCFC762A73A1FB006C6CC8 /* MovieInformation.swift */,
+				F7CCFC782A73A219006C6CC8 /* Movie.swift */,
+				F7CCFC7C2A73AB4D006C6CC8 /* Enum2.swift */,
+			);
+			path = Assignment2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CCFC732A73A123006C6CC8 /* Movie.storyboard in Resources */,
 				F7CCFC2B2A71FFFB006C6CC8 /* LaunchScreen.storyboard in Resources */,
 				F7CCFC282A71FFFB006C6CC8 /* Assets.xcassets in Resources */,
 				F7CCFC262A71FFFA006C6CC8 /* Main.storyboard in Resources */,
@@ -180,12 +207,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CCFC7B2A73A3FB006C6CC8 /* MovieTableViewCell.swift in Sources */,
 				F7CCFC3E2A725738006C6CC8 /* SettingTableViewController.swift in Sources */,
 				F7CCFC232A71FFFA006C6CC8 /* ViewController.swift in Sources */,
 				F7CCFC4C2A73528D006C6CC8 /* CustomTableViewCell.swift in Sources */,
 				F7CCFC4E2A7389C6006C6CC8 /* ToDo.swift in Sources */,
 				F7CCFC422A725DC5006C6CC8 /* Enum.swift in Sources */,
 				F7CCFC332A720FEF006C6CC8 /* TodoTableViewController.swift in Sources */,
+				F7CCFC792A73A219006C6CC8 /* Movie.swift in Sources */,
+				F7CCFC752A73A191006C6CC8 /* MovieTableViewController.swift in Sources */,
+				F7CCFC7D2A73AB4D006C6CC8 /* Enum2.swift in Sources */,
 				F7CCFC4A2A73503F006C6CC8 /* CustomTableViewController.swift in Sources */,
 				F7CCFC352A7232DE006C6CC8 /* StudyTableViewController.swift in Sources */,
 				F7CCFC372A724967006C6CC8 /* Extension.swift in Sources */,
@@ -193,6 +224,7 @@
 				F7CCFC442A726130006C6CC8 /* ShoppingTableViewController.swift in Sources */,
 				F7CCFC502A738A0C006C6CC8 /* ToDoInformation.swift in Sources */,
 				F7CCFC212A71FFFA006C6CC8 /* SceneDelegate.swift in Sources */,
+				F7CCFC772A73A1FB006C6CC8 /* MovieInformation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
