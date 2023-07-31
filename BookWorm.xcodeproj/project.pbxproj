@@ -13,6 +13,15 @@
 		F776FEB52A7799B10065ACEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F776FEB32A7799B10065ACEB /* Main.storyboard */; };
 		F776FEB72A7799B20065ACEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F776FEB62A7799B20065ACEB /* Assets.xcassets */; };
 		F776FEBA2A7799B20065ACEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F776FEB82A7799B20065ACEB /* LaunchScreen.storyboard */; };
+		F776FEC22A779A4A0065ACEB /* MovieInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEC12A779A4A0065ACEB /* MovieInformation.swift */; };
+		F776FEC42A779A5C0065ACEB /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEC32A779A5C0065ACEB /* Movie.swift */; };
+		F776FEC62A779AFC0065ACEB /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */; };
+		F776FEC92A779B440065ACEB /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */; };
+		F776FECA2A779B440065ACEB /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F776FEC82A779B440065ACEB /* BookCollectionViewCell.xib */; };
+		F776FECC2A779FA30065ACEB /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */; };
+		F776FECE2A77A0610065ACEB /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FECD2A77A0610065ACEB /* Enum.swift */; };
+		F776FED02A77AC2D0065ACEB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */; };
+		F776FED22A77AE490065ACEB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FED12A77AE490065ACEB /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,15 @@
 		F776FEB62A7799B20065ACEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F776FEB92A7799B20065ACEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F776FEBB2A7799B20065ACEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F776FEC12A779A4A0065ACEB /* MovieInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInformation.swift; sourceTree = "<group>"; };
+		F776FEC32A779A5C0065ACEB /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
+		F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		F776FEC82A779B440065ACEB /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
+		F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		F776FECD2A77A0610065ACEB /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F776FED12A77AE490065ACEB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +76,19 @@
 			children = (
 				F776FEAD2A7799B10065ACEB /* AppDelegate.swift */,
 				F776FEAF2A7799B10065ACEB /* SceneDelegate.swift */,
+				F776FEC12A779A4A0065ACEB /* MovieInformation.swift */,
+				F776FEC32A779A5C0065ACEB /* Movie.swift */,
+				F776FECD2A77A0610065ACEB /* Enum.swift */,
+				F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */,
 				F776FEB12A7799B10065ACEB /* ViewController.swift */,
 				F776FEB32A7799B10065ACEB /* Main.storyboard */,
+				F776FED12A77AE490065ACEB /* DetailViewController.swift */,
+				F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */,
+				F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */,
 				F776FEB62A7799B20065ACEB /* Assets.xcassets */,
 				F776FEB82A7799B20065ACEB /* LaunchScreen.storyboard */,
+				F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */,
+				F776FEC82A779B440065ACEB /* BookCollectionViewCell.xib */,
 				F776FEBB2A7799B20065ACEB /* Info.plist */,
 			);
 			path = BookWorm;
@@ -126,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F776FEBA2A7799B20065ACEB /* LaunchScreen.storyboard in Resources */,
+				F776FECA2A779B440065ACEB /* BookCollectionViewCell.xib in Resources */,
 				F776FEB72A7799B20065ACEB /* Assets.xcassets in Resources */,
 				F776FEB52A7799B10065ACEB /* Main.storyboard in Resources */,
 			);
@@ -138,9 +166,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F776FED22A77AE490065ACEB /* DetailViewController.swift in Sources */,
+				F776FED02A77AC2D0065ACEB /* SearchViewController.swift in Sources */,
+				F776FECC2A779FA30065ACEB /* Extension+UIViewController.swift in Sources */,
 				F776FEB22A7799B10065ACEB /* ViewController.swift in Sources */,
 				F776FEAE2A7799B10065ACEB /* AppDelegate.swift in Sources */,
 				F776FEB02A7799B10065ACEB /* SceneDelegate.swift in Sources */,
+				F776FEC22A779A4A0065ACEB /* MovieInformation.swift in Sources */,
+				F776FECE2A77A0610065ACEB /* Enum.swift in Sources */,
+				F776FEC92A779B440065ACEB /* BookCollectionViewCell.swift in Sources */,
+				F776FEC42A779A5C0065ACEB /* Movie.swift in Sources */,
+				F776FEC62A779AFC0065ACEB /* BookCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
