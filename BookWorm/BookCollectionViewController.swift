@@ -28,7 +28,7 @@ class BookCollectionViewController: UICollectionViewController {
             return
         }
         let nav = UINavigationController(rootViewController: vc)
-//        nav.modalTransitionStyle = .crossDissolve // modal animation
+        
         nav.modalPresentationStyle = .fullScreen // modal 방식
         present(nav, animated: true) // modal
     }

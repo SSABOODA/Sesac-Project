@@ -11,10 +11,12 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "검색 화면"
+        configureSerchView()
         navBarButtonItem()
-        
+    }
+    
+    func configureSerchView() {
+        title = "검색 화면"
     }
     
     func navBarButtonItem() {

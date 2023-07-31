@@ -81,14 +81,14 @@
 				F776FECD2A77A0610065ACEB /* Enum.swift */,
 				F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */,
 				F776FEB12A7799B10065ACEB /* ViewController.swift */,
-				F776FEB32A7799B10065ACEB /* Main.storyboard */,
 				F776FED12A77AE490065ACEB /* DetailViewController.swift */,
 				F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */,
 				F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */,
-				F776FEB62A7799B20065ACEB /* Assets.xcassets */,
-				F776FEB82A7799B20065ACEB /* LaunchScreen.storyboard */,
 				F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */,
+				F776FEB32A7799B10065ACEB /* Main.storyboard */,
+				F776FEB82A7799B20065ACEB /* LaunchScreen.storyboard */,
 				F776FEC82A779B440065ACEB /* BookCollectionViewCell.xib */,
+				F776FEB62A7799B20065ACEB /* Assets.xcassets */,
 				F776FEBB2A7799B20065ACEB /* Info.plist */,
 			);
 			path = BookWorm;

@@ -15,11 +15,15 @@ struct MovieInfo {
         UIColor.blue,
         UIColor.systemGray,
         UIColor.systemMint,
+        UIColor.systemTeal,
+        UIColor.systemPink,
         UIColor.green,
         UIColor.lightGray,
-        UIColor.systemPink,
         UIColor.brown,
         UIColor.cyan,
+        UIColor.purple,
+        UIColor.yellow,
+        UIColor.systemOrange,
     ]
     
     let movie: [Movie] = [
