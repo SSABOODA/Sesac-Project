@@ -8,11 +8,14 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
+    @IBOutlet var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSerchView()
         navBarButtonItem()
+        searchBar.delegate = self
     }
     
     func configureSerchView() {
@@ -29,10 +32,16 @@ class SearchViewController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = .black
     }
     
-
     @objc
     func closeButtonClicked() {
         dismiss(animated: true)
     }
+}
 
+extension SearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        
+        
+    }
 }

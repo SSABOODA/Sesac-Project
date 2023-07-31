@@ -81,14 +81,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Bld-X0-TFx">
+                                <rect key="frame" x="0.0" y="69" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uAx-LL-2DC" id="CcY-PG-78B"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bft-rf-ebi"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Bld-X0-TFx" firstAttribute="leading" secondItem="bft-rf-ebi" secondAttribute="leading" id="BVS-DS-MVv"/>
+                            <constraint firstItem="Bld-X0-TFx" firstAttribute="trailing" secondItem="bft-rf-ebi" secondAttribute="trailing" id="Nez-Pg-d9H"/>
+                            <constraint firstItem="Bld-X0-TFx" firstAttribute="top" secondItem="bft-rf-ebi" secondAttribute="top" constant="10" id="TEP-6O-wg2"/>
                             <constraint firstItem="Wl8-wd-9X4" firstAttribute="centerY" secondItem="ydh-we-zYo" secondAttribute="centerY" id="aSc-xY-AzZ"/>
                             <constraint firstItem="Wl8-wd-9X4" firstAttribute="centerX" secondItem="ydh-we-zYo" secondAttribute="centerX" id="yJg-cQ-fj0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="Bld-X0-TFx" id="EDr-dg-7hS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gQ-ed-tg9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,9 +192,6 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
