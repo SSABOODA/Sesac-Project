@@ -55,6 +55,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="나의 책장 📚" id="2Tg-iQ-vle">
+                        <barButtonItem key="backBarButtonItem" title=" " id="DLq-uS-C5d"/>
                         <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="TL3-C6-zDU">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>

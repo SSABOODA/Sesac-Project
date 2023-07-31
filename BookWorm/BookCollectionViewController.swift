@@ -17,6 +17,8 @@ class BookCollectionViewController: UICollectionViewController {
         registerBookCollectionViewCell()
         setCollectionViewLayout()
         setBackgroundColor()
+        designNavigationBackButton()
+
     }
     
     // MARK: - IBAction
@@ -41,6 +43,10 @@ class BookCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - 구현 함수
+    
+    func designNavigationBackButton() {
+        navigationItem.backBarButtonItem?.tintColor = .black
+    }
 
     
     func setCollectionViewLayout() {

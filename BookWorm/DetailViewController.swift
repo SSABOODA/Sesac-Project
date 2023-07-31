@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
         designImageView()
     }
     
+    
     func designImageView() {
         detailMainImageView.backgroundColor = .clear
         detailMainImageView.layer.cornerRadius = 10
@@ -36,5 +37,7 @@ class DetailViewController: UIViewController {
         detailTitleLabel.text = movie.title
         detailRateLabel.text = "평점: \(movie.rate)"
         detailDescriptionLabel.text = movie.overview
+        
+        title = movie.title
     }
 }
