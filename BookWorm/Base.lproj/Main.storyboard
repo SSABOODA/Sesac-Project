@@ -55,7 +55,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="나의 책장 📚" id="2Tg-iQ-vle">
-                        <barButtonItem key="backBarButtonItem" title=" " id="DLq-uS-C5d"/>
                         <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="TL3-C6-zDU">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -76,32 +75,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 화면" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wl8-wd-9X4">
-                                <rect key="frame" x="150.33333333333334" y="411" width="92.333333333333343" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Bld-X0-TFx">
-                                <rect key="frame" x="0.0" y="69" width="393" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="uAx-LL-2DC" id="CcY-PG-78B"/>
-                                </connections>
-                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VwK-aY-PJq">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bft-rf-ebi"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Bld-X0-TFx" firstAttribute="leading" secondItem="bft-rf-ebi" secondAttribute="leading" id="BVS-DS-MVv"/>
-                            <constraint firstItem="Bld-X0-TFx" firstAttribute="trailing" secondItem="bft-rf-ebi" secondAttribute="trailing" id="Nez-Pg-d9H"/>
-                            <constraint firstItem="Bld-X0-TFx" firstAttribute="top" secondItem="bft-rf-ebi" secondAttribute="top" constant="10" id="TEP-6O-wg2"/>
-                            <constraint firstItem="Wl8-wd-9X4" firstAttribute="centerY" secondItem="ydh-we-zYo" secondAttribute="centerY" id="aSc-xY-AzZ"/>
-                            <constraint firstItem="Wl8-wd-9X4" firstAttribute="centerX" secondItem="ydh-we-zYo" secondAttribute="centerX" id="yJg-cQ-fj0"/>
+                            <constraint firstItem="bft-rf-ebi" firstAttribute="trailing" secondItem="VwK-aY-PJq" secondAttribute="trailing" id="XUW-Bl-leA"/>
+                            <constraint firstItem="bft-rf-ebi" firstAttribute="bottom" secondItem="VwK-aY-PJq" secondAttribute="bottom" id="YmF-of-1qa"/>
+                            <constraint firstItem="VwK-aY-PJq" firstAttribute="top" secondItem="bft-rf-ebi" secondAttribute="top" id="ktj-6g-kei"/>
+                            <constraint firstItem="VwK-aY-PJq" firstAttribute="leading" secondItem="bft-rf-ebi" secondAttribute="leading" id="u8l-4e-znh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchBar" destination="Bld-X0-TFx" id="EDr-dg-7hS"/>
+                        <outlet property="tableView" destination="VwK-aY-PJq" id="IZm-Gn-2eF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gQ-ed-tg9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
