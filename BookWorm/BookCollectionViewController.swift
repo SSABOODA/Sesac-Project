@@ -36,8 +36,8 @@ class BookCollectionViewController: UICollectionViewController {
     
     func registerBookCollectionViewCell() {
         collectionView.register(
-            UINib(nibName: CollectionViewCellIdentifier.bookCollectionViewCell.rawValue, bundle: nil),
-            forCellWithReuseIdentifier: CollectionViewCellIdentifier.bookCollectionViewCell.rawValue
+            UINib(nibName: BookCollectionViewCell.identifier, bundle: nil),
+            forCellWithReuseIdentifier: BookCollectionViewCell.identifier
         )
     }
     

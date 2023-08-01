@@ -10,11 +10,11 @@ import UIKit
 class SearchViewController: UIViewController {
     
     static let identifier = "SearchViewController"
-    
-    @IBOutlet var tableView: UITableView!
 
-    let movieArr = MovieInfo().movie.map { $0.title }
-    var filteredArr: [String] = []
+    @IBOutlet var collectionView: UICollectionView!
+    
+    var movie = MovieInfo()
+    var filteredArr: [Movie] = []
     
     var isFiltering: Bool {
         let searchController = self.navigationItem.searchController
@@ -27,14 +27,38 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         configureSerchView()
         navBarButtonItem()
-        setupTableView()
+        setupCollectionView()
         setupSearchController()
         
+        registerBookCollectionViewCell()
+        setCollectionViewLayout()
     }
     
-    func setupTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+    func registerBookCollectionViewCell() {
+        collectionView.register(
+            UINib(nibName: BookCollectionViewCell.identifier, bundle: nil),
+            forCellWithReuseIdentifier: BookCollectionViewCell.identifier
+        )
+    }
+    
+    func setCollectionViewLayout() {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 20
+        let width = UIScreen.main.bounds.width - (spacing * 3)
+        layout.itemSize = CGSize(width: width/2, height: width/2)
+        layout.sectionInset = UIEdgeInsets(
+            top: spacing,
+            left: spacing,
+            bottom: spacing,
+            right: spacing
+        )
+        layout.minimumLineSpacing = spacing // 상하
+        layout.minimumInteritemSpacing = spacing // 좌우
+        collectionView.collectionViewLayout = layout
+    }
+    
+    func setupCollectionView() {
+        self.collectionView.dataSource = self
     }
     
     func setupSearchController() {
@@ -46,7 +70,6 @@ class SearchViewController: UIViewController {
         
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "Search"
-        
     }
     
     func configureSerchView() {
@@ -63,8 +86,7 @@ class SearchViewController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = .black
     }
     
-    @objc
-    func closeButtonClicked() {
+    @objc func closeButtonClicked() {
         dismiss(animated: true)
     }
 }
@@ -72,24 +94,26 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text?.lowercased() else { return }
-        self.filteredArr = self.movieArr.filter { $0.localizedCaseInsensitiveContains(text) }
         
-        self.tableView.reloadData()
+        self.filteredArr = self.movie.movie.filter { $0.title.contains(text) }
+        self.collectionView.reloadData()
     }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.isFiltering ? self.filteredArr.count : self.movieArr.count
+extension SearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.isFiltering ? self.filteredArr.count : self.movie.movie.count
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
         if self.isFiltering {
-            cell.textLabel?.text = self.filteredArr[indexPath.row]
+            cell.designCell(movie.colorList.randomElement()!)
+            cell.configureCell(row: filteredArr[indexPath.row])
         } else {
-            cell.textLabel?.text = self.movieArr[indexPath.row]
+            cell.designCell(movie.colorList.randomElement()!)
+            cell.configureCell(row: movie.movie[indexPath.row])
         }
         return cell
     }

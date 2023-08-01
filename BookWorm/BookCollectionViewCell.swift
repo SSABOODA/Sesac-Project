@@ -9,6 +9,8 @@ import UIKit
 
 class BookCollectionViewCell: UICollectionViewCell {
     
+    static let identifier = "BookCollectionViewCell"
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var rateLabel: UILabel!
