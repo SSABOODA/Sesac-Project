@@ -8,11 +8,19 @@
 import UIKit
 
 struct Movie {
-//    var color: UIColor
     var title: String
     var releaseDate: String
     var runtime: Int
     var overview: String
     var rate: Double
+    var like: Bool
+    
+    var runtimeText: String {
+        return "\(self.runtime)분"
+    }
+    
+    var rateText: String {
+        return "평균 ★\(self.rate)"
+    }
     
 }

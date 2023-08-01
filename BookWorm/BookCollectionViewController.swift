@@ -47,7 +47,6 @@ class BookCollectionViewController: UICollectionViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
-
     }
 
     
@@ -80,6 +79,9 @@ class BookCollectionViewController: UICollectionViewController {
         }
         cell.designCell(movie.colorList.randomElement()!)
         cell.configureCell(row: movie.movie[indexPath.row])
+        
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         return cell
     }
 
@@ -90,5 +92,11 @@ class BookCollectionViewController: UICollectionViewController {
         }
         vc.movie = movie.movie[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func likeButtonClicked(_ sender: UIButton) {
+        print(#function)
+        movie.movie[sender.tag].like.toggle()
+        collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
 }

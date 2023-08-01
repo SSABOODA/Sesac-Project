@@ -12,6 +12,8 @@ class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var rateLabel: UILabel!
+    @IBOutlet var likeButton: UIButton!
+    
     
     func designCell(_ color: UIColor) {
         self.backgroundColor = color
@@ -23,5 +25,12 @@ class BookCollectionViewCell: UICollectionViewCell {
         titleLabel.text = row.title
         mainImageView.image = UIImage(named: row.title)
         rateLabel.text = "\(row.rate)"
+        
+        if row.like {
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            likeButton.tintColor = .red
+        } else {
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
 }

@@ -76,8 +76,8 @@
 			children = (
 				F776FEAD2A7799B10065ACEB /* AppDelegate.swift */,
 				F776FEAF2A7799B10065ACEB /* SceneDelegate.swift */,
-				F776FEC12A779A4A0065ACEB /* MovieInformation.swift */,
 				F776FEC32A779A5C0065ACEB /* Movie.swift */,
+				F776FEC12A779A4A0065ACEB /* MovieInformation.swift */,
 				F776FECD2A77A0610065ACEB /* Enum.swift */,
 				F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */,
 				F776FEB12A7799B10065ACEB /* ViewController.swift */,

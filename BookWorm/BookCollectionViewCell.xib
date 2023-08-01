@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="215" height="240"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2k5-mf-jfr">
-                                <rect key="frame" x="10" y="10" width="195" height="18"/>
+                                <rect key="frame" x="10" y="10" width="155" height="34.333333333333336"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,18 +34,32 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxm-vj-1ZJ">
-                                <rect key="frame" x="70" y="38" width="135" height="202"/>
+                                <rect key="frame" x="70" y="54.333333333333329" width="135" height="185.66666666666669"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRR-0C-zJL">
+                                <rect key="frame" x="180" y="10" width="35" height="34.333333333333336"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="nFb-VM-P3f"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="heart" catalog="system" symbolScale="small"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hRR-0C-zJL" secondAttribute="trailing" id="7Qn-nW-5yg"/>
                             <constraint firstItem="2k5-mf-jfr" firstAttribute="leading" secondItem="fiU-9b-vBc" secondAttribute="leading" constant="10" id="9NM-oS-7FD"/>
                             <constraint firstItem="kxm-vj-1ZJ" firstAttribute="leading" secondItem="fiU-9b-vBc" secondAttribute="leading" constant="70" id="CHv-yR-edi"/>
                             <constraint firstItem="kxm-vj-1ZJ" firstAttribute="top" secondItem="2k5-mf-jfr" secondAttribute="bottom" constant="10" id="O6V-cK-pBJ"/>
                             <constraint firstAttribute="trailing" secondItem="kxm-vj-1ZJ" secondAttribute="trailing" constant="10" id="PE2-aM-4GU"/>
+                            <constraint firstItem="kxm-vj-1ZJ" firstAttribute="top" secondItem="hRR-0C-zJL" secondAttribute="bottom" constant="10" id="bSC-3G-IMn"/>
                             <constraint firstItem="2k5-mf-jfr" firstAttribute="top" secondItem="fiU-9b-vBc" secondAttribute="top" constant="10" id="eTQ-3c-aaj"/>
+                            <constraint firstItem="hRR-0C-zJL" firstAttribute="top" secondItem="2k5-mf-jfr" secondAttribute="top" id="f0J-ek-wZO"/>
                             <constraint firstAttribute="bottom" secondItem="QgV-DK-pLJ" secondAttribute="bottom" constant="35" id="fJx-Ce-vUX"/>
                             <constraint firstAttribute="bottom" secondItem="kxm-vj-1ZJ" secondAttribute="bottom" id="ier-fF-oon"/>
-                            <constraint firstAttribute="trailing" secondItem="2k5-mf-jfr" secondAttribute="trailing" constant="10" id="pfr-b1-Mdl"/>
+                            <constraint firstAttribute="trailing" secondItem="2k5-mf-jfr" secondAttribute="trailing" constant="50" id="pfr-b1-Mdl"/>
                             <constraint firstItem="QgV-DK-pLJ" firstAttribute="leading" secondItem="fiU-9b-vBc" secondAttribute="leading" constant="10" id="vZj-bJ-xrt"/>
                         </constraints>
                     </view>
@@ -59,6 +74,7 @@
             </constraints>
             <size key="customSize" width="215" height="240"/>
             <connections>
+                <outlet property="likeButton" destination="hRR-0C-zJL" id="ayo-BZ-wDv"/>
                 <outlet property="mainImageView" destination="kxm-vj-1ZJ" id="v0X-9Y-ZTh"/>
                 <outlet property="rateLabel" destination="QgV-DK-pLJ" id="8Gr-gw-5wV"/>
                 <outlet property="titleLabel" destination="2k5-mf-jfr" id="olM-nr-lqY"/>
@@ -66,4 +82,7 @@
             <point key="canvasLocation" x="246.56488549618319" y="85.91549295774648"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
+    </resources>
 </document>

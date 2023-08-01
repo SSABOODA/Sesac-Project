@@ -11,8 +11,10 @@ class DetailViewController: UIViewController {
 
     @IBOutlet var detailMainImageView: UIImageView!
     @IBOutlet var detailTitleLabel: UILabel!
+    @IBOutlet var detailRuntimeLabel: UILabel!
     @IBOutlet var detailRateLabel: UILabel!
     @IBOutlet var detailDescriptionLabel: UILabel!
+    @IBOutlet var detailView: UIView!
     
     var movie: Movie?
     
@@ -35,9 +37,14 @@ class DetailViewController: UIViewController {
         }
         detailMainImageView.image = UIImage(named: movie.title)
         detailTitleLabel.text = movie.title
-        detailRateLabel.text = "평점: \(movie.rate)"
+        detailRuntimeLabel.text = movie.runtimeText
+        detailRateLabel.text = movie.rateText
         detailDescriptionLabel.text = movie.overview
+//        title = movie.title
         
-        title = movie.title
+        detailDescriptionLabel.numberOfLines = 0
+        view.backgroundColor = .systemGray4
+        detailView.layer.cornerRadius = 10
+        detailView.clipsToBounds = true
     }
 }
