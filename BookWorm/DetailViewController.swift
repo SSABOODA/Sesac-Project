@@ -8,6 +8,8 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    static let identifer = "DetailViewController"
 
     @IBOutlet var detailMainImageView: UIImageView!
     @IBOutlet var detailTitleLabel: UILabel!

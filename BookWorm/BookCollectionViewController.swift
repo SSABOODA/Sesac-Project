@@ -25,7 +25,7 @@ class BookCollectionViewController: UICollectionViewController {
     
     @IBAction func searchBarButtonItemClicked(_ sender: UIBarButtonItem) {
         let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: ViewControllerIdentifier.searchView.rawValue) as? SearchViewController else {
+        guard let vc = sb.instantiateViewController(withIdentifier: SearchViewController.identifier) as? SearchViewController else {
             return
         }
         let nav = UINavigationController(rootViewController: vc)
@@ -87,7 +87,7 @@ class BookCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: ViewControllerIdentifier.detailView.rawValue) as? DetailViewController else {
+        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else {
             return
         }
         vc.movie = movie.movie[indexPath.row]

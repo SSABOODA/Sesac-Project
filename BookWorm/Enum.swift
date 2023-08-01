@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum ViewControllerIdentifier: String {
-    case detailView = "DetailViewController"
-    case searchView = "SearchViewController"
-}
-
 enum CollectionViewCellIdentifier: String {
     case bookCollectionViewCell = "BookCollectionViewCell"
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    static let identifier = "SearchViewController"
+    
     @IBOutlet var tableView: UITableView!
 
     let movieArr = MovieInfo().movie.map { $0.title }
