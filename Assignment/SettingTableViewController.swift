@@ -47,8 +47,6 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
         return SettingOptions.allCases[section].subOptions.count
     }
     
@@ -57,6 +55,4 @@ class SettingTableViewController: UITableViewController {
         cell.textLabel?.text = SettingOptions.allCases[indexPath.section].subOptions[indexPath.row]
         return cell
     }
-    
-
 }
