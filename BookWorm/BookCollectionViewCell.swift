@@ -16,6 +16,7 @@ class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet var rateLabel: UILabel!
     @IBOutlet var likeButton: UIButton!
     
+    var movie = MovieInfo()
     
     func designCell(_ color: UIColor) {
         self.backgroundColor = color
@@ -33,6 +34,8 @@ class BookCollectionViewCell: UICollectionViewCell {
             likeButton.tintColor = .red
         } else {
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButton.tintColor = .white
         }
     }
+
 }

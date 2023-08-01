@@ -69,7 +69,7 @@ class SearchViewController: UIViewController {
         self.navigationItem.hidesSearchBarWhenScrolling = false
         
         self.navigationItem.searchController = searchController
-        self.navigationItem.title = "Search"
+        self.navigationItem.title = "영화 검색 🔍"
     }
     
     func configureSerchView() {
@@ -94,7 +94,6 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text?.lowercased() else { return }
-        
         self.filteredArr = self.movie.movie.filter { $0.title.contains(text) }
         self.collectionView.reloadData()
     }
@@ -115,6 +114,16 @@ extension SearchViewController: UICollectionViewDataSource {
             cell.designCell(movie.colorList.randomElement()!)
             cell.configureCell(row: movie.movie[indexPath.row])
         }
+        
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc func likeButtonClicked(_ sender: UIButton) {
+        print(#function)
+        movie.movie[sender.tag].like.toggle()
+        collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
 }

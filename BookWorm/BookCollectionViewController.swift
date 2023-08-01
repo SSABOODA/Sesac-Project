@@ -82,6 +82,7 @@ class BookCollectionViewController: UICollectionViewController {
         
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        
         return cell
     }
 
