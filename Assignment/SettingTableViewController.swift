@@ -7,13 +7,30 @@
 
 import UIKit
 
-class SettingTableViewController: UITableViewController {
+enum SettingOptions: Int, CaseIterable {
+    case total, personal, others
     
-    let settingList = [
-        SettingTitle.allSetting.rawValue: AllSettingContentTitle.allCases.map { $0.rawValue },
-        SettingTitle.privateSetting.rawValue: PrivateSettingContentTitle.allCases.map { $0.rawValue },
-        SettingTitle.etcSetting.rawValue: EtcSettingContentTitle.allCases.map { $0.rawValue }
-    ]
+    var mainOptions: String {
+        switch self {
+        case .total: return "전체 설정"
+        case .personal: return "개인 설정"
+        case .others: return "기타"
+        }
+    }
+    
+    var subOptions: [String] {
+        switch self {
+        case .total:
+            return ["공지사항", "실험실", "버전 정보"]
+        case .personal:
+            return ["개안/보안", "알림", "채팅", "멀티프로필"]
+        case .others:
+            return ["고객센터/도움말"]
+        }
+    }
+}
+
+class SettingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,41 +38,23 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return settingList.count
+        return SettingOptions.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        if section == 0 {
-            return SectionHeader.allSetting.rawValue
-        } else if section == 1 {
-            return SectionHeader.privateSetting.rawValue
-        } else {
-            return SectionHeader.etcSetting.rawValue
-        }
+        return SettingOptions.allCases[section].mainOptions
+
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 0 {
-            return settingList[SettingTitle.allSetting.rawValue]!.count
-        } else if section == 1 {
-            return settingList[SettingTitle.privateSetting.rawValue]!.count
-        } else {
-            return settingList[SettingTitle.etcSetting.rawValue]!.count
-        }
+        
+        return SettingOptions.allCases[section].subOptions.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellName.settingCell.rawValue)!
-        
-        if indexPath.section == 0 {
-            cell.textLabel?.text = settingList[SettingTitle.allSetting.rawValue]![indexPath.row]
-        } else if indexPath.section == 1 {
-            cell.textLabel?.text = settingList[SettingTitle.privateSetting.rawValue]![indexPath.row]
-        } else {
-            cell.textLabel?.text = settingList[SettingTitle.etcSetting.rawValue]![indexPath.row]
-        }
+        cell.textLabel?.text = SettingOptions.allCases[indexPath.section].subOptions[indexPath.row]
         return cell
     }
     
