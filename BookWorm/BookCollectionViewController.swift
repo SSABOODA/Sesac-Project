@@ -34,6 +34,17 @@ class BookCollectionViewController: UICollectionViewController {
         present(nav, animated: true) // modal
     }
     
+    
+    
+    @IBAction func lookAroundBarButtonItemClicked(_ sender: UIBarButtonItem) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: LookAroundViewController.identifier) as? LookAroundViewController else { return }
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
+    }
+    
+    
+    
     func registerBookCollectionViewCell() {
         collectionView.register(
             UINib(nibName: BookCollectionViewCell.identifier, bundle: nil),

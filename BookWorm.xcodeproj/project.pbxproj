@@ -22,6 +22,9 @@
 		F776FECE2A77A0610065ACEB /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FECD2A77A0610065ACEB /* Enum.swift */; };
 		F776FED02A77AC2D0065ACEB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */; };
 		F776FED22A77AE490065ACEB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FED12A77AE490065ACEB /* DetailViewController.swift */; };
+		F776FEE32A7A286B0065ACEB /* LookAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */; };
+		F776FEEA2A7A3C2C0065ACEB /* recentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */; };
+		F776FEEB2A7A3C2C0065ACEB /* recentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F776FEE92A7A3C2C0065ACEB /* recentCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		F776FECD2A77A0610065ACEB /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F776FED12A77AE490065ACEB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundViewController.swift; sourceTree = "<group>"; };
+		F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentCollectionViewCell.swift; sourceTree = "<group>"; };
+		F776FEE92A7A3C2C0065ACEB /* recentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = recentCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,9 @@
 				F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */,
 				F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */,
 				F776FEB32A7799B10065ACEB /* Main.storyboard */,
+				F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */,
+				F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */,
+				F776FEE92A7A3C2C0065ACEB /* recentCollectionViewCell.xib */,
 				F776FEB82A7799B20065ACEB /* LaunchScreen.storyboard */,
 				F776FEC82A779B440065ACEB /* BookCollectionViewCell.xib */,
 				F776FEB62A7799B20065ACEB /* Assets.xcassets */,
@@ -155,6 +164,7 @@
 				F776FEBA2A7799B20065ACEB /* LaunchScreen.storyboard in Resources */,
 				F776FECA2A779B440065ACEB /* BookCollectionViewCell.xib in Resources */,
 				F776FEB72A7799B20065ACEB /* Assets.xcassets in Resources */,
+				F776FEEB2A7A3C2C0065ACEB /* recentCollectionViewCell.xib in Resources */,
 				F776FEB52A7799B10065ACEB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,9 +183,11 @@
 				F776FEAE2A7799B10065ACEB /* AppDelegate.swift in Sources */,
 				F776FEB02A7799B10065ACEB /* SceneDelegate.swift in Sources */,
 				F776FEC22A779A4A0065ACEB /* MovieInformation.swift in Sources */,
+				F776FEEA2A7A3C2C0065ACEB /* recentCollectionViewCell.swift in Sources */,
 				F776FECE2A77A0610065ACEB /* Enum.swift in Sources */,
 				F776FEC92A779B440065ACEB /* BookCollectionViewCell.swift in Sources */,
 				F776FEC42A779A5C0065ACEB /* Movie.swift in Sources */,
+				F776FEE32A7A286B0065ACEB /* LookAroundViewController.swift in Sources */,
 				F776FEC62A779AFC0065ACEB /* BookCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

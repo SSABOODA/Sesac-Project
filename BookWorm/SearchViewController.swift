@@ -108,10 +108,8 @@ extension SearchViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
         if self.isFiltering {
-            cell.designCell(movie.colorList.randomElement()!)
             cell.configureCell(row: filteredArr[indexPath.row])
         } else {
-            cell.designCell(movie.colorList.randomElement()!)
             cell.configureCell(row: movie.movie[indexPath.row])
         }
         
