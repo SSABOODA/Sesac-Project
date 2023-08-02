@@ -15,7 +15,6 @@ class PopularityTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         mainImageView.backgroundColor = .clear

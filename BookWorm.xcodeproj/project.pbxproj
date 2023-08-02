@@ -86,27 +86,59 @@
 			children = (
 				F776FEAD2A7799B10065ACEB /* AppDelegate.swift */,
 				F776FEAF2A7799B10065ACEB /* SceneDelegate.swift */,
-				F776FEC32A779A5C0065ACEB /* Movie.swift */,
-				F776FEC12A779A4A0065ACEB /* MovieInformation.swift */,
-				F776FECD2A77A0610065ACEB /* Enum.swift */,
-				F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */,
-				F776FEB12A7799B10065ACEB /* ViewController.swift */,
-				F776FED12A77AE490065ACEB /* DetailViewController.swift */,
-				F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */,
-				F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */,
-				F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */,
-				F776FEB32A7799B10065ACEB /* Main.storyboard */,
-				F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */,
-				F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */,
-				F776FEE92A7A3C2C0065ACEB /* recentCollectionViewCell.xib */,
-				F776FEF02A7A41AB0065ACEB /* PopularityTableViewCell.swift */,
-				F776FEF12A7A41AB0065ACEB /* PopularityTableViewCell.xib */,
+				F776FEF92A7A7B5D0065ACEB /* Helpers */,
+				F776FEF62A7A7B240065ACEB /* Models */,
+				F776FEF72A7A7B2B0065ACEB /* Views */,
+				F776FEF82A7A7B300065ACEB /* Controllers */,
 				F776FEB82A7799B20065ACEB /* LaunchScreen.storyboard */,
-				F776FEC82A779B440065ACEB /* BookCollectionViewCell.xib */,
 				F776FEB62A7799B20065ACEB /* Assets.xcassets */,
 				F776FEBB2A7799B20065ACEB /* Info.plist */,
 			);
 			path = BookWorm;
+			sourceTree = "<group>";
+		};
+		F776FEF62A7A7B240065ACEB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F776FEC32A779A5C0065ACEB /* Movie.swift */,
+				F776FEC12A779A4A0065ACEB /* MovieInformation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F776FEF72A7A7B2B0065ACEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F776FEB32A7799B10065ACEB /* Main.storyboard */,
+				F776FEE92A7A3C2C0065ACEB /* recentCollectionViewCell.xib */,
+				F776FEF12A7A41AB0065ACEB /* PopularityTableViewCell.xib */,
+				F776FEC82A779B440065ACEB /* BookCollectionViewCell.xib */,
+				F776FEF02A7A41AB0065ACEB /* PopularityTableViewCell.swift */,
+				F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */,
+				F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */,
+				F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F776FEF82A7A7B300065ACEB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F776FEB12A7799B10065ACEB /* ViewController.swift */,
+				F776FED12A77AE490065ACEB /* DetailViewController.swift */,
+				F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */,
+				F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F776FEF92A7A7B5D0065ACEB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */,
+				F776FECD2A77A0610065ACEB /* Enum.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

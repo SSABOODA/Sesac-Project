@@ -65,7 +65,6 @@ class SearchViewController: UIViewController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "영화 제목을 입력해주세요."
-//        searchController.hidesNavigationBarDuringPresentation = false
         self.navigationItem.hidesSearchBarWhenScrolling = false
         
         self.navigationItem.searchController = searchController
