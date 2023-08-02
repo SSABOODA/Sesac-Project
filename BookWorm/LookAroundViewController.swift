@@ -24,6 +24,7 @@ class LookAroundViewController: UIViewController {
         setupCollectionView()
         configurePopularityTableView()
         title = "둘러 보기"
+        navBarButtonItem()
         
         
         popularityTableView.register(
@@ -65,6 +66,20 @@ class LookAroundViewController: UIViewController {
         recentCollectionView.isPagingEnabled = true
     }
     
+    func navBarButtonItem() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "xmark"),
+            style: .plain,
+            target: self,
+            action: #selector(closeButtonClicked)
+        )
+        navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    
+    @objc func closeButtonClicked() {
+        dismiss(animated: true)
+    }
+    
 
 }
 
@@ -98,7 +113,16 @@ extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
         return headerView
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function, indexPath)
+        
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
+        vc.movie = movie.movie[indexPath.row]
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
+        
+    }
 }
 
 extension LookAroundViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -112,5 +136,14 @@ extension LookAroundViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         cell.configureCell(movie.movie[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function, indexPath)
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
+        vc.movie = movie.movie[indexPath.row]
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
 }

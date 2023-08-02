@@ -10,6 +10,8 @@ import UIKit
 
 class BookCollectionViewController: UICollectionViewController {
     
+    static let identifier = "BookCollectionViewController"
+    
     var movie = MovieInfo()
 
     override func viewDidLoad() {
@@ -17,7 +19,7 @@ class BookCollectionViewController: UICollectionViewController {
         registerBookCollectionViewCell()
         setCollectionViewLayout()
         setBackgroundColor()
-        designNavigationBackButton()
+//        designNavigationBackButton()
     }
     
     // MARK: - IBAction
