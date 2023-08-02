@@ -77,7 +77,7 @@ class BookCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellIdentifier.bookCollectionViewCell.rawValue, for: indexPath) as? BookCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.designCell(movie.colorList.randomElement()!)
+        
         cell.configureCell(row: movie.movie[indexPath.row])
         
         cell.likeButton.tag = indexPath.row

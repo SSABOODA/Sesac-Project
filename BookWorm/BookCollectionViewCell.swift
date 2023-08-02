@@ -18,13 +18,14 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     var movie = MovieInfo()
     
-    func designCell(_ color: UIColor) {
-        self.backgroundColor = color
+    override func awakeFromNib() {
+        super.awakeFromNib()
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
     }
     
     func configureCell(row: Movie) {
+        self.backgroundColor = row.color
         titleLabel.text = row.title
         mainImageView.image = UIImage(named: row.title)
         rateLabel.text = "\(row.rate)"
