@@ -14,7 +14,7 @@ class CustomTableViewController: UITableViewController {
     
     var todo = ToDoInformation() {
         didSet { // 변수가 달라짐을 감지!
-            print("DidSet?????????????")
+            print(#function)
             tableView.reloadData()
         }
     }
@@ -22,7 +22,7 @@ class CustomTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
-        searchBar.placeholder = "할 일을 입력해보세여~"
+        searchBar.placeholder = "할 일을 입력해보세요~"
         searchBar.searchTextField.addTarget(self, action: #selector(searchBarReturnTapped), for: .editingDidEndOnExit)
     }
     
@@ -31,13 +31,13 @@ class CustomTableViewController: UITableViewController {
         // Todo 항목을 list에 추가
         // 테이블뷰 데이터 갱신
         
-        let data = ToDo(main: searchBar.text!, sub: "23.12.12", like: false, done: false)
+        let data = ToDo(main: searchBar.text!, sub: "23.12.12", like: false, done: false, color: ToDoInformation.randomBackgroundColor())
         
         // 뒤에 추가
-//        todo.list.append(data)
+        todo.list.append(data)
         
         // 앞에 추가
-        todo.list.insert(data, at: 0)
+//        todo.list.insert(data, at: 0)
         searchBar.text = ""
         
 //        tableView.reloadData()
@@ -51,7 +51,6 @@ class CustomTableViewController: UITableViewController {
         // withIdentifier: CustomTableViewCell 클래스의 타입 속성으로 사용
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier) as! CustomTableViewCell
         let row = todo.list[indexPath.row]
-        
         // Controller에 있던 UI 코드들 Cell로 뺴기
         cell.configureCell(row: row)
         
@@ -61,14 +60,17 @@ class CustomTableViewController: UITableViewController {
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
-        print(#function, sender.tag)
+//        print(#function, sender.tag)
         todo.list[sender.tag].like.toggle()
 //        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
     }
     
     // 셀 선택
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
+        vc.data = todo.list[indexPath.row]
+        present(vc, animated: true)
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
     
     // 삭제

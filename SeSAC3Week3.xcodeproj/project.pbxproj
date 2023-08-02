@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F776FEDF2A79E7A80065ACEB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEDE2A79E7A80065ACEB /* DetailViewController.swift */; };
 		F7CCFC1F2A71FFFA006C6CC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC1E2A71FFFA006C6CC8 /* AppDelegate.swift */; };
 		F7CCFC212A71FFFA006C6CC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC202A71FFFA006C6CC8 /* SceneDelegate.swift */; };
 		F7CCFC232A71FFFA006C6CC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC222A71FFFA006C6CC8 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F776FEDE2A79E7A80065ACEB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F7CCFC1B2A71FFFA006C6CC8 /* SeSAC3Week3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC3Week3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7CCFC1E2A71FFFA006C6CC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7CCFC202A71FFFA006C6CC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				F7CCFC202A71FFFA006C6CC8 /* SceneDelegate.swift */,
 				F7CCFC222A71FFFA006C6CC8 /* ViewController.swift */,
 				F7CCFC242A71FFFA006C6CC8 /* Main.storyboard */,
+				F776FEDE2A79E7A80065ACEB /* DetailViewController.swift */,
 				F7CCFC322A720FEF006C6CC8 /* TodoTableViewController.swift */,
 				F7CCFC342A7232DE006C6CC8 /* StudyTableViewController.swift */,
 				F7CCFC492A73503F006C6CC8 /* CustomTableViewController.swift */,
@@ -217,6 +220,7 @@
 				F7CCFC792A73A219006C6CC8 /* Movie.swift in Sources */,
 				F7CCFC752A73A191006C6CC8 /* MovieTableViewController.swift in Sources */,
 				F7CCFC7D2A73AB4D006C6CC8 /* Enum2.swift in Sources */,
+				F776FEDF2A79E7A80065ACEB /* DetailViewController.swift in Sources */,
 				F7CCFC4A2A73503F006C6CC8 /* CustomTableViewController.swift in Sources */,
 				F7CCFC352A7232DE006C6CC8 /* StudyTableViewController.swift in Sources */,
 				F7CCFC372A724967006C6CC8 /* Extension.swift in Sources */,
