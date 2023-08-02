@@ -11,8 +11,6 @@ class LookAroundViewController: UIViewController {
     
     static let identifier = "LookAroundViewController"
     
-    var list = Array(repeating: "123", count: 100)
-    
     @IBOutlet var popularityTableView: UITableView!
     @IBOutlet var tableHeaderView: UIView!
     @IBOutlet var recentCollectionView: UICollectionView!
@@ -24,9 +22,14 @@ class LookAroundViewController: UIViewController {
         
         setupTableView()
         setupCollectionView()
+        configurePopularityTableView()
         title = "둘러 보기"
         
         
+        popularityTableView.register(
+            UINib(nibName: PopularityTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: PopularityTableViewCell.identifier
+        )
         
         recentCollectionView.register(
             UINib(nibName: recentCollectionViewCell.identifier, bundle: nil),
@@ -46,6 +49,10 @@ class LookAroundViewController: UIViewController {
         configureRecentCollectionViewLayout()
     }
     
+    func configurePopularityTableView() {
+        popularityTableView.rowHeight = 120
+    }
+    
     
     func configureRecentCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
@@ -63,24 +70,18 @@ class LookAroundViewController: UIViewController {
 
 extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return movie.movie.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = popularityTableView.dequeueReusableCell(withIdentifier: "LookAroundTableViewCell", for: indexPath) as? LookAroundTableViewCell else {
-//            return UITableViewCell()
-//        }
-//
-//        return cell
-        
-        
-        let cell = popularityTableView.dequeueReusableCell(withIdentifier: "LookAroundTableViewCell", for: indexPath)
-        cell.backgroundColor = .blue
+        guard let cell = popularityTableView.dequeueReusableCell(withIdentifier: PopularityTableViewCell.identifier, for: indexPath) as? PopularityTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.configureCell(movie.movie[indexPath.row])
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        print(section)
         return "요즘 인기 작품"
     }
     
@@ -106,22 +107,10 @@ extension LookAroundViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = recentCollectionView.dequeueReusableCell(withReuseIdentifier: "LookAroundCollectionViewCell", for: indexPath) as? LookAroundCollectionViewCell else {
-//            return UICollectionViewCell()
-//        }
-//        return cell
-        
-        
         guard let cell = recentCollectionView.dequeueReusableCell(withReuseIdentifier: recentCollectionViewCell.identifier, for: indexPath) as? recentCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
         cell.configureCell(movie.movie[indexPath.row])
-        
         return cell
-        
     }
-    
-    
-    
 }

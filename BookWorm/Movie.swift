@@ -24,4 +24,8 @@ struct Movie {
         return "평균 ★\(self.rate)"
     }
     
+    var lookAroundSubTitle: String {
+        return "\(self.releaseDate) | \(self.runtime)분"
+    }
+    
 }

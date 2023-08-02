@@ -11,21 +11,6 @@ import Foundation
 import UIKit
 
 struct MovieInfo {
-    var colorList: [UIColor] = [
-        UIColor.blue,
-        UIColor.systemGray,
-        UIColor.systemMint,
-        UIColor.systemTeal,
-        UIColor.systemPink,
-        UIColor.green,
-        UIColor.lightGray,
-        UIColor.brown,
-        UIColor.cyan,
-        UIColor.purple,
-        UIColor.yellow,
-        UIColor.systemOrange,
-    ]
-    
     var movie: [Movie] = [
         Movie(title: "암살", releaseDate: "2015.07.22.", runtime: 139, overview: "1933년 조국이 사라진 시대 대한민국 임시정부는 일본 측에 노출되지 않은 세 명을 암살작전에 지목한다. 한국 독립군 저격수 안옥윤, 신흥무관학교 출신 속사포, 폭탄 전문가 황덕삼! 김구의 두터운 신임을 받는 임시정부 경무국 대장 염석진은 이들을 찾아 나서기 시작한다. 암살단의 타깃은 조선주둔군 사령관 카와구치 마모루와 친일파 강인국. 한편, 누군가에게 거액의 의뢰를 받은 청부살인업자 하와이 피스톨이 암살단의 뒤를 쫓는데... 친일파 암살작전을 둘러싼 이들의 예측할 수 없는 운명이 펼쳐진다!", rate: 9.10, like: false, color: randomBackgroundColor()),
         Movie(title: "명량", releaseDate: "2014.07.30.", runtime: 128, overview: "1597년 임진왜란 6년, 오랜 전쟁으로 인해 혼란이 극에 달한 조선. 무서운 속도로 한양으로 북상하는 왜군에 의해 국가존망의 위기에 처하자 누명을 쓰고 파면 당했던 이순신 장군(최민식)이 삼도수군통제사로 재임명된다. 하지만 그에게 남은 건 전의를 상실한 병사와 두려움에 가득 찬 백성, 그리고 12척의 배 뿐. 마지막 희망이었던 거북선마저 불타고 잔혹한 성격과 뛰어난 지략을 지닌 용병 구루지마(류승룡)가 왜군 수장으로 나서자 조선은 더욱 술렁인다. 330척에 달하는 왜군의 배가 속속 집결하고 압도적인 수의 열세에 모두가 패배를 직감하는 순간, 이순신 장군은 단 12척의 배를 이끌고 명량 바다를 향해 나서는데…! 12척의 조선 vs 330척의 왜군 역사를 바꾼 위대한 전쟁이 시작된다!", rate: 8.88, like: false, color: randomBackgroundColor()),
