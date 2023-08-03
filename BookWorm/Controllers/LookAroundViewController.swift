@@ -13,7 +13,7 @@ class LookAroundViewController: UIViewController {
     
     @IBOutlet var popularityTableView: UITableView!
     @IBOutlet var tableHeaderView: UIView!
-    @IBOutlet var recentCollectionView: UICollectionView!
+    @IBOutlet var RecentCollectionView: UICollectionView!
     
     let movie = MovieInfo()
 
@@ -22,37 +22,44 @@ class LookAroundViewController: UIViewController {
         
         setupTableView()
         setupCollectionView()
-        configurePopularityTableView()
-//        title = "둘러 보기"
-        navBarButtonItem()
         
+        navBarButtonItem()
+        registerNib() //
+    }
+    
+    // Register Nib
+    func registerNib() {
         popularityTableView.register(
             UINib(nibName: PopularityTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: PopularityTableViewCell.identifier
         )
         
-        recentCollectionView.register(
-            UINib(nibName: recentCollectionViewCell.identifier, bundle: nil),
-            forCellWithReuseIdentifier: recentCollectionViewCell.identifier
+        RecentCollectionView.register(
+            UINib(nibName: RecentCollectionViewCell.identifier, bundle: nil),
+            forCellWithReuseIdentifier: RecentCollectionViewCell.identifier
         )
-        
     }
     
+    // tableView Delegate, DataSource
     func setupTableView() {
         popularityTableView.dataSource = self
         popularityTableView.delegate = self
+        configurePopularityTableView()
     }
     
+    // collectionView Delegate, DataSource
     func setupCollectionView() {
-        recentCollectionView.dataSource = self
-        recentCollectionView.delegate = self
+        RecentCollectionView.dataSource = self
+        RecentCollectionView.delegate = self
         configureRecentCollectionViewLayout()
     }
     
+    // tableView UI Setting
     func configurePopularityTableView() {
         popularityTableView.rowHeight = 120
     }
     
+    // collectionView UI Setting
     func configureRecentCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -60,8 +67,8 @@ class LookAroundViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 0
-        recentCollectionView.collectionViewLayout = layout
-        recentCollectionView.isPagingEnabled = true
+        RecentCollectionView.collectionViewLayout = layout
+        RecentCollectionView.isPagingEnabled = true
     }
     
     func navBarButtonItem() {
@@ -79,6 +86,9 @@ class LookAroundViewController: UIViewController {
     }
 }
 
+// MARK: - TableView 확장
+
+
 extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movie.movie.count
@@ -91,11 +101,9 @@ extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "요즘 인기 작품"
     }
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let myLabel = UILabel()
@@ -122,13 +130,16 @@ extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - CollectionView 확장
+
+
 extension LookAroundViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movie.movie.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = recentCollectionView.dequeueReusableCell(withReuseIdentifier: recentCollectionViewCell.identifier, for: indexPath) as? recentCollectionViewCell else {
+        guard let cell = RecentCollectionView.dequeueReusableCell(withReuseIdentifier: RecentCollectionViewCell.identifier, for: indexPath) as? RecentCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.configureCell(movie.movie[indexPath.row])

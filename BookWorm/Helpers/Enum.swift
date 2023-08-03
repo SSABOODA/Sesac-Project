@@ -13,11 +13,10 @@ enum TransitionType {
     case search
 }
 
-enum CollectionViewCellIdentifier: String {
-    case bookCollectionViewCell = "BookCollectionViewCell"
-}
-
-
 enum StoryboardName: String {
     case main = "Main"
+}
+
+enum SearchBarPlaceHolder: String {
+    case searchViewController = "영화 제목을 입력해주세요"
 }

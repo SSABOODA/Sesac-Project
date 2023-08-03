@@ -23,12 +23,13 @@
 		F776FED02A77AC2D0065ACEB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */; };
 		F776FED22A77AE490065ACEB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FED12A77AE490065ACEB /* DetailViewController.swift */; };
 		F776FEE32A7A286B0065ACEB /* LookAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */; };
-		F776FEEA2A7A3C2C0065ACEB /* recentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */; };
-		F776FEEB2A7A3C2C0065ACEB /* recentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F776FEE92A7A3C2C0065ACEB /* recentCollectionViewCell.xib */; };
+		F776FEEA2A7A3C2C0065ACEB /* RecentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEE82A7A3C2C0065ACEB /* RecentCollectionViewCell.swift */; };
+		F776FEEB2A7A3C2C0065ACEB /* RecentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F776FEE92A7A3C2C0065ACEB /* RecentCollectionViewCell.xib */; };
 		F776FEF22A7A41AB0065ACEB /* PopularityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEF02A7A41AB0065ACEB /* PopularityTableViewCell.swift */; };
 		F776FEF32A7A41AB0065ACEB /* PopularityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F776FEF12A7A41AB0065ACEB /* PopularityTableViewCell.xib */; };
 		F776FEFD2A7B97F00065ACEB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEFC2A7B97F00065ACEB /* SecondViewController.swift */; };
 		F776FEFF2A7B99CF0065ACEB /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEFE2A7B99CF0065ACEB /* ThirdViewController.swift */; };
+		F776FF012A7BB9160065ACEB /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF002A7BB9160065ACEB /* Protocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,12 +51,13 @@
 		F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F776FED12A77AE490065ACEB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundViewController.swift; sourceTree = "<group>"; };
-		F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentCollectionViewCell.swift; sourceTree = "<group>"; };
-		F776FEE92A7A3C2C0065ACEB /* recentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = recentCollectionViewCell.xib; sourceTree = "<group>"; };
+		F776FEE82A7A3C2C0065ACEB /* RecentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCollectionViewCell.swift; sourceTree = "<group>"; };
+		F776FEE92A7A3C2C0065ACEB /* RecentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentCollectionViewCell.xib; sourceTree = "<group>"; };
 		F776FEF02A7A41AB0065ACEB /* PopularityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularityTableViewCell.swift; sourceTree = "<group>"; };
 		F776FEF12A7A41AB0065ACEB /* PopularityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularityTableViewCell.xib; sourceTree = "<group>"; };
 		F776FEFC2A7B97F00065ACEB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F776FEFE2A7B99CF0065ACEB /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		F776FF002A7BB9160065ACEB /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +116,12 @@
 			isa = PBXGroup;
 			children = (
 				F776FEB32A7799B10065ACEB /* Main.storyboard */,
-				F776FEE92A7A3C2C0065ACEB /* recentCollectionViewCell.xib */,
-				F776FEF12A7A41AB0065ACEB /* PopularityTableViewCell.xib */,
 				F776FEC82A779B440065ACEB /* BookCollectionViewCell.xib */,
-				F776FEF02A7A41AB0065ACEB /* PopularityTableViewCell.swift */,
-				F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */,
+				F776FEE92A7A3C2C0065ACEB /* RecentCollectionViewCell.xib */,
+				F776FEF12A7A41AB0065ACEB /* PopularityTableViewCell.xib */,
 				F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */,
+				F776FEE82A7A3C2C0065ACEB /* RecentCollectionViewCell.swift */,
+				F776FEF02A7A41AB0065ACEB /* PopularityTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,13 +129,13 @@
 		F776FEF82A7A7B300065ACEB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F776FEFC2A7B97F00065ACEB /* SecondViewController.swift */,
 				F776FEB12A7799B10065ACEB /* ViewController.swift */,
+				F776FEFC2A7B97F00065ACEB /* SecondViewController.swift */,
+				F776FEFE2A7B99CF0065ACEB /* ThirdViewController.swift */,
+				F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */,
 				F776FED12A77AE490065ACEB /* DetailViewController.swift */,
 				F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */,
 				F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */,
-				F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */,
-				F776FEFE2A7B99CF0065ACEB /* ThirdViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -143,6 +145,7 @@
 			children = (
 				F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */,
 				F776FECD2A77A0610065ACEB /* Enum.swift */,
+				F776FF002A7BB9160065ACEB /* Protocol.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -209,7 +212,7 @@
 				F776FECA2A779B440065ACEB /* BookCollectionViewCell.xib in Resources */,
 				F776FEF32A7A41AB0065ACEB /* PopularityTableViewCell.xib in Resources */,
 				F776FEB72A7799B20065ACEB /* Assets.xcassets in Resources */,
-				F776FEEB2A7A3C2C0065ACEB /* recentCollectionViewCell.xib in Resources */,
+				F776FEEB2A7A3C2C0065ACEB /* RecentCollectionViewCell.xib in Resources */,
 				F776FEB52A7799B10065ACEB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,12 +232,13 @@
 				F776FEAE2A7799B10065ACEB /* AppDelegate.swift in Sources */,
 				F776FEB02A7799B10065ACEB /* SceneDelegate.swift in Sources */,
 				F776FEC22A779A4A0065ACEB /* MovieInformation.swift in Sources */,
-				F776FEEA2A7A3C2C0065ACEB /* recentCollectionViewCell.swift in Sources */,
+				F776FEEA2A7A3C2C0065ACEB /* RecentCollectionViewCell.swift in Sources */,
 				F776FECE2A77A0610065ACEB /* Enum.swift in Sources */,
 				F776FEC92A779B440065ACEB /* BookCollectionViewCell.swift in Sources */,
 				F776FEF22A7A41AB0065ACEB /* PopularityTableViewCell.swift in Sources */,
 				F776FEC42A779A5C0065ACEB /* Movie.swift in Sources */,
 				F776FEE32A7A286B0065ACEB /* LookAroundViewController.swift in Sources */,
+				F776FF012A7BB9160065ACEB /* Protocol.swift in Sources */,
 				F776FEFF2A7B99CF0065ACEB /* ThirdViewController.swift in Sources */,
 				F776FEC62A779AFC0065ACEB /* BookCollectionViewController.swift in Sources */,
 			);

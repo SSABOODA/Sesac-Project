@@ -21,7 +21,6 @@ class DetailViewController: UIViewController {
     @IBOutlet var detailView: UIView!
     
     var movie: Movie?
-    var beforeClassName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +55,7 @@ class DetailViewController: UIViewController {
     }
     
     func configureDetailView() {
+        view.backgroundColor = .systemGray4
         guard let movie = movie else { return }
         detailMainImageView.image = UIImage(named: movie.title)
         detailTitleLabel.text = movie.title
@@ -64,7 +64,6 @@ class DetailViewController: UIViewController {
         detailDescriptionLabel.text = movie.overview
         
         detailDescriptionLabel.numberOfLines = 0
-        view.backgroundColor = .systemGray4
         detailView.layer.cornerRadius = 10
         detailView.clipsToBounds = true
     }

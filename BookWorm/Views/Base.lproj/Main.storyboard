@@ -151,8 +151,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="둘러 보기" id="t3K-vI-lcu"/>
                     <connections>
+                        <outlet property="RecentCollectionView" destination="Xyx-yQ-ZuW" id="h1X-Uj-q3R"/>
                         <outlet property="popularityTableView" destination="icC-XX-0qb" id="xUB-ox-Ea9"/>
-                        <outlet property="recentCollectionView" destination="Xyx-yQ-ZuW" id="h1X-Uj-q3R"/>
                         <outlet property="tableHeaderView" destination="R7y-GI-fIv" id="QNj-kC-rul"/>
                     </connections>
                 </viewController>

@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSerchView()
+        
         navBarButtonItem()
         setupCollectionView()
         registerBookCollectionViewCell()
@@ -30,7 +30,7 @@ class SearchViewController: UIViewController {
     func setupSearchBar() {
         navigationItem.titleView = searchBar
         searchBar.delegate = self
-        searchBar.placeholder = "영화 제목을 입력해주세요"
+        searchBar.placeholder = SearchBarPlaceHolder.searchViewController.rawValue
         searchBar.showsCancelButton = true
     }
     
@@ -62,10 +62,6 @@ class SearchViewController: UIViewController {
         self.collectionView.delegate = self
     }
     
-    func configureSerchView() {
-        title = "검색 화면"
-    }
-    
     func navBarButtonItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "xmark"),
@@ -87,7 +83,6 @@ extension SearchViewController:  UISearchBarDelegate {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print(123)
         searchResultList.removeAll()
         searchBar.text = ""
         collectionView.reloadData()
@@ -135,7 +130,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
-        print(#function)
         movie.movie[sender.tag].like.toggle()
         searchResultList[sender.tag].like.toggle()
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])

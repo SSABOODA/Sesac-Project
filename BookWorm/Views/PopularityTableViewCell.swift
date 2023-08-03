@@ -17,11 +17,16 @@ class PopularityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        designCommonCell()
+    }
+}
+
+extension PopularityTableViewCell: TableViewCellProtocol {
+    func designCommonCell() {
         mainImageView.backgroundColor = .clear
         mainImageView.layer.cornerRadius = 10
         mainImageView.clipsToBounds = true
     }
-    
     
     func configureCell(_ row: Movie) {
         mainImageView.image = UIImage(named: row.title)

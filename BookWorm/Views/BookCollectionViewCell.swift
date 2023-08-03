@@ -20,6 +20,12 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        designCommonCell()
+    }
+}
+
+extension BookCollectionViewCell: CollectionViewCellProtocol {
+    func designCommonCell() {
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
     }
@@ -38,5 +44,5 @@ class BookCollectionViewCell: UICollectionViewCell {
             likeButton.tintColor = .white
         }
     }
-
 }
+
