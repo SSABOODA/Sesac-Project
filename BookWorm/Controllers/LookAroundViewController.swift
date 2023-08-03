@@ -23,7 +23,7 @@ class LookAroundViewController: UIViewController {
         setupTableView()
         setupCollectionView()
         configurePopularityTableView()
-        title = "둘러 보기"
+//        title = "둘러 보기"
         navBarButtonItem()
         
         popularityTableView.register(
@@ -136,7 +136,6 @@ extension LookAroundViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function, indexPath)
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
         vc.movie = movie.movie[indexPath.row]
         vc.type = .around

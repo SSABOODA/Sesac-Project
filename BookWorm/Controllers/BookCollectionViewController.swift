@@ -40,12 +40,29 @@ class BookCollectionViewController: UICollectionViewController {
     
     @IBAction func lookAroundBarButtonItemClicked(_ sender: UIBarButtonItem) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: LookAroundViewController.identifier) as? LookAroundViewController else { return }
+        
+        let tabBarVC = UITabBarController()
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true)
+        
+        let vc2 = SecondViewController()
+        let vc3 = ThirdViewController()
+        
+        nav.title = "Tab1"
+        vc2.title = "Tab2"
+        vc3.title = "Tab3"
+        
+        tabBarVC.setViewControllers([nav, vc2, vc3], animated: false)
+        tabBarVC.modalPresentationStyle = .fullScreen
+        
+        guard let items = tabBarVC.tabBar.items else { return }
+        
+        items.forEach { item in
+            item.image = UIImage(systemName: "star.fill")
+        }
+        
+        present(tabBarVC, animated: true)
     }
-    
-    
     
     func registerBookCollectionViewCell() {
         collectionView.register(
