@@ -11,8 +11,6 @@ class DetailViewController: UIViewController {
     
     static let identifer = "DetailViewController"
     
-    
-    
     var type: TransitionType = .main
     
     let placeholderText = SearchBarPlaceHolder.detailViewController.rawValue
@@ -24,7 +22,6 @@ class DetailViewController: UIViewController {
     @IBOutlet var detailDescriptionLabel: UILabel!
     @IBOutlet var detailView: UIView!
     @IBOutlet var detailTextView: UITextView!
-    
     
     var movie: Movie?
     
@@ -66,6 +63,8 @@ class DetailViewController: UIViewController {
         detailTextView.delegate = self
         detailTextView.layer.borderWidth = 3
         detailTextView.layer.borderColor = UIColor.black.cgColor
+        detailTextView.text = placeholderText
+        detailTextView.textColor = .lightGray
     }
     
     func configureDetailView() {
