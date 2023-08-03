@@ -26,7 +26,6 @@ class LookAroundViewController: UIViewController {
         title = "둘러 보기"
         navBarButtonItem()
         
-        
         popularityTableView.register(
             UINib(nibName: PopularityTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: PopularityTableViewCell.identifier
@@ -54,7 +53,6 @@ class LookAroundViewController: UIViewController {
         popularityTableView.rowHeight = 120
     }
     
-    
     func configureRecentCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -79,8 +77,6 @@ class LookAroundViewController: UIViewController {
     @objc func closeButtonClicked() {
         dismiss(animated: true)
     }
-    
-
 }
 
 extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
@@ -118,6 +114,7 @@ extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
         vc.movie = movie.movie[indexPath.row]
+        vc.type = .around
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
@@ -142,6 +139,7 @@ extension LookAroundViewController: UICollectionViewDelegate, UICollectionViewDa
         print(#function, indexPath)
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
         vc.movie = movie.movie[indexPath.row]
+        vc.type = .around
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)

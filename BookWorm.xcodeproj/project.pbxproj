@@ -116,7 +116,6 @@
 				F776FEF02A7A41AB0065ACEB /* PopularityTableViewCell.swift */,
 				F776FEE82A7A3C2C0065ACEB /* recentCollectionViewCell.swift */,
 				F776FEC72A779B440065ACEB /* BookCollectionViewCell.swift */,
-				F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +126,7 @@
 				F776FEB12A7799B10065ACEB /* ViewController.swift */,
 				F776FED12A77AE490065ACEB /* DetailViewController.swift */,
 				F776FECF2A77AC2D0065ACEB /* SearchViewController.swift */,
+				F776FEE22A7A286B0065ACEB /* LookAroundViewController.swift */,
 				F776FEC52A779AFC0065ACEB /* BookCollectionViewController.swift */,
 			);
 			path = Controllers;

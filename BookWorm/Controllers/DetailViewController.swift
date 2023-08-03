@@ -10,6 +10,8 @@ import UIKit
 class DetailViewController: UIViewController {
     
     static let identifer = "DetailViewController"
+    
+    var type: TransitionType = .main
 
     @IBOutlet var detailMainImageView: UIImageView!
     @IBOutlet var detailTitleLabel: UILabel!
@@ -26,16 +28,8 @@ class DetailViewController: UIViewController {
         configureDetailView()
         designImageView()
         leftNavigationBarButtonItem()
-        checkNavigationPushViewController()
-        
     }
-    
-    func checkNavigationPushViewController() {
-        let vc = navigationController!.viewControllers[0]
-        let classNameArr = NSStringFromClass(vc.classForCoder).split(separator: ".")
-        beforeClassName = String(classNameArr[classNameArr.endIndex-1])
-    }
-    
+
     func leftNavigationBarButtonItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "xmark"),
@@ -47,11 +41,11 @@ class DetailViewController: UIViewController {
     }
     
     @objc func closeButtonClicked() {
-        if beforeClassName == BookCollectionViewController.identifier {
-            navigationController?.popViewController(animated: true)
-        } else {
-            dismiss(animated: true)
+        switch type {
+        case .main: navigationController?.popViewController(animated: true)
+        case .around: dismiss(animated: true)
         }
+        
     }
     
     func designImageView() {

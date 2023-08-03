@@ -105,6 +105,7 @@ class BookCollectionViewController: UICollectionViewController {
             return
         }
         vc.movie = movie.movie[indexPath.row]
+        vc.type = .main
         navigationController?.pushViewController(vc, animated: true)
     }
     

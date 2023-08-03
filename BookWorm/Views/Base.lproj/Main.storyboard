@@ -73,7 +73,7 @@
             </objects>
             <point key="canvasLocation" x="3893.8931297709923" y="-2.1126760563380285"/>
         </scene>
-        <!--Tab1-->
+        <!--Look Around View Controller-->
         <scene sceneID="1Om-eC-VH4">
             <objects>
                 <viewController storyboardIdentifier="LookAroundViewController" id="eEJ-vs-ACp" customClass="LookAroundViewController" customModule="BookWorm" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                             <constraint firstItem="icC-XX-0qb" firstAttribute="top" secondItem="CmV-J3-w5h" secondAttribute="top" id="q0Q-t8-Fs9"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tab1" image="star.fill" catalog="system" id="dBE-UP-qRU"/>
+                    <navigationItem key="navigationItem" id="t3K-vI-lcu"/>
                     <connections>
                         <outlet property="popularityTableView" destination="icC-XX-0qb" id="xUB-ox-Ea9"/>
                         <outlet property="recentCollectionView" destination="Xyx-yQ-ZuW" id="h1X-Uj-q3R"/>
@@ -158,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDy-Ch-5H5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5091" y="-2"/>
+            <point key="canvasLocation" x="4755" y="-2"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="ui4-pF-DCe">
@@ -204,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gQ-ed-tg9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5810" y="-2"/>
+            <point key="canvasLocation" x="5506" y="-2"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="4Wh-eH-fBk">
@@ -310,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awm-PO-17S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2967" y="704"/>
+            <point key="canvasLocation" x="2967" y="737"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rOt-fF-hgV">
@@ -336,7 +336,6 @@
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

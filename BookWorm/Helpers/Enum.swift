@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum TransitionType {
+    case main
+    case around
+}
+
 enum CollectionViewCellIdentifier: String {
     case bookCollectionViewCell = "BookCollectionViewCell"
 }
