@@ -44,6 +44,7 @@ class DetailViewController: UIViewController {
         switch type {
         case .main: navigationController?.popViewController(animated: true)
         case .around: dismiss(animated: true)
+        case .search: dismiss(animated: true)
         }
         
     }

@@ -10,6 +10,7 @@ import Foundation
 enum TransitionType {
     case main
     case around
+    case search
 }
 
 enum CollectionViewCellIdentifier: String {

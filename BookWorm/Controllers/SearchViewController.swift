@@ -12,26 +12,26 @@ class SearchViewController: UIViewController {
     static let identifier = "SearchViewController"
 
     @IBOutlet var collectionView: UICollectionView!
+    let searchBar = UISearchBar()
     
     var movie = MovieInfo()
-    var filteredArr: [Movie] = []
-    
-    var isFiltering: Bool {
-        let searchController = self.navigationItem.searchController
-        let isActive = searchController?.isActive ?? false
-        let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
-        return isActive && isSearchBarHasText
-    }
+    var searchResultList: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSerchView()
         navBarButtonItem()
         setupCollectionView()
-        setupSearchController()
-        
         registerBookCollectionViewCell()
         setCollectionViewLayout()
+        setupSearchBar()
+    }
+    
+    func setupSearchBar() {
+        navigationItem.titleView = searchBar
+        searchBar.delegate = self
+        searchBar.placeholder = "영화 제목을 입력해주세요"
+        searchBar.showsCancelButton = true
     }
     
     func registerBookCollectionViewCell() {
@@ -59,16 +59,7 @@ class SearchViewController: UIViewController {
     
     func setupCollectionView() {
         self.collectionView.dataSource = self
-    }
-    
-    func setupSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "영화 제목을 입력해주세요."
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-        
-        self.navigationItem.searchController = searchController
-        self.navigationItem.title = "영화 검색 🔍"
+        self.collectionView.delegate = self
     }
     
     func configureSerchView() {
@@ -90,37 +81,63 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text?.lowercased() else { return }
-        self.filteredArr = self.movie.movie.filter { $0.title.contains(text) }
-        self.collectionView.reloadData()
+extension SearchViewController:  UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchResult()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print(123)
+        searchResultList.removeAll()
+        searchBar.text = ""
+        collectionView.reloadData()
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(#function)
+        searchResult()
+    }
+    
+    func searchResult() {
+        searchResultList.removeAll()
+        for item in movie.movie {
+            if item.title.lowercased().contains(searchBar.text!) {
+                searchResultList.append(item)
+            }
+        }
+        collectionView.reloadData()
     }
 }
 
-extension SearchViewController: UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.isFiltering ? self.filteredArr.count : self.movie.movie.count
+        return searchResultList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
-        if self.isFiltering {
-            cell.configureCell(row: filteredArr[indexPath.row])
-        } else {
-            cell.configureCell(row: movie.movie[indexPath.row])
-        }
-        
+        cell.configureCell(row: searchResultList[indexPath.row])
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
+        vc.movie = searchResultList[indexPath.row]
+        vc.type = .search
+        
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
+    }
+    
     @objc func likeButtonClicked(_ sender: UIButton) {
         print(#function)
         movie.movie[sender.tag].like.toggle()
+        searchResultList[sender.tag].like.toggle()
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
 }
