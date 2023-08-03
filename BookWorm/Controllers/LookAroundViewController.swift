@@ -102,7 +102,7 @@ extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "요즘 인기 작품"
+        return TableViewTitleForHeader.lookAroundViewController.rawValue
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -118,8 +118,6 @@ extension LookAroundViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function, indexPath)
-        
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
         vc.movie = movie.movie[indexPath.row]
         vc.type = .around

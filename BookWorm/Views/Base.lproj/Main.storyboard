@@ -277,6 +277,21 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="67F-8C-iHp">
+                                        <rect key="frame" x="16" y="309.00000000000006" width="361" height="144.66666666666669"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="임시 클릭용~~" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dUn-px-8fE">
+                                        <rect key="frame" x="148" y="477" width="97" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -284,11 +299,15 @@
                                     <constraint firstItem="Zcs-o3-gAo" firstAttribute="leading" secondItem="G1d-8d-vMU" secondAttribute="leading" constant="16" id="4t8-U2-vK0"/>
                                     <constraint firstItem="Iqv-zh-lcF" firstAttribute="top" secondItem="G1d-8d-vMU" secondAttribute="top" constant="16" id="5Nr-iP-TQ8"/>
                                     <constraint firstItem="Zcs-o3-gAo" firstAttribute="top" secondItem="AXY-0M-qAs" secondAttribute="bottom" constant="16" id="5lK-FN-FPI"/>
+                                    <constraint firstAttribute="bottom" secondItem="67F-8C-iHp" secondAttribute="bottom" constant="100" id="EnS-mc-gwa"/>
+                                    <constraint firstAttribute="trailing" secondItem="67F-8C-iHp" secondAttribute="trailing" constant="16" id="FAR-rj-WSj"/>
                                     <constraint firstItem="kKH-wR-3Ew" firstAttribute="leading" secondItem="G1d-8d-vMU" secondAttribute="leading" id="Mk8-6m-7Q6"/>
                                     <constraint firstAttribute="trailing" secondItem="kKH-wR-3Ew" secondAttribute="trailing" id="Pnq-0m-g4J"/>
                                     <constraint firstItem="kKH-wR-3Ew" firstAttribute="top" secondItem="Iqv-zh-lcF" secondAttribute="bottom" constant="16" id="QJg-VV-w8y"/>
                                     <constraint firstAttribute="trailing" secondItem="Zcs-o3-gAo" secondAttribute="trailing" constant="16" id="TMQ-AW-7YQ"/>
+                                    <constraint firstItem="67F-8C-iHp" firstAttribute="top" secondItem="Zcs-o3-gAo" secondAttribute="bottom" constant="10" id="YH8-UC-wN4"/>
                                     <constraint firstItem="AXY-0M-qAs" firstAttribute="top" secondItem="kKH-wR-3Ew" secondAttribute="bottom" constant="16" id="cy6-hy-L2e"/>
+                                    <constraint firstItem="67F-8C-iHp" firstAttribute="leading" secondItem="G1d-8d-vMU" secondAttribute="leading" constant="16" id="m42-xT-lg4"/>
                                     <constraint firstAttribute="trailing" secondItem="Iqv-zh-lcF" secondAttribute="trailing" constant="16" id="owY-J6-3qq"/>
                                     <constraint firstAttribute="trailing" secondItem="AXY-0M-qAs" secondAttribute="trailing" constant="16" id="r5v-Dg-7XI"/>
                                     <constraint firstItem="AXY-0M-qAs" firstAttribute="leading" secondItem="G1d-8d-vMU" secondAttribute="leading" constant="16" id="weg-Xj-oSb"/>
@@ -336,6 +355,7 @@
                         <outlet property="detailMainImageView" destination="K6U-tG-7mP" id="qDv-Ae-Rq0"/>
                         <outlet property="detailRateLabel" destination="Iqv-zh-lcF" id="doL-dy-wQk"/>
                         <outlet property="detailRuntimeLabel" destination="ox1-py-DQV" id="EeI-VO-LLd"/>
+                        <outlet property="detailTextView" destination="67F-8C-iHp" id="6J6-Pu-YPr"/>
                         <outlet property="detailTitleLabel" destination="jG4-CG-nO7" id="ZZv-9y-3ey"/>
                         <outlet property="detailView" destination="G1d-8d-vMU" id="V0k-bs-Cnp"/>
                     </connections>
@@ -407,11 +427,17 @@
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

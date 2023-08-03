@@ -127,7 +127,6 @@ class BookCollectionViewController: UICollectionViewController {
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
-        print(#function)
         movie.movie[sender.tag].like.toggle()
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }

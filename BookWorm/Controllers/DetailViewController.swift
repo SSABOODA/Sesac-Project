@@ -11,7 +11,11 @@ class DetailViewController: UIViewController {
     
     static let identifer = "DetailViewController"
     
+    
+    
     var type: TransitionType = .main
+    
+    let placeholderText = SearchBarPlaceHolder.detailViewController.rawValue
 
     @IBOutlet var detailMainImageView: UIImageView!
     @IBOutlet var detailTitleLabel: UILabel!
@@ -19,12 +23,16 @@ class DetailViewController: UIViewController {
     @IBOutlet var detailRateLabel: UILabel!
     @IBOutlet var detailDescriptionLabel: UILabel!
     @IBOutlet var detailView: UIView!
+    @IBOutlet var detailTextView: UITextView!
+    
     
     var movie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureDetailView()
+        configureTextView()
         designImageView()
         leftNavigationBarButtonItem()
     }
@@ -54,6 +62,12 @@ class DetailViewController: UIViewController {
         detailMainImageView.clipsToBounds = true
     }
     
+    func configureTextView() {
+        detailTextView.delegate = self
+        detailTextView.layer.borderWidth = 3
+        detailTextView.layer.borderColor = UIColor.black.cgColor
+    }
+    
     func configureDetailView() {
         view.backgroundColor = .systemGray4
         guard let movie = movie else { return }
@@ -66,5 +80,21 @@ class DetailViewController: UIViewController {
         detailDescriptionLabel.numberOfLines = 0
         detailView.layer.cornerRadius = 10
         detailView.clipsToBounds = true
+    }
+}
+
+extension DetailViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeholderText {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = placeholderText
+            textView.textColor = .lightGray
+        }
     }
 }
