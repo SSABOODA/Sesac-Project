@@ -57,6 +57,120 @@
             </objects>
             <point key="canvasLocation" x="1064.885496183206" y="-2.1126760563380285"/>
         </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="7On-kn-X1R">
+            <objects>
+                <viewController storyboardIdentifier="PopUpViewController" id="JOT-UP-gHa" customClass="PopUpViewController" customModule="TamagotchiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s8j-2S-aKO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="La7-oJ-UJZ">
+                                <rect key="frame" x="40" y="219" width="313" height="439"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UjM-lS-iN5">
+                                        <rect key="frame" x="20" y="30" width="273" height="153.66666666666666"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNn-e6-e3s" customClass="PaddingLabel" customModule="TamagotchiApp" customModuleProvider="target">
+                                        <rect key="frame" x="136" y="189.66666666666669" width="41.333333333333343" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DF-3S-wFH">
+                                        <rect key="frame" x="20" y="235" width="273" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="jXD-5R-pGw"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lm4-5x-nEZ">
+                                        <rect key="frame" x="20" y="251" width="273" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Gbb-jh-HBV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAy-NF-ghI">
+                                        <rect key="frame" x="0.0" y="399" width="313" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGl-5f-4JW">
+                                                <rect key="frame" x="0.0" y="0.0" width="156.66666666666666" height="40"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="취소"/>
+                                                <connections>
+                                                    <action selector="cancelButtonClicked:" destination="JOT-UP-gHa" eventType="touchUpInside" id="LBd-cq-iMt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjH-c3-mJj">
+                                                <rect key="frame" x="156.66666666666663" y="0.0" width="156.33333333333337" height="40"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="시작하기"/>
+                                                <connections>
+                                                    <action selector="startButtonClicked:" destination="JOT-UP-gHa" eventType="touchUpInside" id="2Sl-UP-gja"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="apL-1C-cmM"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7DF-3S-wFH" firstAttribute="leading" secondItem="UjM-lS-iN5" secondAttribute="leading" id="0e5-hr-m1J"/>
+                                    <constraint firstItem="UjM-lS-iN5" firstAttribute="height" secondItem="La7-oJ-UJZ" secondAttribute="height" multiplier="0.35" id="20H-07-jEg"/>
+                                    <constraint firstAttribute="bottom" secondItem="jAy-NF-ghI" secondAttribute="bottom" id="5vp-Iw-52b"/>
+                                    <constraint firstItem="Lm4-5x-nEZ" firstAttribute="leading" secondItem="La7-oJ-UJZ" secondAttribute="leading" constant="20" id="FXz-VR-DR7"/>
+                                    <constraint firstItem="fNn-e6-e3s" firstAttribute="top" secondItem="UjM-lS-iN5" secondAttribute="bottom" constant="6" id="RIQ-y4-D9d"/>
+                                    <constraint firstItem="UjM-lS-iN5" firstAttribute="leading" secondItem="La7-oJ-UJZ" secondAttribute="leading" constant="20" id="SjH-SM-FfY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lm4-5x-nEZ" secondAttribute="trailing" constant="20" id="Tr7-fP-GvI"/>
+                                    <constraint firstItem="jAy-NF-ghI" firstAttribute="leading" secondItem="La7-oJ-UJZ" secondAttribute="leading" id="XyI-do-gfh"/>
+                                    <constraint firstItem="7DF-3S-wFH" firstAttribute="trailing" secondItem="UjM-lS-iN5" secondAttribute="trailing" id="atm-Ff-SLy"/>
+                                    <constraint firstAttribute="trailing" secondItem="jAy-NF-ghI" secondAttribute="trailing" id="eaw-G5-S0o"/>
+                                    <constraint firstItem="7DF-3S-wFH" firstAttribute="top" secondItem="fNn-e6-e3s" secondAttribute="bottom" constant="25" id="hrC-Y4-qdN"/>
+                                    <constraint firstAttribute="trailing" secondItem="UjM-lS-iN5" secondAttribute="trailing" constant="20" id="qsi-M0-0OZ"/>
+                                    <constraint firstItem="Lm4-5x-nEZ" firstAttribute="top" secondItem="7DF-3S-wFH" secondAttribute="bottom" constant="15" id="sVA-SK-g1A"/>
+                                    <constraint firstItem="fNn-e6-e3s" firstAttribute="centerX" secondItem="La7-oJ-UJZ" secondAttribute="centerX" id="sX9-iU-zaJ"/>
+                                    <constraint firstItem="UjM-lS-iN5" firstAttribute="top" secondItem="La7-oJ-UJZ" secondAttribute="top" constant="30" id="ult-bJ-yvO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sCh-5h-f2r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="La7-oJ-UJZ" firstAttribute="leading" secondItem="sCh-5h-f2r" secondAttribute="leading" constant="40" id="Asu-1l-Qyh"/>
+                            <constraint firstItem="La7-oJ-UJZ" firstAttribute="top" secondItem="sCh-5h-f2r" secondAttribute="top" constant="160" id="IEI-P8-llW"/>
+                            <constraint firstItem="sCh-5h-f2r" firstAttribute="bottom" secondItem="La7-oJ-UJZ" secondAttribute="bottom" constant="160" id="ShM-Iv-gnK"/>
+                            <constraint firstItem="sCh-5h-f2r" firstAttribute="trailing" secondItem="La7-oJ-UJZ" secondAttribute="trailing" constant="40" id="cX7-R3-cN7"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="OI8-9z-ZNG" appends="YES" id="bFr-nP-1sd"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="buttonStackView" destination="jAy-NF-ghI" id="cF6-Rn-OPS"/>
+                        <outlet property="popUpCancelButton" destination="fGl-5f-4JW" id="lvB-mh-sfZ"/>
+                        <outlet property="popUpStartButton" destination="wjH-c3-mJj" id="eUf-6f-mca"/>
+                        <outlet property="popUpView" destination="La7-oJ-UJZ" id="hrg-H5-BO0"/>
+                        <outlet property="tamagotchiDescriptionLabel" destination="Lm4-5x-nEZ" id="gYt-8x-gGP"/>
+                        <outlet property="tamagotchiImageView" destination="UjM-lS-iN5" id="VNz-lR-8gK"/>
+                        <outlet property="tamagotchiNameLabel" destination="fNn-e6-e3s" id="QrF-ip-Fax"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M19-9E-KpV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OI8-9z-ZNG">
+                    <connections>
+                        <action selector="tapGeustureTapped:" destination="JOT-UP-gHa" id="jeQ-A3-M9Z"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1997.709923664122" y="-2.1126760563380285"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="x0C-Aj-Teo">
             <objects>

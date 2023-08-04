@@ -19,6 +19,8 @@
 		F776FF302A7CDB380065ACEB /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF2F2A7CDB380065ACEB /* Tamagotchi.swift */; };
 		F776FF322A7CDBCB0065ACEB /* TamagotchiInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF312A7CDBCB0065ACEB /* TamagotchiInformation.swift */; };
 		F776FF342A7CEC1A0065ACEB /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF332A7CEC1A0065ACEB /* PaddingLabel.swift */; };
+		F776FF402A7CFBB20065ACEB /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF3F2A7CFBB20065ACEB /* PopUpViewController.swift */; };
+		F776FF422A7D06330065ACEB /* Extension+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF412A7D06330065ACEB /* Extension+UILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		F776FF2F2A7CDB380065ACEB /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
 		F776FF312A7CDBCB0065ACEB /* TamagotchiInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiInformation.swift; sourceTree = "<group>"; };
 		F776FF332A7CEC1A0065ACEB /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		F776FF3F2A7CFBB20065ACEB /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		F776FF412A7D06330065ACEB /* Extension+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UILabel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				F776FF142A7CD55B0065ACEB /* MainViewController.swift */,
+				F776FF3F2A7CFBB20065ACEB /* PopUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				F776FF332A7CEC1A0065ACEB /* PaddingLabel.swift */,
+				F776FF412A7D06330065ACEB /* Extension+UILabel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -196,7 +202,9 @@
 				F776FF132A7CD55B0065ACEB /* SceneDelegate.swift in Sources */,
 				F776FF322A7CDBCB0065ACEB /* TamagotchiInformation.swift in Sources */,
 				F776FF2D2A7CD8110065ACEB /* MainCollectionViewCell.swift in Sources */,
+				F776FF422A7D06330065ACEB /* Extension+UILabel.swift in Sources */,
 				F776FF302A7CDB380065ACEB /* Tamagotchi.swift in Sources */,
+				F776FF402A7CFBB20065ACEB /* PopUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,12 +48,19 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
         cell.configureCell(tamagotchi.tamagotchiList[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function)
+//        let sb = UIStoryboard(name: "PopUpViewController", bundle: nil)
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else {
+            return
+        }
+        vc.tamagotchi = tamagotchi.tamagotchiList[indexPath.row]
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
     }
 }
 

@@ -22,13 +22,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     
     func designLabel() {
-        tamagotchiNameLabel.layer.borderWidth = 1
-        tamagotchiNameLabel.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
-        tamagotchiNameLabel.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        tamagotchiNameLabel.layer.cornerRadius = 3
-        tamagotchiNameLabel.clipsToBounds = true
-        tamagotchiNameLabel.font = .boldSystemFont(ofSize: 11)
-
+        tamagotchiNameLabel.designNameTag()
     }
 
     // cell 구성
