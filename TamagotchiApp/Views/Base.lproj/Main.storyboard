@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -209,7 +210,12 @@
                                         <rect key="frame" x="171" y="0.0" width="92" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="밥먹기" image="drop.circle" catalog="system"/>
+                                        <state key="normal" title="밥먹기">
+                                            <imageReference key="image" image="drop.circle" catalog="system" symbolScale="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eatRiceButtonClicked:" destination="7fh-2u-u7d" eventType="touchUpInside" id="tog-eS-DCz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -229,7 +235,12 @@
                                         <rect key="frame" x="171" y="0.0" width="92" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="물먹기" image="leaf.circle" catalog="system"/>
+                                        <state key="normal" title="물먹기">
+                                            <imageReference key="image" image="leaf.circle" catalog="system" symbolScale="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eatWaterButtonClicked:" destination="7fh-2u-u7d" eventType="touchUpInside" id="fDc-UV-K17"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

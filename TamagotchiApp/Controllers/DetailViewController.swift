@@ -30,7 +30,6 @@ class DetailViewController: UIViewController {
 
         configureDetailView()
         designDetailView()
-        
         designLevelLabel()
         designRightBarButtonItem()
         
@@ -42,7 +41,48 @@ class DetailViewController: UIViewController {
         designTextField(waterTextField)
     }
     
-
+    
+    @IBAction func eatRiceButtonClicked(_ sender: UIButton) {
+        if tamagotchi != nil {
+            tamagotchi!.rice += 1
+        }
+        
+        tamagotchiLevelLabel.text = tamagotchi?.currentLevelText
+        checkTamagotchiLevel()
+    }
+    
+    
+    
+    @IBAction func eatWaterButtonClicked(_ sender: UIButton) {
+        if tamagotchi != nil {
+            tamagotchi!.water += 1
+        }
+        
+        tamagotchiLevelLabel.text = tamagotchi?.currentLevelText
+        checkTamagotchiLevel()
+    }
+    
+    func checkTamagotchiLevel() {
+        guard let tamagotchi else { return }
+        print("밥알: \(tamagotchi.rice)")
+        print("물방울: \(tamagotchi.water)")
+        
+        let riceCount = tamagotchi.rice
+        let waterCount = tamagotchi.water
+        let result = (riceCount / 5) + (waterCount / 2)
+        
+        let currentImageNum = Int(tamagotchi.imageName.split(separator: "-").last!)!
+        
+//        switch result {
+//        case 0...10:
+//            tamagotchi.
+//        default:
+//            <#code#>
+//        }
+    }
+    
+    
+   
     func configureDetailView() {
         guard let tamagotchi else { return }
         speechBubbleImageView.image = UIImage(named: "bubble")
@@ -95,6 +135,6 @@ class DetailViewController: UIViewController {
     }
     
     func designRightBarButtonItem() {
-        self.navigationItem.rightBarButtonItem?.tintColor = .black
+        self.navigationItem.rightBarButtonItem?.tintColor = .lightGray
     }
 }

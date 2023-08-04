@@ -38,14 +38,20 @@ class PopUpViewController: UIViewController {
     
     
     @IBAction func startButtonClicked(_ sender: UIButton) {
-        
-        guard let tamagotchi else { return }
-        changeRootScene(tamagotchi)
+
+        if tamagotchi != nil {
+            if let num = tamagotchi!.imageName.first {
+                tamagotchi!.imageName = "\(String(num))-\(tamagotchi!.level)"
+            }
+            changeRootScene(tamagotchi!)
+        }
     }
     
     // MARK: - 구현 함수
     
     func changeRootScene(_ data: Tamagotchi) {
+        UserDefaults.standard.set(true, forKey: "isStart")
+        
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let sb = UIStoryboard(name: "Main", bundle: nil)

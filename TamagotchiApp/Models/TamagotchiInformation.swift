@@ -19,4 +19,16 @@ struct TamagotchiInformation {
         let emptyTamagochiList = Array(repeating: emptyTamagochi, count: 50)
         self.tamagotchiList += emptyTamagochiList
     }
+    
+    
+//    mutating func changeTamagotchiImageName(_ name: String) {
+//        for (index, item) in tamagotchiList.enumerated() {
+//            if item.name == name {
+//                if let firstNum = Int(item.imageName.split(separator: "-").first!) {
+//                    tamagotchiList[index].imageName = "\(firstNum)-1"
+//                }
+//            }
+//        }
+//    }
+    
 }

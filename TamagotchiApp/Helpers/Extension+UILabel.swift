@@ -15,6 +15,7 @@ extension UILabel {
         self.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         self.layer.cornerRadius = 3
         self.clipsToBounds = true
-        self.font = .boldSystemFont(ofSize: 11)
+        self.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        self.font = .boldSystemFont(ofSize: 13)
     }
 }
