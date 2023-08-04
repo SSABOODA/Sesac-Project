@@ -30,6 +30,7 @@ class BookCollectionViewController: UICollectionViewController {
         guard let vc = sb.instantiateViewController(withIdentifier: SearchViewController.identifier) as? SearchViewController else {
             return
         }
+        vc.movie = movie
         let nav = UINavigationController(rootViewController: vc)
         
         nav.modalPresentationStyle = .fullScreen // modal 방식

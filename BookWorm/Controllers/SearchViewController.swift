@@ -20,6 +20,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchResultList = movie.movie
+        
         navBarButtonItem()
         setupCollectionView()
         registerBookCollectionViewCell()
@@ -31,7 +33,6 @@ class SearchViewController: UIViewController {
         navigationItem.titleView = searchBar
         searchBar.delegate = self
         searchBar.placeholder = SearchBarPlaceHolder.searchViewController.rawValue
-        searchBar.showsCancelButton = true
     }
     
     func registerBookCollectionViewCell() {
@@ -83,13 +84,29 @@ extension SearchViewController:  UISearchBarDelegate {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchResultList.removeAll()
+        searchResultList = movie.movie
         searchBar.text = ""
         collectionView.reloadData()
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchResult()
+        guard let text = searchBar.text else { return }
+        if text.isEmpty {
+            searchResultList = movie.movie
+            collectionView.reloadData()
+            
+        } else {
+            searchResult()
+        }
+        
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
     }
     
     func searchResult() {
@@ -129,7 +146,12 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
-        movie.movie[sender.tag].like.toggle()
+        let title = searchResultList[sender.tag].title
+        for (index, item) in movie.movie.enumerated() {
+            if item.title == title {
+                movie.movie[index].like.toggle()
+            }
+        }
         searchResultList[sender.tag].like.toggle()
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
