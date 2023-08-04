@@ -54,7 +54,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function)
     }
 }
 
@@ -77,7 +76,7 @@ extension MainViewController {
     // main collection view layout
     func setCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 5
+        let spacing: CGFloat = 3
         let width = UIScreen.main.bounds.width - (spacing * 4)
         layout.itemSize = CGSize(width: width/3, height: width/3)
         layout.sectionInset = UIEdgeInsets(

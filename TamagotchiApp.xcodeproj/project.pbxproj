@@ -18,6 +18,7 @@
 		F776FF2E2A7CD8110065ACEB /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F776FF2C2A7CD8110065ACEB /* MainCollectionViewCell.xib */; };
 		F776FF302A7CDB380065ACEB /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF2F2A7CDB380065ACEB /* Tamagotchi.swift */; };
 		F776FF322A7CDBCB0065ACEB /* TamagotchiInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF312A7CDBCB0065ACEB /* TamagotchiInformation.swift */; };
+		F776FF342A7CEC1A0065ACEB /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FF332A7CEC1A0065ACEB /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F776FF2C2A7CD8110065ACEB /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
 		F776FF2F2A7CDB380065ACEB /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
 		F776FF312A7CDBCB0065ACEB /* TamagotchiInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiInformation.swift; sourceTree = "<group>"; };
+		F776FF332A7CEC1A0065ACEB /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		F776FF282A7CD5E20065ACEB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F776FF332A7CEC1A0065ACEB /* PaddingLabel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F776FF152A7CD55B0065ACEB /* MainViewController.swift in Sources */,
+				F776FF342A7CEC1A0065ACEB /* PaddingLabel.swift in Sources */,
 				F776FF112A7CD55B0065ACEB /* AppDelegate.swift in Sources */,
 				F776FF132A7CD55B0065ACEB /* SceneDelegate.swift in Sources */,
 				F776FF322A7CDBCB0065ACEB /* TamagotchiInformation.swift in Sources */,
