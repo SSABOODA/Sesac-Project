@@ -205,6 +205,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="166" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="eatRiceTextFieldClicked:" destination="7fh-2u-u7d" eventType="editingDidEndOnExit" id="LsB-6I-gnd"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utl-tW-y9N">
                                         <rect key="frame" x="171" y="0.0" width="92" height="40"/>
@@ -230,6 +233,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="166" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="eatWaterTextFieldClicked:" destination="7fh-2u-u7d" eventType="editingDidEndOnExit" id="ZUn-0n-KeF"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWU-aM-bIH">
                                         <rect key="frame" x="171" y="0.0" width="92" height="40"/>
@@ -257,6 +263,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QIE-lI-Mlm"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="xIU-Ld-ib9" firstAttribute="leading" secondItem="L6p-I7-l0a" secondAttribute="leading" id="0hh-nh-hZw"/>
                             <constraint firstItem="YgW-m7-Pk9" firstAttribute="top" secondItem="33U-s4-0Vj" secondAttribute="bottom" constant="10" id="53N-7n-AoQ"/>
@@ -279,13 +286,16 @@
                             <constraint firstItem="iUD-8x-RFv" firstAttribute="top" secondItem="KEn-63-LAa" secondAttribute="bottom" constant="10" id="yIj-VZ-quX"/>
                             <constraint firstItem="33U-s4-0Vj" firstAttribute="leading" secondItem="QIE-lI-Mlm" secondAttribute="leading" constant="65" id="z9g-39-0Ft"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Ovj-Zt-iQX" appends="YES" id="TwM-8u-GQM"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="대장님의 다마고치" id="Ozc-RY-tjY">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="vhF-rA-fE5"/>
                     </navigationItem>
                     <connections>
                         <outlet property="riceButton" destination="Utl-tW-y9N" id="MJI-vN-iUK"/>
-                        <outlet property="riceTextField" destination="bWW-iy-OLt" id="hmh-Bf-aTV"/>
+                        <outlet property="riceTextField" destination="bWW-iy-OLt" id="KCB-LT-JBM"/>
                         <outlet property="speechBubbleImageView" destination="L6p-I7-l0a" id="Q0r-7k-xZh"/>
                         <outlet property="speechBubbleLabel" destination="MP1-dW-z5z" id="3nR-As-do2"/>
                         <outlet property="tamagotchiImageView" destination="xIU-Ld-ib9" id="BwM-yb-pra"/>
@@ -296,6 +306,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RNF-ib-aHH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ovj-Zt-iQX">
+                    <connections>
+                        <action selector="tapGestureTapped:" destination="7fh-2u-u7d" id="HNU-Ft-uHJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1065" y="709"/>
         </scene>
