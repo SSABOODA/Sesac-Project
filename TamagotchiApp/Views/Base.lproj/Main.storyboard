@@ -169,7 +169,124 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1997.709923664122" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="1830" y="-11"/>
+        </scene>
+        <!--대장님의 다마고치-->
+        <scene sceneID="eTf-TF-Yiq">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="7fh-2u-u7d" customClass="DetailViewController" customModule="TamagotchiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="klv-iT-ALK">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L6p-I7-l0a">
+                                <rect key="frame" x="65" y="133" width="263" height="170.33333333333337"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xIU-Ld-ib9">
+                                <rect key="frame" x="65" y="309.33333333333331" width="263" height="170.33333333333331"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-63-LAa" customClass="PaddingLabel" customModule="TamagotchiApp" customModuleProvider="target">
+                                <rect key="frame" x="180" y="485.66666666666669" width="33" height="15.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUD-8x-RFv">
+                                <rect key="frame" x="180" y="511.33333333333331" width="33" height="15.666666666666799"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="33U-s4-0Vj">
+                                <rect key="frame" x="65" y="547" width="263" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bWW-iy-OLt">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utl-tW-y9N">
+                                        <rect key="frame" x="171" y="0.0" width="92" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="밥먹기" image="drop.circle" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Inx-dK-lbh"/>
+                                    <constraint firstItem="bWW-iy-OLt" firstAttribute="width" secondItem="Utl-tW-y9N" secondAttribute="width" multiplier="1.8" id="gJz-BM-F30"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YgW-m7-Pk9">
+                                <rect key="frame" x="65" y="597" width="263" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bC2-vv-qSI">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWU-aM-bIH">
+                                        <rect key="frame" x="171" y="0.0" width="92" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="물먹기" image="leaf.circle" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bC2-vv-qSI" firstAttribute="width" secondItem="OWU-aM-bIH" secondAttribute="width" multiplier="1.8" id="3EJ-V8-zcq"/>
+                                    <constraint firstAttribute="height" constant="40" id="U9I-Ii-KbZ"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MP1-dW-z5z">
+                                <rect key="frame" x="176" y="208" width="41.333333333333343" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QIE-lI-Mlm"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xIU-Ld-ib9" firstAttribute="leading" secondItem="L6p-I7-l0a" secondAttribute="leading" id="0hh-nh-hZw"/>
+                            <constraint firstItem="YgW-m7-Pk9" firstAttribute="top" secondItem="33U-s4-0Vj" secondAttribute="bottom" constant="10" id="53N-7n-AoQ"/>
+                            <constraint firstItem="KEn-63-LAa" firstAttribute="top" secondItem="xIU-Ld-ib9" secondAttribute="bottom" constant="6" id="7GZ-S7-rOJ"/>
+                            <constraint firstItem="xIU-Ld-ib9" firstAttribute="height" secondItem="L6p-I7-l0a" secondAttribute="height" id="8c5-zB-aT4"/>
+                            <constraint firstItem="QIE-lI-Mlm" firstAttribute="trailing" secondItem="33U-s4-0Vj" secondAttribute="trailing" constant="65" id="AFd-M9-fKQ"/>
+                            <constraint firstItem="MP1-dW-z5z" firstAttribute="centerY" secondItem="L6p-I7-l0a" secondAttribute="centerY" id="AoT-bC-xbH"/>
+                            <constraint firstItem="MP1-dW-z5z" firstAttribute="centerX" secondItem="L6p-I7-l0a" secondAttribute="centerX" id="Ie9-Bv-MNn"/>
+                            <constraint firstItem="YgW-m7-Pk9" firstAttribute="leading" secondItem="QIE-lI-Mlm" secondAttribute="leading" constant="65" id="Kie-6c-qjR"/>
+                            <constraint firstItem="QIE-lI-Mlm" firstAttribute="trailing" secondItem="L6p-I7-l0a" secondAttribute="trailing" constant="65" id="Oys-LE-4pJ"/>
+                            <constraint firstItem="xIU-Ld-ib9" firstAttribute="top" secondItem="L6p-I7-l0a" secondAttribute="bottom" constant="6" id="Q4A-lb-6If"/>
+                            <constraint firstItem="33U-s4-0Vj" firstAttribute="top" secondItem="iUD-8x-RFv" secondAttribute="bottom" constant="20" id="QLd-ID-kXS"/>
+                            <constraint firstItem="iUD-8x-RFv" firstAttribute="centerX" secondItem="klv-iT-ALK" secondAttribute="centerX" id="YEX-CJ-0Yd"/>
+                            <constraint firstItem="xIU-Ld-ib9" firstAttribute="trailing" secondItem="L6p-I7-l0a" secondAttribute="trailing" id="gbG-a9-SHK"/>
+                            <constraint firstItem="KEn-63-LAa" firstAttribute="centerX" secondItem="klv-iT-ALK" secondAttribute="centerX" id="i7J-lj-p3C"/>
+                            <constraint firstItem="QIE-lI-Mlm" firstAttribute="trailing" secondItem="YgW-m7-Pk9" secondAttribute="trailing" constant="65" id="jo9-Ew-yAo"/>
+                            <constraint firstItem="L6p-I7-l0a" firstAttribute="leading" secondItem="QIE-lI-Mlm" secondAttribute="leading" constant="65" id="lQt-nF-43f"/>
+                            <constraint firstItem="L6p-I7-l0a" firstAttribute="top" secondItem="QIE-lI-Mlm" secondAttribute="top" constant="30" id="tiS-rr-ixK"/>
+                            <constraint firstItem="L6p-I7-l0a" firstAttribute="height" secondItem="klv-iT-ALK" secondAttribute="height" multiplier="0.2" id="tuL-LM-rl7"/>
+                            <constraint firstItem="iUD-8x-RFv" firstAttribute="top" secondItem="KEn-63-LAa" secondAttribute="bottom" constant="10" id="yIj-VZ-quX"/>
+                            <constraint firstItem="33U-s4-0Vj" firstAttribute="leading" secondItem="QIE-lI-Mlm" secondAttribute="leading" constant="65" id="z9g-39-0Ft"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="대장님의 다마고치" id="Ozc-RY-tjY">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="vhF-rA-fE5"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="riceButton" destination="Utl-tW-y9N" id="MJI-vN-iUK"/>
+                        <outlet property="riceTextField" destination="bWW-iy-OLt" id="hmh-Bf-aTV"/>
+                        <outlet property="speechBubbleImageView" destination="L6p-I7-l0a" id="Q0r-7k-xZh"/>
+                        <outlet property="speechBubbleLabel" destination="MP1-dW-z5z" id="3nR-As-do2"/>
+                        <outlet property="tamagotchiImageView" destination="xIU-Ld-ib9" id="BwM-yb-pra"/>
+                        <outlet property="tamagotchiLevelLabel" destination="iUD-8x-RFv" id="QoI-BZ-z9t"/>
+                        <outlet property="tamagotchiNameLabel" destination="KEn-63-LAa" id="PUb-la-7AX"/>
+                        <outlet property="waterButton" destination="OWU-aM-bIH" id="kdg-Ac-P0a"/>
+                        <outlet property="waterTextField" destination="bC2-vv-qSI" id="Epe-6J-huX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RNF-ib-aHH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="709"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x0C-Aj-Teo">
@@ -189,8 +306,29 @@
             </objects>
             <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1IT-29-HjT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MtU-15-SZ2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rbZ-JU-dEL">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7fh-2u-u7d" kind="relationship" relationship="rootViewController" id="Y5l-Bz-xED"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mkH-1Q-c2k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="709"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="drop.circle" catalog="system" width="128" height="123"/>
+        <image name="leaf.circle" catalog="system" width="128" height="123"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

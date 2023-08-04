@@ -8,7 +8,7 @@
 import UIKit
 
 class PopUpViewController: UIViewController {
-
+    
     @IBOutlet var popUpView: UIView!
     @IBOutlet var tamagotchiImageView: UIImageView!
     @IBOutlet var tamagotchiNameLabel: UILabel!
@@ -17,12 +17,12 @@ class PopUpViewController: UIViewController {
     @IBOutlet var popUpCancelButton: UIButton!
     @IBOutlet var popUpStartButton: UIButton!
     @IBOutlet var buttonStackView: UIStackView!
-
+    
     var tamagotchi: Tamagotchi?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configurePopUpView()
         designPopUpView()
     }
@@ -38,16 +38,31 @@ class PopUpViewController: UIViewController {
     
     
     @IBAction func startButtonClicked(_ sender: UIButton) {
+        
+        guard let tamagotchi else { return }
+        changeRootScene(tamagotchi)
     }
+    
+    // MARK: - 구현 함수
+    
+    func changeRootScene(_ data: Tamagotchi) {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
+        vc.tamagotchi = data
+        let nav = UINavigationController(rootViewController: vc)
+        sceneDelegate?.window?.rootViewController = nav
+        sceneDelegate?.window?.makeKey()
+    }
+
     
     func configurePopUpView() {
         guard let tamagotchi else { return }
         tamagotchiImageView.image = UIImage(named: tamagotchi.imageName)
         tamagotchiNameLabel.text = tamagotchi.name
         tamagotchiDescriptionLabel.text = tamagotchi.description
-        
     }
-    
     
     func designPopUpView() {
         // background View 투명
