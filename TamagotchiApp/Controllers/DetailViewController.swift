@@ -73,17 +73,6 @@ class DetailViewController: UIViewController {
         checkTamagotchiLevel()
     }
     
-    func backBarButtonItem() {
-        let backBarButtonItem = UIBarButtonItem(
-            title: "",
-            style: .plain,
-            target: self,
-            action: nil
-        )
-        backBarButtonItem.tintColor = .lightGray
-        self.navigationItem.backBarButtonItem = backBarButtonItem
-    }
-    
     func eatCalculator(_ textField: UITextField, _ key: String) {
         var upCount: Int = userDefault.integer(forKey: key)
         if Int(textField.text!) != nil {
@@ -97,6 +86,7 @@ class DetailViewController: UIViewController {
         userDefault.set(upCount, forKey: key)
     }
   
+    // 레벨 계산
     func checkTamagotchiLevel() {
         let riceCount = userDefault.integer(forKey: "rice")
         let waterCount = userDefault.integer(forKey: "water")
@@ -141,6 +131,7 @@ class DetailViewController: UIViewController {
         beforelevel != level ? configureDetailView(true) : configureDetailView(false)
     }
     
+    // detail view 구성
     func configureDetailView(_ diff: Bool) {
         print(#function)
         
@@ -165,6 +156,17 @@ class DetailViewController: UIViewController {
     func initialDetailView() {
         speechBubbleImageView.image = UIImage(named: "bubble")
         speechBubbleLabel.text = "안녕하세요 저는 \(userDefault.string(forKey: "name") ?? "")에요~~"
+    }
+    
+    func backBarButtonItem() {
+        let backBarButtonItem = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: self,
+            action: nil
+        )
+        backBarButtonItem.tintColor = .lightGray
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     func navigationTitleColor() {

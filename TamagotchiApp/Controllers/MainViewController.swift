@@ -12,6 +12,8 @@ class MainViewController: UIViewController {
     @IBOutlet var mainCollectionView: UICollectionView!
     
     var tamagotchi = TamagotchiInformation()
+    let userDefaults = UserDefaults.standard
+    var dataTransitionType: DataTransitionType = .normal
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +24,17 @@ class MainViewController: UIViewController {
         registerNibMainCollectionViewCell()
         designView()
         
-        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-            print("\(key): \(value)")
-        }
+//        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+//            print("\(key): \(value)")
+//        }
     }
     
+    // 준비 중(noImage)인 데이터 세팅
     func setTamagotchiData() {
         tamagotchi.settingEmptyTamagochiData()
     }
     
+    // collectionView Nib 등록
     func registerNibMainCollectionViewCell() {
         mainCollectionView.register(
             UINib(nibName: MainCollectionViewCell.identifier, bundle: nil),
@@ -59,11 +63,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let vc = storyboard?.instantiateViewController(withIdentifier: PopUpViewController.identifier) as? PopUpViewController else {
             return
         }
+        
+        // MARK: - 다마고치 변경하기에서 다시 메인 왔을 때 초기값으로 세팅되서 다 초기화 됨 이거 고쳐야함.
+        
         vc.tamagotchi = tamagotchi.tamagotchiList[indexPath.row]
+        vc.dataTransitionType = dataTransitionType
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
 }
+
+
+// MARK: - MainViewController Extension
 
 
 extension MainViewController {
@@ -75,7 +86,7 @@ extension MainViewController {
         mainCollectionView.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
     }
     
-    // delegate, dataSource
+    // collectionView delegate, dataSource
     func configureCollectionView() {
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self

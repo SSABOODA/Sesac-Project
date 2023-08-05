@@ -18,3 +18,10 @@ enum SettingTableViewImage: String, CaseIterable {
     case tamagotchi = "moon.fill"
     case resetData = "arrow.clockwise"
 }
+
+
+enum DataTransitionType {
+    case normal
+    case change
+    case reset
+}

@@ -16,10 +16,10 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "설정"
+        
         settingTableView.delegate = self
         settingTableView.dataSource = self
-        
-        title = "설정"
         
         backBarButtonItem()
         navigationTitleColor()
@@ -85,6 +85,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 1 { // 다마고치 변경하기
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+            vc.dataTransitionType = .change
             vc.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(vc, animated: true)
         } else { // 데이터 초기화
@@ -109,21 +110,18 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func resetData() {
-        for (key, value) in userDefaults.dictionaryRepresentation() {
-            print("\(key): \(value)")
-        }
+//        for (key, value) in userDefaults.dictionaryRepresentation() {
+//            print("\(key): \(value)")
+//        }
         
         let removeUserDefaultsKeyList = [
             "water",
             "rice",
-            "riceCount",
-            "isStart",
             "name",
             "imageName",
             "index",
             "nickname",
             "level",
-            "waterCount",
         ]
         
         for key in removeUserDefaultsKeyList {
@@ -139,6 +137,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+        vc.dataTransitionType = .reset
         let nav = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.rootViewController = nav
         sceneDelegate?.window?.makeKey()

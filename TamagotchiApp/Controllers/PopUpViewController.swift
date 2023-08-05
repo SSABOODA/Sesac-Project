@@ -22,16 +22,17 @@ class PopUpViewController: UIViewController {
     
     var tamagotchi: Tamagotchi?
     let profile = ProfileInfo()
-    
     let userDefaults = UserDefaults.standard
+    var dataTransitionType: DataTransitionType = .normal
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configurePopUpView()
         designPopUpView()
+        keepTamagotchiData()
+        
     }
-    
     
     @IBAction func tapGeustureTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true)
@@ -50,32 +51,63 @@ class PopUpViewController: UIViewController {
             return
         }
         
+        // popup view 데이터 세팅
         guard let  index = tamagotchi.imageName.first else { return }
         let currentImageName = "\(String(index))-\(tamagotchi.level)"
         let nickName = userDefaults.string(forKey: "nickname") ?? profile.userProfile.nickName
+        userDefaults.set(nickName, forKey: "nickname") // profile nickname
+        
         userDefaults.set(Int(String(index))!, forKey: "index")
-        userDefaults.set(nickName, forKey: "nickname")
         userDefaults.set(currentImageName, forKey: "imageName")
         userDefaults.set(tamagotchi.name, forKey: "name")
         userDefaults.set(tamagotchi.level, forKey: "level")
         userDefaults.set(tamagotchi.rice, forKey: "rice")
         userDefaults.set(tamagotchi.water, forKey: "water")
+        
+        
+//        userDefaults.set(Int(String(index))!, forKey: "index\(index)")
+//        userDefaults.set(currentImageName, forKey: "imageName\(index)")
+//        userDefaults.set(tamagotchi.name, forKey: "name\(index)")
+//        userDefaults.set(tamagotchi.level, forKey: "level\(index)")
+//        userDefaults.set(tamagotchi.rice, forKey: "rice\(index)")
+//        userDefaults.set(tamagotchi.water, forKey: "water\(index)")
+        
         changeRootScene()
-    }
-    
-    func notReadyTamagotchiAlert() {
-        let alert = UIAlertController(title: "아직 준비중이에요 다음에 만나요", message: "", preferredStyle: .alert)
-                
-        let success = UIAlertAction(title: "확인", style: .default) { action in
-            print("확인 버튼이 눌렀습니다.")
-        }
-        alert.addAction(success)
-
-        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - 구현 함수
     
+    func keepTamagotchiData() {
+        
+        switch dataTransitionType {
+        case .normal:
+            print("")
+        case .change:
+            if tamagotchi != nil {
+                tamagotchi!.imageName = userDefaults.string(forKey: "imageName")!
+                tamagotchi!.name = userDefaults.string(forKey: "name")!
+                tamagotchi!.level = userDefaults.integer(forKey: "level")
+                tamagotchi!.rice = userDefaults.integer(forKey: "rice")
+                tamagotchi!.water = userDefaults.integer(forKey: "water")
+            }
+        case .reset:
+            print("")
+        }
+        
+        
+    }
+    
+    // 준비중인 다마고치 클릭 시 '준비 중' alert modal 띄우기
+    func notReadyTamagotchiAlert() {
+        let alert = UIAlertController(title: "아직 준비중이에요 다음에 만나요", message: "", preferredStyle: .alert)
+        let success = UIAlertAction(title: "확인", style: .default) { action in
+            print("확인 버튼이 눌렀습니다.")
+        }
+        alert.addAction(success)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // 다마고치 선택시 뷰 스택 DetailViewController로 초기화
     func changeRootScene() {
         userDefaults.set(true, forKey: "isSelected")
         
@@ -88,7 +120,7 @@ class PopUpViewController: UIViewController {
         sceneDelegate?.window?.makeKey()
     }
 
-    
+    // popup view 구성
     func configurePopUpView() {
         guard let tamagotchi else { return }
         tamagotchiImageView.image = UIImage(named: tamagotchi.imageName)
