@@ -24,6 +24,8 @@ class DetailViewController: UIViewController {
     @IBOutlet var waterButton: UIButton!
     
     let userDefault = UserDefaults.standard
+    
+    let profile = ProfileInfo()
     let speechBubbleContentList = [
         "레벨업 했어여~~~",
         "감사합니다.",
@@ -146,7 +148,7 @@ class DetailViewController: UIViewController {
     }
     
     func configureDetailView(_ diff: Bool) {
-        title = "\(userDefault.string(forKey: "nickname")!)의 다마고치"
+        title = "\(userDefault.string(forKey: "nickname") ?? profile.userProfile.nickName)님의 다마고치"
         
         speechBubbleImageView.image = UIImage(named: "bubble")
         

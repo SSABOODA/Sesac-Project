@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--다마고치 선택하기~~-->
+        <!--다마고치 선택하기-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="TamagotchiApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gLO-fp-Uoc" secondAttribute="bottom" id="VAh-z9-qz5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="다마고치 선택하기~~" id="QRa-ff-lCQ"/>
+                    <navigationItem key="navigationItem" title="다마고치 선택하기" id="QRa-ff-lCQ"/>
                     <connections>
                         <outlet property="mainCollectionView" destination="gLO-fp-Uoc" id="TRh-nm-FlI"/>
                     </connections>

@@ -17,15 +17,16 @@ class NameSettingViewController: UIViewController {
     var nickName: String = ""
     var profile = ProfileInfo()
     
+    let placeholderText = "변경하실 닉네임을 입력헤주세요"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(nickName)
         designTextField()
         rightBarButtonItem()
         
         title = "\(userDefaults.string(forKey: "nickname") ?? "")님 이름 정하기"
+        nameChangeTextField.delegate = self
     }
     
     
@@ -61,8 +62,28 @@ class NameSettingViewController: UIViewController {
         nameChangeTextField.designTextField()
         nameChangeTextField.placeholder = ""
         nameChangeTextField.textAlignment = .left
+        
+        nameChangeTextField.placeholder = placeholderText
+        nameChangeTextField.text = nickName
+    }
+}
+
+extension NameSettingViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 6
     }
     
-
-
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        nameChangeTextField.placeholder = "2글자 이상 6글자 이하로 작성해주세요~"
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if text.isEmpty {
+            nameChangeTextField.placeholder = placeholderText
+        }
+        
+    }
 }

@@ -7,19 +7,6 @@
 
 import UIKit
 
-enum SettingTableViewTiTle: String, CaseIterable {
-    case nameSetting = "내 이름 설정하기"
-    case tamagotchi = "다마고치 변경하기"
-    case resetData = "데이터 초기화"
-}
-
-enum SettingTableViewImage: String, CaseIterable {
-    case nameSetting = "pencil"
-    case tamagotchi = "moon.fill"
-    case resetData = "arrow.clockwise"
-}
-
-
 class SettingViewController: UIViewController {
     
     @IBOutlet var settingTableView: UITableView!
@@ -146,6 +133,16 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         userDefaults.set(false, forKey: "isSelected")
-        
+        changeRootScene()
+    }
+    
+    func changeRootScene() {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+        let nav = UINavigationController(rootViewController: vc)
+        sceneDelegate?.window?.rootViewController = nav
+        sceneDelegate?.window?.makeKey()
     }
 }
