@@ -9,6 +9,8 @@ import UIKit
 
 class PopUpViewController: UIViewController {
     
+    static let identifier = "PopUpViewController"
+    
     @IBOutlet var popUpView: UIView!
     @IBOutlet var tamagotchiImageView: UIImageView!
     @IBOutlet var tamagotchiNameLabel: UILabel!
@@ -50,7 +52,7 @@ class PopUpViewController: UIViewController {
         
         guard let  index = tamagotchi.imageName.first else { return }
         let currentImageName = "\(String(index))-\(tamagotchi.level)"
-        let nickName = userDefaults.string(forKey: "nickname")
+        let nickName = userDefaults.string(forKey: "nickname") ?? profile.userProfile.nickName
         userDefaults.set(Int(String(index))!, forKey: "index")
         userDefaults.set(nickName, forKey: "nickname")
         userDefaults.set(currentImageName, forKey: "imageName")

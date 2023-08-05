@@ -24,6 +24,5 @@ extension UITextField {
         self.textColor = UIColor.systemGray2
         self.layer.masksToBounds = true
     }
-
 }
 

@@ -37,7 +37,6 @@ class DetailViewController: UIViewController {
         
         designTextField(riceTextField)
         designTextField(waterTextField)
-        
         backBarButtonItem()
     }
     
@@ -142,12 +141,14 @@ class DetailViewController: UIViewController {
     }
     
     func configureDetailView(_ diff: Bool) {
+        print(#function)
         title = "\(userDefault.string(forKey: "nickname") ?? profile.userProfile.nickName)님의 다마고치"
         
         speechBubbleImageView.image = UIImage(named: "bubble")
         
-        speechBubbleLabel.text = diff == true ? tamagotchiInfo.randomTamagotchiSpeechContent() : "안녕하세요 저는 방실방실 다마고치에여~~"
+        speechBubbleLabel.text = diff == true ? tamagotchiInfo.randomTamagotchiSpeechContent() : "안녕하세요 저는 \(userDefault.string(forKey: "name") ?? "")에요~~"
          
+        
         guard let imageName = userDefault.string(forKey: "imageName") else { return }
         guard let name = userDefault.string(forKey: "name") else { return }
         tamagotchiImageView.image = UIImage(named: imageName)
@@ -158,6 +159,11 @@ class DetailViewController: UIViewController {
         let water = userDefault.integer(forKey: "water")
         
         tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"
+        navigationTitleColor()
+    }
+    
+    func navigationTitleColor() {
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
     }
     
     func designDetailView() {
@@ -206,7 +212,7 @@ class DetailViewController: UIViewController {
     }
     
     func designRightBarButtonItem() {
-        self.navigationItem.rightBarButtonItem?.tintColor = .lightGray
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
     }
 }
 

@@ -46,7 +46,7 @@ class NameSettingViewController: UIViewController {
             target: self,
             action: #selector(saveButtonClicked)
         )
-        navigationItem.rightBarButtonItem?.tintColor = .lightGray
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
     }
     
     @objc func saveButtonClicked() {

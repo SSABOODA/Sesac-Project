@@ -68,7 +68,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = (indexPath.row == 0) ? userDefaults.string(forKey: "nickname") : ""
         
         cell.imageView?.tintColor = .lightGray
-        cell.textLabel?.tintColor = .black
+        
+        cell.textLabel?.font = .boldSystemFont(ofSize: 13)
+        cell.textLabel?.textColor = .black
         
         return cell
     }
@@ -91,20 +93,16 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 message: "정말 다시 처음부터 시작하실 건가요?",
                 preferredStyle: .alert
             )
-                    
             let success = UIAlertAction(title: "네", style: .default) { action in
                 print("확인 버튼이 눌렀습니다.")
-                
                 self.resetData()
-                
-                }
+            }
             let cancel = UIAlertAction(title: "아니요", style: .cancel) { cancel in
                 print("취소 버튼이 눌렀습니다.")
-                }
+            }
                 
             alert.addAction(cancel)
             alert.addAction(success)
-
             present(alert, animated: true, completion: nil)
         }
     }
