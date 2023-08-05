@@ -115,13 +115,13 @@ class DetailViewController: UIViewController {
         }
         
         let index = userDefault.integer(forKey: "index")
-        let level = userDefault.integer(forKey: "level")
+        var level = userDefault.integer(forKey: "level")
+        if level >= 10 { level = 9 }
         let currentImageName = "\(index)-\(level)"
         userDefault.set(currentImageName, forKey: "imageName")
         
-        if beforelevel != level {
-            configureDetailView(true)
-        }
+        print(beforelevel, level)
+        beforelevel != level ? configureDetailView(true) : configureDetailView(false)
     }
     
     func configureDetailView(_ diff: Bool) {
