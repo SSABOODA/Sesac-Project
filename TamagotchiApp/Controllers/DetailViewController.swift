@@ -23,36 +23,22 @@ class DetailViewController: UIViewController {
     @IBOutlet var riceButton: UIButton!
     @IBOutlet var waterButton: UIButton!
     
-    var tamagotchi: Tamagotchi?
-
+    let userDefault = UserDefaults.standard
+    let speechBubbleContentList = [
+        "레벨업 했어여~~~",
+        "감사합니다.",
+        "열심히 해보자구요",
+        "오늘 날씨가 너무 덥네요",
+        "건강 조심하세요",
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        saveUserDefalutData()
 
-        configureDetailView()
+        configureDetailView(false)
         designDetailView()
         designLevelLabel()
         designRightBarButtonItem()
         
-        title = "대장님의 다마고취"
-        
-        
-    }
-    
-    func saveUserDefalutData() {
-        if tamagotchi != nil {
-            
-            tamagotchi!.rice = UserDefaults.standard.integer(forKey: "riceCount")
-            tamagotchi!.water = UserDefaults.standard.integer(forKey: "waterCount")
-            tamagotchi!.imageName = UserDefaults.standard.string(forKey: "imageName") ?? tamagotchi!.imageName
-            tamagotchi!.level = UserDefaults.standard.integer(forKey: "level")
-            
-        }
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
         designTextField(riceTextField)
         designTextField(waterTextField)
     }
@@ -67,89 +53,94 @@ class DetailViewController: UIViewController {
     @IBAction func eatWaterTextFieldClicked(_ sender: UITextField) {
     }
     
-    @IBAction func eatRiceButtonClicked(_ sender: UIButton) {
-        if tamagotchi != nil {
-            guard let text = riceTextField.text else { return }
-            if !text.isEmpty && (Int(text) != nil) {
-                tamagotchi!.rice += Int(text)!
-            } else {
-                tamagotchi!.rice += 1
-            }
-            riceTextField.text = ""
-            checkTamagotchiLevel(tamagotchi!)
-            tamagotchiLevelLabel.text = tamagotchi!.currentLevelText
-            UserDefaults.standard.set(tamagotchi!.rice, forKey: "riceCount")
-        }
+    
+    @IBAction func eatButtonClicked(_ sender: UIButton) {
+        print("sender.tag: \(sender.tag)")
+        sender.tag == 0 ? eatCalculator(riceTextField, "rice") : eatCalculator(waterTextField, "water")
+        let level = userDefault.integer(forKey: "level")
+        let rice = userDefault.integer(forKey: "rice")
+        let water = userDefault.integer(forKey: "water")
+        
+        tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"
+        checkTamagotchiLevel()
     }
     
-    @IBAction func eatWaterButtonClicked(_ sender: UIButton) {
-        if tamagotchi != nil {
-            guard let text = waterTextField.text else { return }
-            if !text.isEmpty && (Int(text) != nil) {
-                tamagotchi!.water += Int(text)!
-            } else {
-                tamagotchi!.water += 1
-            }
-            waterTextField.text = ""
-            checkTamagotchiLevel(tamagotchi!)
-            tamagotchiLevelLabel.text = tamagotchi!.currentLevelText
-            UserDefaults.standard.set(tamagotchi!.rice, forKey: "waterCount")
+    func eatCalculator(_ textField: UITextField, _ key: String) {
+        var upCount: Int = userDefault.integer(forKey: key)
+        if Int(textField.text!) != nil {
+            let limitNum = key == "rice" ? 100 : 50
+            if Int(textField.text!)! >= limitNum { return }
+            upCount += Int(textField.text!)!
+            textField.text = ""
+        } else {
+            upCount += 1
         }
+        userDefault.set(upCount, forKey: key)
     }
-    
-    func checkTamagotchiLevel(_ data: Tamagotchi) {
+  
+    func checkTamagotchiLevel() {
+        let riceCount = userDefault.integer(forKey: "rice")
+        let waterCount = userDefault.integer(forKey: "water")
         
-//        print("밥알: \(data.rice)")
-//        print("물방울: \(data.water)")
-        
-        let riceCount = data.rice
-        let waterCount = data.water
         let result = (Double(riceCount) / 5.0) + (Double(waterCount) / 2.0)
         print("result: \(result)")
+        
+        let beforelevel = userDefault.integer(forKey: "level")
+        
         switch Int(result) {
         case 0..<10:
-            tamagotchi?.level = 1
+            userDefault.set(1, forKey: "level")
         case 10..<20:
-            tamagotchi?.level = 1
+            userDefault.set(1, forKey: "level")
         case 20..<30:
-            tamagotchi?.level = 2
+            userDefault.set(2, forKey: "level")
         case 30..<40:
-            tamagotchi?.level = 3
+            userDefault.set(3, forKey: "level")
         case 40..<50:
-            tamagotchi?.level = 4
+            userDefault.set(4, forKey: "level")
         case 50..<60:
-            tamagotchi?.level = 5
+            userDefault.set(5, forKey: "level")
         case 60..<70:
-            tamagotchi?.level = 6
+            userDefault.set(6, forKey: "level")
         case 70..<80:
-            tamagotchi?.level = 7
+            userDefault.set(7, forKey: "level")
         case 80..<90:
-            tamagotchi?.level = 8
+            userDefault.set(8, forKey: "level")
         case 90..<100:
-            tamagotchi?.level = 9
+            userDefault.set(9, forKey: "level")
         case 100...:
-            tamagotchi?.level = 10
+            userDefault.set(10, forKey: "level")
         default:
-            tamagotchi?.level = 10
+            userDefault.set(10, forKey: "level")
         }
         
-        if tamagotchi != nil {
-            UserDefaults.standard.set(tamagotchi!.level, forKey: "level")
-            
-            if let num = tamagotchi!.imageName.first {
-                let imageNameString = "\(String(num))-\(tamagotchi!.level)"
-                tamagotchiImageView.image = UIImage(named: imageNameString)
-                UserDefaults.standard.set(imageNameString, forKey: "imageName")
-            }
+        let index = userDefault.integer(forKey: "index")
+        let level = userDefault.integer(forKey: "level")
+        let currentImageName = "\(index)-\(level)"
+        userDefault.set(currentImageName, forKey: "imageName")
+        
+        if beforelevel != level {
+            configureDetailView(true)
         }
     }
     
-    func configureDetailView() {
-        guard let tamagotchi else { return }
+    func configureDetailView(_ diff: Bool) {
+        title = "\(userDefault.string(forKey: "nickname")!)의 다마고치"
+        
         speechBubbleImageView.image = UIImage(named: "bubble")
-        tamagotchiImageView.image = UIImage(named: tamagotchi.imageName)
-        tamagotchiNameLabel.text = tamagotchi.name
-        tamagotchiLevelLabel.text = tamagotchi.currentLevelText
+        
+        speechBubbleLabel.text = diff == true ? speechBubbleContentList.randomElement()! : "안녕하세요 저는 방실방실 다마고치에여~~"
+         
+        guard let imageName = userDefault.string(forKey: "imageName") else { return }
+        guard let name = userDefault.string(forKey: "name") else { return }
+        tamagotchiImageView.image = UIImage(named: imageName)
+        tamagotchiNameLabel.text = name
+        
+        let level = userDefault.integer(forKey: "level")
+        let rice = userDefault.integer(forKey: "rice")
+        let water = userDefault.integer(forKey: "water")
+        
+        tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"
     }
     
     func designDetailView() {
@@ -209,5 +200,18 @@ extension DetailViewController: UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
 //        print(#function)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if Int(string) != nil || string == "" {
+            guard let text = textField.text else { return true }
+            let newLength = text.count + string.count - range.length
+            return newLength <= 2
+        }
+        return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
     }
 }

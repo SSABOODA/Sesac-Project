@@ -20,6 +20,8 @@ class PopUpViewController: UIViewController {
     
     var tamagotchi: Tamagotchi?
     
+    let userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,24 +41,29 @@ class PopUpViewController: UIViewController {
     
     @IBAction func startButtonClicked(_ sender: UIButton) {
 
-        if tamagotchi != nil {
-            if let num = tamagotchi!.imageName.first {
-                tamagotchi!.imageName = "\(String(num))-\(tamagotchi!.level)"
-            }
-            changeRootScene(tamagotchi!)
-        }
+        guard let tamagotchi else { return }
+        guard let  index = tamagotchi.imageName.first else { return }
+        let currentImageName = "\(String(index))-\(tamagotchi.level)"
+        
+        userDefault.set(Int(String(index))!, forKey: "index")
+        userDefault.set("대장님", forKey: "nickname")
+        userDefault.set(currentImageName, forKey: "imageName")
+        userDefault.set(tamagotchi.name, forKey: "name")
+        userDefault.set(tamagotchi.level, forKey: "level")
+        userDefault.set(tamagotchi.rice, forKey: "rice")
+        userDefault.set(tamagotchi.water, forKey: "water")
+        changeRootScene()
     }
     
     // MARK: - 구현 함수
     
-    func changeRootScene(_ data: Tamagotchi) {
-        UserDefaults.standard.set(true, forKey: "isStart")
+    func changeRootScene() {
+        userDefault.set(true, forKey: "isSelected")
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
-        vc.tamagotchi = data
         let nav = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.rootViewController = nav
         sceneDelegate?.window?.makeKey()

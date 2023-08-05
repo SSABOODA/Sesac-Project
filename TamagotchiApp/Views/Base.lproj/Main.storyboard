@@ -217,7 +217,7 @@
                                             <imageReference key="image" image="drop.circle" catalog="system" symbolScale="medium"/>
                                         </state>
                                         <connections>
-                                            <action selector="eatRiceButtonClicked:" destination="7fh-2u-u7d" eventType="touchUpInside" id="tog-eS-DCz"/>
+                                            <action selector="eatButtonClicked:" destination="7fh-2u-u7d" eventType="touchUpInside" id="kc8-FC-QOq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -237,7 +237,7 @@
                                             <action selector="eatWaterTextFieldClicked:" destination="7fh-2u-u7d" eventType="editingDidEndOnExit" id="ZUn-0n-KeF"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWU-aM-bIH">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWU-aM-bIH">
                                         <rect key="frame" x="171" y="0.0" width="92" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -245,7 +245,7 @@
                                             <imageReference key="image" image="leaf.circle" catalog="system" symbolScale="medium"/>
                                         </state>
                                         <connections>
-                                            <action selector="eatWaterButtonClicked:" destination="7fh-2u-u7d" eventType="touchUpInside" id="fDc-UV-K17"/>
+                                            <action selector="eatButtonClicked:" destination="7fh-2u-u7d" eventType="touchUpInside" id="XdK-FS-B0q"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -254,9 +254,9 @@
                                     <constraint firstAttribute="height" constant="40" id="U9I-Ii-KbZ"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MP1-dW-z5z">
-                                <rect key="frame" x="176" y="208" width="41.333333333333343" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MP1-dW-z5z">
+                                <rect key="frame" x="85" y="209.33333333333334" width="223" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -276,11 +276,13 @@
                             <constraint firstItem="QIE-lI-Mlm" firstAttribute="trailing" secondItem="L6p-I7-l0a" secondAttribute="trailing" constant="65" id="Oys-LE-4pJ"/>
                             <constraint firstItem="xIU-Ld-ib9" firstAttribute="top" secondItem="L6p-I7-l0a" secondAttribute="bottom" constant="6" id="Q4A-lb-6If"/>
                             <constraint firstItem="33U-s4-0Vj" firstAttribute="top" secondItem="iUD-8x-RFv" secondAttribute="bottom" constant="20" id="QLd-ID-kXS"/>
+                            <constraint firstItem="MP1-dW-z5z" firstAttribute="leading" secondItem="QIE-lI-Mlm" secondAttribute="leading" constant="85" id="RZL-8y-5vD"/>
                             <constraint firstItem="iUD-8x-RFv" firstAttribute="centerX" secondItem="klv-iT-ALK" secondAttribute="centerX" id="YEX-CJ-0Yd"/>
                             <constraint firstItem="xIU-Ld-ib9" firstAttribute="trailing" secondItem="L6p-I7-l0a" secondAttribute="trailing" id="gbG-a9-SHK"/>
                             <constraint firstItem="KEn-63-LAa" firstAttribute="centerX" secondItem="klv-iT-ALK" secondAttribute="centerX" id="i7J-lj-p3C"/>
                             <constraint firstItem="QIE-lI-Mlm" firstAttribute="trailing" secondItem="YgW-m7-Pk9" secondAttribute="trailing" constant="65" id="jo9-Ew-yAo"/>
                             <constraint firstItem="L6p-I7-l0a" firstAttribute="leading" secondItem="QIE-lI-Mlm" secondAttribute="leading" constant="65" id="lQt-nF-43f"/>
+                            <constraint firstItem="QIE-lI-Mlm" firstAttribute="trailing" secondItem="MP1-dW-z5z" secondAttribute="trailing" constant="85" id="nAH-Y8-gNl"/>
                             <constraint firstItem="L6p-I7-l0a" firstAttribute="top" secondItem="QIE-lI-Mlm" secondAttribute="top" constant="30" id="tiS-rr-ixK"/>
                             <constraint firstItem="L6p-I7-l0a" firstAttribute="height" secondItem="klv-iT-ALK" secondAttribute="height" multiplier="0.2" id="tuL-LM-rl7"/>
                             <constraint firstItem="iUD-8x-RFv" firstAttribute="top" secondItem="KEn-63-LAa" secondAttribute="bottom" constant="10" id="yIj-VZ-quX"/>
@@ -313,6 +315,14 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1065" y="709"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="XsC-D5-wLW">
+            <objects>
+                <viewControllerPlaceholder id="nMc-3N-kQd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Czn-Ky-lGB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1755" y="506"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x0C-Aj-Teo">
