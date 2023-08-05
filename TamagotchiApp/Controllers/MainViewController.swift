@@ -9,6 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    static let identifier = "MainViewController"
+    
     @IBOutlet var mainCollectionView: UICollectionView!
     
     var tamagotchi = TamagotchiInformation()
@@ -20,7 +22,6 @@ class MainViewController: UIViewController {
         configureCollectionView()
         setCollectionViewLayout()
         registerNibMainCollectionViewCell()
-        
         designView()
     }
     
@@ -53,7 +54,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let sb = UIStoryboard(name: "PopUpViewController", bundle: nil)
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else {
             return
         }

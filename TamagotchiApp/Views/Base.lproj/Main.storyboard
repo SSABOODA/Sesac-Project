@@ -293,7 +293,11 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="대장님의 다마고치" id="Ozc-RY-tjY">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="vhF-rA-fE5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="vhF-rA-fE5">
+                            <connections>
+                                <segue destination="nMc-3N-kQd" kind="show" id="iFk-uO-bTO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="riceButton" destination="Utl-tW-y9N" id="MJI-vN-iUK"/>
@@ -316,10 +320,12 @@
             </objects>
             <point key="canvasLocation" x="1065" y="709"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Setting-->
         <scene sceneID="XsC-D5-wLW">
             <objects>
-                <viewControllerPlaceholder id="nMc-3N-kQd" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Setting" id="nMc-3N-kQd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VIU-GB-slX"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Czn-Ky-lGB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1755" y="506"/>

@@ -41,6 +41,13 @@ class DetailViewController: UIViewController {
         
         designTextField(riceTextField)
         designTextField(waterTextField)
+        
+        backBarButtonItem()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureDetailView(false)
     }
  
     @IBAction func tapGestureTapped(_ sender: UITapGestureRecognizer) {
@@ -63,6 +70,17 @@ class DetailViewController: UIViewController {
         
         tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"
         checkTamagotchiLevel()
+    }
+    
+    func backBarButtonItem() {
+        let backBarButtonItem = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: self,
+            action: nil
+        )
+        backBarButtonItem.tintColor = .lightGray
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     func eatCalculator(_ textField: UITextField, _ key: String) {
@@ -119,8 +137,6 @@ class DetailViewController: UIViewController {
         if level >= 10 { level = 9 }
         let currentImageName = "\(index)-\(level)"
         userDefault.set(currentImageName, forKey: "imageName")
-        
-        print(beforelevel, level)
         beforelevel != level ? configureDetailView(true) : configureDetailView(false)
     }
     
