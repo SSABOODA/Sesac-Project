@@ -13,16 +13,15 @@ class NameSettingViewController: UIViewController {
     
     @IBOutlet var nameChangeTextField: UITextField!
     
-    var nickName: String = ""
-    
     let userDefaults = UserDefaults.standard
+    var nickName: String = ""
+    var profile = ProfileInfo()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(nickName)
-        
-        
         designTextField()
         rightBarButtonItem()
         
@@ -53,6 +52,7 @@ class NameSettingViewController: UIViewController {
         print(#function)
         guard let nickname = nameChangeTextField.text else { return }
         userDefaults.set(nickname, forKey: "nickname")
+        profile.userProfile.nickName = nickname
         nameChangeTextField.text = ""
         navigationController?.popViewController(animated: true)
     }

@@ -45,6 +45,11 @@ class DetailViewController: UIViewController {
         backBarButtonItem()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureDetailView(false)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureDetailView(false)

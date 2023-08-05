@@ -21,7 +21,7 @@ enum SettingTableViewImage: String, CaseIterable {
 
 
 class SettingViewController: UIViewController {
-
+    
     @IBOutlet var settingTableView: UITableView!
     
     let userDefaults = UserDefaults.standard
@@ -34,11 +34,15 @@ class SettingViewController: UIViewController {
         
         title = "설정"
         
-        
         backBarButtonItem()
-        
+        navigationTitleColor()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingTableView.reloadData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         settingTableView.reloadData()
@@ -53,6 +57,10 @@ class SettingViewController: UIViewController {
         )
         backBarButtonItem.tintColor = .lightGray
         self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    func navigationTitleColor() {
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
 }
 
@@ -70,14 +78,15 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.imageView?.image = UIImage(
             systemName: SettingTableViewImage.allCases[indexPath.row].rawValue
         )
-        cell.imageView?.tintColor = .lightGray
         cell.detailTextLabel?.text = (indexPath.row == 0) ? userDefaults.string(forKey: "nickname") : ""
+        
+        cell.imageView?.tintColor = .lightGray
+        cell.textLabel?.tintColor = .black
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         
         if indexPath.row == 0 { // 이름 설정하기
             let vc = storyboard?.instantiateViewController(withIdentifier: NameSettingViewController.identifier) as! NameSettingViewController
@@ -90,7 +99,53 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             vc.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(vc, animated: true)
         } else { // 데이터 초기화
-            
+            let alert = UIAlertController(
+                title: "데이터 초기화",
+                message: "정말 다시 처음부터 시작하실 건가요?",
+                preferredStyle: .alert
+            )
+                    
+            let success = UIAlertAction(title: "네", style: .default) { action in
+                print("확인 버튼이 눌렀습니다.")
+                
+                self.resetData()
+                
+                }
+            let cancel = UIAlertAction(title: "아니요", style: .cancel) { cancel in
+                print("취소 버튼이 눌렀습니다.")
+                }
+                
+            alert.addAction(cancel)
+            alert.addAction(success)
+
+            present(alert, animated: true, completion: nil)
         }
+    }
+    
+    
+    func resetData() {
+        for (key, value) in userDefaults.dictionaryRepresentation() {
+            print("\(key): \(value)")
+        }
+        
+        let removeUserDefaultsKeyList = [
+            "water",
+            "rice",
+            "riceCount",
+            "isStart",
+            "name",
+            "imageName",
+            "index",
+            "nickname",
+            "level",
+            "waterCount",
+        ]
+        
+        for key in removeUserDefaultsKeyList {
+            userDefaults.removeObject(forKey: key)
+        }
+
+        userDefaults.set(false, forKey: "isSelected")
+        
     }
 }

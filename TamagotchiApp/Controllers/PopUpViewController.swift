@@ -19,8 +19,9 @@ class PopUpViewController: UIViewController {
     @IBOutlet var buttonStackView: UIStackView!
     
     var tamagotchi: Tamagotchi?
+    let profile = ProfileInfo()
     
-    let userDefault = UserDefaults.standard
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,23 +43,39 @@ class PopUpViewController: UIViewController {
     @IBAction func startButtonClicked(_ sender: UIButton) {
 
         guard let tamagotchi else { return }
+        if tamagotchi.imageName == "noImage" {
+            notReadyTamagotchiAlert()
+            return
+        }
+        
         guard let  index = tamagotchi.imageName.first else { return }
         let currentImageName = "\(String(index))-\(tamagotchi.level)"
-        
-        userDefault.set(Int(String(index))!, forKey: "index")
-        userDefault.set("대장님", forKey: "nickname")
-        userDefault.set(currentImageName, forKey: "imageName")
-        userDefault.set(tamagotchi.name, forKey: "name")
-        userDefault.set(tamagotchi.level, forKey: "level")
-        userDefault.set(tamagotchi.rice, forKey: "rice")
-        userDefault.set(tamagotchi.water, forKey: "water")
+        let nickName = userDefaults.string(forKey: "nickname")
+        userDefaults.set(Int(String(index))!, forKey: "index")
+        userDefaults.set(nickName, forKey: "nickname")
+        userDefaults.set(currentImageName, forKey: "imageName")
+        userDefaults.set(tamagotchi.name, forKey: "name")
+        userDefaults.set(tamagotchi.level, forKey: "level")
+        userDefaults.set(tamagotchi.rice, forKey: "rice")
+        userDefaults.set(tamagotchi.water, forKey: "water")
         changeRootScene()
+    }
+    
+    func notReadyTamagotchiAlert() {
+        let alert = UIAlertController(title: "아직 준비중이에요 다음에 만나요", message: "", preferredStyle: .alert)
+                
+        let success = UIAlertAction(title: "확인", style: .default) { action in
+            print("확인 버튼이 눌렀습니다.")
+        }
+        alert.addAction(success)
+
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - 구현 함수
     
     func changeRootScene() {
-        userDefault.set(true, forKey: "isSelected")
+        userDefaults.set(true, forKey: "isSelected")
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate

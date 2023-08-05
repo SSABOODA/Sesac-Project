@@ -21,6 +21,10 @@ class MainViewController: UIViewController {
         setCollectionViewLayout()
         registerNibMainCollectionViewCell()
         designView()
+        
+        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+            print("\(key): \(value)")
+        }
     }
     
     func setTamagotchiData() {
