@@ -24,15 +24,9 @@ class DetailViewController: UIViewController {
     @IBOutlet var waterButton: UIButton!
     
     let userDefault = UserDefaults.standard
-    
     let profile = ProfileInfo()
-    let speechBubbleContentList = [
-        "레벨업 했어여~~~",
-        "감사합니다.",
-        "열심히 해보자구요",
-        "오늘 날씨가 너무 덥네요",
-        "건강 조심하세요",
-    ]
+    let tamagotchiInfo = TamagotchiInformation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -152,7 +146,7 @@ class DetailViewController: UIViewController {
         
         speechBubbleImageView.image = UIImage(named: "bubble")
         
-        speechBubbleLabel.text = diff == true ? speechBubbleContentList.randomElement()! : "안녕하세요 저는 방실방실 다마고치에여~~"
+        speechBubbleLabel.text = diff == true ? tamagotchiInfo.randomTamagotchiSpeechContent() : "안녕하세요 저는 방실방실 다마고치에여~~"
          
         guard let imageName = userDefault.string(forKey: "imageName") else { return }
         guard let name = userDefault.string(forKey: "name") else { return }
