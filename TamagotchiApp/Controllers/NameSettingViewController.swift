@@ -60,9 +60,7 @@ class NameSettingViewController: UIViewController {
     
     func designTextField() {
         nameChangeTextField.designTextField()
-        nameChangeTextField.placeholder = ""
         nameChangeTextField.textAlignment = .left
-        
         nameChangeTextField.placeholder = placeholderText
         nameChangeTextField.text = nickName
     }

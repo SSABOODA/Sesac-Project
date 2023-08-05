@@ -14,6 +14,7 @@ struct TamagotchiInformation {
         Tamagotchi(name: "반짝반짝 다마고치", imageName: "3-6", description: "저는 반짝반짝 빛나는 별 다마고치입니다. 키는 3000km 몸무게는 4000톤이에요. 성격은 불같지만 또 온순한 면이 있답니다. 열심히 키워주세요 반짝반짝 빛날겁니다.⭐️"),
     ]
     
+    
     var tamagotchiSpeechList: [String] = [
         "레벨업 했어여~~~",
         "감사합니다.",
@@ -26,6 +27,7 @@ struct TamagotchiInformation {
         "무럭무럭 크고 있는거 같아요",
     ]
     
+    // 준비중이에요 데이터 세팅
     mutating func settingEmptyTamagochiData() {
         let emptyTamagochi = Tamagotchi(name: "준비중이에요", imageName: "noImage", description: "")
         let emptyTamagochiList = Array(repeating: emptyTamagochi, count: 50)

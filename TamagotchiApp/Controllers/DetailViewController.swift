@@ -30,6 +30,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initialDetailView()
         configureDetailView(false)
         designDetailView()
         designLevelLabel()
@@ -142,24 +143,28 @@ class DetailViewController: UIViewController {
     
     func configureDetailView(_ diff: Bool) {
         print(#function)
+        
         title = "\(userDefault.string(forKey: "nickname") ?? profile.userProfile.nickName)님의 다마고치"
-        
-        speechBubbleImageView.image = UIImage(named: "bubble")
-        
-        speechBubbleLabel.text = diff == true ? tamagotchiInfo.randomTamagotchiSpeechContent() : "안녕하세요 저는 \(userDefault.string(forKey: "name") ?? "")에요~~"
-         
+        if diff { speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent() }
         
         guard let imageName = userDefault.string(forKey: "imageName") else { return }
         guard let name = userDefault.string(forKey: "name") else { return }
-        tamagotchiImageView.image = UIImage(named: imageName)
-        tamagotchiNameLabel.text = name
         
         let level = userDefault.integer(forKey: "level")
         let rice = userDefault.integer(forKey: "rice")
         let water = userDefault.integer(forKey: "water")
         
+        tamagotchiImageView.image = UIImage(named: imageName)
+        tamagotchiNameLabel.text = name
         tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"
+        
         navigationTitleColor()
+    }
+    
+    
+    func initialDetailView() {
+        speechBubbleImageView.image = UIImage(named: "bubble")
+        speechBubbleLabel.text = "안녕하세요 저는 \(userDefault.string(forKey: "name") ?? "")에요~~"
     }
     
     func navigationTitleColor() {
