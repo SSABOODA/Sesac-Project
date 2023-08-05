@@ -85,14 +85,12 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             vc.nickName = userDefaults.string(forKey: "nickname") ?? ""
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 { // 다마고치 변경하기
-//            let sb = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
-////            vc.modalPresentationStyle = .fullScreen
-//            navigationController?.pushViewController(vc, animated: true)
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+            vc.modalPresentationStyle = .fullScreen
+            navigationController?.pushViewController(vc, animated: true)
         } else { // 데이터 초기화
             
         }
     }
-    
-    
 }

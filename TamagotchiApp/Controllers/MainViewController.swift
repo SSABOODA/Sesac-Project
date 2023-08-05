@@ -9,8 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    static let identifier = "MainViewController"
-    
     @IBOutlet var mainCollectionView: UICollectionView!
     
     var tamagotchi = TamagotchiInformation()

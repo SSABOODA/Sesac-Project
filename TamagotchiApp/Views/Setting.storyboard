@@ -58,13 +58,14 @@
                             <constraint firstItem="7Y5-pJ-lLK" firstAttribute="leading" secondItem="qvZ-U6-Jkv" secondAttribute="leading" id="vnf-Lq-r3K"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="B33-bO-Dwl"/>
                     <connections>
                         <outlet property="settingTableView" destination="7Y5-pJ-lLK" id="fY3-kK-Bhy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CkD-fw-048" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="-310"/>
+            <point key="canvasLocation" x="1864.885496183206" y="-310.56338028169017"/>
         </scene>
         <!--Name Setting View Controller-->
         <scene sceneID="gJl-Ps-yXv">
@@ -109,7 +110,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="828" y="-311"/>
+            <point key="canvasLocation" x="2680.1526717557249" y="-311.26760563380282"/>
         </scene>
     </scenes>
     <resources>
