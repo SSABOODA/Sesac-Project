@@ -25,7 +25,7 @@ class NameSettingViewController: UIViewController {
         designTextField()
         rightBarButtonItem()
         
-        title = "\(userDefaults.string(forKey: "nickname") ?? "")님 이름 정하기"
+        title = "\(userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) ?? "")님 이름 정하기"
         nameChangeTextField.delegate = self
     }
     
@@ -35,7 +35,6 @@ class NameSettingViewController: UIViewController {
     }
     
     @IBAction func textFieldClicked(_ sender: UITextField) {
-//        print(#function)
     }
     
     
@@ -50,9 +49,8 @@ class NameSettingViewController: UIViewController {
     }
     
     @objc func saveButtonClicked() {
-        print(#function)
         guard let nickname = nameChangeTextField.text else { return }
-        userDefaults.set(nickname, forKey: "nickname")
+        userDefaults.set(nickname, forKey: UserDefaultsKey.nickname.rawValue)
         profile.userProfile.nickName = nickname
         nameChangeTextField.text = ""
         navigationController?.popViewController(animated: true)

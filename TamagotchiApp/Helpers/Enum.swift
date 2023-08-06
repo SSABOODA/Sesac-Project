@@ -19,7 +19,6 @@ enum SettingTableViewImage: String, CaseIterable {
     case resetData = "arrow.clockwise"
 }
 
-
 enum DataTransitionType {
     case normal
     case change

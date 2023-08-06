@@ -58,18 +58,7 @@ class PopUpViewController: UIViewController {
         }
         
         // popup view 데이터 세팅
-//        guard let index = tamagotchi.imageName.first else { return }
-        let currentImageName = "\(String(index))-\(tamagotchi.level)"
-        let nickName = userDefaults.string(forKey: "nickname") ?? profile.userProfile.nickName
-        userDefaults.set(nickName, forKey: "nickname") // profile nickname
-        
-        userDefaults.set(Int(String(index))!, forKey: "index")
-        userDefaults.set(currentImageName, forKey: "imageName\(index)")
-        userDefaults.set(tamagotchi.name, forKey: "name\(index)")
-        userDefaults.set(tamagotchi.level, forKey: "level")
-        userDefaults.set(tamagotchi.rice, forKey: "rice")
-        userDefaults.set(tamagotchi.water, forKey: "water")
-        
+        userDfaultDatSetting(tamagotchi)
         changeRootScene()
     }
     
@@ -79,16 +68,7 @@ class PopUpViewController: UIViewController {
         guard let index = tamagotchi.imageName.first else { return }
         self.index = Int(String(index))!
         
-        let currentImageName = "\(String(index))-\(tamagotchi.level)"
-        let nickName = userDefaults.string(forKey: "nickname") ?? profile.userProfile.nickName
-        userDefaults.set(nickName, forKey: "nickname") // profile nickname
-        
-        userDefaults.set(Int(String(index))!, forKey: "index")
-        userDefaults.set(currentImageName, forKey: "imageName\(index)")
-        userDefaults.set(tamagotchi.name, forKey: "name\(index)")
-        userDefaults.set(tamagotchi.level, forKey: "level")
-        userDefaults.set(tamagotchi.rice, forKey: "rice")
-        userDefaults.set(tamagotchi.water, forKey: "water")
+        userDfaultDatSetting(tamagotchi)
     }
     
     func keepTamagotchiData() {
@@ -112,6 +92,19 @@ class PopUpViewController: UIViewController {
                 tamagotchi!.water = 0
             }
         }
+    }
+    
+    func userDfaultDatSetting(_ tamagotchi: Tamagotchi) {
+        let currentImageName = "\(String(index))-\(tamagotchi.level)"
+        let nickName = userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName
+        userDefaults.set(nickName, forKey: UserDefaultsKey.nickname.rawValue) // profile nickname
+        
+        userDefaults.set(Int(String(index))!, forKey: UserDefaultsKey.index.rawValue)
+        userDefaults.set(currentImageName, forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)")
+        userDefaults.set(tamagotchi.name, forKey: "\(UserDefaultsKey.name.rawValue)\(index)")
+        userDefaults.set(tamagotchi.level, forKey: UserDefaultsKey.level.rawValue)
+        userDefaults.set(tamagotchi.rice, forKey: UserDefaultsKey.rice.rawValue)
+        userDefaults.set(tamagotchi.water, forKey: UserDefaultsKey.water.rawValue)
     }
     
     // 준비중인 다마고치 클릭 시 '준비 중' alert modal 띄우기

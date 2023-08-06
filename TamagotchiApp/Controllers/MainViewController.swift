@@ -24,10 +24,6 @@ class MainViewController: UIViewController {
         setCollectionViewLayout()
         registerNibMainCollectionViewCell()
         designView()
-        
-//        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-//            print("\(key): \(value)")
-//        }
     }
     
     // 준비 중(noImage)인 데이터 세팅

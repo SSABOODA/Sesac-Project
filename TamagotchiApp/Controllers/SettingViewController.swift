@@ -18,9 +18,7 @@ class SettingViewController: UIViewController {
         
         title = "설정"
         
-        settingTableView.delegate = self
-        settingTableView.dataSource = self
-        
+        setUpTableView()
         backBarButtonItem()
         navigationTitleColor()
     }
@@ -33,6 +31,11 @@ class SettingViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         settingTableView.reloadData()
+    }
+    
+    func setUpTableView() {
+        settingTableView.delegate = self
+        settingTableView.dataSource = self
     }
     
     func backBarButtonItem() {
@@ -65,7 +68,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.imageView?.image = UIImage(
             systemName: SettingTableViewImage.allCases[indexPath.row].rawValue
         )
-        cell.detailTextLabel?.text = (indexPath.row == 0) ? userDefaults.string(forKey: "nickname") : ""
+        cell.detailTextLabel?.text = (indexPath.row == 0) ? userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) : ""
         
         cell.imageView?.tintColor = .lightGray
         
@@ -110,10 +113,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func resetData() {
-//        for (key, value) in userDefaults.dictionaryRepresentation() {
-//            print("\(key): \(value)")
-//        }
-        
         let removeUserDefaultsKeyList = UserDefaultsKey.allCases.map { $0.rawValue }
         
         for index in (1...TamagotchiInformation().tamagotchiList.count) {

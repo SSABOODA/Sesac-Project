@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
     let profile = ProfileInfo()
     let tamagotchiInfo = TamagotchiInformation()
     
-    var index: Int = UserDefaults.standard.integer(forKey: "index")
+    var index: Int = UserDefaults.standard.integer(forKey: UserDefaultsKey.index.rawValue)
     
     let color = ColorData()
     
@@ -91,64 +91,60 @@ class DetailViewController: UIViewController {
   
     // 레벨 계산
     func checkTamagotchiLevel() {
-        let riceCount = userDefault.integer(forKey: "rice")
-        let waterCount = userDefault.integer(forKey: "water")
+        let riceCount = userDefault.integer(forKey: UserDefaultsKey.rice.rawValue)
+        let waterCount = userDefault.integer(forKey: UserDefaultsKey.water.rawValue)
         
         let result = (Double(riceCount) / 5.0) + (Double(waterCount) / 2.0)
-        print("result: \(result)")
+        let beforelevel = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
         
-        let beforelevel = userDefault.integer(forKey: "level")
-        
+        var letUpNum: Int?
         switch Int(result) {
         case 0..<10:
-            userDefault.set(1, forKey: "level")
+            letUpNum = 1
         case 10..<20:
-            userDefault.set(1, forKey: "level")
+            letUpNum = 1
         case 20..<30:
-            userDefault.set(2, forKey: "level")
+            letUpNum = 2
         case 30..<40:
-            userDefault.set(3, forKey: "level")
+            letUpNum = 3
         case 40..<50:
-            userDefault.set(4, forKey: "level")
+            letUpNum = 4
         case 50..<60:
-            userDefault.set(5, forKey: "level")
+            letUpNum = 5
         case 60..<70:
-            userDefault.set(6, forKey: "level")
+            letUpNum = 6
         case 70..<80:
-            userDefault.set(7, forKey: "level")
+            letUpNum = 7
         case 80..<90:
-            userDefault.set(8, forKey: "level")
+            letUpNum = 8
         case 90..<100:
-            userDefault.set(9, forKey: "level")
+            letUpNum = 9
         case 100...:
-            userDefault.set(10, forKey: "level")
+            letUpNum = 10
         default:
-            userDefault.set(10, forKey: "level")
+            letUpNum = 10
         }
         
-        index = userDefault.integer(forKey: "index")
-        var level = userDefault.integer(forKey: "level")
+        userDefault.set(letUpNum, forKey: UserDefaultsKey.level.rawValue)
+        index = userDefault.integer(forKey: UserDefaultsKey.index.rawValue)
+        var level = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
         if level >= 10 { level = 9 }
         let currentImageName = "\(index)-\(level)"
-        userDefault.set(currentImageName, forKey: "imageName\(index)")
+        userDefault.set(currentImageName, forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)")
         beforelevel != level ? configureDetailView(true) : configureDetailView(false)
     }
     
     // detail view 구성
     func configureDetailView(_ diff: Bool) {
-        print(#function)
-        
-        title = "\(userDefault.string(forKey: "nickname") ?? profile.userProfile.nickName)님의 다마고치"
+        title = "\(userDefault.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName)님의 다마고치"
         if diff { speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent() }
         
-        print("index: \(index)")
+        guard let imageName = userDefault.string(forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)") else { return }
+        guard let name = userDefault.string(forKey: "\(UserDefaultsKey.name.rawValue)\(index)") else { return }
         
-        guard let imageName = userDefault.string(forKey: "imageName\(index)") else { return }
-        guard let name = userDefault.string(forKey: "name\(index)") else { return }
-        
-        let level = userDefault.integer(forKey: "level")
-        let rice = userDefault.integer(forKey: "rice")
-        let water = userDefault.integer(forKey: "water")
+        let level = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
+        let rice = userDefault.integer(forKey: UserDefaultsKey.rice.rawValue)
+        let water = userDefault.integer(forKey: UserDefaultsKey.water.rawValue)
         
         tamagotchiImageView.image = UIImage(named: imageName)
         tamagotchiNameLabel.text = name
@@ -160,7 +156,7 @@ class DetailViewController: UIViewController {
     
     func initialDetailView() {
         speechBubbleImageView.image = UIImage(named: "bubble")
-        speechBubbleLabel.text = "안녕하세요 저는 \(userDefault.string(forKey: "name\(index)") ?? "")에요~~"
+        speechBubbleLabel.text = "안녕하세요 저는 \(userDefault.string(forKey: "\(UserDefaultsKey.name.rawValue)\(index)") ?? "")에요~~"
     }
     
     func backBarButtonItem() {
@@ -216,12 +212,6 @@ class DetailViewController: UIViewController {
 
 
 extension DetailViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        print(#function)
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-//        print(#function)
-    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if Int(string) != nil || string == "" {
