@@ -25,3 +25,19 @@ enum DataTransitionType {
     case change
     case reset
 }
+
+enum UserDefaultsKey: String, CaseIterable {
+    case water = "water"
+    case rice = "rice"
+    case index = "index"
+    case nickname = "nickname"
+    case level = "level"
+    case imageName = "imageName"
+    case name = "name"
+    case isSelected = "isSelected"
+}
+
+enum StoryboardName: String {
+    case main = "Main"
+    case setting = "Setting"
+}

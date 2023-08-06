@@ -29,6 +29,8 @@ class DetailViewController: UIViewController {
     
     var index: Int = UserDefaults.standard.integer(forKey: "index")
     
+    let color = ColorData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -193,36 +195,22 @@ class DetailViewController: UIViewController {
     }
     
     func designTextField(_ textField: UITextField) {
-        textField.borderStyle = .none
-        let border = CALayer()
-        let width = CGFloat(0.5)
-        border.frame = CGRect(
-            x: 0,
-            y: textField.frame.size.height-width,
-            width: textField.frame.size.width,
-            height: textField.frame.size.height
-        )
-        border.backgroundColor = UIColor.systemGray2.cgColor
-        textField.layer.addSublayer(border)
-        textField.textAlignment = .center
-        textField.textColor = UIColor.systemGray2
-        textField.layer.masksToBounds = true
-        
+        textField.designTextField()
         textField.delegate = self
     }
     
     func designButton(_ button: UIButton) {
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-        button.layer.borderColor = UIColor.systemGray2.cgColor
+//        button.layer.borderColor = UIColor.systemGray2.cgColor
+        button.layer.borderColor = color.fontColor.cgColor
         button.layer.borderWidth = 2
-        let color = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        button.setTitleColor(color, for: .normal)
-        button.tintColor = color
+        button.setTitleColor(color.fontColor, for: .normal)
+        button.tintColor = color.fontColor
     }
     
     func designRightBarButtonItem() {
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        self.navigationItem.rightBarButtonItem?.tintColor = color.fontColor
     }
 }
 

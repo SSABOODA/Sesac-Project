@@ -83,7 +83,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             vc.nickName = userDefaults.string(forKey: "nickname") ?? ""
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 { // 다마고치 변경하기
-            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
             vc.dataTransitionType = .change
             vc.modalPresentationStyle = .fullScreen
@@ -114,31 +114,25 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 //            print("\(key): \(value)")
 //        }
         
-        let removeUserDefaultsKeyList = [
-            "water",
-            "rice",
-            "index",
-            "nickname",
-            "level",
-        ]
+        let removeUserDefaultsKeyList = UserDefaultsKey.allCases.map { $0.rawValue }
         
         for index in (1...TamagotchiInformation().tamagotchiList.count) {
-            userDefaults.removeObject(forKey: "imageName\(index)")
-            userDefaults.removeObject(forKey: "name\(index)")
+            userDefaults.removeObject(forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)")
+            userDefaults.removeObject(forKey: "\(UserDefaultsKey.name.rawValue)\(index)")
         }
         
         for key in removeUserDefaultsKeyList {
             userDefaults.removeObject(forKey: key)
         }
 
-        userDefaults.set(false, forKey: "isSelected")
+        userDefaults.set(false, forKey: UserDefaultsKey.isSelected.rawValue)
         changeRootScene()
     }
     
     func changeRootScene() {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
         vc.dataTransitionType = .reset
         let nav = UINavigationController(rootViewController: vc)

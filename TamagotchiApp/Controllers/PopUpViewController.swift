@@ -27,6 +27,8 @@ class PopUpViewController: UIViewController {
     
     var index: Int = 0
     
+    let color = ColorData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,15 +37,6 @@ class PopUpViewController: UIViewController {
         
         indexSetting()
         keepTamagotchiData()
-        
-        print("popup Index: \(index)")
-        
-        
-        print(userDefaults.string(forKey: "imageName\(index)")!)
-        print(userDefaults.string(forKey: "name\(index)")!)
-        print(userDefaults.integer(forKey: "level"))
-        print(userDefaults.integer(forKey: "rice"))
-        print(userDefaults.integer(forKey: "water"))
 
     }
     
@@ -86,13 +79,9 @@ class PopUpViewController: UIViewController {
         guard let index = tamagotchi.imageName.first else { return }
         self.index = Int(String(index))!
         
-        print("tamagotchi: \(tamagotchi)")
-        
         let currentImageName = "\(String(index))-\(tamagotchi.level)"
         let nickName = userDefaults.string(forKey: "nickname") ?? profile.userProfile.nickName
         userDefaults.set(nickName, forKey: "nickname") // profile nickname
-        
-        print("currentImageName: \(currentImageName)")
         
         userDefaults.set(Int(String(index))!, forKey: "index")
         userDefaults.set(currentImageName, forKey: "imageName\(index)")
@@ -115,7 +104,13 @@ class PopUpViewController: UIViewController {
                 tamagotchi!.water = userDefaults.integer(forKey: "water")
             }
         case .reset:
-            print("")
+            if tamagotchi != nil {
+                tamagotchi!.imageName = userDefaults.string(forKey: "imageName\(index)")!
+                tamagotchi!.name = userDefaults.string(forKey: "name\(index)")!
+                tamagotchi!.level = 1
+                tamagotchi!.rice = 0
+                tamagotchi!.water = 0
+            }
         }
     }
     
@@ -135,7 +130,7 @@ class PopUpViewController: UIViewController {
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
         let nav = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.rootViewController = nav
@@ -165,7 +160,7 @@ class PopUpViewController: UIViewController {
         // button design
         let buttonList: [UIButton] = [popUpCancelButton, popUpStartButton]
         buttonList.forEach { item in
-            item.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+            item.tintColor = color.fontColor
         }
         popUpCancelButton.backgroundColor = .systemGray6
         

@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     var tamagotchi = TamagotchiInformation()
     let userDefaults = UserDefaults.standard
     var dataTransitionType: DataTransitionType = .normal
+    let color = ColorData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +66,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
 
         var row = tamagotchi.tamagotchiList[indexPath.row]
-        userDefaults.set(1, forKey: "level")
         row.rice = userDefaults.integer(forKey: "rice")
         row.water = userDefaults.integer(forKey: "water")
         row.level = userDefaults.integer(forKey: "level")
@@ -85,8 +85,8 @@ extension MainViewController {
     static let identifier = "MainViewController"
     
     func designView() {
-        view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
-        mainCollectionView.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        view.backgroundColor = color.backgroundColor
+        mainCollectionView.backgroundColor = color.backgroundColor
     }
     
     // collectionView delegate, dataSource
