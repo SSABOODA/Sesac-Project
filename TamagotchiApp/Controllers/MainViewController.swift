@@ -63,16 +63,19 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let vc = storyboard?.instantiateViewController(withIdentifier: PopUpViewController.identifier) as? PopUpViewController else {
             return
         }
+
+        var row = tamagotchi.tamagotchiList[indexPath.row]
+        userDefaults.set(1, forKey: "level")
+        row.rice = userDefaults.integer(forKey: "rice")
+        row.water = userDefaults.integer(forKey: "water")
+        row.level = userDefaults.integer(forKey: "level")
         
-        // MARK: - 다마고치 변경하기에서 다시 메인 왔을 때 초기값으로 세팅되서 다 초기화 됨 이거 고쳐야함.
-        
-        vc.tamagotchi = tamagotchi.tamagotchiList[indexPath.row]
+        vc.tamagotchi = row
         vc.dataTransitionType = dataTransitionType
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
 }
-
 
 // MARK: - MainViewController Extension
 

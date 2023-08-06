@@ -117,12 +117,15 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let removeUserDefaultsKeyList = [
             "water",
             "rice",
-            "name",
-            "imageName",
             "index",
             "nickname",
             "level",
         ]
+        
+        for index in (1...TamagotchiInformation().tamagotchiList.count) {
+            userDefaults.removeObject(forKey: "imageName\(index)")
+            userDefaults.removeObject(forKey: "name\(index)")
+        }
         
         for key in removeUserDefaultsKeyList {
             userDefaults.removeObject(forKey: key)

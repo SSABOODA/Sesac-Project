@@ -25,13 +25,26 @@ class PopUpViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     var dataTransitionType: DataTransitionType = .normal
     
+    var index: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configurePopUpView()
         designPopUpView()
+        
+        indexSetting()
         keepTamagotchiData()
         
+        print("popup Index: \(index)")
+        
+        
+        print(userDefaults.string(forKey: "imageName\(index)")!)
+        print(userDefaults.string(forKey: "name\(index)")!)
+        print(userDefaults.integer(forKey: "level"))
+        print(userDefaults.integer(forKey: "rice"))
+        print(userDefaults.integer(forKey: "water"))
+
     }
     
     @IBAction func tapGeustureTapped(_ sender: UITapGestureRecognizer) {
@@ -52,40 +65,51 @@ class PopUpViewController: UIViewController {
         }
         
         // popup view 데이터 세팅
-        guard let  index = tamagotchi.imageName.first else { return }
+//        guard let index = tamagotchi.imageName.first else { return }
         let currentImageName = "\(String(index))-\(tamagotchi.level)"
         let nickName = userDefaults.string(forKey: "nickname") ?? profile.userProfile.nickName
         userDefaults.set(nickName, forKey: "nickname") // profile nickname
         
         userDefaults.set(Int(String(index))!, forKey: "index")
-        userDefaults.set(currentImageName, forKey: "imageName")
-        userDefaults.set(tamagotchi.name, forKey: "name")
+        userDefaults.set(currentImageName, forKey: "imageName\(index)")
+        userDefaults.set(tamagotchi.name, forKey: "name\(index)")
         userDefaults.set(tamagotchi.level, forKey: "level")
         userDefaults.set(tamagotchi.rice, forKey: "rice")
         userDefaults.set(tamagotchi.water, forKey: "water")
-        
-        
-//        userDefaults.set(Int(String(index))!, forKey: "index\(index)")
-//        userDefaults.set(currentImageName, forKey: "imageName\(index)")
-//        userDefaults.set(tamagotchi.name, forKey: "name\(index)")
-//        userDefaults.set(tamagotchi.level, forKey: "level\(index)")
-//        userDefaults.set(tamagotchi.rice, forKey: "rice\(index)")
-//        userDefaults.set(tamagotchi.water, forKey: "water\(index)")
         
         changeRootScene()
     }
     
     // MARK: - 구현 함수
+    func indexSetting() {
+        guard let tamagotchi else { return }
+        guard let index = tamagotchi.imageName.first else { return }
+        self.index = Int(String(index))!
+        
+        print("tamagotchi: \(tamagotchi)")
+        
+        let currentImageName = "\(String(index))-\(tamagotchi.level)"
+        let nickName = userDefaults.string(forKey: "nickname") ?? profile.userProfile.nickName
+        userDefaults.set(nickName, forKey: "nickname") // profile nickname
+        
+        print("currentImageName: \(currentImageName)")
+        
+        userDefaults.set(Int(String(index))!, forKey: "index")
+        userDefaults.set(currentImageName, forKey: "imageName\(index)")
+        userDefaults.set(tamagotchi.name, forKey: "name\(index)")
+        userDefaults.set(tamagotchi.level, forKey: "level")
+        userDefaults.set(tamagotchi.rice, forKey: "rice")
+        userDefaults.set(tamagotchi.water, forKey: "water")
+    }
     
     func keepTamagotchiData() {
-        
         switch dataTransitionType {
         case .normal:
             print("")
         case .change:
             if tamagotchi != nil {
-                tamagotchi!.imageName = userDefaults.string(forKey: "imageName")!
-                tamagotchi!.name = userDefaults.string(forKey: "name")!
+                tamagotchi!.imageName = userDefaults.string(forKey: "imageName\(index)")!
+                tamagotchi!.name = userDefaults.string(forKey: "name\(index)")!
                 tamagotchi!.level = userDefaults.integer(forKey: "level")
                 tamagotchi!.rice = userDefaults.integer(forKey: "rice")
                 tamagotchi!.water = userDefaults.integer(forKey: "water")
@@ -93,8 +117,6 @@ class PopUpViewController: UIViewController {
         case .reset:
             print("")
         }
-        
-        
     }
     
     // 준비중인 다마고치 클릭 시 '준비 중' alert modal 띄우기

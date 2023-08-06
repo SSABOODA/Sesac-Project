@@ -27,6 +27,8 @@ class DetailViewController: UIViewController {
     let profile = ProfileInfo()
     let tamagotchiInfo = TamagotchiInformation()
     
+    var index: Int = UserDefaults.standard.integer(forKey: "index")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,7 +65,6 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func eatButtonClicked(_ sender: UIButton) {
-        print("sender.tag: \(sender.tag)")
         sender.tag == 0 ? eatCalculator(riceTextField, "rice") : eatCalculator(waterTextField, "water")
         let level = userDefault.integer(forKey: "level")
         let rice = userDefault.integer(forKey: "rice")
@@ -123,11 +124,11 @@ class DetailViewController: UIViewController {
             userDefault.set(10, forKey: "level")
         }
         
-        let index = userDefault.integer(forKey: "index")
+        index = userDefault.integer(forKey: "index")
         var level = userDefault.integer(forKey: "level")
         if level >= 10 { level = 9 }
         let currentImageName = "\(index)-\(level)"
-        userDefault.set(currentImageName, forKey: "imageName")
+        userDefault.set(currentImageName, forKey: "imageName\(index)")
         beforelevel != level ? configureDetailView(true) : configureDetailView(false)
     }
     
@@ -138,8 +139,10 @@ class DetailViewController: UIViewController {
         title = "\(userDefault.string(forKey: "nickname") ?? profile.userProfile.nickName)님의 다마고치"
         if diff { speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent() }
         
-        guard let imageName = userDefault.string(forKey: "imageName") else { return }
-        guard let name = userDefault.string(forKey: "name") else { return }
+        print("index: \(index)")
+        
+        guard let imageName = userDefault.string(forKey: "imageName\(index)") else { return }
+        guard let name = userDefault.string(forKey: "name\(index)") else { return }
         
         let level = userDefault.integer(forKey: "level")
         let rice = userDefault.integer(forKey: "rice")
@@ -155,7 +158,7 @@ class DetailViewController: UIViewController {
     
     func initialDetailView() {
         speechBubbleImageView.image = UIImage(named: "bubble")
-        speechBubbleLabel.text = "안녕하세요 저는 \(userDefault.string(forKey: "name") ?? "")에요~~"
+        speechBubbleLabel.text = "안녕하세요 저는 \(userDefault.string(forKey: "name\(index)") ?? "")에요~~"
     }
     
     func backBarButtonItem() {
