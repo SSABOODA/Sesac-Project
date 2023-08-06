@@ -43,6 +43,9 @@ class DetailViewController: UIViewController {
         designTextField(riceTextField)
         designTextField(waterTextField)
         backBarButtonItem()
+        
+        print(userDefault.string(forKey: "imageName"))
+        print(userDefault.integer(forKey: "level"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,10 +70,10 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func eatButtonClicked(_ sender: UIButton) {
-        sender.tag == 0 ? eatCalculator(riceTextField, "rice") : eatCalculator(waterTextField, "water")
-        let level = userDefault.integer(forKey: "level")
-        let rice = userDefault.integer(forKey: "rice")
-        let water = userDefault.integer(forKey: "water")
+        sender.tag == 0 ? eatCalculator(riceTextField, UserDefaultsKey.rice.rawValue) : eatCalculator(waterTextField, UserDefaultsKey.water.rawValue)
+        let level = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
+        let rice = userDefault.integer(forKey: UserDefaultsKey.rice.rawValue)
+        let water = userDefault.integer(forKey: UserDefaultsKey.water.rawValue)
         
         tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"
         checkTamagotchiLevel()
@@ -139,12 +142,12 @@ class DetailViewController: UIViewController {
         title = "\(userDefault.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName)님의 다마고치"
         if diff { speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent() }
         
-        guard let imageName = userDefault.string(forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)") else { return }
-        guard let name = userDefault.string(forKey: "\(UserDefaultsKey.name.rawValue)\(index)") else { return }
-        
         let level = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
         let rice = userDefault.integer(forKey: UserDefaultsKey.rice.rawValue)
         let water = userDefault.integer(forKey: UserDefaultsKey.water.rawValue)
+        
+        guard let imageName = userDefault.string(forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)") else { return }
+        guard let name = userDefault.string(forKey: "\(UserDefaultsKey.name.rawValue)\(index)") else { return }
         
         tamagotchiImageView.image = UIImage(named: imageName)
         tamagotchiNameLabel.text = name

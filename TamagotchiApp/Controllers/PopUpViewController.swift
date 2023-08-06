@@ -95,7 +95,8 @@ class PopUpViewController: UIViewController {
     }
     
     func userDfaultDatSetting(_ tamagotchi: Tamagotchi) {
-        let currentImageName = "\(String(index))-\(tamagotchi.level)"
+        let level = tamagotchi.level >= 10 ? 9 : tamagotchi.level
+        let currentImageName = "\(String(index))-\(level)"
         let nickName = userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName
         userDefaults.set(nickName, forKey: UserDefaultsKey.nickname.rawValue) // profile nickname
         
