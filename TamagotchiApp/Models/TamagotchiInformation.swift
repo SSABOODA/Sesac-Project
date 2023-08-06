@@ -39,20 +39,4 @@ struct TamagotchiInformation {
         ]
         return tamagotchiSpeechList.randomElement()!
     }
-    
-//    func updateNickname() {
-//        TamagotchiInformation.nickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) ?? ProfileInfo().userProfile.nickName
-//    }
-    
-    
-//    mutating func changeTamagotchiImageName(_ name: String) {
-//        for (index, item) in tamagotchiList.enumerated() {
-//            if item.name == name {
-//                if let firstNum = Int(item.imageName.split(separator: "-").first!) {
-//                    tamagotchiList[index].imageName = "\(firstNum)-1"
-//                }
-//            }
-//        }
-//    }
-    
 }
