@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
     
     let userDefault = UserDefaults.standard
     let profile = ProfileInfo()
-    let tamagotchiInfo = TamagotchiInformation()
+    var tamagotchiInfo = TamagotchiInformation()
     var index: Int = UserDefaults.standard.integer(forKey: UserDefaultsKey.index.rawValue)
     let color = ColorData()
     
@@ -137,7 +137,8 @@ class DetailViewController: UIViewController {
         title = "\(userDefault.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName)님의 다마고치"
         if diff {
             guard let nickname = userDefault.string(forKey: UserDefaultsKey.nickname.rawValue) else { return }
-            TamagotchiInformation.nickname = nickname
+            tamagotchiInfo.tamagotchiSpeechList.append("\(nickname)님 오늘 과제하셨어요?")
+            tamagotchiInfo.tamagotchiSpeechList.append("\(nickname)님 오늘 기분은 어때요?")
             speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent()
         }
         

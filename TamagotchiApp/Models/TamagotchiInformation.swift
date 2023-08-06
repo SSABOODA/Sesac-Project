@@ -14,16 +14,12 @@ struct TamagotchiInformation {
         Tamagotchi(name: "반짝반짝 다마고치", imageName: "3-6", description: "저는 반짝반짝 빛나는 별 다마고치입니다. 키는 3000km 몸무게는 4000톤이에요. 성격은 불같지만 또 온순한 면이 있답니다. 열심히 키워주세요 반짝반짝 빛날겁니다 ⭐️"),
     ]
     
-    static var nickname = UserDefaults.standard.string(forKey: "nickname") ?? ProfileInfo().userProfile.nickName
-    
     var tamagotchiSpeechList: [String] = [
         "레벨업 했어여~~~",
         "감사합니다.",
         "열심히 해보자구요",
         "오늘 날씨가 너무 덥네요",
         "건강 조심하세요",
-        "\(TamagotchiInformation.nickname)님 오늘 과제하셨어요?",
-        "\(TamagotchiInformation.nickname)님 오늘 기분은 어때요?",
         "iOS는 재밌는거 같아요! 그렇죠?",
         "이번 과제 힘들죠? 좀만 힘내요ㅎ",
         "무럭무럭 크고 있는거 같아요",
