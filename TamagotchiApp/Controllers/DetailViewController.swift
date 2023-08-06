@@ -26,9 +26,7 @@ class DetailViewController: UIViewController {
     let userDefault = UserDefaults.standard
     let profile = ProfileInfo()
     let tamagotchiInfo = TamagotchiInformation()
-    
     var index: Int = UserDefaults.standard.integer(forKey: UserDefaultsKey.index.rawValue)
-    
     let color = ColorData()
     
     override func viewDidLoad() {
@@ -43,9 +41,6 @@ class DetailViewController: UIViewController {
         designTextField(riceTextField)
         designTextField(waterTextField)
         backBarButtonItem()
-        
-        print(userDefault.string(forKey: "imageName"))
-        print(userDefault.integer(forKey: "level"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,7 +135,11 @@ class DetailViewController: UIViewController {
     // detail view 구성
     func configureDetailView(_ diff: Bool) {
         title = "\(userDefault.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName)님의 다마고치"
-        if diff { speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent() }
+        if diff {
+            guard let nickname = userDefault.string(forKey: UserDefaultsKey.nickname.rawValue) else { return }
+            TamagotchiInformation.nickname = nickname
+            speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent()
+        }
         
         let level = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
         let rice = userDefault.integer(forKey: UserDefaultsKey.rice.rawValue)
@@ -174,7 +173,7 @@ class DetailViewController: UIViewController {
     }
     
     func navigationTitleColor() {
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color.fontColor]
     }
     
     func designDetailView() {
@@ -201,7 +200,6 @@ class DetailViewController: UIViewController {
     func designButton(_ button: UIButton) {
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-//        button.layer.borderColor = UIColor.systemGray2.cgColor
         button.layer.borderColor = color.fontColor.cgColor
         button.layer.borderWidth = 2
         button.setTitleColor(color.fontColor, for: .normal)
