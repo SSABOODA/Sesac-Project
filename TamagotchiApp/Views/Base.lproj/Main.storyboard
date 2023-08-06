@@ -214,7 +214,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="밥먹기">
-                                            <imageReference key="image" image="drop.circle" catalog="system" symbolScale="medium"/>
+                                            <imageReference key="image" image="leaf.circle" catalog="system" symbolScale="medium"/>
                                         </state>
                                         <connections>
                                             <action selector="eatButtonClicked:" destination="7fh-2u-u7d" eventType="touchUpInside" id="kc8-FC-QOq"/>
@@ -242,7 +242,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="물먹기">
-                                            <imageReference key="image" image="leaf.circle" catalog="system" symbolScale="medium"/>
+                                            <imageReference key="image" image="drop.circle" catalog="system" symbolScale="medium"/>
                                         </state>
                                         <connections>
                                             <action selector="eatButtonClicked:" destination="7fh-2u-u7d" eventType="touchUpInside" id="XdK-FS-B0q"/>
