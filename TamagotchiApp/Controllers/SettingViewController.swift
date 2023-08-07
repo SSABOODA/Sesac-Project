@@ -16,11 +16,13 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "설정"
-        
         setUpTableView()
+        
         backBarButtonItem()
         navigationTitleColor()
+        navigationBarColor()
+        navigationTitle()
+        
         designSettingView()
     }
     
@@ -55,6 +57,17 @@ class SettingViewController: UIViewController {
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
+    func navigationTitle() {
+        title = "설정"
+    }
+    
+    func navigationBarColor() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = ColorData().backgroundColor
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+    }
+    
     func navigationTitleColor() {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
@@ -73,9 +86,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         
         cell.textLabel?.text = SettingTableViewTiTle.allCases[indexPath.row].rawValue
-        cell.imageView?.image = UIImage(
-            systemName: SettingTableViewImage.allCases[indexPath.row].rawValue
-        )
+        cell.imageView?.image = UIImage(systemName: SettingTableViewImage.allCases[indexPath.row].rawValue)
         cell.detailTextLabel?.text = (indexPath.row == 0) ? userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) : ""
         
         cell.imageView?.tintColor = .lightGray
