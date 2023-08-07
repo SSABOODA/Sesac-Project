@@ -17,8 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let isSelected = UserDefaults.standard.bool(forKey: UserDefaultsKey.isSelected.rawValue)
         
-        print("isSelected: \(isSelected)")
-        
         if !isSelected {
             let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
             let vc = sb.instantiateViewController(

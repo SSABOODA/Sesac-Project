@@ -24,9 +24,7 @@ class PopUpViewController: UIViewController {
     let profile = ProfileInfo()
     let userDefaults = UserDefaults.standard
     var dataTransitionType: DataTransitionType = .normal
-    
     var index: Int = 0
-    
     let color = ColorData()
     
     override func viewDidLoad() {
@@ -37,8 +35,6 @@ class PopUpViewController: UIViewController {
         
         indexSetting()
         keepTamagotchiData()
-        
-        print("dataTransitionType: \(dataTransitionType)")
 
     }
     
@@ -76,29 +72,21 @@ class PopUpViewController: UIViewController {
     func keepTamagotchiData() {
         switch dataTransitionType {
         case .normal:
-            if tamagotchi != nil {
-                tamagotchi!.imageName = userDefaults.string(forKey: "imageName\(index)")!
-                tamagotchi!.name = userDefaults.string(forKey: "name\(index)")!
-                tamagotchi!.level = 1
-                tamagotchi!.rice = 0
-                tamagotchi!.water = 0
-            }
+            transitionDataSetting(false)
         case .change:
-            if tamagotchi != nil {
-                tamagotchi!.imageName = userDefaults.string(forKey: "imageName\(index)")!
-                tamagotchi!.name = userDefaults.string(forKey: "name\(index)")!
-                tamagotchi!.level = userDefaults.integer(forKey: "level")
-                tamagotchi!.rice = userDefaults.integer(forKey: "rice")
-                tamagotchi!.water = userDefaults.integer(forKey: "water")
-            }
+            transitionDataSetting(true)
         case .reset:
-            if tamagotchi != nil {
-                tamagotchi!.imageName = userDefaults.string(forKey: "imageName\(index)")!
-                tamagotchi!.name = userDefaults.string(forKey: "name\(index)")!
-                tamagotchi!.level = 1
-                tamagotchi!.rice = 0
-                tamagotchi!.water = 0
-            }
+            transitionDataSetting(false)
+        }
+    }
+    
+    func transitionDataSetting(_ isChange: Bool) {
+        if tamagotchi != nil {
+            tamagotchi!.imageName = userDefaults.string(forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)")!
+            tamagotchi!.name = userDefaults.string(forKey: "\(UserDefaultsKey.name.rawValue)\(index)")!
+            tamagotchi!.level = isChange == true ? userDefaults.integer(forKey: UserDefaultsKey.level.rawValue) : 1
+            tamagotchi!.rice = isChange == true ? userDefaults.integer(forKey: UserDefaultsKey.rice.rawValue) : 0
+            tamagotchi!.water = isChange == true ? userDefaults.integer(forKey: UserDefaultsKey.water.rawValue) : 0
         }
     }
     
