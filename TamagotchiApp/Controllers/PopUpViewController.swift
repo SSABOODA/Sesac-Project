@@ -56,19 +56,20 @@ class PopUpViewController: UIViewController {
         }
         
         // popup view 데이터 세팅
-        userDfaultDatSetting(tamagotchi)
+        userDefaultDataSetting(tamagotchi)
         changeRootScene()
     }
     
     // MARK: - 구현 함수
+    
     func indexSetting() {
         guard let tamagotchi else { return }
         guard let index = tamagotchi.imageName.first else { return }
         self.index = Int(String(index))!
-        
-        userDfaultDatSetting(tamagotchi)
+        userDefaultDataSetting(tamagotchi)
     }
     
+    // 설정에서 다마치고치 변경, 데이터 초기화 상황에 따라 데이터 초기값 설정 함수
     func keepTamagotchiData() {
         switch dataTransitionType {
         case .normal:
@@ -90,7 +91,8 @@ class PopUpViewController: UIViewController {
         }
     }
     
-    func userDfaultDatSetting(_ tamagotchi: Tamagotchi) {
+    // 다마고치 데이터 userDefaults 저장
+    func userDefaultDataSetting(_ tamagotchi: Tamagotchi) {
         let level = tamagotchi.level >= 10 ? 9 : tamagotchi.level
         let currentImageName = "\(String(index))-\(level)"
         let nickName = userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName
@@ -135,6 +137,7 @@ class PopUpViewController: UIViewController {
         tamagotchiDescriptionLabel.text = tamagotchi.description
     }
     
+    // popup view 디자인
     func designPopUpView() {
         // background View 투명
         view.backgroundColor = UIColor.init(_colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)

@@ -18,7 +18,6 @@ extension UITextField {
             width: self.frame.size.width,
             height: self.frame.size.height
         )
-//        border.backgroundColor = UIColor.systemGray2.cgColor
         border.backgroundColor = ColorData().fontColor.cgColor
         self.layer.addSublayer(border)
         self.textAlignment = .center

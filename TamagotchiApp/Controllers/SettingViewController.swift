@@ -55,6 +55,8 @@ class SettingViewController: UIViewController {
 }
 
 
+// MARK: - TableView Extension
+
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SettingTableViewTiTle.allCases.count
@@ -112,6 +114,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    // 데이터 초기화 시 UserDefaults 데이테 키 삭제
     func resetData() {
         let removeUserDefaultsKeyList = UserDefaultsKey.allCases.map { $0.rawValue }
         
@@ -128,6 +131,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         changeRootScene()
     }
     
+    // 데이터 초기화 후 Root Scene 교체
     func changeRootScene() {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate

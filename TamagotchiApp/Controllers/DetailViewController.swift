@@ -74,6 +74,7 @@ class DetailViewController: UIViewController {
         checkTamagotchiLevel()
     }
     
+    // 먹이주기 계산 함수
     func eatCalculator(_ textField: UITextField, _ key: String) {
         var upCount: Int = userDefault.integer(forKey: key)
         if Int(textField.text!) != nil {
@@ -210,6 +211,7 @@ class DetailViewController: UIViewController {
     }
 }
 
+// MARK: - TextField Extension
 
 extension DetailViewController: UITextFieldDelegate {
     

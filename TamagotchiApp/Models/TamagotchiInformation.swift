@@ -22,7 +22,6 @@ struct TamagotchiInformation {
     }
     
     func randomTamagotchiSpeechContent() -> String {
-        
         let nickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) ?? ProfileInfo().userProfile.nickName
         
         let tamagotchiSpeechList: [String] = [
