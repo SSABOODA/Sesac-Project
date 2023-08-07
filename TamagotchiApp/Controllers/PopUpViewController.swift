@@ -37,6 +37,8 @@ class PopUpViewController: UIViewController {
         
         indexSetting()
         keepTamagotchiData()
+        
+        print("dataTransitionType: \(dataTransitionType)")
 
     }
     
@@ -74,7 +76,13 @@ class PopUpViewController: UIViewController {
     func keepTamagotchiData() {
         switch dataTransitionType {
         case .normal:
-            print("")
+            if tamagotchi != nil {
+                tamagotchi!.imageName = userDefaults.string(forKey: "imageName\(index)")!
+                tamagotchi!.name = userDefaults.string(forKey: "name\(index)")!
+                tamagotchi!.level = 1
+                tamagotchi!.rice = 0
+                tamagotchi!.water = 0
+            }
         case .change:
             if tamagotchi != nil {
                 tamagotchi!.imageName = userDefaults.string(forKey: "imageName\(index)")!

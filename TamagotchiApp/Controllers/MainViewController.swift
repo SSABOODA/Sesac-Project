@@ -62,9 +62,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
 
         var row = tamagotchi.tamagotchiList[indexPath.row]
-        row.rice = userDefaults.integer(forKey: "rice")
-        row.water = userDefaults.integer(forKey: "water")
-        row.level = userDefaults.integer(forKey: "level")
+        row.rice = userDefaults.integer(forKey: UserDefaultsKey.rice.rawValue)
+        row.water = userDefaults.integer(forKey: UserDefaultsKey.water.rawValue)
+        row.level = userDefaults.integer(forKey: UserDefaultsKey.level.rawValue)
         
         vc.tamagotchi = row
         vc.dataTransitionType = dataTransitionType

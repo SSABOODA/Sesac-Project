@@ -25,7 +25,7 @@ struct TamagotchiInformation {
         
         let nickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) ?? ProfileInfo().userProfile.nickName
         
-        var tamagotchiSpeechList: [String] = [
+        let tamagotchiSpeechList: [String] = [
             "레벨업 했어여~~~",
             "감사합니다.",
             "열심히 해보자구요",
@@ -37,6 +37,7 @@ struct TamagotchiInformation {
             "\(nickname)님 오늘 기분은 어때요?",
             "건강 조심하세요 \(nickname)님",
         ]
+        
         return tamagotchiSpeechList.randomElement()!
     }
 }
