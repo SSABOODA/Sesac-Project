@@ -149,6 +149,7 @@ class PopUpViewController: UIViewController {
         // popUpView design
         popUpView.layer.cornerRadius = 10
         popUpView.clipsToBounds = true
+        popUpView.backgroundColor = ColorData().backgroundColor
         
         // button design
         let buttonList: [UIButton] = [popUpCancelButton, popUpStartButton]

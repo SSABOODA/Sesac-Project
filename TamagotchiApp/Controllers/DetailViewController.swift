@@ -177,6 +177,7 @@ class DetailViewController: UIViewController {
     }
     
     func designDetailView() {
+        self.view.backgroundColor = ColorData().backgroundColor
         tamagotchiNameLabel.designNameTag()
         riceTextField.placeholder = "밥주세요"
         waterTextField.placeholder = "물주세요"

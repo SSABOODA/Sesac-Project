@@ -21,6 +21,7 @@ class SettingViewController: UIViewController {
         setUpTableView()
         backBarButtonItem()
         navigationTitleColor()
+        designSettingView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +37,11 @@ class SettingViewController: UIViewController {
     func setUpTableView() {
         settingTableView.delegate = self
         settingTableView.dataSource = self
+    }
+    
+    func designSettingView() {
+        self.view.backgroundColor = ColorData().backgroundColor
+        self.settingTableView.backgroundColor = ColorData().backgroundColor
     }
     
     func backBarButtonItem() {
@@ -73,6 +79,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = (indexPath.row == 0) ? userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) : ""
         
         cell.imageView?.tintColor = .lightGray
+        cell.backgroundColor = ColorData().backgroundColor
         
         cell.textLabel?.font = .boldSystemFont(ofSize: 13)
         cell.textLabel?.textColor = .black

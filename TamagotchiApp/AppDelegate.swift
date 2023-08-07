@@ -13,9 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        UILabel.appearance().textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        
+        UILabel.appearance().textColor = ColorData().fontColor
         return true
     }
 
