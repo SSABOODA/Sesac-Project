@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
+
 
 class SearchViewController: UIViewController {
     
@@ -15,24 +19,73 @@ class SearchViewController: UIViewController {
     let searchBar = UISearchBar()
     
     var movie = MovieInfo()
-    var searchResultList: [Movie] = []
+    
+    var bookList: [Book] = []
+    var searchResultList: [Book] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchResultList = movie.movie
+        searchResultList = bookList
         
         navBarButtonItem()
         setupCollectionView()
         registerBookCollectionViewCell()
         setCollectionViewLayout()
         setupSearchBar()
+        
+        callRequset()
+    }
+    
+    
+    func callRequset(_ searchText: String = "swift") {
+        let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let text else { return }
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(text)"
+        let headers: HTTPHeaders = ["Authorization": "KakaoAK c128737a3485b11c081a3c95239f4420"]
+        AF.request(url, method: .get, headers: headers).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+//                print("JSON: \(json)")
+                
+                let data = json["documents"].arrayValue
+                
+                for item in data {
+                    let title = item["title"].stringValue
+                    let thumbnail = item["thumbnail"].stringValue
+                    let url = item["url"].stringValue
+                    let price = item["price"].intValue
+                    let status = item["status"].stringValue
+                    let desc = item["contents"].stringValue
+                    let author = item["authors"][0].stringValue
+                    let book = Book(
+                        title: title,
+                        thumbnail: thumbnail,
+                        url: url,
+                        price: price,
+                        status: status,
+                        desc: desc,
+                        author: author
+                    )
+                    self.bookList.append(book)
+                    self.searchResultList.append(book)
+                }
+                
+//                print(self.bookList)
+                
+                self.collectionView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func setupSearchBar() {
         navigationItem.titleView = searchBar
         searchBar.delegate = self
-        searchBar.placeholder = SearchBarPlaceHolder.searchViewController.rawValue
+//        searchBar.placeholder = SearchBarPlaceHolder.searchViewController.rawValue
+        searchBar.placeholder = "책 제목을 검색해주세요"
     }
     
     func registerBookCollectionViewCell() {
@@ -84,7 +137,7 @@ extension SearchViewController:  UISearchBarDelegate {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchResultList = movie.movie
+        searchResultList = bookList
         searchBar.text = ""
         collectionView.reloadData()
     }
@@ -92,13 +145,21 @@ extension SearchViewController:  UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let text = searchBar.text else { return }
         if text.isEmpty {
-            searchResultList = movie.movie
+            searchResultList = bookList
             collectionView.reloadData()
-            
         } else {
             searchResult()
         }
         
+    }
+    
+    func searchResult() {
+        searchResultList.removeAll()
+        let searchText = searchBar.text!
+        callRequset(searchText)
+        bookList = searchResultList
+        
+        collectionView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -108,27 +169,18 @@ extension SearchViewController:  UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
     }
-    
-    func searchResult() {
-        searchResultList.removeAll()
-        for item in movie.movie {
-            if item.title.lowercased().contains(searchBar.text!) {
-                searchResultList.append(item)
-            }
-        }
-        collectionView.reloadData()
-    }
+
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchResultList.count
+        return bookList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
-        cell.configureCell(row: searchResultList[indexPath.row])
+        cell.configureCell(row: bookList[indexPath.row])
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         
@@ -136,20 +188,28 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
-        vc.movie = searchResultList[indexPath.row]
-        vc.type = .search
         
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true)
+        // detailview 이동 대신 web페이지 띄우기
+        guard let url = URL(string: searchResultList[indexPath.row].url), UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        return
+        
+//        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
+////        vc.movie = searchResultList[indexPath.row]
+//        vc.book = searchResultList[indexPath.row]
+//        vc.type = .search
+//
+//        let nav = UINavigationController(rootViewController: vc)
+//        nav.modalPresentationStyle = .fullScreen
+//        present(nav, animated: true)
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
         let title = searchResultList[sender.tag].title
-        for (index, item) in movie.movie.enumerated() {
+        
+        for (index, item) in bookList.enumerated() {
             if item.title == title {
-                movie.movie[index].like.toggle()
+                bookList[index].like.toggle()
             }
         }
         searchResultList[sender.tag].like.toggle()

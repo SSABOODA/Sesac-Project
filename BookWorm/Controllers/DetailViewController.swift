@@ -25,6 +25,8 @@ class DetailViewController: UIViewController {
     
     var movie: Movie?
     
+    var book: Book?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,12 +71,14 @@ class DetailViewController: UIViewController {
     
     func configureDetailView() {
         view.backgroundColor = .systemGray4
-        guard let movie = movie else { return }
-        detailMainImageView.image = UIImage(named: movie.title)
-        detailTitleLabel.text = movie.title
-        detailRuntimeLabel.text = movie.runtimeText
-        detailRateLabel.text = movie.rateText
-        detailDescriptionLabel.text = movie.overview
+        guard let book else { return }
+        if let imageURL = URL(string: book.thumbnail) {
+            detailMainImageView.kf.setImage(with: imageURL)
+        }
+        detailTitleLabel.text = book.title
+        detailRuntimeLabel.text = "\(String(book.price))원"
+        detailRateLabel.text = book.status
+        detailDescriptionLabel.text = book.desc
         
         detailDescriptionLabel.numberOfLines = 0
         detailView.layer.cornerRadius = 10

@@ -6,13 +6,16 @@
 //
 
 import UIKit
-
+import Alamofire
+import SwiftyJSON
 
 class BookCollectionViewController: UICollectionViewController {
     
     static let identifier = "BookCollectionViewController"
     
     var movie = MovieInfo()
+    
+    var bookList = [Book]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,49 @@ class BookCollectionViewController: UICollectionViewController {
         setCollectionViewLayout()
         setBackgroundColor()
 //        designNavigationBackButton()
+        callRequset()
+    }
+    
+    func callRequset() {
+        let url = "https://dapi.kakao.com/v3/search/book?query=swift"
+        let headers: HTTPHeaders = ["Authorization": "KakaoAK c128737a3485b11c081a3c95239f4420"]
+        AF.request(url, method: .get, headers: headers).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                
+                let data = json["documents"].arrayValue
+                
+                for item in data {
+                    let title = item["title"].stringValue
+                    let thumbnail = item["thumbnail"].stringValue
+                    let url = item["url"].stringValue
+                    let price = item["price"].intValue
+                    let status = item["status"].stringValue
+                    let desc = item["contents"].stringValue
+                    let author = item["authors"][0].stringValue
+                    let book = Book(
+                        title: title,
+                        thumbnail: thumbnail,
+                        url: url,
+                        price: price,
+                        status: status,
+                        desc: desc,
+                        author: author
+                    )
+                    self.bookList.append(book)
+                }
+                
+                print(self.bookList)
+                
+                self.collectionView.reloadData()
+                
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     // MARK: - IBAction
@@ -101,7 +147,7 @@ class BookCollectionViewController: UICollectionViewController {
     // MARK: - CollectionView Method
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movie.movie.count
+        return bookList.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -109,7 +155,7 @@ class BookCollectionViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
         
-        cell.configureCell(row: movie.movie[indexPath.row])
+        cell.configureCell(row: bookList[indexPath.row])
         
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
@@ -122,13 +168,13 @@ class BookCollectionViewController: UICollectionViewController {
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else {
             return
         }
-        vc.movie = movie.movie[indexPath.row]
+        vc.book = bookList[indexPath.row]
         vc.type = .main
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
-        movie.movie[sender.tag].like.toggle()
+        bookList[sender.tag].like.toggle()
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
 }

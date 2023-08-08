@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BookCollectionViewCell: UICollectionViewCell {
     
@@ -17,6 +18,8 @@ class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet var likeButton: UIButton!
     
     var movie = MovieInfo()
+    
+    var bookList: [Book] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,11 +33,15 @@ extension BookCollectionViewCell: CollectionViewCellProtocol {
         self.clipsToBounds = true
     }
     
-    func configureCell(row: Movie) {
-        self.backgroundColor = row.color
+    func configureCell(row: Book) {
+        self.backgroundColor = UIColor.systemGray4
         titleLabel.text = row.title
-        mainImageView.image = UIImage(named: row.title)
-        rateLabel.text = "\(row.rate)"
+        
+        if let imageURL = URL(string: row.thumbnail) {
+            mainImageView.kf.setImage(with: imageURL)
+        }
+        
+        rateLabel.text = "\(row.status)"
         
         if row.like {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
