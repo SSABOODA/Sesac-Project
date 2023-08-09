@@ -11,6 +11,7 @@
 		F73CC8282A823AE200954D45 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F73CC8272A823AE200954D45 /* Alamofire */; };
 		F73CC82B2A823AEA00954D45 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F73CC82A2A823AEA00954D45 /* SwiftyJSON */; };
 		F73CC8302A8241FC00954D45 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CC82F2A8241FC00954D45 /* Book.swift */; };
+		F73CC8542A838B1400954D45 /* Extension+layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CC8532A838B1400954D45 /* Extension+layer.swift */; };
 		F776FEAE2A7799B10065ACEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEAD2A7799B10065ACEB /* AppDelegate.swift */; };
 		F776FEB02A7799B10065ACEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEAF2A7799B10065ACEB /* SceneDelegate.swift */; };
 		F776FEB22A7799B10065ACEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776FEB12A7799B10065ACEB /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		F73CC82F2A8241FC00954D45 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		F73CC8532A838B1400954D45 /* Extension+layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+layer.swift"; sourceTree = "<group>"; };
 		F776FEAA2A7799B10065ACEB /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F776FEAD2A7799B10065ACEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F776FEAF2A7799B10065ACEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				F776FECB2A779FA30065ACEB /* Extension+UIViewController.swift */,
 				F776FECD2A77A0610065ACEB /* Enum.swift */,
 				F776FF002A7BB9160065ACEB /* Protocol.swift */,
+				F73CC8532A838B1400954D45 /* Extension+layer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				F73CC8302A8241FC00954D45 /* Book.swift in Sources */,
 				F776FF012A7BB9160065ACEB /* Protocol.swift in Sources */,
 				F776FEFF2A7B99CF0065ACEB /* ThirdViewController.swift in Sources */,
+				F73CC8542A838B1400954D45 /* Extension+layer.swift in Sources */,
 				F776FEC62A779AFC0065ACEB /* BookCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

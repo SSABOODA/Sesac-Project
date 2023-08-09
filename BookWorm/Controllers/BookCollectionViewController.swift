@@ -22,12 +22,15 @@ class BookCollectionViewController: UICollectionViewController {
         registerBookCollectionViewCell()
         setCollectionViewLayout()
         setBackgroundColor()
+        navigationBar()
 //        designNavigationBackButton()
         callRequset()
     }
     
-    func callRequset() {
-        let url = "https://dapi.kakao.com/v3/search/book?query=swift"
+    func callRequset(_ query: String = "스위프트") {
+        let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let query else { return }
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(query)"
         let headers: HTTPHeaders = ["Authorization": "KakaoAK c128737a3485b11c081a3c95239f4420"]
         AF.request(url, method: .get, headers: headers).validate().responseJSON { response in
             switch response.result {
@@ -137,6 +140,11 @@ class BookCollectionViewController: UICollectionViewController {
         layout.minimumInteritemSpacing = spacing // 좌우
         collectionView.collectionViewLayout = layout
     }
+    
+    func navigationBar() {
+        navigationController?.navigationBar.layer.addBorder([.bottom], color: .black, width: 1)
+    }
+    
         
     
     // MARK: - CollectionView Method

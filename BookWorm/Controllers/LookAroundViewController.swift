@@ -79,6 +79,7 @@ class LookAroundViewController: UIViewController {
             action: #selector(closeButtonClicked)
         )
         navigationItem.leftBarButtonItem?.tintColor = .black
+        navigationController?.navigationBar.layer.addBorder([.bottom], color: .black, width: 1)
     }
     
     @objc func closeButtonClicked() {
