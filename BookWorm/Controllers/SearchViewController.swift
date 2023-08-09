@@ -52,7 +52,8 @@ class SearchViewController: UIViewController {
             case .success(let value):
                 let json = JSON(value)
 //                print("JSON: \(json)")
-                                
+                
+                self.isEnd = json["meta"]["is_end"].boolValue
                 for item in json["documents"].arrayValue {
                     let title = item["title"].stringValue
                     let thumbnail = item["thumbnail"].stringValue
@@ -175,15 +176,27 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffsetY = scrollView.contentOffset.y // 현재 y값
+        let collectionViewContentSizeY = self.collectionView.contentSize.height // collectionView 전체 높이
+        let paginationY = collectionViewContentSizeY * 0.5
+
+        if contentOffsetY > collectionViewContentSizeY - paginationY && page < 50 && !isEnd {
+            page += 1
+            guard let text = searchBar.text else { return }
+            callRequset(query: text)
+        }
+    }
 
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            if bookList.count - 1 == indexPath.row && page < 50 && !isEnd {
-                page += 1
-                guard let text = searchBar.text else { return }
-                callRequset(query: text, page: page)
-            }
-        }
+//        for indexPath in indexPaths {
+//            if bookList.count - 1 == indexPath.row && page < 50 && !isEnd {
+//                page += 1
+//                guard let text = searchBar.text else { return }
+//                callRequset(query: text, page: page)
+//            }
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
