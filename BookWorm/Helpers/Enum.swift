@@ -18,7 +18,7 @@ enum StoryboardName: String {
 }
 
 enum SearchBarPlaceHolder: String {
-    case searchViewController = "영화 제목을 입력해주세요"
+    case searchViewController = "책 제목을 검색해주세요"
     case detailViewController = "아무거나 입력해주세요~~"
 }
 

@@ -23,6 +23,9 @@ class SearchViewController: UIViewController {
     var bookList: [Book] = []
     var searchResultList: [Book] = []
     
+    var page: Int = 0
+    var isEnd: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,25 +36,24 @@ class SearchViewController: UIViewController {
         registerBookCollectionViewCell()
         setCollectionViewLayout()
         setupSearchBar()
-        
-        callRequset()
+//        callRequset()
     }
     
     
-    func callRequset(_ searchText: String = "swift") {
-        let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        guard let text else { return }
-        let url = "https://dapi.kakao.com/v3/search/book?query=\(text)"
+    func callRequset(query: String, size: Int = 50, page: Int = 1) {
+        let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let query else { return }
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(query)&size=\(size)&page=\(page)"
         let headers: HTTPHeaders = ["Authorization": "KakaoAK c128737a3485b11c081a3c95239f4420"]
+        
+        print(url)
         AF.request(url, method: .get, headers: headers).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
 //                print("JSON: \(json)")
-                
-                let data = json["documents"].arrayValue
-                
-                for item in data {
+                                
+                for item in json["documents"].arrayValue {
                     let title = item["title"].stringValue
                     let thumbnail = item["thumbnail"].stringValue
                     let url = item["url"].stringValue
@@ -84,8 +86,7 @@ class SearchViewController: UIViewController {
     func setupSearchBar() {
         navigationItem.titleView = searchBar
         searchBar.delegate = self
-//        searchBar.placeholder = SearchBarPlaceHolder.searchViewController.rawValue
-        searchBar.placeholder = "책 제목을 검색해주세요"
+        searchBar.placeholder = SearchBarPlaceHolder.searchViewController.rawValue
     }
     
     func registerBookCollectionViewCell() {
@@ -114,6 +115,7 @@ class SearchViewController: UIViewController {
     func setupCollectionView() {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.collectionView.prefetchDataSource = self
     }
     
     func navBarButtonItem() {
@@ -131,7 +133,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController:  UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchResult()
     }
@@ -142,23 +144,23 @@ extension SearchViewController:  UISearchBarDelegate {
         collectionView.reloadData()
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let text = searchBar.text else { return }
-        if text.isEmpty {
-            searchResultList = bookList
-            collectionView.reloadData()
-        } else {
-            searchResult()
-        }
-        
-    }
+    // 검색어가 입력될 떄 마다 request
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        guard let text = searchBar.text else { return }
+//        if text.isEmpty {
+//            searchResultList = bookList
+//            collectionView.reloadData()
+//        } else {
+//            searchResult()
+//        }
+//    }
     
     func searchResult() {
-        searchResultList.removeAll()
-        let searchText = searchBar.text!
-        callRequset(searchText)
-        bookList = searchResultList
         
+        searchResultList.removeAll()
+        guard let text = searchBar.text else { return }
+        callRequset(query: text)
+        bookList = searchResultList
         collectionView.reloadData()
     }
     
@@ -172,7 +174,22 @@ extension SearchViewController:  UISearchBarDelegate {
 
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if bookList.count - 1 == indexPath.row && page < 50 && !isEnd {
+                page += 1
+                guard let text = searchBar.text else { return }
+                callRequset(query: text, page: page)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        print("===취소: \(indexPaths)")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookList.count
     }

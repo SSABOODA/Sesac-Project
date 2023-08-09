@@ -33,7 +33,7 @@ class BookCollectionViewController: UICollectionViewController {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
+//                print("JSON: \(json)")
                 
                 let data = json["documents"].arrayValue
                 
@@ -56,12 +56,7 @@ class BookCollectionViewController: UICollectionViewController {
                     )
                     self.bookList.append(book)
                 }
-                
-                print(self.bookList)
-                
                 self.collectionView.reloadData()
-                
-                
             case .failure(let error):
                 print(error)
             }
