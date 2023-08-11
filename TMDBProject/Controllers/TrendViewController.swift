@@ -29,6 +29,8 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = trendTableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else {
             return UITableViewCell()
         }
+        
+        cell.configureCell()
         return cell
     }
 }

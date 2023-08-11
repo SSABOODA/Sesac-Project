@@ -168,6 +168,7 @@
                                             <outlet property="clipButton" destination="qjq-eS-BWh" id="ipj-DO-gld"/>
                                             <outlet property="dateLabel" destination="W8p-Ut-Kdp" id="1wr-o8-sXw"/>
                                             <outlet property="hashtagLabel" destination="oF6-1Q-NvW" id="tHj-J6-KrX"/>
+                                            <outlet property="mainCardView" destination="zeh-Zx-OHi" id="KaN-QG-4Mi"/>
                                             <outlet property="mainImageView" destination="HHp-J4-rnu" id="chs-WA-z63"/>
                                             <outlet property="rateLabel" destination="tRU-1T-LUe" id="MoK-SC-ebu"/>
                                             <outlet property="subTitleLabel" destination="ucx-He-7oc" id="FTt-II-avV"/>

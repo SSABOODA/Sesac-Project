@@ -15,6 +15,7 @@
 		F7C6F1B12A862308006E19CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C6F1AF2A862308006E19CD /* LaunchScreen.storyboard */; };
 		F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */; };
 		F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */; };
+		F7C6F1C12A8643A1006E19CD /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F7C6F1B22A862308006E19CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
+		F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				F7C6F1B82A86233B006E19CD /* Controllers */,
 				F7C6F1AD2A862308006E19CD /* Assets.xcassets */,
 				F7C6F1B22A862308006E19CD /* Info.plist */,
+				F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */,
 			);
 			path = TMDBProject;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */,
+				F7C6F1C12A8643A1006E19CD /* TMDBAPIManager.swift in Sources */,
 				F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */,
 				F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */,
 				F7C6F1A52A862307006E19CD /* AppDelegate.swift in Sources */,
