@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		F7C6F1A52A862307006E19CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1A42A862307006E19CD /* AppDelegate.swift */; };
 		F7C6F1A72A862307006E19CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1A62A862307006E19CD /* SceneDelegate.swift */; };
-		F7C6F1A92A862307006E19CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1A82A862307006E19CD /* ViewController.swift */; };
+		F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1A82A862307006E19CD /* TrendViewController.swift */; };
 		F7C6F1AC2A862307006E19CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C6F1AA2A862307006E19CD /* Main.storyboard */; };
 		F7C6F1AE2A862308006E19CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C6F1AD2A862308006E19CD /* Assets.xcassets */; };
 		F7C6F1B12A862308006E19CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C6F1AF2A862308006E19CD /* LaunchScreen.storyboard */; };
+		F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */; };
+		F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F7C6F1A12A862307006E19CD /* TMDBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C6F1A42A862307006E19CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7C6F1A62A862307006E19CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F7C6F1A82A862307006E19CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F7C6F1A82A862307006E19CD /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		F7C6F1AB2A862307006E19CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7C6F1AD2A862308006E19CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7C6F1B02A862308006E19CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7C6F1B22A862308006E19CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
+		F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			children = (
 				F7C6F1A42A862307006E19CD /* AppDelegate.swift */,
 				F7C6F1A62A862307006E19CD /* SceneDelegate.swift */,
+				F7C6F1BB2A862A96006E19CD /* Protocol */,
 				F7C6F1BA2A86234C006E19CD /* Models */,
 				F7C6F1B92A862344006E19CD /* Views */,
 				F7C6F1B82A86233B006E19CD /* Controllers */,
@@ -70,7 +75,7 @@
 		F7C6F1B82A86233B006E19CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F7C6F1A82A862307006E19CD /* ViewController.swift */,
+				F7C6F1A82A862307006E19CD /* TrendViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -80,6 +85,7 @@
 			children = (
 				F7C6F1AF2A862308006E19CD /* LaunchScreen.storyboard */,
 				F7C6F1AA2A862307006E19CD /* Main.storyboard */,
+				F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -89,6 +95,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F7C6F1BB2A862A96006E19CD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +176,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7C6F1A92A862307006E19CD /* ViewController.swift in Sources */,
+				F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */,
+				F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */,
+				F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */,
 				F7C6F1A52A862307006E19CD /* AppDelegate.swift in Sources */,
 				F7C6F1A72A862307006E19CD /* SceneDelegate.swift in Sources */,
 			);
