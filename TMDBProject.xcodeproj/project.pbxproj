@@ -15,8 +15,13 @@
 		F7C6F1B12A862308006E19CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C6F1AF2A862308006E19CD /* LaunchScreen.storyboard */; };
 		F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */; };
 		F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */; };
-		F7C6F1C12A8643A1006E19CD /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */; };
 		F7C6F1C52A864447006E19CD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F7C6F1C42A864447006E19CD /* .gitignore */; };
+		F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1C62A864468006E19CD /* APIKey.swift */; };
+		F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1C92A864502006E19CD /* TMDBAPIManager.swift */; };
+		F7C6F1CD2A864541006E19CD /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F7C6F1CC2A864541006E19CD /* SwiftyJSON */; };
+		F7C6F1D02A864549006E19CD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7C6F1CF2A864549006E19CD /* Alamofire */; };
+		F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1D12A864620006E19CD /* EndPoint.swift */; };
+		F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1D42A86466A006E19CD /* Extension+URL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +35,11 @@
 		F7C6F1B22A862308006E19CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
-		F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		F7C6F1C42A864447006E19CD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F7C6F1C62A864468006E19CD /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		F7C6F1C92A864502006E19CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
+		F7C6F1D12A864620006E19CD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		F7C6F1D42A86466A006E19CD /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7C6F1CD2A864541006E19CD /* SwiftyJSON in Frameworks */,
+				F7C6F1D02A864549006E19CD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,13 +76,15 @@
 			children = (
 				F7C6F1A42A862307006E19CD /* AppDelegate.swift */,
 				F7C6F1A62A862307006E19CD /* SceneDelegate.swift */,
+				F7C6F1C62A864468006E19CD /* APIKey.swift */,
+				F7C6F1C82A8644CC006E19CD /* NetworkManager */,
+				F7C6F1D32A864639006E19CD /* Extension */,
 				F7C6F1BB2A862A96006E19CD /* Protocol */,
 				F7C6F1BA2A86234C006E19CD /* Models */,
 				F7C6F1B92A862344006E19CD /* Views */,
 				F7C6F1B82A86233B006E19CD /* Controllers */,
 				F7C6F1AD2A862308006E19CD /* Assets.xcassets */,
 				F7C6F1B22A862308006E19CD /* Info.plist */,
-				F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */,
 				F7C6F1C42A864447006E19CD /* .gitignore */,
 			);
 			path = TMDBProject;
@@ -111,6 +123,23 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		F7C6F1C82A8644CC006E19CD /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				F7C6F1C92A864502006E19CD /* TMDBAPIManager.swift */,
+				F7C6F1D12A864620006E19CD /* EndPoint.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		F7C6F1D32A864639006E19CD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F7C6F1D42A86466A006E19CD /* Extension+URL.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,6 +156,10 @@
 			dependencies = (
 			);
 			name = TMDBProject;
+			packageProductDependencies = (
+				F7C6F1CC2A864541006E19CD /* SwiftyJSON */,
+				F7C6F1CF2A864549006E19CD /* Alamofire */,
+			);
 			productName = TMDBProject;
 			productReference = F7C6F1A12A862307006E19CD /* TMDBProject.app */;
 			productType = "com.apple.product-type.application";
@@ -155,6 +188,10 @@
 				Base,
 			);
 			mainGroup = F7C6F1982A862307006E19CD;
+			packageReferences = (
+				F7C6F1CB2A864541006E19CD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				F7C6F1CE2A864549006E19CD /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = F7C6F1A22A862307006E19CD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -184,7 +221,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */,
-				F7C6F1C12A8643A1006E19CD /* TMDBAPIManager.swift in Sources */,
+				F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */,
+				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
+				F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */,
+				F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */,
 				F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */,
 				F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */,
 				F7C6F1A52A862307006E19CD /* AppDelegate.swift in Sources */,
@@ -414,6 +454,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F7C6F1CB2A864541006E19CD /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		F7C6F1CE2A864549006E19CD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F7C6F1CC2A864541006E19CD /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7C6F1CB2A864541006E19CD /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		F7C6F1CF2A864549006E19CD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7C6F1CE2A864549006E19CD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F7C6F1992A862307006E19CD /* Project object */;
 }

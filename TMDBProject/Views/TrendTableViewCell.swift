@@ -38,7 +38,6 @@ class TrendTableViewCell: UITableViewCell {
     }
     
     func designTableViewCell() {
-        mainCardView
     }
     
     
