@@ -16,6 +16,7 @@
 		F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */; };
 		F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */; };
 		F7C6F1C12A8643A1006E19CD /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */; };
+		F7C6F1C52A864447006E19CD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F7C6F1C42A864447006E19CD /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
 		F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
+		F7C6F1C42A864447006E19CD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				F7C6F1AD2A862308006E19CD /* Assets.xcassets */,
 				F7C6F1B22A862308006E19CD /* Info.plist */,
 				F7C6F1C02A8643A1006E19CD /* TMDBAPIManager.swift */,
+				F7C6F1C42A864447006E19CD /* .gitignore */,
 			);
 			path = TMDBProject;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7C6F1C52A864447006E19CD /* .gitignore in Resources */,
 				F7C6F1B12A862308006E19CD /* LaunchScreen.storyboard in Resources */,
 				F7C6F1AE2A862308006E19CD /* Assets.xcassets in Resources */,
 				F7C6F1AC2A862307006E19CD /* Main.storyboard in Resources */,
