@@ -11,8 +11,6 @@ class SettingViewController: UIViewController {
     
     @IBOutlet var settingTableView: UITableView!
     
-    let userDefaults = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

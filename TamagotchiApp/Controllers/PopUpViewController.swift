@@ -19,8 +19,6 @@ class PopUpViewController: UIViewController {
     @IBOutlet var buttonStackView: UIStackView!
     
     var tamagotchi: Tamagotchi?
-    let profile = ProfileInfo()
-    let userDefaults = UserDefaults.standard
     var dataTransitionType: DataTransitionType = .normal
     var index: Int = 0
     
@@ -92,7 +90,13 @@ class PopUpViewController: UIViewController {
         let rice = UserDefaultsHelper.shared.rice
         let water = UserDefaultsHelper.shared.water
         
-        let currentImageName = "\(String(index))-\(level)"
+        var currentImageName: String = ""
+        if level == 10 {
+            currentImageName = "\(String(index))-\(level-1)"
+        } else {
+            currentImageName = "\(String(index))-\(level)"
+        }
+        
         UserDefaultsHelper.shared.index = Int(String(index))!
         UserDefaultsHelper.shared.imageName = currentImageName
         UserDefaultsHelper.shared.name = tamagotchi.name

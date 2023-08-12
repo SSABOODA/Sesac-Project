@@ -21,15 +21,13 @@ class DetailViewController: UIViewController {
     @IBOutlet var riceButton: UIButton!
     @IBOutlet var waterButton: UIButton!
     
-    let userDefault = UserDefaults.standard
-    let profile = ProfileInfo()
     var tamagotchiInfo = TamagotchiInformation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialDetailView()
-        configureDetailView(false)
+        configureDetailView()
 
         designDetailView()
         designLevelLabel()
@@ -42,12 +40,12 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureDetailView(false)
+        configureDetailView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        configureDetailView(false)
+        configureDetailView()
     }
  
     @IBAction func tapGestureTapped(_ sender: UITapGestureRecognizer) {
@@ -60,9 +58,8 @@ class DetailViewController: UIViewController {
     @IBAction func eatWaterTextFieldClicked(_ sender: UITextField) {
     }
     
-    
     @IBAction func eatButtonClicked(_ sender: UIButton) {
-        sender.tag == 0 ? eatCalculator(riceTextField, UserDefaultsKey.rice.rawValue) : eatCalculator(waterTextField, UserDefaultsKey.water.rawValue)
+        sender.tag == 0 ? eatCalculator(riceTextField, UserDefaultsHelper.Key.rice.rawValue) : eatCalculator(waterTextField, UserDefaultsHelper.Key.water.rawValue)
         
         let level = UserDefaultsHelper.shared.level
         let rice = UserDefaultsHelper.shared.rice
@@ -73,7 +70,7 @@ class DetailViewController: UIViewController {
     
     // 먹이주기 계산 함수
     func eatCalculator(_ textField: UITextField, _ key: String) {
-        var upCount: Int = userDefault.integer(forKey: key)
+        var upCount: Int = UserDefaults.standard.integer(forKey: key)
         if Int(textField.text!) != nil {
             let limitNum = key == "rice" ? 100 : 50
             if Int(textField.text!)! >= limitNum { return }
@@ -82,70 +79,54 @@ class DetailViewController: UIViewController {
         } else {
             upCount += 1
         }
-        userDefault.set(upCount, forKey: key)
+        UserDefaults.standard.set(upCount, forKey: key)
     }
   
     // 레벨 계산
     func checkTamagotchiLevel() {
         let riceCount = UserDefaultsHelper.shared.rice
         let waterCount = UserDefaultsHelper.shared.water
-        
-        let result = (Double(riceCount) / 5.0) + (Double(waterCount) / 2.0)
         let beforelevel = UserDefaultsHelper.shared.level
         
-        var letUpNum: Int?
-        switch Int(result) {
-        case 0..<10:
-            letUpNum = 1
-        case 10..<20:
-            letUpNum = 1
-        case 20..<30:
-            letUpNum = 2
-        case 30..<40:
-            letUpNum = 3
-        case 40..<50:
-            letUpNum = 4
-        case 50..<60:
-            letUpNum = 5
-        case 60..<70:
-            letUpNum = 6
-        case 70..<80:
-            letUpNum = 7
-        case 80..<90:
-            letUpNum = 8
-        case 90..<100:
-            letUpNum = 9
-        case 100...:
-            letUpNum = 10
-        default:
-            letUpNum = 10
+        let resultLevel = Int((Double(riceCount) / 5.0) + (Double(waterCount) / 2.0)) + 1
+        let currentLevel: Int = resultLevel > 10 ? 10 : resultLevel
+
+        UserDefaultsHelper.shared.level = currentLevel
+        if beforelevel != currentLevel {
+            randomBubbleSpeechText()
+            configureDetailView()
         }
-        
-        guard let letUpNum else { return }
-        UserDefaultsHelper.shared.level = letUpNum
-        
+
+    }
+    
+    func randomBubbleSpeechText() {
+        speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent()
+    }
+    
+    func saveImageName() {
         let index = UserDefaultsHelper.shared.index
-        var level = UserDefaultsHelper.shared.level
-        if level >= 10 { level = 9 }
-        let currentImageName = "\(index)-\(level)"
-        
+        let level = UserDefaultsHelper.shared.level
+        var currentImageName: String = ""
+        if level == 10 {
+            currentImageName = "\(String(index))-\(level-1)"
+        } else {
+            currentImageName = "\(String(index))-\(level)"
+        }
         UserDefaultsHelper.shared.imageName = currentImageName
-        beforelevel != level ? configureDetailView(true) : configureDetailView(false)
     }
     
     // detail view 구성
-    func configureDetailView(_ diff: Bool) {
-        
+    func configureDetailView() {
         title = "\(UserDefaultsHelper.shared.nickname)님의 다마고치"
-        if diff {
-            speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent()
-        }
         
         let level = UserDefaultsHelper.shared.level
         let rice = UserDefaultsHelper.shared.rice
         let water = UserDefaultsHelper.shared.water
-        let imageName = UserDefaultsHelper.shared.imageName
         let name = UserDefaultsHelper.shared.name
+        saveImageName()
+        let imageName = UserDefaultsHelper.shared.imageName
+        
+        print("imageName", imageName)
         
         tamagotchiImageView.image = UIImage(named: imageName)
         tamagotchiNameLabel.text = name

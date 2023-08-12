@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
     @IBOutlet var mainCollectionView: UICollectionView!
     
     var tamagotchi = TamagotchiInformation()
-    let userDefaults = UserDefaults.standard
     var dataTransitionType: DataTransitionType = .normal
     
     override func viewDidLoad() {

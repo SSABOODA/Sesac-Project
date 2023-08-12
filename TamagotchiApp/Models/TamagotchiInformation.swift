@@ -22,7 +22,7 @@ struct TamagotchiInformation {
     }
     
     func randomTamagotchiSpeechContent() -> String {
-        let nickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) ?? ProfileInfo().userProfile.nickName
+        let nickname = UserDefaultsHelper.shared.nickname
         
         let tamagotchiSpeechList: [String] = [
             "레벨업 했어여~~~",

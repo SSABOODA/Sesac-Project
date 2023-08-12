@@ -11,10 +11,7 @@ class NameSettingViewController: UIViewController {
     
     @IBOutlet var nameChangeTextField: UITextField!
     
-    let userDefaults = UserDefaults.standard
     var nickName: String = ""
-    var profile = ProfileInfo()
-    
     let placeholderText = "변경하실 닉네임을 입력헤주세요"
     
     override func viewDidLoad() {
@@ -50,7 +47,6 @@ class NameSettingViewController: UIViewController {
     @objc func saveButtonClicked() {
         guard let nickname = nameChangeTextField.text else { return }
         UserDefaultsHelper.shared.nickname = nickname
-        profile.userProfile.nickName = nickname
         nameChangeTextField.text = ""
         navigationController?.popViewController(animated: true)
     }
