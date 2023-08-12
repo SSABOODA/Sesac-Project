@@ -38,10 +38,6 @@ class DetailViewController: UIViewController {
     func callRequest() {
         guard let movie else { return }
         TMDBAPIManager.shared.callRequest(type: EndPoint.credit, movieId: movie.id) { json in
-            
-            print("=====")
-            print(json)
-            
             let castData = json["cast"].arrayValue
             
             for item in castData {
