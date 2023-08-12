@@ -78,8 +78,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MainViewController {
     
-    static let identifier = "MainViewController"
-    
     func designView() {
         view.backgroundColor = color.backgroundColor
         mainCollectionView.backgroundColor = color.backgroundColor

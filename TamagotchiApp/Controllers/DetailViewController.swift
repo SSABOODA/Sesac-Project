@@ -9,8 +9,6 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    static let identifier = "DetailViewController"
-    
     @IBOutlet var speechBubbleImageView: UIImageView!
     @IBOutlet var speechBubbleLabel: UILabel!
     @IBOutlet var tamagotchiImageView: UIImageView!

@@ -15,20 +15,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        let isSelected = UserDefaults.standard.bool(forKey: UserDefaultsKey.isSelected.rawValue)
+        let isSelected = UserDefaultsHelper.shared.isSelected
         
         if !isSelected {
             let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
-            let vc = sb.instantiateViewController(
+            
+            guard let vc = sb.instantiateViewController(
                 withIdentifier: MainViewController.identifier
-            ) as! MainViewController
+            ) as? MainViewController else { return }
+            
             let nav = UINavigationController(rootViewController: vc)
             window?.rootViewController = nav
         } else {
             let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
-            let vc = sb.instantiateViewController(
+            
+            guard let vc = sb.instantiateViewController(
                 withIdentifier: DetailViewController.identifier
-            ) as! DetailViewController
+            ) as? DetailViewController else { return }
+            
             let nav = UINavigationController(rootViewController: vc)
             window?.rootViewController = nav
         }

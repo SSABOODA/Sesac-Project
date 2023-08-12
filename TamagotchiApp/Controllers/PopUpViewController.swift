@@ -9,8 +9,6 @@ import UIKit
 
 class PopUpViewController: UIViewController {
     
-    static let identifier = "PopUpViewController"
-    
     @IBOutlet var popUpView: UIView!
     @IBOutlet var tamagotchiImageView: UIImageView!
     @IBOutlet var tamagotchiNameLabel: UILabel!

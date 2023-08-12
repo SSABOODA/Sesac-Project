@@ -8,8 +8,6 @@
 import UIKit
 
 class NameSettingViewController: UIViewController {
-
-    static let identifier = "NameSettingViewController"
     
     @IBOutlet var nameChangeTextField: UITextField!
     
