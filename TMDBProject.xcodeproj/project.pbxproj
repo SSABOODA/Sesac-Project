@@ -22,6 +22,8 @@
 		F7C6F1D02A864549006E19CD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7C6F1CF2A864549006E19CD /* Alamofire */; };
 		F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1D12A864620006E19CD /* EndPoint.swift */; };
 		F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1D42A86466A006E19CD /* Extension+URL.swift */; };
+		F7C6F1D72A865D83006E19CD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1D62A865D83006E19CD /* Movie.swift */; };
+		F7C6F1DA2A86617A006E19CD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F7C6F1D92A86617A006E19CD /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,7 @@
 		F7C6F1C92A864502006E19CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		F7C6F1D12A864620006E19CD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		F7C6F1D42A86466A006E19CD /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
+		F7C6F1D62A865D83006E19CD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7C6F1DA2A86617A006E19CD /* Kingfisher in Frameworks */,
 				F7C6F1CD2A864541006E19CD /* SwiftyJSON in Frameworks */,
 				F7C6F1D02A864549006E19CD /* Alamofire in Frameworks */,
 			);
@@ -111,6 +115,7 @@
 		F7C6F1BA2A86234C006E19CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F7C6F1D62A865D83006E19CD /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			packageProductDependencies = (
 				F7C6F1CC2A864541006E19CD /* SwiftyJSON */,
 				F7C6F1CF2A864549006E19CD /* Alamofire */,
+				F7C6F1D92A86617A006E19CD /* Kingfisher */,
 			);
 			productName = TMDBProject;
 			productReference = F7C6F1A12A862307006E19CD /* TMDBProject.app */;
@@ -191,6 +197,7 @@
 			packageReferences = (
 				F7C6F1CB2A864541006E19CD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				F7C6F1CE2A864549006E19CD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F7C6F1D82A86617A006E19CD /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F7C6F1A22A862307006E19CD /* Products */;
 			projectDirPath = "";
@@ -224,6 +231,7 @@
 				F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
 				F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */,
+				F7C6F1D72A865D83006E19CD /* Movie.swift in Sources */,
 				F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */,
 				F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */,
 				F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */,
@@ -472,6 +480,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F7C6F1D82A86617A006E19CD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -484,6 +500,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F7C6F1CE2A864549006E19CD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		F7C6F1D92A86617A006E19CD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7C6F1D82A86617A006E19CD /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

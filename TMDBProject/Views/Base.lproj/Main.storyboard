@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2Dz-gg-b3U">
+                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eU0-PW-W9p">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -181,10 +184,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2Dz-gg-b3U" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1K6-Ap-pdc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eU0-PW-W9p" secondAttribute="bottom" id="3g1-iY-cfT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eU0-PW-W9p" secondAttribute="trailing" id="Nqk-Ss-1Gc"/>
                             <constraint firstItem="eU0-PW-W9p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UU2-YM-pL7"/>
                             <constraint firstItem="eU0-PW-W9p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bpG-ew-Oqc"/>
+                            <constraint firstItem="2Dz-gg-b3U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="udd-ab-8QK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="I3J-Gx-5KO">
@@ -192,6 +197,7 @@
                         <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="LaG-Tt-ons"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="indicatorView" destination="2Dz-gg-b3U" id="fWs-fg-rCD"/>
                         <outlet property="trendTableView" destination="eU0-PW-W9p" id="icW-j6-BeZ"/>
                     </connections>
                 </viewController>

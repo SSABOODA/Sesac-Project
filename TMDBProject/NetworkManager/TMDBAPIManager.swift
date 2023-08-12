@@ -19,8 +19,17 @@ class TMDBAPIManager {
         "Authorization": "Bearer \(APIKey.tmdbAccessToken)"
     ]
     
+    var url: String = ""
+    
     func callRequest(type: EndPoint, movieId: Int?, completionHandler: @escaping (JSON) -> ()) {
-        let url = type.requestURL
+        
+//        print("type: \(type)")
+        
+        if let movieId {
+            url = type.requestURL + "\(movieId)"
+        } else {
+            url = type.requestURL
+        }
         
         AF.request(
             url,
@@ -30,7 +39,8 @@ class TMDBAPIManager {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
+//                print("JSON: \(json)")
+                completionHandler(json)
             case .failure(let error):
                 print(error)
             }

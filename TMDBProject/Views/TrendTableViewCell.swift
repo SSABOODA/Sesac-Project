@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TrendTableViewCell: UITableViewCell {
 
@@ -26,15 +27,17 @@ class TrendTableViewCell: UITableViewCell {
     }
 
     
-    func configureCell() {
-        dateLabel.text = "12/10/2022"
-        hashtagLabel.text = "#Mystery"
-        
+    func configureCell(_ rowData: Movie) {
+        print(rowData)
+        dateLabel.text = rowData.convertData
+        hashtagLabel.text = "#\(rowData.mediaType)"
         mainImageView.backgroundColor = .lightGray
-        rateLabel.text = "3.3"
-        
-        titleLabel.text = "Alice in borderland"
-        subTitleLabel.text = "Alice in borderland, Alice in borderland"
+//        if let imageURL = URL(string: rowData.imageURL) {
+//            mainImageView.kf.setImage(with: imageURL)
+//        }
+        rateLabel.text = rowData.roundRate
+        titleLabel.text = rowData.title
+        subTitleLabel.text = rowData.description
     }
     
     func designTableViewCell() {
