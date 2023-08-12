@@ -71,8 +71,8 @@ class PopUpViewController: UIViewController {
     func initialUserDefaultDataSetting() {
         guard let tamagotchi else { return }
         let level = tamagotchi.level
-        let currentImageName = "\(String(index))-\(level)"
-        UserDefaultsHelper.shared.index = Int(String(index))!
+        let currentImageName = "\(String(self.index))-\(level)"
+        UserDefaultsHelper.shared.index = self.index
         UserDefaultsHelper.shared.imageName = currentImageName
         UserDefaultsHelper.shared.name = tamagotchi.name
         UserDefaultsHelper.shared.level = tamagotchi.level
@@ -89,12 +89,12 @@ class PopUpViewController: UIViewController {
         
         var currentImageName: String = ""
         if level == 10 {
-            currentImageName = "\(String(index))-\(level-1)"
+            currentImageName = "\(String(self.index))-\(level-1)"
         } else {
-            currentImageName = "\(String(index))-\(level)"
+            currentImageName = "\(String(self.index))-\(level)"
         }
         
-        UserDefaultsHelper.shared.index = Int(String(index))!
+        UserDefaultsHelper.shared.index = self.index
         UserDefaultsHelper.shared.imageName = currentImageName
         UserDefaultsHelper.shared.name = tamagotchi.name
         UserDefaultsHelper.shared.level = level

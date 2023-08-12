@@ -108,7 +108,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+        guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
         vc.dataTransitionType = .reset
         let nav = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.rootViewController = nav
