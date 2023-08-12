@@ -50,7 +50,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="179"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDp-S8-bcy">
-                                                                    <rect key="frame" x="19.999999999999996" y="148.33333333333331" width="55.666666666666657" height="15.666666666666657"/>
+                                                                    <rect key="frame" x="24.999999999999996" y="143.33333333333331" width="55.666666666666657" height="15.666666666666657"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="평점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF9-Ob-dNJ">
                                                                             <rect key="frame" x="0.0" y="0.0" width="22.666666666666668" height="15.666666666666666"/>
@@ -61,7 +61,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRU-1T-LUe">
-                                                                            <rect key="frame" x="22.666666666666664" y="0.0" width="33" height="15.666666666666666"/>
+                                                                            <rect key="frame" x="22.666666666666671" y="0.0" width="33" height="15.666666666666666"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -83,9 +83,9 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="qjq-eS-BWh" secondAttribute="trailing" constant="20" id="BJn-ot-qNc"/>
-                                                                <constraint firstAttribute="bottom" secondItem="FDp-S8-bcy" secondAttribute="bottom" constant="15" id="D5M-rU-nca"/>
+                                                                <constraint firstAttribute="bottom" secondItem="FDp-S8-bcy" secondAttribute="bottom" constant="20" id="D5M-rU-nca"/>
                                                                 <constraint firstItem="qjq-eS-BWh" firstAttribute="top" secondItem="cUO-h6-ifq" secondAttribute="top" constant="15" id="TDh-Yh-opV"/>
-                                                                <constraint firstItem="FDp-S8-bcy" firstAttribute="leading" secondItem="cUO-h6-ifq" secondAttribute="leading" constant="20" id="Tt3-6T-xwa"/>
+                                                                <constraint firstItem="FDp-S8-bcy" firstAttribute="leading" secondItem="cUO-h6-ifq" secondAttribute="leading" constant="25" id="Tt3-6T-xwa"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psQ-kP-Hjh">

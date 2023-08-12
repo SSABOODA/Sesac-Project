@@ -42,8 +42,8 @@ class TrendTableViewCell: UITableViewCell {
         mainImageView.contentMode = .scaleAspectFill
         mainImageView.backgroundColor = .clear
         mainImageView.layer.cornerRadius = 20
+        
         mainCardView.clipsToBounds = true
-
         mainCardView.backgroundColor = .white
         mainCardView.layer.cornerRadius = 20
         mainCardView.layer.shadowColor = UIColor.black.cgColor
