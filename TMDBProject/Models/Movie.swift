@@ -26,3 +26,14 @@ struct Movie {
     }
     
 }
+
+struct MovieCastInfo {
+    var castId: Int
+    var name: String
+    var character: String
+    var profileImageURL: String
+    
+    var subTitleText: String {
+        return "\(character) / \"No.\(castId)\""
+    }
+}

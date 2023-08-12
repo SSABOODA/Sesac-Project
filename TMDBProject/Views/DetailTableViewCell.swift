@@ -9,15 +9,34 @@ import UIKit
 
 class DetailTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet var castImageView: UIImageView!
+    @IBOutlet var realNameLabel: UILabel!
+    @IBOutlet var castNameLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        designCell()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func designCell() {
+        castImageView.backgroundColor = .white
+        castImageView.contentMode = .scaleToFill
+        castImageView.layer.cornerRadius = 10
+        castImageView.clipsToBounds = true
+        realNameLabel.font = .boldSystemFont(ofSize: 13)
+        castNameLabel.font = .systemFont(ofSize: 11)
+        
+    }
+    
+    func configureCell(_ rowData: MovieCastInfo) {
+        if let imageURL = URL(string: rowData.profileImageURL) {
+            castImageView.kf.setImage(with: imageURL)
+        }
+        realNameLabel.text = rowData.name
+        castNameLabel.text = rowData.subTitleText
     }
 
 }

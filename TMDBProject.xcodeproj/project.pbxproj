@@ -26,6 +26,7 @@
 		F7C6F1DA2A86617A006E19CD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F7C6F1D92A86617A006E19CD /* Kingfisher */; };
 		F7E5C5372A876303000DA0B9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5362A876303000DA0B9 /* DetailViewController.swift */; };
 		F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5382A8763A1000DA0B9 /* DetailTableViewCell.swift */; };
+		F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C53A2A878F14000DA0B9 /* Extension+Layer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		F7C6F1D62A865D83006E19CD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F7E5C5362A876303000DA0B9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F7E5C5382A8763A1000DA0B9 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		F7E5C53A2A878F14000DA0B9 /* Extension+Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Layer.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				F7C6F1D42A86466A006E19CD /* Extension+URL.swift */,
+				F7E5C53A2A878F14000DA0B9 /* Extension+Layer.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				F7E5C5372A876303000DA0B9 /* DetailViewController.swift in Sources */,
 				F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */,
 				F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */,
+				F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
 				F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */,
 				F7C6F1D72A865D83006E19CD /* Movie.swift in Sources */,
