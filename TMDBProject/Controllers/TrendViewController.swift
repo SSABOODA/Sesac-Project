@@ -25,11 +25,11 @@ class TrendViewController: UIViewController {
     }
     
     func callRequest() {
+        self.indicatorView.startAnimating()
+        self.indicatorView.isHidden = false
+        
         TMDBAPIManager.shared.callRequest(type: EndPoint.trend, movieId: nil) { json in
-            print("===")
-            
-            self.indicatorView.startAnimating()
-            self.indicatorView.isHidden = false
+            sleep(1)
             let results = json["results"].arrayValue
             
             for item in results {
@@ -46,7 +46,7 @@ class TrendViewController: UIViewController {
                     rate: rate,
                     title: title,
                     description: description,
-                    imageURL: imageURL
+                    imageURL: URL.baseImageURL + imageURL
                 )
                 
                 self.movieList.append(movie)
@@ -68,7 +68,9 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = trendTableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else {
             return UITableViewCell()
         }
+        cell.selectionStyle = .none
         cell.configureCell(movieList[indexPath.row])
+        cell.designTableViewCell()
         return cell
     }
 }
