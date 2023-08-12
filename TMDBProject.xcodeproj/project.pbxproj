@@ -28,6 +28,7 @@
 		F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5382A8763A1000DA0B9 /* DetailTableViewCell.swift */; };
 		F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C53A2A878F14000DA0B9 /* Extension+Layer.swift */; };
 		F7E5C53D2A8790C0000DA0B9 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C53C2A8790C0000DA0B9 /* Extension+UIView.swift */; };
+		F7E5C5432A87AB29000DA0B9 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5422A87AB29000DA0B9 /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		F7E5C5382A8763A1000DA0B9 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		F7E5C53A2A878F14000DA0B9 /* Extension+Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Layer.swift"; sourceTree = "<group>"; };
 		F7E5C53C2A8790C0000DA0B9 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		F7E5C5422A87AB29000DA0B9 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				F7C6F1A42A862307006E19CD /* AppDelegate.swift */,
 				F7C6F1A62A862307006E19CD /* SceneDelegate.swift */,
 				F7C6F1C62A864468006E19CD /* APIKey.swift */,
+				F7E5C5412A87AB19000DA0B9 /* Helpers */,
 				F7C6F1C82A8644CC006E19CD /* NetworkManager */,
 				F7C6F1D32A864639006E19CD /* Extension */,
 				F7C6F1BB2A862A96006E19CD /* Protocol */,
@@ -155,6 +158,14 @@
 				F7E5C53C2A8790C0000DA0B9 /* Extension+UIView.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F7E5C5412A87AB19000DA0B9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5422A87AB29000DA0B9 /* PaddingLabel.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 				F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */,
 				F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
+				F7E5C5432A87AB29000DA0B9 /* PaddingLabel.swift in Sources */,
 				F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */,
 				F7C6F1D72A865D83006E19CD /* Movie.swift in Sources */,
 				F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */,
@@ -413,7 +425,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.TMDBProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.hans.TMDBProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -445,7 +457,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.TMDBProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.hans.TMDBProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
