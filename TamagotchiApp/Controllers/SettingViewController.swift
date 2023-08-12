@@ -42,8 +42,8 @@ class SettingViewController: UIViewController {
     }
     
     func designSettingView() {
-        self.view.backgroundColor = ColorData().backgroundColor
-        self.settingTableView.backgroundColor = ColorData().backgroundColor
+        self.view.backgroundColor = ColorData.backgroundColor
+        self.settingTableView.backgroundColor = ColorData.backgroundColor
     }
     
     func backBarButtonItem() {
@@ -63,7 +63,7 @@ class SettingViewController: UIViewController {
     
     func navigationBarColor() {
         let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.backgroundColor = ColorData().backgroundColor
+        navigationBarAppearance.backgroundColor = ColorData.backgroundColor
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
     }
@@ -90,7 +90,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = (indexPath.row == 0) ? userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) : ""
         
         cell.imageView?.tintColor = .lightGray
-        cell.backgroundColor = ColorData().backgroundColor
+        cell.backgroundColor = ColorData.backgroundColor
         
         cell.textLabel?.font = .boldSystemFont(ofSize: 13)
         cell.textLabel?.textColor = .black

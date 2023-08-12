@@ -23,7 +23,6 @@ class PopUpViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     var dataTransitionType: DataTransitionType = .normal
     var index: Int = 0
-    let color = ColorData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,12 +146,12 @@ class PopUpViewController: UIViewController {
         // popUpView design
         popUpView.layer.cornerRadius = 10
         popUpView.clipsToBounds = true
-        popUpView.backgroundColor = ColorData().backgroundColor
+        popUpView.backgroundColor = ColorData.backgroundColor
         
         // button design
         let buttonList: [UIButton] = [popUpCancelButton, popUpStartButton]
         buttonList.forEach { item in
-            item.tintColor = color.fontColor
+            item.tintColor = ColorData.fontColor
         }
         popUpCancelButton.backgroundColor = .systemGray6
         

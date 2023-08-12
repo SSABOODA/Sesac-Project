@@ -25,7 +25,6 @@ class DetailViewController: UIViewController {
     let profile = ProfileInfo()
     var tamagotchiInfo = TamagotchiInformation()
     var index: Int = UserDefaults.standard.integer(forKey: UserDefaultsKey.index.rawValue)
-    let color = ColorData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,7 +174,7 @@ class DetailViewController: UIViewController {
     }
     
     func designDetailView() {
-        self.view.backgroundColor = ColorData().backgroundColor
+        self.view.backgroundColor = ColorData.backgroundColor
         tamagotchiNameLabel.designNameTag()
         riceTextField.placeholder = "밥주세요"
         waterTextField.placeholder = "물주세요"

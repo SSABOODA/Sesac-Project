@@ -23,7 +23,7 @@ class NameSettingViewController: UIViewController {
         designTextField()
         rightBarButtonItem()
         
-        self.view.backgroundColor = ColorData().backgroundColor
+        self.view.backgroundColor = ColorData.backgroundColor
         title = "\(userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) ?? "")님 이름 정하기"
         nameChangeTextField.delegate = self
     }
