@@ -24,7 +24,7 @@ class NameSettingViewController: UIViewController {
         rightBarButtonItem()
         
         self.view.backgroundColor = ColorData.backgroundColor
-        title = "\(userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) ?? "")님 이름 정하기"
+        title = "\(UserDefaultsHelper.shared.nickname)님 이름 정하기"
         nameChangeTextField.delegate = self
     }
     
@@ -44,12 +44,12 @@ class NameSettingViewController: UIViewController {
             target: self,
             action: #selector(saveButtonClicked)
         )
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        navigationItem.rightBarButtonItem?.tintColor = ColorData.fontColor
     }
     
     @objc func saveButtonClicked() {
         guard let nickname = nameChangeTextField.text else { return }
-        userDefaults.set(nickname, forKey: UserDefaultsKey.nickname.rawValue)
+        UserDefaultsHelper.shared.nickname = nickname
         profile.userProfile.nickName = nickname
         nameChangeTextField.text = ""
         navigationController?.popViewController(animated: true)

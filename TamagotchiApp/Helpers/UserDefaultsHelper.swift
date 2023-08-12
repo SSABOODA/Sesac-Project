@@ -63,7 +63,7 @@ class UserDefaultsHelper {
 
     var nickname: String {
         get {
-            return ud.string(forKey: Key.nickname.rawValue) ?? ""
+            return ud.string(forKey: Key.nickname.rawValue) ?? "대장"
         }
         set {
             ud.set(newValue, forKey: Key.nickname.rawValue)

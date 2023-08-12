@@ -24,20 +24,20 @@ class DetailViewController: UIViewController {
     let userDefault = UserDefaults.standard
     let profile = ProfileInfo()
     var tamagotchiInfo = TamagotchiInformation()
-    var index: Int = UserDefaults.standard.integer(forKey: UserDefaultsKey.index.rawValue)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialDetailView()
         configureDetailView(false)
+
         designDetailView()
         designLevelLabel()
         designRightBarButtonItem()
-        
         designTextField(riceTextField)
         designTextField(waterTextField)
         backBarButtonItem()
+        navigationTitleColor()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +63,10 @@ class DetailViewController: UIViewController {
     
     @IBAction func eatButtonClicked(_ sender: UIButton) {
         sender.tag == 0 ? eatCalculator(riceTextField, UserDefaultsKey.rice.rawValue) : eatCalculator(waterTextField, UserDefaultsKey.water.rawValue)
-        let level = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
-        let rice = userDefault.integer(forKey: UserDefaultsKey.rice.rawValue)
-        let water = userDefault.integer(forKey: UserDefaultsKey.water.rawValue)
         
+        let level = UserDefaultsHelper.shared.level
+        let rice = UserDefaultsHelper.shared.rice
+        let water = UserDefaultsHelper.shared.water
         tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"
         checkTamagotchiLevel()
     }
@@ -87,11 +87,11 @@ class DetailViewController: UIViewController {
   
     // 레벨 계산
     func checkTamagotchiLevel() {
-        let riceCount = userDefault.integer(forKey: UserDefaultsKey.rice.rawValue)
-        let waterCount = userDefault.integer(forKey: UserDefaultsKey.water.rawValue)
+        let riceCount = UserDefaultsHelper.shared.rice
+        let waterCount = UserDefaultsHelper.shared.water
         
         let result = (Double(riceCount) / 5.0) + (Double(waterCount) / 2.0)
-        let beforelevel = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
+        let beforelevel = UserDefaultsHelper.shared.level
         
         var letUpNum: Int?
         switch Int(result) {
@@ -121,41 +121,40 @@ class DetailViewController: UIViewController {
             letUpNum = 10
         }
         
-        userDefault.set(letUpNum, forKey: UserDefaultsKey.level.rawValue)
-        index = userDefault.integer(forKey: UserDefaultsKey.index.rawValue)
-        var level = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
+        guard let letUpNum else { return }
+        UserDefaultsHelper.shared.level = letUpNum
+        
+        let index = UserDefaultsHelper.shared.index
+        var level = UserDefaultsHelper.shared.level
         if level >= 10 { level = 9 }
         let currentImageName = "\(index)-\(level)"
-        userDefault.set(currentImageName, forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)")
+        
+        UserDefaultsHelper.shared.imageName = currentImageName
         beforelevel != level ? configureDetailView(true) : configureDetailView(false)
     }
     
     // detail view 구성
     func configureDetailView(_ diff: Bool) {
-        title = "\(userDefault.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName)님의 다마고치"
+        
+        title = "\(UserDefaultsHelper.shared.nickname)님의 다마고치"
         if diff {
-            guard let _ = userDefault.string(forKey: UserDefaultsKey.nickname.rawValue) else { return }
             speechBubbleLabel.text = tamagotchiInfo.randomTamagotchiSpeechContent()
         }
         
-        let level = userDefault.integer(forKey: UserDefaultsKey.level.rawValue)
-        let rice = userDefault.integer(forKey: UserDefaultsKey.rice.rawValue)
-        let water = userDefault.integer(forKey: UserDefaultsKey.water.rawValue)
-        
-        guard let imageName = userDefault.string(forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)") else { return }
-        guard let name = userDefault.string(forKey: "\(UserDefaultsKey.name.rawValue)\(index)") else { return }
+        let level = UserDefaultsHelper.shared.level
+        let rice = UserDefaultsHelper.shared.rice
+        let water = UserDefaultsHelper.shared.water
+        let imageName = UserDefaultsHelper.shared.imageName
+        let name = UserDefaultsHelper.shared.name
         
         tamagotchiImageView.image = UIImage(named: imageName)
         tamagotchiNameLabel.text = name
         tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"
-        
-        navigationTitleColor()
     }
-    
     
     func initialDetailView() {
         speechBubbleImageView.image = UIImage(named: "bubble")
-        speechBubbleLabel.text = "안녕하세요 저는 \(userDefault.string(forKey: "\(UserDefaultsKey.name.rawValue)\(index)") ?? "")에요~~"
+        speechBubbleLabel.text = "안녕하세요 저는 \(UserDefaultsHelper.shared.name)에요~~"
     }
     
     func backBarButtonItem() {
@@ -170,7 +169,7 @@ class DetailViewController: UIViewController {
     }
     
     func navigationTitleColor() {
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color.fontColor]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: ColorData.fontColor]
     }
     
     func designDetailView() {
@@ -198,14 +197,14 @@ class DetailViewController: UIViewController {
     func designButton(_ button: UIButton) {
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-        button.layer.borderColor = color.fontColor.cgColor
+        button.layer.borderColor = ColorData.fontColor.cgColor
         button.layer.borderWidth = 2
-        button.setTitleColor(color.fontColor, for: .normal)
-        button.tintColor = color.fontColor
+        button.setTitleColor(ColorData.fontColor, for: .normal)
+        button.tintColor = ColorData.fontColor
     }
     
     func designRightBarButtonItem() {
-        self.navigationItem.rightBarButtonItem?.tintColor = color.fontColor
+        self.navigationItem.rightBarButtonItem?.tintColor = ColorData.fontColor
     }
 }
 

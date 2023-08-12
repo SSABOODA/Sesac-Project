@@ -82,75 +82,31 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell")!
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier) as? SettingTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        
-        cell.textLabel?.text = SettingTableViewTiTle.allCases[indexPath.row].rawValue
-        cell.imageView?.image = UIImage(systemName: SettingTableViewImage.allCases[indexPath.row].rawValue)
-        cell.detailTextLabel?.text = (indexPath.row == 0) ? userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) : ""
-        
-        cell.imageView?.tintColor = .lightGray
-        cell.backgroundColor = ColorData.backgroundColor
-        
-        cell.textLabel?.font = .boldSystemFont(ofSize: 13)
-        cell.textLabel?.textColor = .black
-        
+        cell.configureCell(indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.row == 0 { // 이름 설정하기
-            let vc = storyboard?.instantiateViewController(withIdentifier: NameSettingViewController.identifier) as! NameSettingViewController
-            vc.modalPresentationStyle = .fullScreen
-            vc.nickName = userDefaults.string(forKey: "nickname") ?? ""
-            navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 1 { // 다마고치 변경하기
-            let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
-            vc.dataTransitionType = .change
-            vc.modalPresentationStyle = .fullScreen
-            navigationController?.pushViewController(vc, animated: true)
-        } else { // 데이터 초기화
-            let alert = UIAlertController(
-                title: "데이터 초기화",
-                message: "정말 다시 처음부터 시작하실 건가요?",
-                preferredStyle: .alert
-            )
-            let success = UIAlertAction(title: "네", style: .default) { action in
-                print("확인 버튼이 눌렀습니다.")
-                self.resetData()
-            }
-            let cancel = UIAlertAction(title: "아니요", style: .cancel) { cancel in
-                print("취소 버튼이 눌렀습니다.")
-            }
-                
-            alert.addAction(cancel)
-            alert.addAction(success)
-            present(alert, animated: true, completion: nil)
+        switch indexPath.row {
+        case 0: moveToChangeNameView() // 이름 설정하기
+        case 1: moveToSelectTamagotchi() // 다마고치 변경하기
+        case 2: dataInitializeAlert() // 데이터 초기화
+        default: return
         }
     }
     
     
     // 데이터 초기화 시 UserDefaults 데이테 키 삭제
     func resetData() {
-        let removeUserDefaultsKeyList = UserDefaultsKey.allCases.map { $0.rawValue }
-        
-        for index in (1...TamagotchiInformation().tamagotchiList.count) {
-            userDefaults.removeObject(forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)")
-            userDefaults.removeObject(forKey: "\(UserDefaultsKey.name.rawValue)\(index)")
-        }
-        
-        for key in removeUserDefaultsKeyList {
-            userDefaults.removeObject(forKey: key)
-        }
-
-        userDefaults.set(false, forKey: UserDefaultsKey.isSelected.rawValue)
+        UserDefaults.resetDefaults()
         changeRootScene()
     }
     
     // 데이터 초기화 후 Root Scene 교체
     func changeRootScene() {
+        UserDefaultsHelper.shared.isSelected = false
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
@@ -159,5 +115,38 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let nav = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.rootViewController = nav
         sceneDelegate?.window?.makeKey()
+    }
+    
+    
+    func moveToChangeNameView() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: NameSettingViewController.identifier) as? NameSettingViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
+        vc.nickName = UserDefaultsHelper.shared.nickname
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    func moveToSelectTamagotchi() {
+        let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
+        vc.dataTransitionType = .change
+        vc.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    func dataInitializeAlert() {
+        let alert = UIAlertController(
+            title: "데이터 초기화",
+            message: "정말 다시 처음부터 시작하실 건가요?",
+            preferredStyle: .alert
+        )
+        let success = UIAlertAction(title: "네", style: .default) { action in
+            print("확인 버튼이 눌렀습니다.")
+            self.resetData()
+        }
+        let cancel = UIAlertAction(title: "아니요", style: .cancel) { cancel in
+            print("취소 버튼이 눌렀습니다.")
+        }
+            
+        alert.addAction(cancel)
+        alert.addAction(success)
+        present(alert, animated: true, completion: nil)
     }
 }

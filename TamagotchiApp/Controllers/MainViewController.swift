@@ -23,6 +23,10 @@ class MainViewController: UIViewController {
         setCollectionViewLayout()
         registerNibMainCollectionViewCell()
         designView()
+        
+        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+           print("\(key): \(value)")
+         }
     }
     
     // 준비 중(noImage)인 데이터 세팅
@@ -60,12 +64,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return
         }
 
-        var row = tamagotchi.tamagotchiList[indexPath.row]
-        row.rice = userDefaults.integer(forKey: UserDefaultsKey.rice.rawValue)
-        row.water = userDefaults.integer(forKey: UserDefaultsKey.water.rawValue)
-        row.level = userDefaults.integer(forKey: UserDefaultsKey.level.rawValue)
-        
+        let row = tamagotchi.tamagotchiList[indexPath.row]
         vc.tamagotchi = row
+        vc.index = indexPath.row + 1
+        
         vc.dataTransitionType = dataTransitionType
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)

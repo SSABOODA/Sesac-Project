@@ -30,8 +30,9 @@ class PopUpViewController: UIViewController {
         configurePopUpView()
         designPopUpView()
         
-        indexSetting()
         keepTamagotchiData()
+        
+        print(tamagotchi)
 
     }
     
@@ -52,55 +53,52 @@ class PopUpViewController: UIViewController {
             return
         }
         
-        // popup view 데이터 세팅
-        userDefaultDataSetting(tamagotchi)
+        // 설정에서 다마치고치 변경, 데이터 초기화 상황에 따라 데이터 초기값 설정 함수
+        keepTamagotchiData()
         changeRootScene()
     }
     
     // MARK: - 구현 함수
     
-    func indexSetting() {
-        guard let tamagotchi else { return }
-        guard let index = tamagotchi.imageName.first else { return }
-        self.index = Int(String(index))!
-        userDefaultDataSetting(tamagotchi)
-    }
-    
     // 설정에서 다마치고치 변경, 데이터 초기화 상황에 따라 데이터 초기값 설정 함수
     func keepTamagotchiData() {
         switch dataTransitionType {
         case .normal:
-            transitionDataSetting(false)
+            initialUserDefaultDataSetting()
         case .change:
-            transitionDataSetting(true)
+            changeTamagotchiUserDefaultsDataSetting()
         case .reset:
-            transitionDataSetting(false)
-        }
-    }
-    
-    func transitionDataSetting(_ isChange: Bool) {
-        if tamagotchi != nil {
-            tamagotchi!.imageName = userDefaults.string(forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)")!
-            tamagotchi!.name = userDefaults.string(forKey: "\(UserDefaultsKey.name.rawValue)\(index)")!
-            tamagotchi!.level = isChange == true ? userDefaults.integer(forKey: UserDefaultsKey.level.rawValue) : 1
-            tamagotchi!.rice = isChange == true ? userDefaults.integer(forKey: UserDefaultsKey.rice.rawValue) : 0
-            tamagotchi!.water = isChange == true ? userDefaults.integer(forKey: UserDefaultsKey.water.rawValue) : 0
+            initialUserDefaultDataSetting()
         }
     }
     
     // 다마고치 데이터 userDefaults 저장
-    func userDefaultDataSetting(_ tamagotchi: Tamagotchi) {
-        let level = tamagotchi.level >= 10 ? 9 : tamagotchi.level
+    func initialUserDefaultDataSetting() {
+        guard let tamagotchi else { return }
+        let level = tamagotchi.level
         let currentImageName = "\(String(index))-\(level)"
-        let nickName = userDefaults.string(forKey: UserDefaultsKey.nickname.rawValue) ?? profile.userProfile.nickName
-        userDefaults.set(nickName, forKey: UserDefaultsKey.nickname.rawValue) // profile nickname
+        UserDefaultsHelper.shared.index = Int(String(index))!
+        UserDefaultsHelper.shared.imageName = currentImageName
+        UserDefaultsHelper.shared.name = tamagotchi.name
+        UserDefaultsHelper.shared.level = tamagotchi.level
+        UserDefaultsHelper.shared.rice = tamagotchi.rice
+        UserDefaultsHelper.shared.water = tamagotchi.water
+    }
+    
+    func changeTamagotchiUserDefaultsDataSetting() {
+        guard let tamagotchi else { return }
         
-        userDefaults.set(Int(String(index))!, forKey: UserDefaultsKey.index.rawValue)
-        userDefaults.set(currentImageName, forKey: "\(UserDefaultsKey.imageName.rawValue)\(index)")
-        userDefaults.set(tamagotchi.name, forKey: "\(UserDefaultsKey.name.rawValue)\(index)")
-        userDefaults.set(tamagotchi.level, forKey: UserDefaultsKey.level.rawValue)
-        userDefaults.set(tamagotchi.rice, forKey: UserDefaultsKey.rice.rawValue)
-        userDefaults.set(tamagotchi.water, forKey: UserDefaultsKey.water.rawValue)
+        let level = UserDefaultsHelper.shared.level
+        let rice = UserDefaultsHelper.shared.rice
+        let water = UserDefaultsHelper.shared.water
+        
+        let currentImageName = "\(String(index))-\(level)"
+        UserDefaultsHelper.shared.index = Int(String(index))!
+        UserDefaultsHelper.shared.imageName = currentImageName
+        UserDefaultsHelper.shared.name = tamagotchi.name
+        UserDefaultsHelper.shared.level = level
+        UserDefaultsHelper.shared.rice = rice
+        UserDefaultsHelper.shared.water = water
     }
     
     // 준비중인 다마고치 클릭 시 '준비 중' alert modal 띄우기
@@ -115,12 +113,14 @@ class PopUpViewController: UIViewController {
     
     // 다마고치 선택시 뷰 스택 DetailViewController로 초기화
     func changeRootScene() {
-        userDefaults.set(true, forKey: "isSelected")
+        UserDefaultsHelper.shared.isSelected = true
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
+        
+        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+        
         let nav = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.rootViewController = nav
         sceneDelegate?.window?.makeKey()
@@ -159,6 +159,4 @@ class PopUpViewController: UIViewController {
         buttonStackView.layer.borderColor = UIColor.systemGray5.cgColor
         buttonStackView.layer.borderWidth = 0.8
     }
-    
-
 }
