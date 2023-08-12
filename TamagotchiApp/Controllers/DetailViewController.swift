@@ -123,7 +123,7 @@ class DetailViewController: UIViewController {
     func saveImageName() {
         let index = UserDefaultsHelper.shared.index
         let level = UserDefaultsHelper.shared.level
-        var currentImageName: String = level == 10 ? "\(String(index))-\(level-1)" : "\(String(index))-\(level)"
+        let currentImageName: String = level == 10 ? "\(String(index))-\(level-1)" : "\(String(index))-\(level)"
         UserDefaultsHelper.shared.imageName = currentImageName
     }
     
