@@ -59,7 +59,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func eatButtonClicked(_ sender: UIButton) {
-        sender.tag == 0 ? eatCalculator(riceTextField, UserDefaultsHelper.Key.rice.rawValue) : eatCalculator(waterTextField, UserDefaultsHelper.Key.water.rawValue)
+        sender.tag == 0 ? eatCalculator(key: .rice) : eatCalculator(key: .water)
         
         let level = UserDefaultsHelper.shared.level
         let rice = UserDefaultsHelper.shared.rice
@@ -69,18 +69,35 @@ class DetailViewController: UIViewController {
     }
     
     // 먹이주기 계산 함수
-    func eatCalculator(_ textField: UITextField, _ key: String) {
-        var upCount: Int = UserDefaults.standard.integer(forKey: key)
-        if Int(textField.text!) != nil {
-            let limitNum = key == "rice" ? 100 : 50
-            if Int(textField.text!)! >= limitNum { return }
-            upCount += Int(textField.text!)!
-            textField.text = ""
-        } else {
-            upCount += 1
+    func eatCalculator(key: UserDefaultsHelper.Key) {
+        
+        switch key {
+        case .rice:
+            var upCount: Int = UserDefaultsHelper.shared.rice
+            upCount += checkEatLimit(riceTextField, 100)
+            UserDefaultsHelper.shared.rice = upCount
+        case .water:
+            var upCount: Int = UserDefaultsHelper.shared.water
+            upCount += checkEatLimit(waterTextField, 50)
+            UserDefaultsHelper.shared.water = upCount
+        default:
+            return
         }
-        UserDefaults.standard.set(upCount, forKey: key)
     }
+    
+    func checkEatLimit(_ textField: UITextField, _ limit: Int) -> Int {
+        var result = 0
+        if Int(textField.text!) != nil {
+            let limitNum = limit
+            result = Int(textField.text!)! >= limitNum ? 0 : Int(textField.text!)!
+        } else {
+            result = 1
+        }
+        textField.text = ""
+        return result
+    }
+    
+    
   
     // 레벨 계산
     func checkTamagotchiLevel() {
@@ -106,12 +123,7 @@ class DetailViewController: UIViewController {
     func saveImageName() {
         let index = UserDefaultsHelper.shared.index
         let level = UserDefaultsHelper.shared.level
-        var currentImageName: String = ""
-        if level == 10 {
-            currentImageName = "\(String(index))-\(level-1)"
-        } else {
-            currentImageName = "\(String(index))-\(level)"
-        }
+        var currentImageName: String = level == 10 ? "\(String(index))-\(level-1)" : "\(String(index))-\(level)"
         UserDefaultsHelper.shared.imageName = currentImageName
     }
     
@@ -125,9 +137,6 @@ class DetailViewController: UIViewController {
         let name = UserDefaultsHelper.shared.name
         saveImageName()
         let imageName = UserDefaultsHelper.shared.imageName
-        
-        print("imageName", imageName)
-        
         tamagotchiImageView.image = UIImage(named: imageName)
         tamagotchiNameLabel.text = name
         tamagotchiLevelLabel.text = "LV\(level) · 밥알 \(rice)개 · 물방울 \(water)개"

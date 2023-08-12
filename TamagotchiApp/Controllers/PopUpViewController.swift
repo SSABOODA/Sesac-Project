@@ -29,9 +29,6 @@ class PopUpViewController: UIViewController {
         designPopUpView()
         
         keepTamagotchiData()
-        
-        print(tamagotchi)
-
     }
     
     @IBAction func tapGeustureTapped(_ sender: UITapGestureRecognizer) {
