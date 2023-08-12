@@ -33,6 +33,7 @@ class TrendViewController: UIViewController {
             let results = json["results"].arrayValue
             
             for item in results {
+                let id = item["id"].intValue
                 let date = item["release_date"].stringValue
                 let mediaType = item["media_type"].stringValue
                 let rate = item["vote_average"].doubleValue
@@ -41,6 +42,7 @@ class TrendViewController: UIViewController {
                 let imageURL = item["backdrop_path"].stringValue
                 
                 let movie = Movie(
+                    id: id,
                     date: date,
                     mediaType: mediaType,
                     rate: rate,
@@ -71,7 +73,16 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.configureCell(movieList[indexPath.row])
         cell.designTableViewCell()
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController {
+            navigationController?.show(vc, sender: nil)
+            vc.movie = movieList[indexPath.row]
+        }
+
     }
 }
 

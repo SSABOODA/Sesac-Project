@@ -9,6 +9,7 @@ import Foundation
 
 
 struct Movie {
+    var id: Int
     var date: String
     var mediaType: String
     var rate: Double

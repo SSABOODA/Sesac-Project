@@ -216,13 +216,41 @@
                     <view key="view" contentMode="scaleToFill" id="vRN-tY-vvi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="o72-mO-RCp">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="CaI-2R-ryH">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="212"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTableViewCell" id="WOv-eL-huq" customClass="DetailTableViewCell" customModule="TMDBProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="262" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WOv-eL-huq" id="nir-UU-fdE">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Iqw-7a-br3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Iqw-7a-br3" firstAttribute="trailing" secondItem="o72-mO-RCp" secondAttribute="trailing" id="Svw-Cl-cmZ"/>
+                            <constraint firstItem="Iqw-7a-br3" firstAttribute="bottom" secondItem="o72-mO-RCp" secondAttribute="bottom" id="dIY-0Q-Rxs"/>
+                            <constraint firstItem="o72-mO-RCp" firstAttribute="leading" secondItem="Iqw-7a-br3" secondAttribute="leading" id="jkK-Kl-6ko"/>
+                            <constraint firstItem="o72-mO-RCp" firstAttribute="top" secondItem="Iqw-7a-br3" secondAttribute="top" id="lnS-QM-Rrk"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="VHh-iq-GCz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpR-fq-OJ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1923" y="-2"/>
+            <point key="canvasLocation" x="1821" y="-2"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0af-1t-qdj">
@@ -250,6 +278,9 @@
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
