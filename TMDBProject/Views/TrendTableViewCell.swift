@@ -26,9 +26,7 @@ class TrendTableViewCell: UITableViewCell {
         
     }
 
-    
     func configureCell(_ rowData: Movie) {
-        print(rowData)
         dateLabel.text = rowData.convertData
         hashtagLabel.text = "#\(rowData.mediaType)"
         mainImageView.backgroundColor = .lightGray
@@ -58,10 +56,5 @@ class TrendTableViewCell: UITableViewCell {
         clipButton.clipsToBounds = true
         clipButton.backgroundColor = .white
         clipButton.tintColor = .black
-        
-        
-        
     }
-    
-    
 }

@@ -23,10 +23,8 @@ class TMDBAPIManager {
     
     func callRequest(type: EndPoint, movieId: Int?, completionHandler: @escaping (JSON) -> ()) {
         
-//        print("type: \(type)")
-        
         if let movieId {
-            url = type.requestURL + "\(movieId)"
+            url = type.requestURL + "\(movieId)" + "/credits?language=en-US"
         } else {
             url = type.requestURL
         }
