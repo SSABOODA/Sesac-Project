@@ -28,14 +28,19 @@ class TrendTableViewCell: UITableViewCell {
 
     func configureCell(_ rowData: Movie) {
         dateLabel.text = rowData.convertData
-        hashtagLabel.text = "#\(rowData.mediaType)"
+        hashtagLabel.text = "#\(genreIdToString(rowData.genreIds[0]))"
         mainImageView.backgroundColor = .lightGray
-        if let imageURL = URL(string: rowData.imageURL) {
+        if let imageURL = URL(string: rowData.fullImageURL) {
             mainImageView.kf.setImage(with: imageURL)
         }
         rateLabel.text = rowData.roundRate
         titleLabel.text = rowData.title
         subTitleLabel.text = rowData.description
+    }
+    
+    func genreIdToString(_ genreId: Int) -> String {
+        guard let genre = Movie.genreList[genreId] else { return "" }
+        return genre
     }
     
     func designTableViewCell() {

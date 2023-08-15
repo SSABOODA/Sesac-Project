@@ -28,11 +28,10 @@ class DetailTableViewCell: UITableViewCell {
         castImageView.clipsToBounds = true
         realNameLabel.font = .boldSystemFont(ofSize: 13)
         castNameLabel.font = .systemFont(ofSize: 11)
-        
     }
     
-    func configureCell(_ rowData: MovieCastInfo) {
-        if let imageURL = URL(string: rowData.profileImageURL) {
+    func configureCell(_ rowData: Cast) {
+        if let imageURL = URL(string: rowData.fullImageURL) {
             castImageView.kf.setImage(with: imageURL)
         }
         realNameLabel.text = rowData.name

@@ -21,28 +21,26 @@ class TMDBAPIManager {
     
     var url: String = ""
     
-    func callRequest(type: EndPoint, movieId: Int?, completionHandler: @escaping (JSON) -> ()) {
+    func callRequest<T: Decodable>(of: T.Type ,type: EndPoint, movieId: Int?, completionHandler: @escaping (DataResponse<T, AFError>) -> ()) {
         
-        if let movieId {
-            url = type.requestURL + "\(movieId)" + "/credits?language=en-US"
-        } else {
+        switch type {
+        case .trend:
             url = type.requestURL
+        case .credit:
+            url = type.requestURL + "\(movieId ?? 0)" + "/credits?language=en-US"
         }
         
         AF.request(
             url,
             method: .get,
             headers: header
-        ).validate().responseJSON { response in
+        ).validate().responseDecodable(of: T.self) { response in
             switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-//                print("JSON: \(json)")
-                completionHandler(json)
-            case .failure(let error):
-                print(error)
+            case .success:
+                completionHandler(response)
+            case .failure(let err):
+                print(err.localizedDescription)
             }
         }
     }
-    
 }
