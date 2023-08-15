@@ -17,10 +17,12 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var headerImageView: UIImageView!
     @IBOutlet var overviewLabel: UILabel!
+    @IBOutlet var expandButton: UIButton!
     
     var movie: Movie?
-    
     var castInfo: CastInfo?
+    
+    var isExpand: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,12 @@ class DetailViewController: UIViewController {
         configureNavigationBar()
         configureHeaderView()
         designHeaderView()
+    }
+    
+    
+    @IBAction func expandButtonClicked(_ sender: UIButton) {
+        expandButton.isHidden.toggle()
+        overviewLabel.numberOfLines = expandButton.isHidden ? 0 : 2
     }
     
     func callRequest() {
@@ -55,7 +63,7 @@ class DetailViewController: UIViewController {
     
     func configureHeaderView() {
         headerImageView.contentMode = .scaleAspectFill
-        overviewLabel.numberOfLines = 0
+        overviewLabel.numberOfLines = 2
         
         overviewBackView.layer.addBorder([.top, .bottom], color: UIColor.systemGray5, width: 1)
     }

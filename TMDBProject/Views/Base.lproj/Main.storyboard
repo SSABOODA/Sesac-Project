@@ -265,18 +265,30 @@
                                             <rect key="frame" x="15" y="264.66666666666669" width="368" height="71.333333333333314"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP7-yo-BkZ">
-                                                    <rect key="frame" x="10" y="9.9999999999999982" width="348" height="20.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="10" y="10" width="348" height="15.666666666666664"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkT-7v-NRG">
+                                                    <rect key="frame" x="174.66666666666666" y="31.666666666666629" width="18.666666666666657" height="22"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="chevron.down" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="expandButtonClicked:" destination="HAb-yL-kHn" eventType="touchUpInside" id="URF-ES-boM"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TP7-yo-BkZ" secondAttribute="bottom" constant="10" id="Nwa-zk-UBJ"/>
+                                                <constraint firstItem="LkT-7v-NRG" firstAttribute="centerX" secondItem="HcQ-Sa-ymX" secondAttribute="centerX" id="Ogr-QD-dfd"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LkT-7v-NRG" secondAttribute="bottom" constant="3" id="azE-ve-SSj"/>
                                                 <constraint firstItem="TP7-yo-BkZ" firstAttribute="top" secondItem="HcQ-Sa-ymX" secondAttribute="top" constant="10" id="dKZ-9I-IWj"/>
                                                 <constraint firstItem="TP7-yo-BkZ" firstAttribute="leading" secondItem="HcQ-Sa-ymX" secondAttribute="leading" constant="10" id="hbH-sX-gkU"/>
                                                 <constraint firstAttribute="trailing" secondItem="TP7-yo-BkZ" secondAttribute="trailing" constant="10" id="nBt-ZN-9CC"/>
+                                                <constraint firstItem="LkT-7v-NRG" firstAttribute="top" secondItem="TP7-yo-BkZ" secondAttribute="bottom" constant="6" id="pwk-AQ-dSr"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -357,6 +369,7 @@
                     <navigationItem key="navigationItem" id="VHh-iq-GCz"/>
                     <connections>
                         <outlet property="detailTableView" destination="o72-mO-RCp" id="iXM-FB-tiA"/>
+                        <outlet property="expandButton" destination="LkT-7v-NRG" id="pZk-Wd-801"/>
                         <outlet property="headerImageView" destination="MQv-2N-Wb6" id="giD-Vx-Ikk"/>
                         <outlet property="overviewBackView" destination="HcQ-Sa-ymX" id="iuC-fr-JwS"/>
                         <outlet property="overviewLabel" destination="TP7-yo-BkZ" id="okn-CR-E5r"/>
@@ -386,6 +399,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>

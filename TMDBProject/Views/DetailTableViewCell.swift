@@ -14,7 +14,6 @@ class DetailTableViewCell: UITableViewCell {
     @IBOutlet var realNameLabel: UILabel!
     @IBOutlet var castNameLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
