@@ -21,7 +21,11 @@ class TMDBAPIManager {
     
     var url: String = ""
     
-    func callRequest<T: Decodable>(of: T.Type ,type: EndPoint, movieId: Int?, completionHandler: @escaping (DataResponse<T, AFError>) -> ()) {
+    func callRequest<T: Decodable>(
+        of: T.Type,
+        type: EndPoint,
+        movieId: Int?,
+        completionHandler: @escaping (DataResponse<T, AFError>) -> ()) {
         
         switch type {
         case .trend:
