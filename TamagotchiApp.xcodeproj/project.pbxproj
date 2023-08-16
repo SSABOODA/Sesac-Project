@@ -31,6 +31,7 @@
 		F7E5C5452A87ABCE000DA0B9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5442A87ABCE000DA0B9 /* UserDefaultsHelper.swift */; };
 		F7E5C5472A87B4AF000DA0B9 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5462A87B4AF000DA0B9 /* SettingTableViewCell.swift */; };
 		F7E5C5492A87C9ED000DA0B9 /* Extension+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5482A87C9ED000DA0B9 /* Extension+UserDefaults.swift */; };
+		F7E5C5602A8C9B36000DA0B9 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C55F2A8C9B36000DA0B9 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		F7E5C5442A87ABCE000DA0B9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		F7E5C5462A87B4AF000DA0B9 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		F7E5C5482A87C9ED000DA0B9 /* Extension+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UserDefaults.swift"; sourceTree = "<group>"; };
+		F7E5C55F2A8C9B36000DA0B9 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				F7E5C5482A87C9ED000DA0B9 /* Extension+UserDefaults.swift */,
 				F73CC7DB2A7E8CF700954D45 /* Enum.swift */,
 				F7E5C5442A87ABCE000DA0B9 /* UserDefaultsHelper.swift */,
+				F7E5C55F2A8C9B36000DA0B9 /* Error.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				F73CC7DE2A7F7C9500954D45 /* ColorData.swift in Sources */,
 				F776FF342A7CEC1A0065ACEB /* PaddingLabel.swift in Sources */,
 				F776FF112A7CD55B0065ACEB /* AppDelegate.swift in Sources */,
+				F7E5C5602A8C9B36000DA0B9 /* Error.swift in Sources */,
 				F776FF132A7CD55B0065ACEB /* SceneDelegate.swift in Sources */,
 				F776FF322A7CDBCB0065ACEB /* TamagotchiInformation.swift in Sources */,
 				F73CC7DC2A7E8CF700954D45 /* Enum.swift in Sources */,

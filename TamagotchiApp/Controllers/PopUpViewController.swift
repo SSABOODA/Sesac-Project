@@ -87,12 +87,7 @@ class PopUpViewController: UIViewController {
         let rice = UserDefaultsHelper.shared.rice
         let water = UserDefaultsHelper.shared.water
         
-        var currentImageName: String = ""
-        if level == 10 {
-            currentImageName = "\(String(self.index))-\(level-1)"
-        } else {
-            currentImageName = "\(String(self.index))-\(level)"
-        }
+        var currentImageName = level == 10 ? "\(String(self.index))-\(level-1)" : "\(String(self.index))-\(level)"
         
         UserDefaultsHelper.shared.index = self.index
         UserDefaultsHelper.shared.imageName = currentImageName

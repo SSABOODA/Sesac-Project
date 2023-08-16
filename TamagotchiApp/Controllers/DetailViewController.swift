@@ -74,31 +74,48 @@ class DetailViewController: UIViewController {
         switch key {
         case .rice:
             var upCount: Int = UserDefaultsHelper.shared.rice
-            upCount += checkEatLimit(riceTextField, 100)
-            UserDefaultsHelper.shared.rice = upCount
+            
+            do {
+                upCount += try checkEatLimit(riceTextField, 100)
+                UserDefaultsHelper.shared.rice = upCount
+            } catch {
+                print("EAT RICE ERROR")
+            }
         case .water:
             var upCount: Int = UserDefaultsHelper.shared.water
-            upCount += checkEatLimit(waterTextField, 50)
-            UserDefaultsHelper.shared.water = upCount
+            
+            do {
+                upCount += try checkEatLimit(waterTextField, 50)
+                UserDefaultsHelper.shared.water = upCount
+            } catch {
+                print("EAT WATER ERROR")
+            }
         default:
             return
         }
     }
     
-    func checkEatLimit(_ textField: UITextField, _ limit: Int) -> Int {
+    func checkEatLimit(_ textField: UITextField, _ limit: Int) throws -> Int {
         var result = 0
-        if Int(textField.text!) != nil {
-            let limitNum = limit
-            result = Int(textField.text!)! >= limitNum ? 0 : Int(textField.text!)!
-        } else {
-            result = 1
+        
+        guard let text = textField.text else {
+            throw ValidationError.isEmptyText
         }
-        textField.text = ""
+        
+        if text.isEmpty {
+            textField.text = ""
+            result = 1
+            return result
+        }
+        
+        guard let num = Int(text) else {
+            throw ValidationError.isNotInt
+        }
+    
+        result = num >= limit ? 0 : num
         return result
     }
     
-    
-  
     // 레벨 계산
     func checkTamagotchiLevel() {
         let riceCount = UserDefaultsHelper.shared.rice
