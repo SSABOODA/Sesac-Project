@@ -34,6 +34,7 @@
 		F7E5C5662A8CB867000DA0B9 /* SeriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5642A8CB867000DA0B9 /* SeriesCollectionViewCell.xib */; };
 		F7E5C5692A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5672A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift */; };
 		F7E5C56A2A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */; };
+		F7E5C56C2A8CC88C000DA0B9 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C56B2A8CC88C000DA0B9 /* Series.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		F7E5C5642A8CB867000DA0B9 /* SeriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		F7E5C5672A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCollectionReusableView.swift; sourceTree = "<group>"; };
 		F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesCollectionReusableView.xib; sourceTree = "<group>"; };
+		F7E5C56B2A8CC88C000DA0B9 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				F7C6F1D62A865D83006E19CD /* Movie.swift */,
+				F7E5C56B2A8CC88C000DA0B9 /* Series.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				F7E5C53D2A8790C0000DA0B9 /* Extension+UIView.swift in Sources */,
 				F7E5C5372A876303000DA0B9 /* DetailViewController.swift in Sources */,
 				F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */,
+				F7E5C56C2A8CC88C000DA0B9 /* Series.swift in Sources */,
 				F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */,
 				F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,

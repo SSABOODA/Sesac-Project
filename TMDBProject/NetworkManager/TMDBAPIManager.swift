@@ -26,13 +26,8 @@ class TMDBAPIManager {
         type: EndPoint,
         movieId: Int?,
         completionHandler: @escaping (DataResponse<T, AFError>) -> ()) {
-        
-        switch type {
-        case .trend:
-            url = type.requestURL
-        case .credit:
-            url = type.requestURL + "\(movieId ?? 0)" + "/credits?language=en-US"
-        }
+            
+        url = getEndpointTypeURL(type: type, movieId: movieId, seriesId: 110534, seasonId: 1)
         
         AF.request(
             url,
@@ -45,6 +40,19 @@ class TMDBAPIManager {
             case .failure(let err):
                 print(err.localizedDescription)
             }
+        }
+    }
+    
+    func getEndpointTypeURL(type: EndPoint, movieId: Int?, seriesId: Int, seasonId: Int) -> String {
+        switch type {
+        case .trend:
+            return type.requestURL
+        case .credit:
+            return type.requestURL + "\(movieId ?? 0)" + "/credits?language=en-US"
+        case .series:
+            return type.requestURL + "\(110534)" + "?language=en-US"
+        case .season:
+            return type.requestURL + "\(110534)" + "/season" + "\(1)" + "?language=en-US'"
         }
     }
 }

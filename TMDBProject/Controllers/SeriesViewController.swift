@@ -13,12 +13,26 @@ class SeriesViewController: UIViewController {
     @IBOutlet var seriesCollectionView: UICollectionView!
     
     
+    var series: Series?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionViewDelegate()
         registerUINib()
         collectionViewLayout()
+        
+        fetchSeriesData()
+    }
+    
+    func fetchSeriesData() {
+        TMDBAPIManager.shared.callRequest(of: Series.self, type: EndPoint.series, movieId: nil) { response in
+            print("closure")
+//            print(response)
+            
+            self.series = response.value
+            self.seriesCollectionView.reloadData()
+        }
     }
     
     func collectionViewDelegate() {
@@ -39,20 +53,11 @@ class SeriesViewController: UIViewController {
     }
     
     func collectionViewLayout() {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.itemSize = CGSize(width: 100, height: 100)
-//        layout.minimumLineSpacing = 8
-//        layout.minimumInteritemSpacing = 8
-//        layout.scrollDirection = .vertical
-//
-//        seriesCollectionView.collectionViewLayout = layout
         
-        
-        // cell estimated size none으로 인터페이스 빌더에서 설정할 것!
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 20
-        let width = UIScreen.main.bounds.width - (spacing * 3)
-        layout.itemSize = CGSize(width: width/2, height: width/2)
+        let spacing: CGFloat = 10
+        let width = UIScreen.main.bounds.width - (spacing * 2)
+        layout.itemSize = CGSize(width: width, height: 150)
         layout.sectionInset = UIEdgeInsets(
             top: spacing,
             left: spacing,
@@ -61,6 +66,8 @@ class SeriesViewController: UIViewController {
         )
         layout.minimumLineSpacing = spacing // 상하
         layout.minimumInteritemSpacing = spacing // 좌우
+        layout.scrollDirection = .vertical
+        
         layout.headerReferenceSize = CGSize(width: 300, height: 50)
         
         seriesCollectionView.collectionViewLayout = layout
@@ -71,11 +78,14 @@ class SeriesViewController: UIViewController {
 
 extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        guard let count = series?.seasons.count else { return 0 }
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        guard let series else { return 0 }
+        let seriesCount = series.seasons.map { $0.episodeCount }
+        return seriesCount[section]
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,7 +104,10 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 return UICollectionReusableView()
             }
             
-            view.seasonLabel.text = "시즌 1"
+            if let series {
+                
+                view.configureReusableView(series.seasons[indexPath.section])
+            }
             return view
             
         } else {

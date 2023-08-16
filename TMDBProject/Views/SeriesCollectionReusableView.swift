@@ -17,7 +17,17 @@ class SeriesCollectionReusableView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        
+        designReusableView()
     }
     
+    func configureReusableView(_ row: Season) {
+        seasonLabel.text = "\(row.name)"
+        episodeCountLabel.text = "(\(row.episodeCount)개 회차)"
+    }
+    
+    func designReusableView() {
+        seasonLabel.font = .boldSystemFont(ofSize: 15)
+        episodeCountLabel.font = .systemFont(ofSize: 13)
+        episodeCountLabel.textColor = .gray
+    }
 }

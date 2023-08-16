@@ -15,13 +15,13 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gw1-C7-AbJ">
-                    <rect key="frame" x="6" y="16" width="42" height="43"/>
+                    <rect key="frame" x="16" y="16" width="42" height="43"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFs-rF-Uxk">
-                    <rect key="frame" x="54" y="16" width="42" height="43"/>
+                    <rect key="frame" x="64" y="16" width="42" height="43"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                 <constraint firstItem="Gw1-C7-AbJ" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="16" id="OcE-cj-235"/>
                 <constraint firstItem="yFs-rF-Uxk" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="16" id="Z4P-tz-4Jn"/>
                 <constraint firstItem="yFs-rF-Uxk" firstAttribute="leading" secondItem="Gw1-C7-AbJ" secondAttribute="trailing" constant="6" id="nc1-xF-sxE"/>
-                <constraint firstItem="Gw1-C7-AbJ" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="6" id="pau-hS-5tX"/>
+                <constraint firstItem="Gw1-C7-AbJ" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="16" id="pau-hS-5tX"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="yFs-rF-Uxk" secondAttribute="bottom" constant="16" id="qTb-mz-0Dn"/>
             </constraints>
             <connections>

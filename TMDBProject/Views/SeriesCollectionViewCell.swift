@@ -8,8 +8,6 @@
 import UIKit
 
 class SeriesCollectionViewCell: UICollectionViewCell {
-
-    
     
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var episodeLabel: UILabel!
