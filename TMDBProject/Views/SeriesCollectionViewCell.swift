@@ -17,16 +17,32 @@ class SeriesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var overviewLabel: UILabel!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        designCell()
     }
 
+  
+    func configureCell(_ row: Episode) {
+        if let imageURL = URL(string: row.fullImageURL) {
+            posterImageView.kf.setImage(with: imageURL)
+        }
+        episodeLabel.text = "\(row.episodeNumber)"
+        titleLabel.text = row.name
+        runtimeLabel.text = "\(row.runtime)분"
+        overviewLabel.text = row.overview
+    }
     
-    
-    
-    
+    func designCell() {
+        posterImageView.contentMode = .scaleAspectFill
+        titleLabel.font = .boldSystemFont(ofSize: 13)
+        titleLabel.numberOfLines = 2
+        
+        posterImageView.layer.cornerRadius = 15
+        posterImageView.clipsToBounds = true
+        
+    }
     
     
     

@@ -48,7 +48,9 @@ class DetailViewController: UIViewController {
         TMDBAPIManager.shared.callRequest(
             of: CastInfo.self,
             type: EndPoint.credit,
-            movieId: movie.id
+            movieId: movie.id,
+            seriesId: nil,
+            seasonId: nil
         ) { response in
             self.castInfo = response.value
             self.detailTableView.reloadData()

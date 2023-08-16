@@ -35,6 +35,7 @@
 		F7E5C5692A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5672A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift */; };
 		F7E5C56A2A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */; };
 		F7E5C56C2A8CC88C000DA0B9 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C56B2A8CC88C000DA0B9 /* Series.swift */; };
+		F7E5C56E2A8CF0E9000DA0B9 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C56D2A8CF0E9000DA0B9 /* Season.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		F7E5C5672A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCollectionReusableView.swift; sourceTree = "<group>"; };
 		F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesCollectionReusableView.xib; sourceTree = "<group>"; };
 		F7E5C56B2A8CC88C000DA0B9 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		F7E5C56D2A8CF0E9000DA0B9 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				F7C6F1D62A865D83006E19CD /* Movie.swift */,
 				F7E5C56B2A8CC88C000DA0B9 /* Series.swift */,
+				F7E5C56D2A8CF0E9000DA0B9 /* Season.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				F7C6F1D72A865D83006E19CD /* Movie.swift in Sources */,
 				F7E5C5652A8CB867000DA0B9 /* SeriesCollectionViewCell.swift in Sources */,
 				F7E5C5692A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift in Sources */,
+				F7E5C56E2A8CF0E9000DA0B9 /* Season.swift in Sources */,
 				F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */,
 				F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */,
 				F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */,

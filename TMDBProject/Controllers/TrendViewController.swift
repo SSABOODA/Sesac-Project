@@ -31,7 +31,9 @@ class TrendViewController: UIViewController {
         TMDBAPIManager.shared.callRequest(
             of: MovieResult.self,
             type: EndPoint.trend,
-            movieId: nil
+            movieId: nil,
+            seriesId: nil,
+            seasonId: nil
         ) { response in
             sleep(1)
             self.movieResult = response.value
