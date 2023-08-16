@@ -43,7 +43,6 @@ class SeriesViewController: UIViewController {
             for item in series.seasons {
                 self.fetchSeries(seriesId: seriesId, seasonId: item.seasonNumber)
             }
-            self.seriesCollectionView.reloadData()
         }
     }
     
@@ -73,6 +72,7 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeriesCollectionViewCell", for: indexPath) as? SeriesCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
         if seasonInfoList.count >= 1 {
             cell.configureCell(seasonInfoList[indexPath.section].episodes[indexPath.row])
         }
@@ -90,7 +90,6 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
             
             if let series {
-                
                 view.configureReusableView(series.seasons[indexPath.section])
             }
             return view
