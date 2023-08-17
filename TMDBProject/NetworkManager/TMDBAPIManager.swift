@@ -31,7 +31,7 @@ class TMDBAPIManager {
             
         url = getEndpointTypeURL(type: type, movieId: movieId, seriesId: seriesId, seasonId: seasonId)
         
-        print(url)
+//        print(url)
             
         AF.request(
             url,

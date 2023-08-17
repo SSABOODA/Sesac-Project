@@ -12,7 +12,6 @@ class SeriesViewController: UIViewController {
     @IBOutlet var seriesCollectionView: UICollectionView!
     
     var series: Series?
-    
     var seasonList: [SeasonInfo] = []
     
     override func viewDidLoad() {
@@ -39,18 +38,19 @@ class SeriesViewController: UIViewController {
             seriesId: 1396,
             seasonId: nil
         ) { response in
-            print("closure")
-            
             self.series = response
             guard let series = self.series else { return }
             
             for item in series.seasons {
-                self.fetchSeries(seriesId: series.id, seasonId: item.seasonNumber)
+                self.fetchSeries(seriesId: series.id, seasonId: item.seasonNumber) { data in
+                    self.seasonList.append(data)
+                    self.seriesCollectionView.reloadData()
+                }
             }
         }
     }
     
-    func fetchSeries(seriesId: Int, seasonId: Int) {
+    func fetchSeries(seriesId: Int, seasonId: Int, completionHandler: @escaping (SeasonInfo) -> Void ) {
         TMDBAPIManager.shared.callRequest(
             of: SeasonInfo.self,
             type: EndPoint.season,
@@ -58,12 +58,7 @@ class SeriesViewController: UIViewController {
             seriesId: seriesId,
             seasonId: seasonId
         ) { response in
-            
-//            print("==========================")
-//            print(response)
-            
-            self.seasonList.append(response)
-            self.seriesCollectionView.reloadData()
+            completionHandler(response)
         }
     }
 }
@@ -82,17 +77,14 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print(#function)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-        
-        
-        let episode = seasonList[indexPath.section].episodes[indexPath.row]
-        cell.configureCell(episode)
-        
-        
-        
+        if !seasonList.isEmpty {
+            let episode = seasonList[indexPath.section].episodes[indexPath.row]
+            cell.configureCell(episode)
+        }
         
         return cell
     }
@@ -100,16 +92,13 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if kind == UICollectionView.elementKindSectionHeader {
-            
             guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SeriesCollectionReusableView.identifier, for: indexPath) as? SeriesCollectionReusableView else {
                 return UICollectionReusableView()
             }
-            
             if let series {
                 view.configureReusableView(series.seasons[indexPath.section])
             }
             return view
-            
         } else {
             return UICollectionReusableView()
         }

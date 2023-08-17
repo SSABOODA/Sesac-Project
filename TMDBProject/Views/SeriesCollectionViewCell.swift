@@ -19,7 +19,7 @@ class SeriesCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        print(#function)
         designCell()
     }
 
@@ -30,7 +30,7 @@ class SeriesCollectionViewCell: UICollectionViewCell {
         }
         episodeLabel.text = "\(row.episodeNumber)"
         titleLabel.text = row.name
-        runtimeLabel.text = "\(row.runtime)분"
+        runtimeLabel.text = "\(row.runtime ?? 0)분"
         overviewLabel.text = row.overview
     }
     
@@ -46,16 +46,11 @@ class SeriesCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        print(#function)
         posterImageView.image = nil
-        
         episodeLabel.text = nil
         titleLabel.text = nil
         runtimeLabel.text = nil
         overviewLabel.text = nil
-        
-        
     }
-    
-    
-    
 }
