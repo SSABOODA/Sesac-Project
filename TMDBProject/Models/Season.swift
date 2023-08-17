@@ -11,57 +11,63 @@ import Foundation
 
 // MARK: - SeasonInfo
 struct SeasonInfo: Codable {
-    let id, airDate: String
+//    let id, airDate: String
     let episodes: [Episode]
-    let name, overview: String
-    let seasonInfoID: Int
-    let posterPath: String
-    let seasonNumber: Int
-    let voteAverage: Double
+//    let name, overview: String
+//    let seasonInfoID: Int
+//    let posterPath: String
+//    let seasonNumber: Int
+//    let voteAverage: Double
 
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case airDate = "air_date"
-        case episodes, name, overview
-        case seasonInfoID = "id"
-        case posterPath = "poster_path"
-        case seasonNumber = "season_number"
-        case voteAverage = "vote_average"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case id = "_id"
+//        case airDate = "air_date"
+//        case episodes
+//        case name, overview
+//        case seasonInfoID = "id"
+//        case posterPath = "poster_path"
+//        case seasonNumber = "season_number"
+//        case voteAverage = "vote_average"
+//    }
 }
 
 // MARK: - Episode
 struct Episode: Codable {
-    let airDate: String
+//    let airDate: String
     let episodeNumber: Int
-    let episodeType: String
-    let id: Int
-    let name, overview, productionCode: String
-    let runtime, seasonNumber, showID: Int
-    let stillPath: String
-    let voteAverage: Double
-    let voteCount: Int
+//    let episodeType: String
+//    let id: Int
+    let name, overview: String
+//    let productionCode: String
+    let runtime: Int?
+    let seasonNumber: Int
+//    let showID: Int
+    let stillPath: String?
+//    let voteAverage: Double
+//    let voteCount: Int
 //    let crew: [JSONAny]
 //    let guestStars: [GuestStar]
 
     enum CodingKeys: String, CodingKey {
-        case airDate = "air_date"
+//        case airDate = "air_date"
         case episodeNumber = "episode_number"
-        case episodeType = "episode_type"
-        case id, name, overview
-        case productionCode = "production_code"
+//        case episodeType = "episode_type"
+//        case id,
+        case name
+        case overview
+//        case productionCode = "production_code"
         case runtime
         case seasonNumber = "season_number"
-        case showID = "show_id"
+//        case showID = "show_id"
         case stillPath = "still_path"
-        case voteAverage = "vote_average"
-        case voteCount = "vote_count"
+//        case voteAverage = "vote_average"
+//        case voteCount = "vote_count"
 //        case crew
 //        case guestStars = "guest_stars"
     }
     
     var fullImageURL: String {
-        return URL.baseImageURL + self.stillPath
+        return URL.baseImageURL + (self.stillPath ?? "")
     }
 }
 

@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
             seriesId: nil,
             seasonId: nil
         ) { response in
-            self.castInfo = response.value
+            self.castInfo = response
             self.detailTableView.reloadData()
         }
     }

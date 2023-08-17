@@ -27,7 +27,7 @@ class TMDBAPIManager {
         movieId: Int?,
         seriesId: Int?,
         seasonId: Int?,
-        completionHandler: @escaping (DataResponse<T, AFError>) -> ()) {
+        completionHandler: @escaping (T) -> ()) {
             
         url = getEndpointTypeURL(type: type, movieId: movieId, seriesId: seriesId, seasonId: seasonId)
         
@@ -37,12 +37,12 @@ class TMDBAPIManager {
             url,
             method: .get,
             headers: header
-        ).validate().responseDecodable(of: T.self) { response in
+        ).validate(statusCode: 200...500).responseDecodable(of: T.self) { response in
             switch response.result {
-            case .success:
-                completionHandler(response)
+            case .success(let value):
+                completionHandler(value)
             case .failure(let err):
-                print(err.localizedDescription)
+                print(err)
             }
         }
     }
@@ -60,5 +60,4 @@ class TMDBAPIManager {
         }
     }
 }
-// 1396 breaking bed
-// 110534 dp
+

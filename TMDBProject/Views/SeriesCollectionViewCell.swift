@@ -44,6 +44,18 @@ class SeriesCollectionViewCell: UICollectionViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        posterImageView.image = nil
+        
+        episodeLabel.text = nil
+        titleLabel.text = nil
+        runtimeLabel.text = nil
+        overviewLabel.text = nil
+        
+        
+    }
+    
     
     
 }

@@ -9,12 +9,11 @@ import UIKit
 
 class SeriesViewController: UIViewController {
 
-    
     @IBOutlet var seriesCollectionView: UICollectionView!
     
     var series: Series?
     
-    var seasonInfoList: [SeasonInfo] = []
+    var seasonList: [SeasonInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,30 +25,44 @@ class SeriesViewController: UIViewController {
         fetchSeriesData()
     }
     
+    // 66732 기묘한 이야기
+    // 110534 DP
+    // 2288 프리즌 브레이크
+    // 60735 플래시
+    // 1396 브레이킹 배드
+
     func fetchSeriesData() {
         TMDBAPIManager.shared.callRequest(
             of: Series.self,
             type: EndPoint.series,
             movieId: nil,
-            seriesId: nil,
+            seriesId: 1396,
             seasonId: nil
         ) { response in
             print("closure")
             
-            self.series = response.value
+            self.series = response
             guard let series = self.series else { return }
-            guard let seriesId = response.value?.id else { return }
             
             for item in series.seasons {
-                self.fetchSeries(seriesId: seriesId, seasonId: item.seasonNumber)
+                self.fetchSeries(seriesId: series.id, seasonId: item.seasonNumber)
             }
         }
     }
     
     func fetchSeries(seriesId: Int, seasonId: Int) {
-        TMDBAPIManager.shared.callRequest(of: SeasonInfo.self, type: EndPoint.season, movieId: nil, seriesId: seriesId, seasonId: seasonId) { response in
-            guard let result = response.value else { return }
-            self.seasonInfoList.append(result)
+        TMDBAPIManager.shared.callRequest(
+            of: SeasonInfo.self,
+            type: EndPoint.season,
+            movieId: nil,
+            seriesId: seriesId,
+            seasonId: seasonId
+        ) { response in
+            
+//            print("==========================")
+//            print(response)
+            
+            self.seasonList.append(response)
             self.seriesCollectionView.reloadData()
         }
     }
@@ -69,13 +82,16 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeriesCollectionViewCell", for: indexPath) as? SeriesCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        if seasonInfoList.count >= 1 {
-            cell.configureCell(seasonInfoList[indexPath.section].episodes[indexPath.row])
-        }
+        
+        
+        let episode = seasonList[indexPath.section].episodes[indexPath.row]
+        cell.configureCell(episode)
+        
+        
         
         
         return cell
@@ -85,7 +101,7 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         if kind == UICollectionView.elementKindSectionHeader {
             
-            guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SeriesCollectionReusableView", for: indexPath) as? SeriesCollectionReusableView else {
+            guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SeriesCollectionReusableView.identifier, for: indexPath) as? SeriesCollectionReusableView else {
                 return UICollectionReusableView()
             }
             
@@ -108,18 +124,17 @@ extension SeriesViewController {
     
     func registerUINib() {
         seriesCollectionView.register(
-            UINib(nibName: "SeriesCollectionViewCell", bundle: nil),
-            forCellWithReuseIdentifier: "SeriesCollectionViewCell"
+            UINib(nibName: SeriesCollectionViewCell.identifier, bundle: nil),
+            forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier
         )
         seriesCollectionView.register(
-            UINib(nibName: "SeriesCollectionReusableView", bundle: nil),
+            UINib(nibName: SeriesCollectionReusableView.identifier, bundle: nil),
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: "SeriesCollectionReusableView"
+            withReuseIdentifier: SeriesCollectionReusableView.identifier
         )
     }
     
     func collectionViewLayout() {
-        
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let width = UIScreen.main.bounds.width - (spacing * 2)

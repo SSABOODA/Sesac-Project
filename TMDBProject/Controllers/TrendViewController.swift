@@ -36,8 +36,7 @@ class TrendViewController: UIViewController {
             seasonId: nil
         ) { response in
             sleep(1)
-            self.movieResult = response.value
-
+            self.movieResult = response
             self.indicatorView.stopAnimating()
             self.indicatorView.isHidden = true
             self.trendTableView.reloadData()
