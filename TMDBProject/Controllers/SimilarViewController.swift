@@ -28,9 +28,7 @@ class SimilarViewController: UIViewController {
         
         callRequestVideo()
     }
-    
-    
-    
+
     @IBAction func segmentButtonClicked(_ sender: UISegmentedControl) {
         print(sender.selectedSegmentIndex)
         movieCollectionView.reloadData()
@@ -43,8 +41,6 @@ class SimilarViewController: UIViewController {
         
         group.enter()
         TMDBAPIManager.shared.callRequest(of: YoutubeVideo.self, type: .video, movieId: movieId, seriesId: nil, seasonId: nil) { data in
-            print(data)
-            
             self.video = data
             group.leave()
         }
@@ -56,28 +52,16 @@ class SimilarViewController: UIViewController {
         
         group.notify(queue: .main) {
             print("END")
-            
-            print("Video======", self.video)
-            print("Similar=====", self.similarVideo)
-            
             self.movieCollectionView.reloadData()
         }
         
     }
     
-    
-    
-    
 }
 
 extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if videoSegmentControl.selectedSegmentIndex == 0 {
-            return video.video.count
-        } else {
-            return similarVideo.results.count
-        }
-        
+        return videoSegmentControl.selectedSegmentIndex == 0 ? video.video.count : similarVideo.results.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -90,9 +74,6 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
         } else {
             cell.configureSimilarVideo(similarVideo.results[indexPath.row])
         }
-        
-        
-        print("cell", videoSegmentControl.selectedSegmentIndex)
         
         return cell
     }

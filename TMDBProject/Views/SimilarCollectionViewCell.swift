@@ -38,5 +38,11 @@ class SimilarCollectionViewCell: UICollectionViewCell {
         moviePosterImageView.contentMode = .scaleAspectFill
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        moviePosterImageView.image = nil
+        movieTitleLabel.text = nil
+    }
+    
 
 }
