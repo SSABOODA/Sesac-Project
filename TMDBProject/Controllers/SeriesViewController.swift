@@ -105,7 +105,7 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension SeriesViewController {
+extension SeriesViewController: CollectionViewAttributeProtocol {
     func collectionViewDelegate() {
         seriesCollectionView.dataSource = self
         seriesCollectionView.delegate = self

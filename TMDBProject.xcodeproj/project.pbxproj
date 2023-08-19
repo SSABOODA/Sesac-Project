@@ -36,6 +36,12 @@
 		F7E5C56A2A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */; };
 		F7E5C56C2A8CC88C000DA0B9 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C56B2A8CC88C000DA0B9 /* Series.swift */; };
 		F7E5C56E2A8CF0E9000DA0B9 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C56D2A8CF0E9000DA0B9 /* Season.swift */; };
+		F7E5C5932A90AC97000DA0B9 /* SimilarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5922A90AC97000DA0B9 /* SimilarViewController.swift */; };
+		F7E5C5962A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5942A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift */; };
+		F7E5C5972A90AE2A000DA0B9 /* SimilarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5952A90AE2A000DA0B9 /* SimilarCollectionViewCell.xib */; };
+		F7E5C5992A90AF3C000DA0B9 /* CollectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5982A90AF3C000DA0B9 /* CollectionViewProtocol.swift */; };
+		F7E5C59B2A90BC5A000DA0B9 /* SimilarMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C59A2A90BC5A000DA0B9 /* SimilarMovie.swift */; };
+		F7E5C59D2A90BC69000DA0B9 /* YoutubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C59C2A90BC69000DA0B9 /* YoutubeVideo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +73,12 @@
 		F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesCollectionReusableView.xib; sourceTree = "<group>"; };
 		F7E5C56B2A8CC88C000DA0B9 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
 		F7E5C56D2A8CF0E9000DA0B9 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		F7E5C5922A90AC97000DA0B9 /* SimilarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarViewController.swift; sourceTree = "<group>"; };
+		F7E5C5942A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarCollectionViewCell.swift; sourceTree = "<group>"; };
+		F7E5C5952A90AE2A000DA0B9 /* SimilarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimilarCollectionViewCell.xib; sourceTree = "<group>"; };
+		F7E5C5982A90AF3C000DA0B9 /* CollectionViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewProtocol.swift; sourceTree = "<group>"; };
+		F7E5C59A2A90BC5A000DA0B9 /* SimilarMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMovie.swift; sourceTree = "<group>"; };
+		F7E5C59C2A90BC69000DA0B9 /* YoutubeVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +116,6 @@
 			children = (
 				F7C6F1A42A862307006E19CD /* AppDelegate.swift */,
 				F7C6F1A62A862307006E19CD /* SceneDelegate.swift */,
-				F7C6F1C62A864468006E19CD /* APIKey.swift */,
 				F7E5C5412A87AB19000DA0B9 /* Helpers */,
 				F7C6F1C82A8644CC006E19CD /* NetworkManager */,
 				F7C6F1D32A864639006E19CD /* Extension */,
@@ -125,6 +136,7 @@
 				F7C6F1A82A862307006E19CD /* TrendViewController.swift */,
 				F7E5C5362A876303000DA0B9 /* DetailViewController.swift */,
 				F7E5C5612A8CB837000DA0B9 /* SeriesViewController.swift */,
+				F7E5C5922A90AC97000DA0B9 /* SimilarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -140,6 +152,8 @@
 				F7E5C5642A8CB867000DA0B9 /* SeriesCollectionViewCell.xib */,
 				F7E5C5672A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift */,
 				F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */,
+				F7E5C5942A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift */,
+				F7E5C5952A90AE2A000DA0B9 /* SimilarCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,6 +164,8 @@
 				F7C6F1D62A865D83006E19CD /* Movie.swift */,
 				F7E5C56B2A8CC88C000DA0B9 /* Series.swift */,
 				F7E5C56D2A8CF0E9000DA0B9 /* Season.swift */,
+				F7E5C59A2A90BC5A000DA0B9 /* SimilarMovie.swift */,
+				F7E5C59C2A90BC69000DA0B9 /* YoutubeVideo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */,
+				F7E5C5982A90AF3C000DA0B9 /* CollectionViewProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -165,6 +182,7 @@
 		F7C6F1C82A8644CC006E19CD /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
+				F7C6F1C62A864468006E19CD /* APIKey.swift */,
 				F7C6F1C92A864502006E19CD /* TMDBAPIManager.swift */,
 				F7C6F1D12A864620006E19CD /* EndPoint.swift */,
 			);
@@ -262,6 +280,7 @@
 				F7C6F1B12A862308006E19CD /* LaunchScreen.storyboard in Resources */,
 				F7E5C5662A8CB867000DA0B9 /* SeriesCollectionViewCell.xib in Resources */,
 				F7C6F1AE2A862308006E19CD /* Assets.xcassets in Resources */,
+				F7E5C5972A90AE2A000DA0B9 /* SimilarCollectionViewCell.xib in Resources */,
 				F7C6F1AC2A862307006E19CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +296,9 @@
 				F7E5C5372A876303000DA0B9 /* DetailViewController.swift in Sources */,
 				F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */,
 				F7E5C56C2A8CC88C000DA0B9 /* Series.swift in Sources */,
+				F7E5C5962A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift in Sources */,
+				F7E5C5992A90AF3C000DA0B9 /* CollectionViewProtocol.swift in Sources */,
+				F7E5C59B2A90BC5A000DA0B9 /* SimilarMovie.swift in Sources */,
 				F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */,
 				F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
@@ -288,10 +310,12 @@
 				F7E5C56E2A8CF0E9000DA0B9 /* Season.swift in Sources */,
 				F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */,
 				F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */,
+				F7E5C59D2A90BC69000DA0B9 /* YoutubeVideo.swift in Sources */,
 				F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */,
 				F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */,
 				F7C6F1A52A862307006E19CD /* AppDelegate.swift in Sources */,
 				F7C6F1A72A862307006E19CD /* SceneDelegate.swift in Sources */,
+				F7E5C5932A90AC97000DA0B9 /* SimilarViewController.swift in Sources */,
 				F7E5C5622A8CB837000DA0B9 /* SeriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
