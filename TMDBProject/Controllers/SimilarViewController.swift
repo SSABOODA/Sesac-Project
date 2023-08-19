@@ -11,9 +11,13 @@ class SimilarViewController: UIViewController {
 
     
     @IBOutlet var movieCollectionView: UICollectionView!
+    @IBOutlet var videoSegmentControl: UISegmentedControl!
+    
     
     var video: YoutubeVideo = YoutubeVideo(id: 0, video: [])
+    var similarVideo: SimilarMovieData = SimilarMovieData(results: [])
     
+    let movieId = 872585
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +33,36 @@ class SimilarViewController: UIViewController {
     
     @IBAction func segmentButtonClicked(_ sender: UISegmentedControl) {
         print(sender.selectedSegmentIndex)
+        movieCollectionView.reloadData()
     }
     
     
     func callRequestVideo() {
-        let movieId = 872585
+        
+        let group = DispatchGroup()
+        
+        group.enter()
         TMDBAPIManager.shared.callRequest(of: YoutubeVideo.self, type: .video, movieId: movieId, seriesId: nil, seasonId: nil) { data in
-            print(123)
             print(data)
             
             self.video = data
+            group.leave()
+        }
+        group.enter()
+        TMDBAPIManager.shared.callRequest(of: SimilarMovieData.self, type: .similar, movieId: movieId, seriesId: nil, seasonId: nil) { data in
+            self.similarVideo = data
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            print("END")
+            
+            print("Video======", self.video)
+            print("Similar=====", self.similarVideo)
+            
             self.movieCollectionView.reloadData()
         }
+        
     }
     
     
@@ -50,7 +72,12 @@ class SimilarViewController: UIViewController {
 
 extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return video.video.count
+        if videoSegmentControl.selectedSegmentIndex == 0 {
+            return video.video.count
+        } else {
+            return similarVideo.results.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,9 +85,14 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
         
-//        cell.moviePosterImageView.backgroundColor = .purple
+        if videoSegmentControl.selectedSegmentIndex == 0 {
+            cell.configureVideo(video.video[indexPath.row])
+        } else {
+            cell.configureSimilarVideo(similarVideo.results[indexPath.row])
+        }
         
-        cell.configureCell(video.video[indexPath.row])
+        
+        print("cell", videoSegmentControl.selectedSegmentIndex)
         
         return cell
     }

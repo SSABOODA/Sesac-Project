@@ -508,6 +508,7 @@
                     </view>
                     <connections>
                         <outlet property="movieCollectionView" destination="GFz-Ww-IOv" id="00d-vv-ghN"/>
+                        <outlet property="videoSegmentControl" destination="S4m-T4-FEg" id="DIR-q6-het"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tlv-Mk-xdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

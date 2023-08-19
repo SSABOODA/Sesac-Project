@@ -51,8 +51,6 @@ class TMDBAPIManager {
 ////        let url = "https://api.themoviedb.org/3/movie/872585/videos?language=en-US"
 //
 //        let url = getEndpointTypeURL(type: .video, movieId: 872585, seriesId: nil, seasonId: nil)
-//
-//
 //    }
     
     func getEndpointTypeURL(
@@ -72,6 +70,8 @@ class TMDBAPIManager {
             return type.requestURL + "\(seriesId ?? 110534)" + "/season" + "/\(seasonId ?? 1)" + "?language=en-US"
         case .video:
             return type.requestURL + "\(movieId ?? 0)" + "/videos?language=en-US"
+        case .similar:
+            return type.requestURL + "\(movieId ?? 0)" + "/similar?language=en-US"
         }
     }
 }
