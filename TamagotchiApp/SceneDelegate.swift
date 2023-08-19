@@ -49,6 +49,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        
+        // 아이콘 Badge 알림 개수 초기화
+        UIApplication.shared.applicationIconBadgeNumber = 300
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -80,7 +83,7 @@ extension SceneDelegate {
         let content = UNMutableNotificationContent()
         content.title = "\(name)가 배고파하고 있어요 돌아와서 먹이를 주세요ㅠ"
         content.body = "레벨은 \(level)이에요.~~"
-        content.badge = 133
+        content.badge = 333
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: true)
         let request = UNNotificationRequest(identifier: "\(Date())", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { error in
