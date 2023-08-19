@@ -65,8 +65,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        configureUserNotification()
+        
     }
 
 
 }
 
+extension SceneDelegate {
+    func configureUserNotification() {
+        let name = UserDefaultsHelper.shared.name
+        let level = UserDefaultsHelper.shared.level
+        
+        let content = UNMutableNotificationContent()
+        content.title = "\(name)가 배고파하고 있어요 돌아와서 먹이를 주세요ㅠ"
+        content.body = "레벨은 \(level)이에요.~~"
+        content.badge = 133
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: true)
+        let request = UNNotificationRequest(identifier: "\(Date())", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { error in
+            print(error)
+        }
+    }
+}
