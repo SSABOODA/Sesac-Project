@@ -17,7 +17,7 @@ class SimilarViewController: UIViewController {
     var video: YoutubeVideo = YoutubeVideo(id: 0, video: [])
     var similarVideo: SimilarMovieData = SimilarMovieData(results: [])
     
-    let movieId = 872585
+    let movieId = 299534
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,7 @@ class SimilarViewController: UIViewController {
         group.enter()
         TMDBAPIManager.shared.callRequest(of: SimilarMovieData.self, type: .similar, movieId: movieId, seriesId: nil, seasonId: nil) { data in
             self.similarVideo = data
+            print(data)
             group.leave()
         }
         

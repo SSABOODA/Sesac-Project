@@ -53,6 +53,7 @@
             </constraints>
             <size key="customSize" width="296" height="249"/>
             <connections>
+                <outlet property="backView" destination="fuV-tI-xRF" id="xax-5m-G4M"/>
                 <outlet property="moviePosterImageView" destination="l37-J0-itW" id="Hfx-TG-b6H"/>
                 <outlet property="movieTitleLabel" destination="a3R-hB-i4W" id="pfx-AI-Wcr"/>
             </connections>

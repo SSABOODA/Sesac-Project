@@ -25,12 +25,12 @@ struct SimilarMovieData: Codable {
 // MARK: - Result
 struct SimilarMovie: Codable {
 //    let adult: Bool
-    let backdropPath: String?
+//    let backdropPath: String?
 //    let genreIDS: [Int]
 //    let id: Int
 //    let originalLanguage, originalTitle, overview: String
 //    let popularity: Double
-//    let posterPath: String?
+    let posterPath: String?
 //    let releaseDate: String
     let title: String
 //    let video: Bool
@@ -39,13 +39,13 @@ struct SimilarMovie: Codable {
 
     enum CodingKeys: String, CodingKey {
 //        case adult
-        case backdropPath = "backdrop_path"
+//        case backdropPath = "backdrop_path"
 //        case genreIDS = "genre_ids"
 //        case id
 //        case originalLanguage = "original_language"
 //        case originalTitle = "original_title"
 //        case overview, popularity
-//        case posterPath = "poster_path"
+        case posterPath = "poster_path"
 //        case releaseDate = "release_date"
         case title
 //        case video
@@ -54,6 +54,6 @@ struct SimilarMovie: Codable {
     }
     
     var fullImageURL: String {
-        return URL.baseImageURL + (self.backdropPath ?? "")
+        return URL.baseImageURL + (self.posterPath ?? "")
     }
 }

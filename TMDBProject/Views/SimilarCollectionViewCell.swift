@@ -9,6 +9,8 @@ import UIKit
 
 class SimilarCollectionViewCell: UICollectionViewCell {
 
+    
+    @IBOutlet var backView: UIView!
     @IBOutlet var movieTitleLabel: UILabel!
     @IBOutlet var moviePosterImageView: UIImageView!
     
@@ -36,6 +38,11 @@ class SimilarCollectionViewCell: UICollectionViewCell {
     func designCell() {
         movieTitleLabel.font = .boldSystemFont(ofSize: 13)
         moviePosterImageView.contentMode = .scaleAspectFill
+        moviePosterImageView.layer.cornerRadius = 15
+        moviePosterImageView.clipsToBounds = true
+        backView.backgroundColor = .lightGray
+        backView.layer.cornerRadius = 15
+        backView.clipsToBounds = true
     }
     
     override func prepareForReuse() {
