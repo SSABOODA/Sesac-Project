@@ -66,7 +66,6 @@ class DetailViewController: UIViewController {
     func configureHeaderView() {
         headerImageView.contentMode = .scaleAspectFill
         overviewLabel.numberOfLines = 2
-        
         overviewBackView.layer.addBorder([.top, .bottom], color: UIColor.systemGray5, width: 1)
     }
     

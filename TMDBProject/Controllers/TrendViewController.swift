@@ -7,6 +7,8 @@
 
 import UIKit
 
+// 416
+
 class TrendViewController: UIViewController {
 
     @IBOutlet var trendTableView: UITableView!
@@ -59,7 +61,6 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         if let movie = movieResult?.movie {
             cell.configureCell(movie[indexPath.row])
         }
-        cell.designTableViewCell()
         
         return cell
     }

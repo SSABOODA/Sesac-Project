@@ -19,11 +19,12 @@ class TrendTableViewCell: UITableViewCell {
     @IBOutlet var rateLabel: UILabel!
     
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var originalTitleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        designTableViewCell()
     }
 
     func configureCell(_ rowData: Movie) {
@@ -35,6 +36,7 @@ class TrendTableViewCell: UITableViewCell {
         }
         rateLabel.text = rowData.roundRate
         titleLabel.text = rowData.title
+        originalTitleLabel.text = rowData.originalTitle
         subTitleLabel.text = rowData.description
     }
     

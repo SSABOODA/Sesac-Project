@@ -49,6 +49,7 @@ struct Movie: Codable {
     let mediaType: MediaType
     let rate: Double
     let title: String?
+    let originalTitle: String?
     let description: String
     let imageURL: String
     let genreIds: [Int]
@@ -59,6 +60,7 @@ struct Movie: Codable {
         case mediaType = "media_type"
         case rate = "vote_average"
         case title
+        case originalTitle = "original_title"
         case description = "overview"
         case imageURL = "backdrop_path"
         case genreIds = "genre_ids"
@@ -117,6 +119,6 @@ struct Cast: Codable {
     }
     
     var fullImageURL: String {
-        return URL.baseImageURL + self.profileImageURL!
+        return URL.baseImageURL + (self.profileImageURL ?? "")
     }
 }
