@@ -16,7 +16,6 @@ class PopUpViewController: UIViewController {
     
     @IBOutlet var popUpCancelButton: UIButton!
     @IBOutlet var popUpStartButton: UIButton!
-    @IBOutlet var buttonStackView: UIStackView!
     
     var tamagotchi: Tamagotchi?
     var dataTransitionType: DataTransitionType = .normal
@@ -148,11 +147,17 @@ class PopUpViewController: UIViewController {
         let buttonList: [UIButton] = [popUpCancelButton, popUpStartButton]
         buttonList.forEach { item in
             item.tintColor = ColorData.fontColor
+            item.backgroundColor = ColorData.backgroundColor
+            item.layer.addBorder([.top], color: UIColor.systemGray4, width: 1)
         }
         popUpCancelButton.backgroundColor = .systemGray6
+
         
-        // button stackview design
-        buttonStackView.layer.borderColor = UIColor.systemGray5.cgColor
-        buttonStackView.layer.borderWidth = 0.8
+        // Description Label
+        tamagotchiDescriptionLabel.backgroundColor = ColorData.backgroundColor
+        tamagotchiDescriptionLabel.font = .systemFont(ofSize: 13)
+        tamagotchiDescriptionLabel.numberOfLines = 0
+        tamagotchiDescriptionLabel.textAlignment = .center
+
     }
 }
