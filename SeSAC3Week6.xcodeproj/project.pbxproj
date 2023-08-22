@@ -79,11 +79,11 @@
 				F7E5C5D52A949AA2000DA0B9 /* Assignment */,
 				F7E5C5CE2A944647000DA0B9 /* Test */,
 				F7E5C5B02A9309FD000DA0B9 /* ViewController.swift */,
+				F7E5C5D32A947926000DA0B9 /* LocationViewController.swift */,
 				F7E5C5B22A9309FD000DA0B9 /* Main.storyboard */,
 				F7E5C5B52A9309FE000DA0B9 /* Assets.xcassets */,
 				F7E5C5B72A9309FE000DA0B9 /* LaunchScreen.storyboard */,
 				F7E5C5BA2A9309FE000DA0B9 /* Info.plist */,
-				F7E5C5D32A947926000DA0B9 /* LocationViewController.swift */,
 			);
 			path = SeSAC3Week6;
 			sourceTree = "<group>";

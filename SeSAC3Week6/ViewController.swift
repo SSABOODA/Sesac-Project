@@ -74,9 +74,9 @@ class ViewController: UIViewController {
     
     @objc
     func signButtonClicked() {
-//        let vc = SnapKitViewController()
+        let vc = SnapKitViewController()
 //        let vc = TextViewController()
-        let vc = LocationViewController()
+//        let vc = LocationViewController()
         present(vc, animated: true)
     }
     

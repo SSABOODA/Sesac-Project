@@ -130,64 +130,56 @@ class Example3ViewController: UIViewController {
     }
     
     func setConstraints() {
-        dateLabel.snp.makeConstraints { make in
-            make.top.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
+        dateLabel.snp.makeConstraints {
+            $0.top.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
         }
         
-        locationButton.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(15)
-            make.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
+        locationButton.snp.makeConstraints {
+            $0.top.equalTo(dateLabel.snp.bottom).offset(15)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
 
         }
         
-        locationLabel.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(15)
-            make.leading.equalTo(locationButton.snp.trailing).offset(15)
+        locationLabel.snp.makeConstraints {
+            $0.top.equalTo(dateLabel.snp.bottom).offset(15)
+            $0.leading.equalTo(locationButton.snp.trailing).offset(15)
         }
         
-        resetButton.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(15)
-            make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-25)
+        resetButton.snp.makeConstraints {
+            $0.top.equalTo(dateLabel.snp.bottom).offset(15)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-25)
         }
         
-        shareButton.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(15)
-            make.trailing.equalTo(resetButton.snp.leading).offset(-30)
+        shareButton.snp.makeConstraints {
+            $0.top.equalTo(dateLabel.snp.bottom).offset(15)
+            $0.trailing.equalTo(resetButton.snp.leading).offset(-30)
         }
         
-        firstChatLabel.snp.makeConstraints { make in
-            make.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
-            make.top.equalTo(locationButton.snp.bottom).offset(15)
+        firstChatLabel.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
+            $0.top.equalTo(locationButton.snp.bottom).offset(15)
         }
         
-        secondChatLabel.snp.makeConstraints { make in
-            make.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
-            make.top.equalTo(firstChatLabel.snp.bottom).offset(15)
+        secondChatLabel.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
+            $0.top.equalTo(firstChatLabel.snp.bottom).offset(15)
         }
         
-        thirdChatLabel.snp.makeConstraints { make in
-            make.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
-            make.top.equalTo(secondChatLabel.snp.bottom).offset(15)
+        thirdChatLabel.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
+            $0.top.equalTo(secondChatLabel.snp.bottom).offset(15)
         }
         
-        chatImageView.snp.makeConstraints { make in
-            make.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
-            make.top.equalTo(thirdChatLabel.snp.bottom).offset(15)
-            make.height.equalTo(200)
-            make.width.equalTo(250)
+        chatImageView.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
+            $0.top.equalTo(thirdChatLabel.snp.bottom).offset(15)
+            $0.height.equalTo(200)
+            $0.width.equalTo(250)
         }
         
-        fourthChatLabel.snp.makeConstraints { make in
-            make.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
-            make.top.equalTo(chatImageView.snp.bottom).offset(15)
+        fourthChatLabel.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(25)
+            $0.top.equalTo(chatImageView.snp.bottom).offset(15)
         }
-        
-        
-
-
-        
-        
     }
-    
-
 }
