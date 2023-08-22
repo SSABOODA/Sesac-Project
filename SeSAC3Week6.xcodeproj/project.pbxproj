@@ -13,6 +13,15 @@
 		F7E5C5B42A9309FD000DA0B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5B22A9309FD000DA0B9 /* Main.storyboard */; };
 		F7E5C5B62A9309FE000DA0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5B52A9309FE000DA0B9 /* Assets.xcassets */; };
 		F7E5C5B92A9309FE000DA0B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5B72A9309FE000DA0B9 /* LaunchScreen.storyboard */; };
+		F7E5C5CD2A94461D000DA0B9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F7E5C5CC2A94461D000DA0B9 /* SnapKit */; };
+		F7E5C5D02A944653000DA0B9 /* SnapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5CF2A944653000DA0B9 /* SnapKitViewController.swift */; };
+		F7E5C5D22A945CA8000DA0B9 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5D12A945CA8000DA0B9 /* TextViewController.swift */; };
+		F7E5C5D42A947926000DA0B9 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5D32A947926000DA0B9 /* LocationViewController.swift */; };
+		F7E5C5D72A949AB9000DA0B9 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5D62A949AB9000DA0B9 /* TaskViewController.swift */; };
+		F7E5C5D92A949E12000DA0B9 /* Example1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5D82A949E12000DA0B9 /* Example1ViewController.swift */; };
+		F7E5C5DB2A94A32C000DA0B9 /* Example2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5DA2A94A32C000DA0B9 /* Example2ViewController.swift */; };
+		F7E5C5DD2A94AC7D000DA0B9 /* Example3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5DC2A94AC7D000DA0B9 /* Example3ViewController.swift */; };
+		F7E5C5DF2A94D283000DA0B9 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5DE2A94D283000DA0B9 /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,14 @@
 		F7E5C5B52A9309FE000DA0B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7E5C5B82A9309FE000DA0B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7E5C5BA2A9309FE000DA0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7E5C5CF2A944653000DA0B9 /* SnapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKitViewController.swift; sourceTree = "<group>"; };
+		F7E5C5D12A945CA8000DA0B9 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		F7E5C5D32A947926000DA0B9 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		F7E5C5D62A949AB9000DA0B9 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		F7E5C5D82A949E12000DA0B9 /* Example1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example1ViewController.swift; sourceTree = "<group>"; };
+		F7E5C5DA2A94A32C000DA0B9 /* Example2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example2ViewController.swift; sourceTree = "<group>"; };
+		F7E5C5DC2A94AC7D000DA0B9 /* Example3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example3ViewController.swift; sourceTree = "<group>"; };
+		F7E5C5DE2A94D283000DA0B9 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7E5C5CD2A94461D000DA0B9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,13 +76,37 @@
 			children = (
 				F7E5C5AC2A9309FD000DA0B9 /* AppDelegate.swift */,
 				F7E5C5AE2A9309FD000DA0B9 /* SceneDelegate.swift */,
+				F7E5C5D52A949AA2000DA0B9 /* Assignment */,
+				F7E5C5CE2A944647000DA0B9 /* Test */,
 				F7E5C5B02A9309FD000DA0B9 /* ViewController.swift */,
 				F7E5C5B22A9309FD000DA0B9 /* Main.storyboard */,
 				F7E5C5B52A9309FE000DA0B9 /* Assets.xcassets */,
 				F7E5C5B72A9309FE000DA0B9 /* LaunchScreen.storyboard */,
 				F7E5C5BA2A9309FE000DA0B9 /* Info.plist */,
+				F7E5C5D32A947926000DA0B9 /* LocationViewController.swift */,
 			);
 			path = SeSAC3Week6;
+			sourceTree = "<group>";
+		};
+		F7E5C5CE2A944647000DA0B9 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5CF2A944653000DA0B9 /* SnapKitViewController.swift */,
+				F7E5C5D12A945CA8000DA0B9 /* TextViewController.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		F7E5C5D52A949AA2000DA0B9 /* Assignment */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5D62A949AB9000DA0B9 /* TaskViewController.swift */,
+				F7E5C5D82A949E12000DA0B9 /* Example1ViewController.swift */,
+				F7E5C5DA2A94A32C000DA0B9 /* Example2ViewController.swift */,
+				F7E5C5DC2A94AC7D000DA0B9 /* Example3ViewController.swift */,
+				F7E5C5DE2A94D283000DA0B9 /* PaddingLabel.swift */,
+			);
+			path = Assignment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +125,9 @@
 			dependencies = (
 			);
 			name = SeSAC3Week6;
+			packageProductDependencies = (
+				F7E5C5CC2A94461D000DA0B9 /* SnapKit */,
+			);
 			productName = SeSAC3Week6;
 			productReference = F7E5C5A92A9309FD000DA0B9 /* SeSAC3Week6.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +156,9 @@
 				Base,
 			);
 			mainGroup = F7E5C5A02A9309FD000DA0B9;
+			packageReferences = (
+				F7E5C5CB2A94461D000DA0B9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = F7E5C5AA2A9309FD000DA0B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +186,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7E5C5D22A945CA8000DA0B9 /* TextViewController.swift in Sources */,
 				F7E5C5B12A9309FD000DA0B9 /* ViewController.swift in Sources */,
+				F7E5C5D72A949AB9000DA0B9 /* TaskViewController.swift in Sources */,
+				F7E5C5D92A949E12000DA0B9 /* Example1ViewController.swift in Sources */,
 				F7E5C5AD2A9309FD000DA0B9 /* AppDelegate.swift in Sources */,
+				F7E5C5D42A947926000DA0B9 /* LocationViewController.swift in Sources */,
 				F7E5C5AF2A9309FD000DA0B9 /* SceneDelegate.swift in Sources */,
+				F7E5C5DD2A94AC7D000DA0B9 /* Example3ViewController.swift in Sources */,
+				F7E5C5D02A944653000DA0B9 /* SnapKitViewController.swift in Sources */,
+				F7E5C5DB2A94A32C000DA0B9 /* Example2ViewController.swift in Sources */,
+				F7E5C5DF2A94D283000DA0B9 /* PaddingLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +422,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F7E5C5CB2A94461D000DA0B9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F7E5C5CC2A94461D000DA0B9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7E5C5CB2A94461D000DA0B9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F7E5C5A12A9309FD000DA0B9 /* Project object */;
 }
