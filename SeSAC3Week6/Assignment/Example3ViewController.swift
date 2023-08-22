@@ -102,7 +102,7 @@ class Example3ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .systemTeal
         
         let uiSet = [
             dateLabel,
