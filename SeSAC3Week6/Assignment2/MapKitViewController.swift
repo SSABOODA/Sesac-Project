@@ -20,7 +20,7 @@ enum TheaterType {
 class MapKitViewController: UIViewController {
     
     lazy var filterButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: "filter", style: .plain, target: self, action: #selector(filterButtonTapped))
+        let button = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filterButtonTapped))
         button.tintColor = .black
         return button
     }()
@@ -41,14 +41,6 @@ class MapKitViewController: UIViewController {
         setConstraints()
         setNavigationBar()
         checkDeviceLocationAuthorization()
-        
-        // 37.518448, 126.884938
-//        let center = CLLocationCoordinate2D(
-//            latitude: 37.518448,
-//            longitude: 126.884938
-//        )
-//        setRegionAndAnnotation(center: center)
-        
         setAnnotation(type: .all)
     }
     
@@ -74,7 +66,6 @@ class MapKitViewController: UIViewController {
             setPointAnnotation(theatherList: theaterList)
         case .all:
             setPointAnnotation(theatherList: theater.mapAnnotations)
-            
         }
     }
     
@@ -142,6 +133,11 @@ class MapKitViewController: UIViewController {
             print("restricted")
         case .denied:
             print("denied")
+            showLocationSettingAlert()
+            // 37.518448, 126.884938 => 새싹
+            let center = CLLocationCoordinate2D(latitude: 37.518448, longitude: 126.884938)
+            setRegionAndAnnotation(center: center)
+            
         case .authorizedAlways:
             print("authorizedAlways")
         case .authorizedWhenInUse:
