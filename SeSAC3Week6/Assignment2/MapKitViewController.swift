@@ -35,6 +35,7 @@ class MapKitViewController: UIViewController {
         
         view.backgroundColor = .darkGray
         locationManager.delegate = self
+        mapView.delegate = self
         
         view.addSubview(mapView)
         
@@ -43,6 +44,13 @@ class MapKitViewController: UIViewController {
         checkDeviceLocationAuthorization()
         setAnnotation(type: .all)
     }
+    
+//    private func addCustomPin() {
+//        let pin = MKPointAnnotation()
+//        pin.title = "zzz"
+//        pin.subtitle = "1233"
+//        mapView.addAnnotation(pin)
+//    }
     
     @objc func backButtonClicked(_ sender: UIButton) {
         dismiss(animated: true)
@@ -78,6 +86,7 @@ class MapKitViewController: UIViewController {
                 longitude: item.longitude
             )
             annotation.title = item.location
+            annotation.subtitle = "영화관"
             pointAnnotationList.append(annotation)
         }
         mapView.removeAnnotations(mapView.annotations)
@@ -87,6 +96,7 @@ class MapKitViewController: UIViewController {
     func setRegionAndAnnotation(center: CLLocationCoordinate2D) {
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 10000, longitudinalMeters: 10000)
         mapView.setRegion(region, animated: true)
+        mapView.showsUserLocation = true
     }
     
     func showLocationSettingAlert() {
@@ -188,6 +198,41 @@ extension MapKitViewController: MKMapViewDelegate {
     }
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
         print(#function)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        print("annotation: \(annotation)")
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotationView?.canShowCallout = true
+            
+            //callOutView를 통해서 추가적인 액션을 더해줄수도 있겠죠!
+            let miniButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            miniButton.setImage(UIImage(systemName: "person"), for: .normal)
+            miniButton.tintColor = .black
+            annotationView?.rightCalloutAccessoryView = miniButton
+            
+            let annotationLabel = UILabel(frame: CGRect(x: -40, y: -35, width: 105, height: 30))
+            annotationLabel.numberOfLines = 3
+            annotationLabel.textAlignment = .center
+            annotationLabel.font = .boldSystemFont(ofSize: 11)
+            
+            guard let title = annotationView?.annotation?.title else {
+                return nil
+            }
+            annotationLabel.text = title
+            annotationView?.addSubview(annotationLabel)
+        } else {
+            annotationView?.annotation = annotation
+        }
+
+        annotationView?.image = UIImage(systemName: "pawprint.circle")
+        
+        return annotationView
     }
 }
 
