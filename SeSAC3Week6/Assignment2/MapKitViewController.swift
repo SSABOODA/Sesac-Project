@@ -25,6 +25,13 @@ class MapKitViewController: UIViewController {
         return button
     }()
     
+    let homeButton: UIButton = {
+        let bnt = UIButton()
+        bnt.setImage(UIImage(systemName: "house.fill"), for: .normal)
+        bnt.tintColor = .black
+        return bnt
+    }()
+    
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
     
@@ -38,19 +45,27 @@ class MapKitViewController: UIViewController {
         mapView.delegate = self
         
         view.addSubview(mapView)
-        
+        view.addSubview(homeButton)
+    
         setConstraints()
         setNavigationBar()
         checkDeviceLocationAuthorization()
         setAnnotation(type: .all)
+        
+        homeButton.snp.makeConstraints {
+            $0.centerX.equalTo(view)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-50)
+        }
+        
+        homeButton.addTarget(self, action: #selector(homeButtonClicked), for: .touchUpInside)
     }
     
-//    private func addCustomPin() {
-//        let pin = MKPointAnnotation()
-//        pin.title = "zzz"
-//        pin.subtitle = "1233"
-//        mapView.addAnnotation(pin)
-//    }
+    @objc func homeButtonClicked() {
+        print(#function)
+        // 37.603846, 127.033278
+        let center = CLLocationCoordinate2D(latitude: 37.603846, longitude: 127.033278)
+        setRegionAndAnnotation(center: center)
+    }
     
     @objc func backButtonClicked(_ sender: UIButton) {
         dismiss(animated: true)
@@ -216,7 +231,7 @@ extension MapKitViewController: MKMapViewDelegate {
             miniButton.tintColor = .black
             annotationView?.rightCalloutAccessoryView = miniButton
             
-            let annotationLabel = UILabel(frame: CGRect(x: -40, y: -35, width: 105, height: 30))
+            let annotationLabel = UILabel(frame: CGRect(x: -40, y: 15, width: 105, height: 30))
             annotationLabel.numberOfLines = 3
             annotationLabel.textAlignment = .center
             annotationLabel.font = .boldSystemFont(ofSize: 11)
@@ -229,7 +244,6 @@ extension MapKitViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-
         annotationView?.image = UIImage(systemName: "pawprint.circle")
         
         return annotationView
