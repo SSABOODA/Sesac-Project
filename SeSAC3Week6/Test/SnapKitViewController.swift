@@ -30,17 +30,18 @@ class SnapKitViewController: UIViewController {
         
         view.addSubview(blueView)
         view.addSubview(redView)
+        view.addSubview(purpleView)
+        blueView.addSubview(yellowView)
+        
         redView.backgroundColor = .systemRed
         redView.snp.makeConstraints { make in
             make.width.equalTo(200)
             make.height.equalTo(150)
             make.centerX.equalTo(view)
-//            make.bottom.equalTo(view.safeAreaLayoutGuide)
-            
-            make.top.equalTo(blueView.snp.bottom).inset(-40)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        view.addSubview(purpleView)
+        
         purpleView.backgroundColor = .purple
         purpleView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -49,7 +50,6 @@ class SnapKitViewController: UIViewController {
             make.height.equalTo(200)
         }
         
-        
         blueView.backgroundColor = .systemBlue
         blueView.snp.makeConstraints {
 //            make.width.height.equalTo(200) // width, height 값이 같다면 한줄 작성 가능
@@ -57,7 +57,6 @@ class SnapKitViewController: UIViewController {
             $0.center.equalTo(view) // == make.centerX.centerY.equalTo(view)
         }
         
-        blueView.addSubview(yellowView)
         yellowView.backgroundColor = .systemYellow
         yellowView.snp.makeConstraints {
 //            make.size.equalTo(150)
@@ -80,12 +79,17 @@ class SnapKitViewController: UIViewController {
 //            $0.top.leading.equalToSuperview().offset(20)
 //            $0.bottom.trailing.equalToSuperview().offset(10)
             
+            
+            
 //            $0.edges.equalToSuperview().offset(50)
-            $0.top.leading.equalToSuperview().offset(50)
-            $0.bottom.trailing.equalToSuperview().offset(-50)
+//            $0.top.leading.equalToSuperview().offset(50)
+//            $0.bottom.trailing.equalToSuperview().offset(-50)
 //            $0.top.equalToSuperview().offset(50)
 //            $0.leading.equalToSuperview().offset(50)
-//            $0.edges.equalToSuperview().inset(50)
+            
+            
+            $0.edges.equalToSuperview().inset(50)
+//            $0.edges.equalToSuperview().offset(50)
             
         }
     }

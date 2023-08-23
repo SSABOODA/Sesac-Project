@@ -74,10 +74,11 @@ class ViewController: UIViewController {
     
     @objc
     func signButtonClicked() {
-        let vc = SnapKitViewController()
+//        let vc = SnapKitViewController()
 //        let vc = TextViewController()
-//        let vc = LocationViewController()
-        present(vc, animated: true)
+        let vc = LocationViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true)
     }
     
     func setLayoutAnchor() {
