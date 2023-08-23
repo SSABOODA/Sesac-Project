@@ -51,7 +51,7 @@ class LocationViewController: UIViewController {
         // 3. 위치 프로토콜 연결
         locationManager.delegate = self
         
-        checkDeviceLocationAuthorization() // // iOS 위치 서비스 활성화 체크
+        checkDeviceLocationAuthorization() // iOS 위치 서비스 활성화 체크
         
         let center = CLLocationCoordinate2D(latitude: 37.60385, longitude: 127.03328)
         setRegionAndAnnotation(center: center)
@@ -84,7 +84,6 @@ class LocationViewController: UIViewController {
             mapView.removeAnnotations(mapView.annotations)
             mapView.addAnnotations([annotation2])
         }
-        
     }
     
     
