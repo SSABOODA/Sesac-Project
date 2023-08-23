@@ -70,13 +70,16 @@ class ViewController: UIViewController {
         
         passwordTextFied.backgroundColor = .brown
         
+        emailTextField.isHidden = true
+        passwordTextFied.isHidden = true
+        
     }
     
     @objc
     func signButtonClicked() {
-//        let vc = SnapKitViewController()
+        let vc = SnapKitViewController()
 //        let vc = TextViewController()
-        let vc = LocationViewController()
+//        let vc = LocationViewController()
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)
     }

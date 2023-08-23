@@ -82,13 +82,16 @@ class SnapKitViewController: UIViewController {
             
             
 //            $0.edges.equalToSuperview().offset(50)
-//            $0.top.leading.equalToSuperview().offset(50)
-//            $0.bottom.trailing.equalToSuperview().offset(-50)
+            
+            $0.top.leading.equalToSuperview().offset(50)
+            $0.bottom.trailing.equalToSuperview().offset(-50)
+            
+            
 //            $0.top.equalToSuperview().offset(50)
 //            $0.leading.equalToSuperview().offset(50)
             
             
-            $0.edges.equalToSuperview().inset(50)
+//            $0.edges.equalToSuperview().inset(50)
 //            $0.edges.equalToSuperview().offset(50)
             
         }
