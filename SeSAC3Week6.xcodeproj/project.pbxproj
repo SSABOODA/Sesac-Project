@@ -28,6 +28,11 @@
 		F7E5C5F02A971CE3000DA0B9 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5EF2A971CE3000DA0B9 /* CustomViewController.swift */; };
 		F7E5C5F22A971E99000DA0B9 /* BlackRadiusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5F12A971E99000DA0B9 /* BlackRadiusTextField.swift */; };
 		F7E5C5F42A972A13000DA0B9 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5F32A972A13000DA0B9 /* CustomTableViewController.swift */; };
+		F7E5C5F72A974159000DA0B9 /* NetflixMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5F62A974159000DA0B9 /* NetflixMainViewController.swift */; };
+		F7E5C5F92A974168000DA0B9 /* NetflixSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5F82A974168000DA0B9 /* NetflixSignInViewController.swift */; };
+		F7E5C5FB2A9741F5000DA0B9 /* SignInTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5FA2A9741F5000DA0B9 /* SignInTextField.swift */; };
+		F7E5C5FD2A9763D9000DA0B9 /* MainViewMenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5FC2A9763D9000DA0B9 /* MainViewMenuLabel.swift */; };
+		F7E5C5FF2A976629000DA0B9 /* PreviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5FE2A976629000DA0B9 /* PreviewImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +58,11 @@
 		F7E5C5EF2A971CE3000DA0B9 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		F7E5C5F12A971E99000DA0B9 /* BlackRadiusTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackRadiusTextField.swift; sourceTree = "<group>"; };
 		F7E5C5F32A972A13000DA0B9 /* CustomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
+		F7E5C5F62A974159000DA0B9 /* NetflixMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixMainViewController.swift; sourceTree = "<group>"; };
+		F7E5C5F82A974168000DA0B9 /* NetflixSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixSignInViewController.swift; sourceTree = "<group>"; };
+		F7E5C5FA2A9741F5000DA0B9 /* SignInTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTextField.swift; sourceTree = "<group>"; };
+		F7E5C5FC2A9763D9000DA0B9 /* MainViewMenuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuLabel.swift; sourceTree = "<group>"; };
+		F7E5C5FE2A976629000DA0B9 /* PreviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,10 +98,11 @@
 			children = (
 				F7E5C5AC2A9309FD000DA0B9 /* AppDelegate.swift */,
 				F7E5C5AE2A9309FD000DA0B9 /* SceneDelegate.swift */,
-				F7E5C5EE2A971CB2000DA0B9 /* CustomView */,
-				F7E5C5E92A96F0D9000DA0B9 /* Generic */,
 				F7E5C5D52A949AA2000DA0B9 /* Assignment */,
 				F7E5C5E32A95D2B4000DA0B9 /* Assignment2 */,
+				F7E5C5F52A974084000DA0B9 /* Assignment3 */,
+				F7E5C5EE2A971CB2000DA0B9 /* CustomView */,
+				F7E5C5E92A96F0D9000DA0B9 /* Generic */,
 				F7E5C5E62A95E076000DA0B9 /* Model */,
 				F7E5C5CE2A944647000DA0B9 /* Test */,
 				F7E5C5B02A9309FD000DA0B9 /* ViewController.swift */,
@@ -157,6 +168,18 @@
 				F7E5C5F32A972A13000DA0B9 /* CustomTableViewController.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		F7E5C5F52A974084000DA0B9 /* Assignment3 */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5F62A974159000DA0B9 /* NetflixMainViewController.swift */,
+				F7E5C5F82A974168000DA0B9 /* NetflixSignInViewController.swift */,
+				F7E5C5FA2A9741F5000DA0B9 /* SignInTextField.swift */,
+				F7E5C5FC2A9763D9000DA0B9 /* MainViewMenuLabel.swift */,
+				F7E5C5FE2A976629000DA0B9 /* PreviewImageView.swift */,
+			);
+			path = Assignment3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,16 +260,21 @@
 			files = (
 				F7E5C5D22A945CA8000DA0B9 /* TextViewController.swift in Sources */,
 				F7E5C5B12A9309FD000DA0B9 /* ViewController.swift in Sources */,
+				F7E5C5FF2A976629000DA0B9 /* PreviewImageView.swift in Sources */,
 				F7E5C5F22A971E99000DA0B9 /* BlackRadiusTextField.swift in Sources */,
 				F7E5C5E82A95E09A000DA0B9 /* Theater.swift in Sources */,
+				F7E5C5FB2A9741F5000DA0B9 /* SignInTextField.swift in Sources */,
 				F7E5C5D72A949AB9000DA0B9 /* TaskViewController.swift in Sources */,
 				F7E5C5EB2A96F0EA000DA0B9 /* GenericViewController.swift in Sources */,
 				F7E5C5D92A949E12000DA0B9 /* Example1ViewController.swift in Sources */,
 				F7E5C5AD2A9309FD000DA0B9 /* AppDelegate.swift in Sources */,
+				F7E5C5FD2A9763D9000DA0B9 /* MainViewMenuLabel.swift in Sources */,
 				F7E5C5D42A947926000DA0B9 /* LocationViewController.swift in Sources */,
 				F7E5C5ED2A96F144000DA0B9 /* Extension+UIViewController.swift in Sources */,
 				F7E5C5E52A95D3C7000DA0B9 /* MapKitViewController.swift in Sources */,
+				F7E5C5F92A974168000DA0B9 /* NetflixSignInViewController.swift in Sources */,
 				F7E5C5AF2A9309FD000DA0B9 /* SceneDelegate.swift in Sources */,
+				F7E5C5F72A974159000DA0B9 /* NetflixMainViewController.swift in Sources */,
 				F7E5C5DD2A94AC7D000DA0B9 /* Example3ViewController.swift in Sources */,
 				F7E5C5D02A944653000DA0B9 /* SnapKitViewController.swift in Sources */,
 				F7E5C5DB2A94A32C000DA0B9 /* Example2ViewController.swift in Sources */,
