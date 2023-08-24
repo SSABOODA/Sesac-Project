@@ -19,6 +19,8 @@ class LocationViewController: UIViewController {
     let martButton = UIButton()
     let schoolButton = UIButton()
     
+    let num = Int.random(in: 1...100)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +28,6 @@ class LocationViewController: UIViewController {
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(50)
         }
-        
         
         view.addSubview(martButton)
         view.addSubview(schoolButton)
@@ -73,14 +74,18 @@ class LocationViewController: UIViewController {
         // 37.604709, 127.031089 이마트
         // 37.607431, 127.032533 서울 과기고
         
+        let emart = (37.604709, 127.031089)
+        let school = (37.607431, 127.032533)
+        
         let annotation1 = MKPointAnnotation()
-        annotation1.coordinate = CLLocationCoordinate2D(latitude: 37.604709, longitude: 127.031089)
+        annotation1.coordinate = CLLocationCoordinate2D(latitude: emart.0, longitude: emart.1)
         let annotation2 = MKPointAnnotation()
-        annotation2.coordinate = CLLocationCoordinate2D(latitude: 37.607431, longitude: 127.032533)
+        annotation2.coordinate = CLLocationCoordinate2D(latitude: school.0, longitude: school.1)
         
         if type == 0 { // viewDidLoad
             mapView.addAnnotations([annotation1, annotation2])
         } else if type == 1 {
+//            mapView.removeAnnotation(annotation1) // 이 코드가 작동안하는 이유에 대해서 한번 생각해보기
             mapView.removeAnnotations(mapView.annotations)
             mapView.addAnnotations([annotation2])
         }

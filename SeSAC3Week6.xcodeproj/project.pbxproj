@@ -10,7 +10,6 @@
 		F7E5C5AD2A9309FD000DA0B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5AC2A9309FD000DA0B9 /* AppDelegate.swift */; };
 		F7E5C5AF2A9309FD000DA0B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5AE2A9309FD000DA0B9 /* SceneDelegate.swift */; };
 		F7E5C5B12A9309FD000DA0B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5B02A9309FD000DA0B9 /* ViewController.swift */; };
-		F7E5C5B42A9309FD000DA0B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5B22A9309FD000DA0B9 /* Main.storyboard */; };
 		F7E5C5B62A9309FE000DA0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5B52A9309FE000DA0B9 /* Assets.xcassets */; };
 		F7E5C5B92A9309FE000DA0B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7E5C5B72A9309FE000DA0B9 /* LaunchScreen.storyboard */; };
 		F7E5C5CD2A94461D000DA0B9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F7E5C5CC2A94461D000DA0B9 /* SnapKit */; };
@@ -24,6 +23,11 @@
 		F7E5C5DF2A94D283000DA0B9 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5DE2A94D283000DA0B9 /* PaddingLabel.swift */; };
 		F7E5C5E52A95D3C7000DA0B9 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5E42A95D3C7000DA0B9 /* MapKitViewController.swift */; };
 		F7E5C5E82A95E09A000DA0B9 /* Theater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5E72A95E09A000DA0B9 /* Theater.swift */; };
+		F7E5C5EB2A96F0EA000DA0B9 /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5EA2A96F0EA000DA0B9 /* GenericViewController.swift */; };
+		F7E5C5ED2A96F144000DA0B9 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5EC2A96F144000DA0B9 /* Extension+UIViewController.swift */; };
+		F7E5C5F02A971CE3000DA0B9 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5EF2A971CE3000DA0B9 /* CustomViewController.swift */; };
+		F7E5C5F22A971E99000DA0B9 /* BlackRadiusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5F12A971E99000DA0B9 /* BlackRadiusTextField.swift */; };
+		F7E5C5F42A972A13000DA0B9 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5F32A972A13000DA0B9 /* CustomTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +35,6 @@
 		F7E5C5AC2A9309FD000DA0B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7E5C5AE2A9309FD000DA0B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F7E5C5B02A9309FD000DA0B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F7E5C5B32A9309FD000DA0B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7E5C5B52A9309FE000DA0B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7E5C5B82A9309FE000DA0B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7E5C5BA2A9309FE000DA0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +48,11 @@
 		F7E5C5DE2A94D283000DA0B9 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		F7E5C5E42A95D3C7000DA0B9 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
 		F7E5C5E72A95E09A000DA0B9 /* Theater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theater.swift; sourceTree = "<group>"; };
+		F7E5C5EA2A96F0EA000DA0B9 /* GenericViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericViewController.swift; sourceTree = "<group>"; };
+		F7E5C5EC2A96F144000DA0B9 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		F7E5C5EF2A971CE3000DA0B9 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		F7E5C5F12A971E99000DA0B9 /* BlackRadiusTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackRadiusTextField.swift; sourceTree = "<group>"; };
+		F7E5C5F32A972A13000DA0B9 /* CustomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,13 +88,14 @@
 			children = (
 				F7E5C5AC2A9309FD000DA0B9 /* AppDelegate.swift */,
 				F7E5C5AE2A9309FD000DA0B9 /* SceneDelegate.swift */,
+				F7E5C5EE2A971CB2000DA0B9 /* CustomView */,
+				F7E5C5E92A96F0D9000DA0B9 /* Generic */,
 				F7E5C5D52A949AA2000DA0B9 /* Assignment */,
 				F7E5C5E32A95D2B4000DA0B9 /* Assignment2 */,
 				F7E5C5E62A95E076000DA0B9 /* Model */,
 				F7E5C5CE2A944647000DA0B9 /* Test */,
 				F7E5C5B02A9309FD000DA0B9 /* ViewController.swift */,
 				F7E5C5D32A947926000DA0B9 /* LocationViewController.swift */,
-				F7E5C5B22A9309FD000DA0B9 /* Main.storyboard */,
 				F7E5C5B52A9309FE000DA0B9 /* Assets.xcassets */,
 				F7E5C5B72A9309FE000DA0B9 /* LaunchScreen.storyboard */,
 				F7E5C5BA2A9309FE000DA0B9 /* Info.plist */,
@@ -129,6 +138,25 @@
 				F7E5C5E72A95E09A000DA0B9 /* Theater.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F7E5C5E92A96F0D9000DA0B9 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5EA2A96F0EA000DA0B9 /* GenericViewController.swift */,
+				F7E5C5EC2A96F144000DA0B9 /* Extension+UIViewController.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		F7E5C5EE2A971CB2000DA0B9 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5EF2A971CE3000DA0B9 /* CustomViewController.swift */,
+				F7E5C5F12A971E99000DA0B9 /* BlackRadiusTextField.swift */,
+				F7E5C5F32A972A13000DA0B9 /* CustomTableViewController.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +225,6 @@
 			files = (
 				F7E5C5B92A9309FE000DA0B9 /* LaunchScreen.storyboard in Resources */,
 				F7E5C5B62A9309FE000DA0B9 /* Assets.xcassets in Resources */,
-				F7E5C5B42A9309FD000DA0B9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,31 +237,28 @@
 			files = (
 				F7E5C5D22A945CA8000DA0B9 /* TextViewController.swift in Sources */,
 				F7E5C5B12A9309FD000DA0B9 /* ViewController.swift in Sources */,
+				F7E5C5F22A971E99000DA0B9 /* BlackRadiusTextField.swift in Sources */,
 				F7E5C5E82A95E09A000DA0B9 /* Theater.swift in Sources */,
 				F7E5C5D72A949AB9000DA0B9 /* TaskViewController.swift in Sources */,
+				F7E5C5EB2A96F0EA000DA0B9 /* GenericViewController.swift in Sources */,
 				F7E5C5D92A949E12000DA0B9 /* Example1ViewController.swift in Sources */,
 				F7E5C5AD2A9309FD000DA0B9 /* AppDelegate.swift in Sources */,
 				F7E5C5D42A947926000DA0B9 /* LocationViewController.swift in Sources */,
+				F7E5C5ED2A96F144000DA0B9 /* Extension+UIViewController.swift in Sources */,
 				F7E5C5E52A95D3C7000DA0B9 /* MapKitViewController.swift in Sources */,
 				F7E5C5AF2A9309FD000DA0B9 /* SceneDelegate.swift in Sources */,
 				F7E5C5DD2A94AC7D000DA0B9 /* Example3ViewController.swift in Sources */,
 				F7E5C5D02A944653000DA0B9 /* SnapKitViewController.swift in Sources */,
 				F7E5C5DB2A94A32C000DA0B9 /* Example2ViewController.swift in Sources */,
 				F7E5C5DF2A94D283000DA0B9 /* PaddingLabel.swift in Sources */,
+				F7E5C5F42A972A13000DA0B9 /* CustomTableViewController.swift in Sources */,
+				F7E5C5F02A971CE3000DA0B9 /* CustomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F7E5C5B22A9309FD000DA0B9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F7E5C5B32A9309FD000DA0B9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F7E5C5B72A9309FE000DA0B9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -373,7 +397,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 날씨에 대한 정보를 가지고 오기 위해 위치 정보가 필요해요";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -406,7 +429,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 날씨에 대한 정보를 가지고 오기 위해 위치 정보가 필요해요";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

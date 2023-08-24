@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 //        tf.placeholder = "닉네임을 입력해주세요"
 //        return tf
 //    }()
-//
+    
 //    let passwordTextFied = UITextField()
     let signButton = {
         let bnt = UIButton()
@@ -50,6 +50,7 @@ class ViewController: UIViewController {
         bnt.layer.cornerRadius = 10
         return bnt
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,9 +95,11 @@ class ViewController: UIViewController {
     func signButtonClicked() {
 //        let vc = SnapKitViewController()
 //        let vc = TextViewController()
-        let vc = LocationViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        present(nav, animated: true)
+//        let vc = LocationViewController()
+//        let nav = UINavigationController(rootViewController: vc)
+//        present(nav, animated: true)
+        
+        transition(viewController: GenericViewController.self, storyboard: "Main", style: .presentFullNavigation)
     }
     
     @objc
@@ -114,7 +117,6 @@ class ViewController: UIViewController {
         mapKitButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            
             signButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signButton.widthAnchor.constraint(equalToConstant: 300),
             signButton.heightAnchor.constraint(equalToConstant: 50),
@@ -127,4 +129,3 @@ class ViewController: UIViewController {
         ])
     }
 }
-

@@ -46,7 +46,7 @@ class MapKitViewController: UIViewController {
         
         view.addSubview(mapView)
         view.addSubview(homeButton)
-    
+        
         setConstraints()
         setNavigationBar()
         checkDeviceLocationAuthorization()
@@ -62,7 +62,7 @@ class MapKitViewController: UIViewController {
     
     @objc func homeButtonClicked() {
         print(#function)
-        // 37.603846, 127.033278
+        // 37.603846, 127.033278 // 마이 홈
         let center = CLLocationCoordinate2D(latitude: 37.603846, longitude: 127.033278)
         setRegionAndAnnotation(center: center)
     }
@@ -210,13 +210,13 @@ extension MapKitViewController: CLLocationManagerDelegate {
 extension MapKitViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         print(#function)
+        
     }
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
         print(#function)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        print("annotation: \(annotation)")
         guard !(annotation is MKUserLocation) else {
             return nil
         }
@@ -225,7 +225,7 @@ extension MapKitViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
             annotationView?.canShowCallout = true
             
-            //callOutView를 통해서 추가적인 액션을 더해줄수도 있겠죠!
+            // callout mini button
             let miniButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
             miniButton.setImage(UIImage(systemName: "person"), for: .normal)
             miniButton.tintColor = .black
