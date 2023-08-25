@@ -30,8 +30,7 @@ class TMDBAPIManager {
         completionHandler: @escaping (T) -> ()) {
             
         url = getEndpointTypeURL(type: type, movieId: movieId, seriesId: seriesId, seasonId: seasonId)
-        
-        print(url)
+//        print(url)
             
         AF.request(
             url,
