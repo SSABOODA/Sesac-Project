@@ -9,7 +9,6 @@ import UIKit
 
 class SimilarViewController: UIViewController {
 
-    
     @IBOutlet var movieCollectionView: UICollectionView!
     @IBOutlet var videoSegmentControl: UISegmentedControl!
     

@@ -11,24 +11,45 @@ import UIKit
 
 class TrendViewController: UIViewController {
 
-    @IBOutlet var trendTableView: UITableView!
-    @IBOutlet var indicatorView: UIActivityIndicatorView!
+//    @IBOutlet var trendTableView: UITableView!
+//    @IBOutlet var indicatorView: UIActivityIndicatorView!
+    
+    private lazy var trendTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(TrendTableViewCell.self, forCellReuseIdentifier: "TrendCell")
+        return tableView
+    }()
     
     var movieResult: MovieResult?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        delegateTableView()
-        configureTableView()
-        initIndicatorView()
-        
         callRequest()
+        view.backgroundColor = .white
+        
+//        indicatorView.isHidden = true
+        
+        configureView()
+        setConstraints()
+        
+    }
+    
+    func configureView() {
+        view.addSubview(trendTableView)
+    }
+    
+    func setConstraints() {
+        trendTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     func callRequest() {
-        self.indicatorView.startAnimating()
-        self.indicatorView.isHidden = false
+//        self.indicatorView.startAnimating()
+//        self.indicatorView.isHidden = false
         
         TMDBAPIManager.shared.callRequest(
             of: MovieResult.self,
@@ -39,8 +60,8 @@ class TrendViewController: UIViewController {
         ) { response in
             sleep(1)
             self.movieResult = response
-            self.indicatorView.stopAnimating()
-            self.indicatorView.isHidden = true
+//            self.indicatorView.stopAnimating()
+//            self.indicatorView.isHidden = true
             self.trendTableView.reloadData()
         }
     }
@@ -51,43 +72,27 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let movieListCount = movieResult?.movie.count else { return 0 }
         return movieListCount
+//        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = trendTableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else {
+        guard let cell = trendTableView.dequeueReusableCell(withIdentifier: "TrendCell") as? TrendTableViewCell else {
             return UITableViewCell()
         }
         cell.selectionStyle = .none
         if let movie = movieResult?.movie {
             cell.configureCell(movie[indexPath.row])
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController {
-            navigationController?.show(vc, sender: nil)
+            navigationController?.pushViewController(vc, animated: true)
+//            navigationController?.show(vc, sender: nil)
             if let movie = movieResult?.movie {
                 vc.movie = movie[indexPath.row]
             }
         }
     }
 }
-
-extension TrendViewController {
-    func delegateTableView() {
-        trendTableView.delegate = self
-        trendTableView.dataSource = self
-    }
-    
-    func configureTableView() {
-        trendTableView.rowHeight = UITableView.automaticDimension
-    }
-    
-    func initIndicatorView() {
-        indicatorView.isHidden = true
-    }
-}
-
-

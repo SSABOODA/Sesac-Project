@@ -13,9 +13,7 @@ class DetailViewController: UIViewController {
     // tableView header
     
     @IBOutlet var detailTableView: UITableView!
-    
     @IBOutlet var overviewBackView: UIView!
-    
     @IBOutlet var headerImageView: UIImageView!
     @IBOutlet var overviewLabel: UILabel!
     @IBOutlet var expandButton: UIButton!
