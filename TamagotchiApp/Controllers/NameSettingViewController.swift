@@ -20,10 +20,12 @@ class NameSettingViewController: UIViewController {
         designTextField()
         rightBarButtonItem()
         
-        self.view.backgroundColor = ColorData.backgroundColor
+        view.backgroundColor = ColorData.backgroundColor
         title = "\(UserDefaultsHelper.shared.nickname)님 이름 정하기"
         nameChangeTextField.delegate = self
     }
+    
+    
     
     
     @IBAction func tapGestureTapped(_ sender: UITapGestureRecognizer) {
@@ -46,6 +48,13 @@ class NameSettingViewController: UIViewController {
     
     @objc func saveButtonClicked() {
         guard let nickname = nameChangeTextField.text else { return }
+        
+        NotificationCenter.default.post(
+            name: NSNotification.Name("nickname"),
+            object: nil,
+            userInfo: ["nickname": nickname]
+        )
+        
         UserDefaultsHelper.shared.nickname = nickname
         nameChangeTextField.text = ""
         navigationController?.popViewController(animated: true)

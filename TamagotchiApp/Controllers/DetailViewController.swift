@@ -23,6 +23,8 @@ class DetailViewController: UIViewController {
     
     var tamagotchiInfo = TamagotchiInformation()
     
+    var nickname: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,17 +38,32 @@ class DetailViewController: UIViewController {
         designTextField(waterTextField)
         backBarButtonItem()
         navigationTitleColor()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(nicknameNotificationObserver(notification:)),
+            name: NSNotification.Name("nickname"),
+            object: nil
+        )
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureDetailView()
+    @objc func nicknameNotificationObserver(notification: NSNotification) {
+        if let nickname = notification.userInfo?["nickname"] as? String {
+            print("DetailView nickname", nickname)
+            title = "\(nickname)님의 다마고치"
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        configureDetailView()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        configureDetailView()
+//    }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        configureDetailView()
+//    }
  
     @IBAction func tapGestureTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -74,7 +91,6 @@ class DetailViewController: UIViewController {
         switch key {
         case .rice:
             var upCount: Int = UserDefaultsHelper.shared.rice
-            
             do {
                 upCount += try checkEatLimit(riceTextField, 100)
                 UserDefaultsHelper.shared.rice = upCount

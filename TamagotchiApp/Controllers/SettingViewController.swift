@@ -80,7 +80,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier) as? SettingTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier) as? SettingTableViewCell else {
+            return UITableViewCell()
+        }
         cell.selectionStyle = .none
         cell.configureCell(indexPath.row)
         return cell
@@ -115,13 +117,13 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         sceneDelegate?.window?.makeKey()
     }
     
-    
     func moveToChangeNameView() {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: NameSettingViewController.identifier) as? NameSettingViewController else { return }
         vc.modalPresentationStyle = .fullScreen
         vc.nickName = UserDefaultsHelper.shared.nickname
         navigationController?.pushViewController(vc, animated: true)
     }
+    
     func moveToSelectTamagotchi() {
         let sb = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController else { return }
@@ -129,6 +131,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
     }
+    
     func dataInitializeAlert() {
         let alert = UIAlertController(
             title: "데이터 초기화",
