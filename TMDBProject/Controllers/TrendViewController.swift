@@ -11,7 +11,6 @@ import UIKit
 
 class TrendViewController: UIViewController {
 
-//    @IBOutlet var trendTableView: UITableView!
 //    @IBOutlet var indicatorView: UIActivityIndicatorView!
     
     private lazy var trendTableView: UITableView = {
@@ -87,12 +86,12 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController {
-            navigationController?.pushViewController(vc, animated: true)
-//            navigationController?.show(vc, sender: nil)
-            if let movie = movieResult?.movie {
-                vc.movie = movie[indexPath.row]
-            }
-        }
+        print(#function)
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+        
+        guard let movie = movieResult?.movie else { return }
+        
+        vc.movie = movie[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

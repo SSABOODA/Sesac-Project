@@ -9,19 +9,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class TrendTableViewCell: UITableViewCell {
-
-//    @IBOutlet var dateLabel: UILabel!
-//    @IBOutlet var hashtagLabel: UILabel!
-//
-//    @IBOutlet var mainCardView: UIView!
-//    @IBOutlet var mainImageView: UIImageView!
-//    @IBOutlet var clipButton: UIButton!
-//    @IBOutlet var rateLabel: UILabel!
-//
-//    @IBOutlet var titleLabel: UILabel!
-//    @IBOutlet var originalTitleLabel: UILabel!
-//    @IBOutlet var subTitleLabel: UILabel!
+class TrendTableViewCell: BaseTableViewCell {
     
     let dateLabel = {
         let lb = UILabel()
@@ -136,26 +124,12 @@ class TrendTableViewCell: UITableViewCell {
         return bnt
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureView()
-        setConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         clipButton.layer.cornerRadius = clipButton.frame.width / 2
     }
     
-    func configureView() {
+    override func configureView() {
         contentView.addSubview(dateLabel)
         contentView.addSubview(hashtagLabel)
         contentView.addSubview(mainCardView)
@@ -173,7 +147,7 @@ class TrendTableViewCell: UITableViewCell {
         mainCardView.addSubview(lookDetailButton)
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         print(#function)
         dateLabel.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(10)
