@@ -51,7 +51,6 @@ class ProfileView: BaseView {
         view.text = "이름"
         view.textColor = .black
         view.font = .systemFont(ofSize: 16)
-        view.backgroundColor = .gray
         return view
     }()
     
@@ -59,7 +58,6 @@ class ProfileView: BaseView {
         let view = UITextField()
         view.placeholder = "이름"
         view.font = .systemFont(ofSize: 16)
-        view.backgroundColor = .gray
         return view
     }()
     
@@ -326,12 +324,6 @@ class ProfileView: BaseView {
             make.height.equalTo(30)
             make.width.equalTo(80)
         }
-        
-        
-        
-        
-        
-        
         
     }
     

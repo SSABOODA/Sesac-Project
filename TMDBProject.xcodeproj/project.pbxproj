@@ -50,6 +50,8 @@
 		F7E5C6972A9DD047000DA0B9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6962A9DD047000DA0B9 /* ProfileViewController.swift */; };
 		F7E5C6992A9DD1DD000DA0B9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6982A9DD1DD000DA0B9 /* ProfileView.swift */; };
 		F7E5C69B2A9DDB8C000DA0B9 /* NameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */; };
+		F7E5C69D2A9DE304000DA0B9 /* UserNameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C69C2A9DE304000DA0B9 /* UserNameSettingViewController.swift */; };
+		F7E5C69F2A9DE3F3000DA0B9 /* GenderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		F7E5C6962A9DD047000DA0B9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F7E5C6982A9DD1DD000DA0B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSettingViewController.swift; sourceTree = "<group>"; };
+		F7E5C69C2A9DE304000DA0B9 /* UserNameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameSettingViewController.swift; sourceTree = "<group>"; };
+		F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,8 @@
 				F7E5C6072A988F9A000DA0B9 /* OnboardingViewController.swift */,
 				F7E5C6962A9DD047000DA0B9 /* ProfileViewController.swift */,
 				F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */,
+				F7E5C69C2A9DE304000DA0B9 /* UserNameSettingViewController.swift */,
+				F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 				F7E5C5372A876303000DA0B9 /* DetailViewController.swift in Sources */,
 				F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */,
 				F7E5C56C2A8CC88C000DA0B9 /* Series.swift in Sources */,
+				F7E5C69F2A9DE3F3000DA0B9 /* GenderSettingViewController.swift in Sources */,
 				F7E5C5962A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift in Sources */,
 				F7E5C6512A9CA575000DA0B9 /* BaseTableViewCell.swift in Sources */,
 				F7E5C6442A9C7A71000DA0B9 /* BaseViewController.swift in Sources */,
@@ -338,6 +345,7 @@
 				F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
 				F7E5C6972A9DD047000DA0B9 /* ProfileViewController.swift in Sources */,
+				F7E5C69D2A9DE304000DA0B9 /* UserNameSettingViewController.swift in Sources */,
 				F7E5C6462A9C7A7A000DA0B9 /* BaseView.swift in Sources */,
 				F7E5C5432A87AB29000DA0B9 /* PaddingLabel.swift in Sources */,
 				F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */,
