@@ -47,6 +47,9 @@
 		F7E5C6442A9C7A71000DA0B9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6432A9C7A71000DA0B9 /* BaseViewController.swift */; };
 		F7E5C6462A9C7A7A000DA0B9 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6452A9C7A7A000DA0B9 /* BaseView.swift */; };
 		F7E5C6512A9CA575000DA0B9 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6502A9CA575000DA0B9 /* BaseTableViewCell.swift */; };
+		F7E5C6972A9DD047000DA0B9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6962A9DD047000DA0B9 /* ProfileViewController.swift */; };
+		F7E5C6992A9DD1DD000DA0B9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6982A9DD1DD000DA0B9 /* ProfileView.swift */; };
+		F7E5C69B2A9DDB8C000DA0B9 /* NameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +91,9 @@
 		F7E5C6432A9C7A71000DA0B9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F7E5C6452A9C7A7A000DA0B9 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		F7E5C6502A9CA575000DA0B9 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		F7E5C6962A9DD047000DA0B9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F7E5C6982A9DD1DD000DA0B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,8 @@
 				F7E5C5612A8CB837000DA0B9 /* SeriesViewController.swift */,
 				F7E5C5922A90AC97000DA0B9 /* SimilarViewController.swift */,
 				F7E5C6072A988F9A000DA0B9 /* OnboardingViewController.swift */,
+				F7E5C6962A9DD047000DA0B9 /* ProfileViewController.swift */,
+				F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -166,6 +174,7 @@
 				F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */,
 				F7E5C5942A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift */,
 				F7E5C5952A90AE2A000DA0B9 /* SimilarCollectionViewCell.xib */,
+				F7E5C6982A9DD1DD000DA0B9 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,16 +337,19 @@
 				F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */,
 				F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
+				F7E5C6972A9DD047000DA0B9 /* ProfileViewController.swift in Sources */,
 				F7E5C6462A9C7A7A000DA0B9 /* BaseView.swift in Sources */,
 				F7E5C5432A87AB29000DA0B9 /* PaddingLabel.swift in Sources */,
 				F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */,
 				F7C6F1D72A865D83006E19CD /* Movie.swift in Sources */,
 				F7E5C6082A988F9A000DA0B9 /* OnboardingViewController.swift in Sources */,
+				F7E5C6992A9DD1DD000DA0B9 /* ProfileView.swift in Sources */,
 				F7E5C5652A8CB867000DA0B9 /* SeriesCollectionViewCell.swift in Sources */,
 				F7E5C5692A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift in Sources */,
 				F7E5C56E2A8CF0E9000DA0B9 /* Season.swift in Sources */,
 				F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */,
 				F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */,
+				F7E5C69B2A9DDB8C000DA0B9 /* NameSettingViewController.swift in Sources */,
 				F7E5C59D2A90BC69000DA0B9 /* YoutubeVideo.swift in Sources */,
 				F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */,
 				F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */,

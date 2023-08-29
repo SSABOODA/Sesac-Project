@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let vc = OnboardingViewController()
             window?.rootViewController = vc
         case true:
-            let vc = TrendViewController()
+            let vc = ProfileViewController()
             let nav = UINavigationController(rootViewController: vc)
             window?.rootViewController = nav
         }

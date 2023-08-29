@@ -24,6 +24,4 @@ class BaseViewController: UIViewController {
         print("Base setConstraints")
     }
     
-    
-
 }
