@@ -52,6 +52,8 @@
 		F7E5C69B2A9DDB8C000DA0B9 /* NameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */; };
 		F7E5C69D2A9DE304000DA0B9 /* UserNameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C69C2A9DE304000DA0B9 /* UserNameSettingViewController.swift */; };
 		F7E5C69F2A9DE3F3000DA0B9 /* GenderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */; };
+		F7E5C6A12A9E0124000DA0B9 /* BeforeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6A02A9E0124000DA0B9 /* BeforeViewController.swift */; };
+		F7E5C6A32A9E04B0000DA0B9 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6A22A9E04B0000DA0B9 /* NextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSettingViewController.swift; sourceTree = "<group>"; };
 		F7E5C69C2A9DE304000DA0B9 /* UserNameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameSettingViewController.swift; sourceTree = "<group>"; };
 		F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSettingViewController.swift; sourceTree = "<group>"; };
+		F7E5C6A02A9E0124000DA0B9 /* BeforeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeViewController.swift; sourceTree = "<group>"; };
+		F7E5C6A22A9E04B0000DA0B9 /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 				F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */,
 				F7E5C69C2A9DE304000DA0B9 /* UserNameSettingViewController.swift */,
 				F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */,
+				F7E5C6A02A9E0124000DA0B9 /* BeforeViewController.swift */,
+				F7E5C6A22A9E04B0000DA0B9 /* NextViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 				F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
 				F7E5C6972A9DD047000DA0B9 /* ProfileViewController.swift in Sources */,
+				F7E5C6A12A9E0124000DA0B9 /* BeforeViewController.swift in Sources */,
 				F7E5C69D2A9DE304000DA0B9 /* UserNameSettingViewController.swift in Sources */,
 				F7E5C6462A9C7A7A000DA0B9 /* BaseView.swift in Sources */,
 				F7E5C5432A87AB29000DA0B9 /* PaddingLabel.swift in Sources */,
@@ -355,6 +362,7 @@
 				F7E5C5652A8CB867000DA0B9 /* SeriesCollectionViewCell.swift in Sources */,
 				F7E5C5692A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift in Sources */,
 				F7E5C56E2A8CF0E9000DA0B9 /* Season.swift in Sources */,
+				F7E5C6A32A9E04B0000DA0B9 /* NextViewController.swift in Sources */,
 				F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */,
 				F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */,
 				F7E5C69B2A9DDB8C000DA0B9 /* NameSettingViewController.swift in Sources */,

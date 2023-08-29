@@ -25,6 +25,14 @@ class GenderSettingViewController: BaseViewController {
     
     @objc func doneButtonClicked() {
         print(#function)
+        NotificationCenter.default.post(
+            name: NSNotification.Name("gender"),
+            object: nil,
+            userInfo: [
+                "gender": nameTextField.text!,
+            ]
+        )
+        navigationController?.popViewController(animated: true)
     }
 
     override func configureView() {
@@ -51,7 +59,6 @@ class GenderSettingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     

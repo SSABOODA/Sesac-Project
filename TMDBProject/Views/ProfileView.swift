@@ -21,7 +21,7 @@ class ProfileView: BaseView {
     let avartarImageView = {
         let view = UIImageView()
         view.clipsToBounds = true
-        view.image = UIImage(systemName: "person.crop.circle.dashed")
+        view.image = UIImage(systemName: "sailboat.circle")
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 1
         view.tintColor = .lightGray

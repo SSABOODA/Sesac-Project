@@ -23,8 +23,12 @@ class UserNameSettingViewController: BaseViewController {
         return view
     }()
     
+    var completionHandler: ((String) -> Void)?
+    
     @objc func doneButtonClicked() {
         print(#function)
+        completionHandler?(nameTextField.text!)
+        navigationController?.popViewController(animated: true)
     }
 
     override func configureView() {

@@ -21,7 +21,23 @@ class ProfileViewController: BaseViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(selectGenderNotificationObserver),
+            name: NSNotification.Name("gender"),
+            object: nil
+        )
+    }
+    
+    @objc func selectGenderNotificationObserver(notification: NSNotification) {
+        print(#function)
+        if let gender = notification.userInfo?["gender"] as? String {
+            mainView.genderPronounTextField.text = gender
+        }
     }
     
     @objc func cancelButtonClicked() {
@@ -40,6 +56,9 @@ class ProfileViewController: BaseViewController {
     
     @objc func modifyUserNameButtonClicked() {
         let vc = UserNameSettingViewController()
+        vc.completionHandler = { data in
+            self.mainView.userNameTextField.text = data
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
