@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PassDataDelegate {
+    func receiveData(name: String)
+}
+
 class ProfileViewController: BaseViewController {
     
     let mainView = ProfileView()
@@ -30,6 +34,7 @@ class ProfileViewController: BaseViewController {
     
     @objc func modifyNameButtonClicked() {
         let vc = NameSettingViewController()
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -61,4 +66,11 @@ class ProfileViewController: BaseViewController {
         
     }
     
+}
+
+extension ProfileViewController: PassDataDelegate {
+    func receiveData(name: String) {
+        print("name: \(name)")
+        mainView.nameTextField.text = name
+    }
 }

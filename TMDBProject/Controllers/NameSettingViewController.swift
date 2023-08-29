@@ -22,9 +22,13 @@ class NameSettingViewController: BaseViewController {
         view.placeholder = "이름"
         return view
     }()
+    
+    var delegate: PassDataDelegate?
 
     @objc func doneButtonClicked() {
         print(#function)
+        delegate?.receiveData(name: nameTextField.text!)
+        navigationController?.popViewController(animated: true)
     }
 
     override func configureView() {
