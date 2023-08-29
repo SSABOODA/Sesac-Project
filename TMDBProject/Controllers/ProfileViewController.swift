@@ -33,6 +33,16 @@ class ProfileViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func modifyUserNameButtonClicked() {
+        let vc = UserNameSettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func modifygenderPronounButtonClicked() {
+        let vc = GenderSettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func configureView() {
         super.configureView()
         title = "프로필 편집"
@@ -42,6 +52,8 @@ class ProfileViewController: BaseViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneButtonClicked))
         
         mainView.modifyNameButton.addTarget(self, action: #selector(modifyNameButtonClicked), for: .touchUpInside)
+        mainView.modifyUserNameButton.addTarget(self, action: #selector(modifyUserNameButtonClicked), for: .touchUpInside)
+        mainView.modifygenderPronounButton.addTarget(self, action: #selector(modifygenderPronounButtonClicked), for: .touchUpInside)
         
     }
     
