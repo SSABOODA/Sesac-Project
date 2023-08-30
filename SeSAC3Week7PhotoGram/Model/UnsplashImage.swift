@@ -11,17 +11,17 @@ import Foundation
 // MARK: - Unsplash
 struct Unsplash: Codable {
     let total, totalPages: Int
-    let results: [Result]
+    let unsplashDataList: [UnsplashDataList]
 
     enum CodingKeys: String, CodingKey {
         case total
         case totalPages = "total_pages"
-        case results
+        case unsplashDataList = "results"
     }
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct UnsplashDataList: Codable {
 //    let id, slug: String
 //    let createdAt, updatedAt: Date
 //    let promotedAt: Date?

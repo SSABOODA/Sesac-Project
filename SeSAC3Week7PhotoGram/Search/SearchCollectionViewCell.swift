@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = {
         let view = UIImageView()
         view.backgroundColor = .lightGray
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .scaleToFill
         return view
     }()
     
@@ -24,6 +25,14 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }
+    }
+    
+    func configureCell(row: UnsplashDataList) {
+        let imageURL = row.urls.thumb
+        if let imageURL = URL(string: imageURL) {
+            imageView.kf.setImage(with: imageURL)
+        }
+        
     }
     
 }

@@ -15,7 +15,8 @@ protocol PassDataDelegate {
 }
 
 protocol PassImageDelegate {
-    func receiveImage(image: UIImage)
+//    func receiveImage(image: UIImage)
+    func receiveImage(imageString: String)
 }
 
 class AddViewController: BaseViewController {
@@ -31,8 +32,8 @@ class AddViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ClassOpenExample.publicExample()
-        ClassPublicExample.publicExample()
+//        ClassOpenExample.publicExample()
+//        ClassPublicExample.publicExample()
 //        ClassInternalExample.internalExample() // 접근 불가능
         
         APIService.shared.callRequest()
@@ -40,7 +41,6 @@ class AddViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(#function)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(selectImageNotificationObserver),
@@ -83,7 +83,9 @@ class AddViewController: BaseViewController {
         let searchWeb = UIAlertAction(title: "웹에서 가져오기", style: .default) { action in
             // unsplash api
             print("unsplash api")
-            self.present(SearchViewController(), animated: true)
+            let vc = SearchViewController()
+            vc.delegate = self
+            self.present(vc, animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         alert.addAction(gallery)
@@ -157,7 +159,7 @@ class AddViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        print("Add ConfigureView")
+//        print("Add ConfigureView")
         mainView.searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
         mainView.dateButton.addTarget(self, action: #selector(dateButtonClicked), for: .touchUpInside)
         mainView.searchProtocolButton.addTarget(self, action: #selector(searchProtocolButtonClicked), for: .touchUpInside)
@@ -167,7 +169,7 @@ class AddViewController: BaseViewController {
     
     override func setConstraints() {
         super.setConstraints()
-        print("Add SetConstraints")
+//        print("Add SetConstraints")
     }
 }
 
@@ -180,8 +182,10 @@ extension AddViewController: PassDataDelegate {
 }
 
 extension AddViewController: PassImageDelegate {
-    func receiveImage(image: UIImage) {
-        mainView.photoImageView.image = image
+    func receiveImage(imageString: String) {
+        if let imageURL = URL(string: imageString) {
+            mainView.photoImageView.kf.setImage(with: imageURL)
+        }
     }
 }
 

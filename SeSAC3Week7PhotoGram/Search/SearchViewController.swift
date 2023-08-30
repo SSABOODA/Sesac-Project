@@ -27,6 +27,8 @@ class SearchViewController: BaseViewController {
         "globe.asia.australia",
     ]
     
+    var unsplash: Unsplash?
+    
     var delegate: PassImageDelegate?
     
     override func loadView() {
@@ -65,17 +67,37 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         mainView.searchBar.resignFirstResponder()
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        UnsplashAPI.shared.callRquest(query: searchText, perPage: 10) { result in
+            switch result {
+            case .success(let unsplashData):
+                self.unsplash = unsplashData
+//                print(unsplashData)
+                DispatchQueue.main.async {
+                    self.mainView.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegate & UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageList.count
+        guard let unsplash else { return 0 }
+        return unsplash.unsplashDataList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
+        if let unsplash {
+            let dataList = unsplash.unsplashDataList[indexPath.item]
+            cell.configureCell(row: dataList)
+        }
         return cell
     }
     
@@ -92,8 +114,11 @@ extension SearchViewController: UICollectionViewDelegate & UICollectionViewDataS
 //        )
         
         // delegate를 이용한 값 전달
-        delegate?.receiveImage(image: UIImage(systemName: imageList[indexPath.item])!)
-        
-        dismiss(animated: true)
+        if let unsplash {
+            let imageString = unsplash.unsplashDataList[indexPath.item].urls.thumb
+            print(imageString)
+            delegate?.receiveImage(imageString: imageString)
+            dismiss(animated: true)
+        }        
     }
 }
