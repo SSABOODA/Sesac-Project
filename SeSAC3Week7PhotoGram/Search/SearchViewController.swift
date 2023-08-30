@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class SearchViewController: BaseViewController {
     
     // 굳이 let 상수로 customView 인스턴스 할당하는 이유
@@ -25,12 +27,15 @@ class SearchViewController: BaseViewController {
         "globe.asia.australia",
     ]
     
+    var delegate: PassImageDelegate?
+    
     override func loadView() {
         self.view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         // addObserver보다 post가 먼저 신호를 보내면...
         // 동작 X
@@ -67,14 +72,18 @@ extension SearchViewController: UICollectionViewDelegate & UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        NotificationCenter.default.post(
-            name: NSNotification.Name("SelectImage"),
-            object: nil,
-            userInfo: [
-                "name": imageList[indexPath.item],
-                "sample": "고래밥"
-            ]
-        )
+        // Notification을 통한 값 전달
+//        NotificationCenter.default.post(
+//            name: NSNotification.Name("SelectImage"),
+//            object: nil,
+//            userInfo: [
+//                "name": imageList[indexPath.item],
+//                "sample": "고래밥"
+//            ]
+//        )
+        
+        // delegate를 이용한 값 전달
+        delegate?.receiveImage(image: UIImage(systemName: imageList[indexPath.item])!)
         
         dismiss(animated: true)
     }

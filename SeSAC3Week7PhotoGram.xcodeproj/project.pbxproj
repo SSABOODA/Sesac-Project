@@ -20,7 +20,47 @@
 		F7E5C63D2A9C3370000DA0B9 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C63C2A9C3370000DA0B9 /* SearchView.swift */; };
 		F7E5C63F2A9C365C000DA0B9 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C63E2A9C365C000DA0B9 /* BaseCollectionViewCell.swift */; };
 		F7E5C6412A9C37F5000DA0B9 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6402A9C37F5000DA0B9 /* SearchCollectionViewCell.swift */; };
+		F7E5C6542A9D7BD9000DA0B9 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6532A9D7BD9000DA0B9 /* Notification+Extension.swift */; };
+		F7E5C6562A9D7C79000DA0B9 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6552A9D7C79000DA0B9 /* DateView.swift */; };
+		F7E5C6582A9D7DB5000DA0B9 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6572A9D7DB5000DA0B9 /* DateViewController.swift */; };
+		F7E5C65A2A9D8E89000DA0B9 /* DateFormat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6592A9D8E89000DA0B9 /* DateFormat+Extension.swift */; };
+		F7E5C68D2A9D9BBC000DA0B9 /* SeSACFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E5C6892A9D9B37000DA0B9 /* SeSACFramework.framework */; };
+		F7E5C68E2A9D9BBC000DA0B9 /* SeSACFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7E5C6892A9D9B37000DA0B9 /* SeSACFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F7E5C6912A9DB53B000DA0B9 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6902A9DB53B000DA0B9 /* TitleViewController.swift */; };
+		F7E5C6932A9DC0D5000DA0B9 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6922A9DC0D5000DA0B9 /* ContentViewController.swift */; };
+		F7E5C6952A9DC751000DA0B9 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6942A9DC751000DA0B9 /* WebViewViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F7E5C6882A9D9B37000DA0B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7E5C6832A9D9B37000DA0B9 /* SeSACFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F7E5C6652A9D92AD000DA0B9;
+			remoteInfo = SeSACFramework;
+		};
+		F7E5C68A2A9D9B37000DA0B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7E5C6832A9D9B37000DA0B9 /* SeSACFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F7E5C66F2A9D92AD000DA0B9;
+			remoteInfo = SeSACFrameworkTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F7E5C68F2A9D9BBC000DA0B9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F7E5C68E2A9D9BBC000DA0B9 /* SeSACFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F7E5C6172A9C1D73000DA0B9 /* SeSAC3Week7PhotoGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC3Week7PhotoGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +77,14 @@
 		F7E5C63C2A9C3370000DA0B9 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F7E5C63E2A9C365C000DA0B9 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		F7E5C6402A9C37F5000DA0B9 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		F7E5C6532A9D7BD9000DA0B9 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		F7E5C6552A9D7C79000DA0B9 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
+		F7E5C6572A9D7DB5000DA0B9 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		F7E5C6592A9D8E89000DA0B9 /* DateFormat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormat+Extension.swift"; sourceTree = "<group>"; };
+		F7E5C6832A9D9B37000DA0B9 /* SeSACFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeSACFramework.xcodeproj; path = ../SeSACFramework/SeSACFramework.xcodeproj; sourceTree = "<group>"; };
+		F7E5C6902A9DB53B000DA0B9 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		F7E5C6922A9DC0D5000DA0B9 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		F7E5C6942A9DC751000DA0B9 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7E5C6302A9C1E19000DA0B9 /* SnapKit in Frameworks */,
+				F7E5C68D2A9D9BBC000DA0B9 /* SeSACFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,8 +103,10 @@
 		F7E5C60E2A9C1D73000DA0B9 = {
 			isa = PBXGroup;
 			children = (
+				F7E5C6832A9D9B37000DA0B9 /* SeSACFramework.xcodeproj */,
 				F7E5C6192A9C1D73000DA0B9 /* SeSAC3Week7PhotoGram */,
 				F7E5C6182A9C1D73000DA0B9 /* Products */,
+				F7E5C68C2A9D9BBC000DA0B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,14 +121,16 @@
 		F7E5C6192A9C1D73000DA0B9 /* SeSAC3Week7PhotoGram */ = {
 			isa = PBXGroup;
 			children = (
+				F7E5C61A2A9C1D73000DA0B9 /* AppDelegate.swift */,
+				F7E5C61C2A9C1D73000DA0B9 /* SceneDelegate.swift */,
+				F7E5C6522A9D7BBD000DA0B9 /* Extension */,
 				F7E5C6392A9C2FC3000DA0B9 /* Add */,
 				F7E5C6342A9C2721000DA0B9 /* Search */,
 				F7E5C6312A9C23E7000DA0B9 /* Base */,
-				F7E5C61A2A9C1D73000DA0B9 /* AppDelegate.swift */,
-				F7E5C61C2A9C1D73000DA0B9 /* SceneDelegate.swift */,
 				F7E5C6232A9C1D74000DA0B9 /* Assets.xcassets */,
 				F7E5C6252A9C1D74000DA0B9 /* LaunchScreen.storyboard */,
 				F7E5C6282A9C1D74000DA0B9 /* Info.plist */,
+				F7E5C6942A9DC751000DA0B9 /* WebViewViewController.swift */,
 			);
 			path = SeSAC3Week7PhotoGram;
 			sourceTree = "<group>";
@@ -107,8 +160,37 @@
 			children = (
 				F7E5C61E2A9C1D73000DA0B9 /* AddViewController.swift */,
 				F7E5C63A2A9C2FF2000DA0B9 /* AddView.swift */,
+				F7E5C6552A9D7C79000DA0B9 /* DateView.swift */,
+				F7E5C6572A9D7DB5000DA0B9 /* DateViewController.swift */,
+				F7E5C6902A9DB53B000DA0B9 /* TitleViewController.swift */,
+				F7E5C6922A9DC0D5000DA0B9 /* ContentViewController.swift */,
 			);
 			path = Add;
+			sourceTree = "<group>";
+		};
+		F7E5C6522A9D7BBD000DA0B9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C6532A9D7BD9000DA0B9 /* Notification+Extension.swift */,
+				F7E5C6592A9D8E89000DA0B9 /* DateFormat+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F7E5C6842A9D9B37000DA0B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C6892A9D9B37000DA0B9 /* SeSACFramework.framework */,
+				F7E5C68B2A9D9B37000DA0B9 /* SeSACFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7E5C68C2A9D9BBC000DA0B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,6 +203,7 @@
 				F7E5C6132A9C1D73000DA0B9 /* Sources */,
 				F7E5C6142A9C1D73000DA0B9 /* Frameworks */,
 				F7E5C6152A9C1D73000DA0B9 /* Resources */,
+				F7E5C68F2A9D9BBC000DA0B9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,12 +246,35 @@
 			);
 			productRefGroup = F7E5C6182A9C1D73000DA0B9 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F7E5C6842A9D9B37000DA0B9 /* Products */;
+					ProjectRef = F7E5C6832A9D9B37000DA0B9 /* SeSACFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F7E5C6162A9C1D73000DA0B9 /* SeSAC3Week7PhotoGram */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F7E5C6892A9D9B37000DA0B9 /* SeSACFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SeSACFramework.framework;
+			remoteRef = F7E5C6882A9D9B37000DA0B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F7E5C68B2A9D9B37000DA0B9 /* SeSACFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SeSACFrameworkTests.xctest;
+			remoteRef = F7E5C68A2A9D9B37000DA0B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F7E5C6152A9C1D73000DA0B9 /* Resources */ = {
@@ -187,16 +293,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7E5C6932A9DC0D5000DA0B9 /* ContentViewController.swift in Sources */,
+				F7E5C6542A9D7BD9000DA0B9 /* Notification+Extension.swift in Sources */,
 				F7E5C63B2A9C2FF2000DA0B9 /* AddView.swift in Sources */,
 				F7E5C6362A9C2745000DA0B9 /* SearchViewController.swift in Sources */,
+				F7E5C6952A9DC751000DA0B9 /* WebViewViewController.swift in Sources */,
 				F7E5C63F2A9C365C000DA0B9 /* BaseCollectionViewCell.swift in Sources */,
+				F7E5C65A2A9D8E89000DA0B9 /* DateFormat+Extension.swift in Sources */,
 				F7E5C61F2A9C1D73000DA0B9 /* AddViewController.swift in Sources */,
+				F7E5C6582A9D7DB5000DA0B9 /* DateViewController.swift in Sources */,
 				F7E5C6412A9C37F5000DA0B9 /* SearchCollectionViewCell.swift in Sources */,
+				F7E5C6562A9D7C79000DA0B9 /* DateView.swift in Sources */,
 				F7E5C6332A9C2427000DA0B9 /* BaseViewController.swift in Sources */,
 				F7E5C63D2A9C3370000DA0B9 /* SearchView.swift in Sources */,
 				F7E5C6382A9C2EB4000DA0B9 /* BaseView.swift in Sources */,
 				F7E5C61B2A9C1D73000DA0B9 /* AppDelegate.swift in Sources */,
 				F7E5C61D2A9C1D73000DA0B9 /* SceneDelegate.swift in Sources */,
+				F7E5C6912A9DB53B000DA0B9 /* TitleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +455,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -373,7 +486,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
