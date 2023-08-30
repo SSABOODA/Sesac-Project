@@ -7,6 +7,7 @@
 
 import UIKit
 import SeSACFramework
+import PhotosUI
 
 // protocol 값 전달 1.
 protocol PassDataDelegate {
@@ -72,20 +73,51 @@ class AddViewController: BaseViewController {
     
     @objc func searchButtonClicked() {
         
-        let word = ["Apple", "Banana", "Cookie", "Caek", "Sky"]
+        let alert = UIAlertController(title: "이미지 검색", message: nil, preferredStyle: .actionSheet)
+        
+        let gallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { action in
+            // PHPPickerView
+            print("PHPPickerView")
+            
+            self.setupImagePicker()
+            
+            
+        }
+        let searchWeb = UIAlertAction(title: "웹에서 가져오기", style: .default) { action in
+            // unsplash api
+            print("unsplash api")
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(gallery)
+        alert.addAction(searchWeb)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+        
+        
+//        let word = ["Apple", "Banana", "Cookie", "Caek", "Sky"]
         
         // post 신호가 먼저 가고
         // 다음 뷰컨이 생성되어서 값 전달이 안될 수도 있다.
         // addObserver보다 post가 먼저 신호를 보내면 안됨
-        NotificationCenter.default.post(
-            name: Notification.Name("RecommandKeyword"),
-            object: nil,
-            userInfo: [
-                "word": word.randomElement()!
-            ]
-        )
-        navigationController?.pushViewController(SearchViewController(), animated: true)
-//        present(SearchViewController(), animated: true)
+//        NotificationCenter.default.post(
+//            name: Notification.Name("RecommandKeyword"),
+//            object: nil,
+//            userInfo: [
+//                "word": word.randomElement()!
+//            ]
+//        )
+//        navigationController?.pushViewController(SearchViewController(), animated: true)
+        present(SearchViewController(), animated: true)
+    }
+    
+    func setupImagePicker() {
+        var configuration =  PHPickerConfiguration()
+        configuration.selectionLimit = 0
+        configuration.filter = .any(of: [.images, .videos])
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        self.present(picker, animated: true)
     }
     
     @objc func dateButtonClicked() {
@@ -153,4 +185,24 @@ extension AddViewController: PassImageDelegate {
     func receiveImage(image: UIImage) {
         mainView.photoImageView.image = image
     }
+}
+
+
+extension AddViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        let itemProvider = results.first?.itemProvider
+        
+        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                DispatchQueue.main.async {
+                    self.mainView.photoImageView.image = image as? UIImage
+                }
+            }
+        } else {
+            print("Fail")
+        }
+    }
+    
+    
 }

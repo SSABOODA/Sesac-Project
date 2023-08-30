@@ -51,11 +51,6 @@ class WebViewController: UIViewController, WKUIDelegate {
     }
     
     
-    
-    
-    
-    
-    
     func reloadButtonClicked() {
         webView.reload() // 리로드 버튼
     }

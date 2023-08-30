@@ -18,7 +18,8 @@ class AddView: BaseView {
     
     let searchButton = {
         let view = UIButton()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .darkGray
+        view.setTitle("검색", for: .normal)
         return view
     }()
     
