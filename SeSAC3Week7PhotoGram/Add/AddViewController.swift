@@ -33,6 +33,8 @@ class AddViewController: BaseViewController {
         ClassOpenExample.publicExample()
         ClassPublicExample.publicExample()
 //        ClassInternalExample.internalExample() // 접근 불가능
+        
+        APIService.shared.callRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {

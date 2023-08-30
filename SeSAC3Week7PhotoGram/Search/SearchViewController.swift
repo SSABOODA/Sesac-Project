@@ -36,7 +36,6 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // addObserver보다 post가 먼저 신호를 보내면...
         // 동작 X
         NotificationCenter.default.addObserver(
@@ -45,6 +44,9 @@ class SearchViewController: BaseViewController {
             name: NSNotification.Name("RecommandKeyword"),
             object: nil
         )
+        
+        mainView.searchBar.becomeFirstResponder() // 클릭하지 않았지만 클릭 한 것처럼..
+        mainView.searchBar.delegate = self
     }
     
     @objc func recommandKeywordNotificationObserver(notification: NSNotification) {
@@ -55,6 +57,13 @@ class SearchViewController: BaseViewController {
         super.configureView()
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    // 검색 버튼을 눌렀을 때
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        mainView.searchBar.resignFirstResponder()
     }
 }
 
