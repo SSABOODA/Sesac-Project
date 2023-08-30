@@ -31,6 +31,7 @@
 		F7E5C6952A9DC751000DA0B9 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6942A9DC751000DA0B9 /* WebViewViewController.swift */; };
 		F7E5C6AE2A9EC740000DA0B9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6AD2A9EC740000DA0B9 /* APIService.swift */; };
 		F7E5C6B02A9EEBD7000DA0B9 /* URLSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6AF2A9EEBD7000DA0B9 /* URLSessionViewController.swift */; };
+		F7E5C6B32A9F3807000DA0B9 /* UnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6B22A9F3807000DA0B9 /* UnsplashImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		F7E5C6942A9DC751000DA0B9 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		F7E5C6AD2A9EC740000DA0B9 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F7E5C6AF2A9EEBD7000DA0B9 /* URLSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionViewController.swift; sourceTree = "<group>"; };
+		F7E5C6B22A9F3807000DA0B9 /* UnsplashImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				F7E5C61A2A9C1D73000DA0B9 /* AppDelegate.swift */,
 				F7E5C61C2A9C1D73000DA0B9 /* SceneDelegate.swift */,
+				F7E5C6B12A9F37F4000DA0B9 /* Model */,
 				F7E5C6AC2A9EC724000DA0B9 /* Network */,
 				F7E5C6522A9D7BBD000DA0B9 /* Extension */,
 				F7E5C6392A9C2FC3000DA0B9 /* Add */,
@@ -205,6 +208,14 @@
 				F7E5C6AF2A9EEBD7000DA0B9 /* URLSessionViewController.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		F7E5C6B12A9F37F4000DA0B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C6B22A9F3807000DA0B9 /* UnsplashImage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +329,7 @@
 				F7E5C6582A9D7DB5000DA0B9 /* DateViewController.swift in Sources */,
 				F7E5C6412A9C37F5000DA0B9 /* SearchCollectionViewCell.swift in Sources */,
 				F7E5C6B02A9EEBD7000DA0B9 /* URLSessionViewController.swift in Sources */,
+				F7E5C6B32A9F3807000DA0B9 /* UnsplashImage.swift in Sources */,
 				F7E5C6562A9D7C79000DA0B9 /* DateView.swift in Sources */,
 				F7E5C6332A9C2427000DA0B9 /* BaseViewController.swift in Sources */,
 				F7E5C63D2A9C3370000DA0B9 /* SearchView.swift in Sources */,

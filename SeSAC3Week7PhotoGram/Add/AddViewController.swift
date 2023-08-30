@@ -78,14 +78,12 @@ class AddViewController: BaseViewController {
         let gallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { action in
             // PHPPickerView
             print("PHPPickerView")
-            
             self.setupImagePicker()
-            
-            
         }
         let searchWeb = UIAlertAction(title: "웹에서 가져오기", style: .default) { action in
             // unsplash api
             print("unsplash api")
+            self.present(SearchViewController(), animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         alert.addAction(gallery)
@@ -107,7 +105,7 @@ class AddViewController: BaseViewController {
 //            ]
 //        )
 //        navigationController?.pushViewController(SearchViewController(), animated: true)
-        present(SearchViewController(), animated: true)
+        
     }
     
     func setupImagePicker() {

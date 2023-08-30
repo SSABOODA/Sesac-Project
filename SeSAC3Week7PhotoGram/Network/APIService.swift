@@ -27,9 +27,22 @@ class APIService {
 //            print(error)
             
         }.resume() // resume => 네트워크 통신의 시작.
+    }
+}
+
+class UnsplashAPI {
+    static let shared = UnsplashAPI()
+    
+    private init() {}
+    
+    func callRquest() {
+        
+//        https://api.unsplash.com/search/photos?query="space"&client_id=vq97_ADMU6K9nawQXv6jj8x2dAmdx6qxaDAYoqz4WYM
+        
         
         
         
     }
+    
     
 }
