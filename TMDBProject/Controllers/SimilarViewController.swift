@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import WebKit
 
 class SimilarViewController: UIViewController {
 
     @IBOutlet var movieCollectionView: UICollectionView!
     @IBOutlet var videoSegmentControl: UISegmentedControl!
-    
     
     var video: YoutubeVideo = YoutubeVideo(id: 0, video: [])
     var similarVideo: SimilarMovieData = SimilarMovieData(results: [])
@@ -34,12 +34,12 @@ class SimilarViewController: UIViewController {
     
     
     func callRequestVideo() {
-        
         let group = DispatchGroup()
         
         group.enter()
         TMDBAPIManager.shared.callRequest(of: YoutubeVideo.self, type: .video, movieId: movieId, seriesId: nil, seasonId: nil) { data in
             self.video = data
+            print(data)
             group.leave()
         }
         group.enter()
@@ -53,9 +53,7 @@ class SimilarViewController: UIViewController {
             print("END")
             self.movieCollectionView.reloadData()
         }
-        
     }
-    
 }
 
 extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -75,6 +73,17 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let key = video.video[indexPath.item].key
+        print(key)
+        
+        let vc = WebViewViewController()
+        vc.youtubeKey = key
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
 }
 
@@ -100,8 +109,6 @@ extension SimilarViewController: CollectionViewAttributeProtocol {
         layout.scrollDirection = .vertical
         movieCollectionView.collectionViewLayout = layout
     }
-    
-    
 }
 
 

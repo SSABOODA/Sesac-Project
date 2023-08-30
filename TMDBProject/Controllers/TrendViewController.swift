@@ -36,17 +36,17 @@ class TrendViewController: UIViewController {
         
     }
     
-    func configureView() {
+    private func configureView() {
         view.addSubview(trendTableView)
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         trendTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    func callRequest() {
+    private func callRequest() {
 //        self.indicatorView.startAnimating()
 //        self.indicatorView.isHidden = false
         
@@ -66,12 +66,10 @@ class TrendViewController: UIViewController {
     }
 }
 
-
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let movieListCount = movieResult?.movie.count else { return 0 }
         return movieListCount
-//        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

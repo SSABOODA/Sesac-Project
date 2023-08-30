@@ -54,6 +54,7 @@
 		F7E5C69F2A9DE3F3000DA0B9 /* GenderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */; };
 		F7E5C6A12A9E0124000DA0B9 /* BeforeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6A02A9E0124000DA0B9 /* BeforeViewController.swift */; };
 		F7E5C6A32A9E04B0000DA0B9 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6A22A9E04B0000DA0B9 /* NextViewController.swift */; };
+		F7E5C6A52A9E0F73000DA0B9 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6A42A9E0F73000DA0B9 /* WebViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSettingViewController.swift; sourceTree = "<group>"; };
 		F7E5C6A02A9E0124000DA0B9 /* BeforeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeViewController.swift; sourceTree = "<group>"; };
 		F7E5C6A22A9E04B0000DA0B9 /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
+		F7E5C6A42A9E0F73000DA0B9 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */,
 				F7E5C6A02A9E0124000DA0B9 /* BeforeViewController.swift */,
 				F7E5C6A22A9E04B0000DA0B9 /* NextViewController.swift */,
+				F7E5C6A42A9E0F73000DA0B9 /* WebViewViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				F7E5C5432A87AB29000DA0B9 /* PaddingLabel.swift in Sources */,
 				F7C6F1D22A864620006E19CD /* EndPoint.swift in Sources */,
 				F7C6F1D72A865D83006E19CD /* Movie.swift in Sources */,
+				F7E5C6A52A9E0F73000DA0B9 /* WebViewViewController.swift in Sources */,
 				F7E5C6082A988F9A000DA0B9 /* OnboardingViewController.swift in Sources */,
 				F7E5C6992A9DD1DD000DA0B9 /* ProfileView.swift in Sources */,
 				F7E5C5652A8CB867000DA0B9 /* SeriesCollectionViewCell.swift in Sources */,
