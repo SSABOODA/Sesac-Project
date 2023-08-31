@@ -39,6 +39,10 @@ class AddViewController: BaseViewController {
         APIService.shared.callRequest()
     }
     
+    deinit {
+        print("메모리 해제", self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(
@@ -80,7 +84,7 @@ class AddViewController: BaseViewController {
             print("PHPPickerView")
             self.setupImagePicker()
         }
-        let searchWeb = UIAlertAction(title: "웹에서 가져오기", style: .default) { action in
+        let searchWeb = UIAlertAction(title: "Unsplash에서 가져오기", style: .default) { action in
             // unsplash api
             print("unsplash api")
             let vc = SearchViewController()
@@ -121,10 +125,13 @@ class AddViewController: BaseViewController {
     }
     
     @objc func dateButtonClicked() {
-        print(#function)
-        //protocol 값 전달 5.
-        let vc = DateViewController()
-        vc.delegate = self
+//        print(#function)
+//        //protocol 값 전달 5.
+//        let vc = DateViewController()
+//        vc.delegate = self
+//        navigationController?.pushViewController(vc, animated: true)
+        
+        let vc = HomeViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     

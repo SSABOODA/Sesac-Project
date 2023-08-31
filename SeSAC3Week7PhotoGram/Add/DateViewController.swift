@@ -28,4 +28,8 @@ class DateViewController: BaseViewController {
         delegate?.receiveDate(date: mainView.picker.date)
     }
     
+    deinit {
+        print("메모리 해제", self)
+    }
+    
 }

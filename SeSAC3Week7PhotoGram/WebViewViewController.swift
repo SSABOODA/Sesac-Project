@@ -23,7 +23,7 @@ class WebViewController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .brown
+        view.backgroundColor = .black
         view.addSubview(webView)
         
         webView.snp.makeConstraints { make in

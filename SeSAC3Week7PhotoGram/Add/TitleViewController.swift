@@ -52,4 +52,8 @@ class TitleViewController: BaseViewController {
         // Closure - 2
         completionHandler?(textField.text!, 9090, true)
     }
+    
+    deinit {
+        print("메모리 해제", self)
+    }
 }
