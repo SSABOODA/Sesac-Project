@@ -8,6 +8,31 @@
 
 import Foundation
 
+struct Photo: Codable {
+    let total: Int
+    let total_pages: Int
+    let results: [PhotoResult]
+    
+//    enum CodingKeys: String, CodingKey {
+//        case total
+//        case total_pages
+//        case results
+//    }
+}
+
+struct PhotoResult: Codable {
+    let id: String
+    let urls: PhotoURL
+}
+
+struct PhotoURL: Codable {
+    let full: String
+    let thumb: String
+}
+
+
+
+
 // MARK: - Unsplash
 struct Unsplash: Codable {
     let total, totalPages: Int

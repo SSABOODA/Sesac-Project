@@ -216,9 +216,9 @@
 		F7E5C6AC2A9EC724000DA0B9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F7E5C6B62A9F3A74000DA0B9 /* APIKey.swift */,
 				F7E5C6AD2A9EC740000DA0B9 /* APIService.swift */,
 				F7E5C6AF2A9EEBD7000DA0B9 /* URLSessionViewController.swift */,
-				F7E5C6B62A9F3A74000DA0B9 /* APIKey.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";

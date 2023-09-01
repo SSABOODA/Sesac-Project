@@ -36,7 +36,7 @@ class AddViewController: BaseViewController {
 //        ClassPublicExample.publicExample()
 //        ClassInternalExample.internalExample() // 접근 불가능
         
-        APIService.shared.callRequest()
+//        APIService.shared.callRequest(query: "moon")
     }
     
     deinit {

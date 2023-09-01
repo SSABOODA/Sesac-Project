@@ -18,13 +18,46 @@ class APIService {
     
     private init() {}
     
-    func callRequest() {
+    func callRequest(query: String, completionHandler: @escaping (Photo?) -> Void) {
+        guard let url = URL(string: "https://api.unsplash.com/search/photos?query='\(query)'&client_id=\(APIKey.unsplashAccessKey)") else {
+            return
+        }
         
-        let url = URL(string: "https://apod.nasa.gov/apod/image/2308/M66_JwstTomlinson_3521.jpg")
-        let request = URLRequest(url: url!)
+        // timeoutInterval: 서버 통신의 제한시간 설정
+        let request = URLRequest(url: url, timeoutInterval: 10)
         
+        // CompletionHandler -> global thread에서 실행
         URLSession.shared.dataTask(with: request) { data, response, error in
-            let value = String(data: data!, encoding: .utf8)
+            
+            DispatchQueue.main.async {
+                // 에러 처리
+                if let error {
+                    print(error)
+                    completionHandler(nil) // nil 던져주는거 중요 그래야 nil 받았을 정상적인 상황이 아니라는 것을 캐치하기 위해
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse, (200...500).contains(response.statusCode) else {
+                    print(error) // Alert 또는 Do try Catch 등
+                    return
+                }
+                
+                guard let data = data else {
+                    completionHandler(nil)
+                    return
+                }
+                
+                // Error catch
+                do {
+                    let result = try JSONDecoder().decode(Photo.self, from: data)
+                    print(result)
+                    completionHandler(result)
+                } catch {
+                    print(error) // 디코딩 오류 키
+                    completionHandler(nil)
+                    
+                }
+            }
         }.resume() // resume => 네트워크 통신의 시작.
     }
 }
