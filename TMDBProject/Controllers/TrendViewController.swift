@@ -7,29 +7,45 @@
 
 import UIKit
 
-// 416
-
 class TrendViewController: UIViewController {
-
-//    @IBOutlet var indicatorView: UIActivityIndicatorView!
     
+    static let TrendMovieCellIdentifier = String(describing: type(of: TrendMovieTableViewCell.self))
+    static let TrendTVCellIdentifier = String(describing: type(of: TrendTVTableViewCell.self))
+    static let TrendPersonCellIdentifier = String(describing: type(of: TrendPersonTableViewCell.self))
+
     private lazy var trendTableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(TrendTableViewCell.self, forCellReuseIdentifier: "TrendCell")
+//        tableView.register(TrendTableViewCell.self, forCellReuseIdentifier: "TrendCell")
+        tableView.register(
+            TrendMovieTableViewCell.self,
+            forCellReuseIdentifier: TrendViewController.TrendMovieCellIdentifier
+        )
+        tableView.register(
+            TrendTVTableViewCell.self,
+            forCellReuseIdentifier: TrendViewController.TrendTVCellIdentifier
+        )
+        tableView.register(
+            TrendPersonTableViewCell.self,
+            forCellReuseIdentifier: TrendViewController.TrendPersonCellIdentifier
+        )
+        
         return tableView
     }()
     
-    var movieResult: MovieResult?
+    lazy var indicatorView: UIActivityIndicatorView = {
+        let activityView = UIActivityIndicatorView(style: .large)
+        return activityView
+    }()
+    
+    var movieResult: MovieResult = MovieResult(totalResults: 0, totalPages: 0, page: 0, movie: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         callRequest()
         view.backgroundColor = .white
-        
-//        indicatorView.isHidden = true
         
         configureView()
         setConstraints()
@@ -38,17 +54,22 @@ class TrendViewController: UIViewController {
     
     private func configureView() {
         view.addSubview(trendTableView)
+        trendTableView.addSubview(indicatorView)
     }
     
     private func setConstraints() {
         trendTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        indicatorView.snp.makeConstraints { make in
+            make.center.equalTo(view)
+        }
     }
     
     private func callRequest() {
-//        self.indicatorView.startAnimating()
-//        self.indicatorView.isHidden = false
+        self.indicatorView.startAnimating()
+        self.indicatorView.isHidden = false
         
         TMDBAPIManager.shared.callRequest(
             of: MovieResult.self,
@@ -59,27 +80,61 @@ class TrendViewController: UIViewController {
         ) { response in
             sleep(1)
             self.movieResult = response
-//            self.indicatorView.stopAnimating()
-//            self.indicatorView.isHidden = true
+            
+            self.indicatorView.stopAnimating()
+            self.indicatorView.isHidden = true
             self.trendTableView.reloadData()
         }
     }
 }
 
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let movieListCount = movieResult?.movie.count else { return 0 }
-        return movieListCount
+        return movieResult.movie.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = trendTableView.dequeueReusableCell(withIdentifier: "TrendCell") as? TrendTableViewCell else {
+        
+        let movieList = movieResult.movie
+        
+        let cellIdentifier = movieList[indexPath.row].mediaType.cellIdentifier
+        
+        let mediaType = movieList[indexPath.row].mediaType
+        
+        var a = movieList[indexPath.row].mediaType.tableViewCellType
+
+        
+        var cell: UITableViewCell?
+        
+//        switch mediaType {
+//        case .movie:
+//            print("MOVIE")
+//
+////            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendMovieTableViewCell else { return UITableViewCell() }
+////            cell.configureCell(movieList[indexPath.row])
+////             return cell
+//        case.tv:
+//            print("TV")
+//            cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendTVTableViewCell
+//
+////            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendTVTableViewCell else { return UITableViewCell() }
+////            cell.configureCell(movieList[indexPath.row])
+////             return cell
+//        case .person:
+//            print("PERSON")
+//            cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendPersonTableViewCell
+//
+////            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendPersonTableViewCell else { return UITableViewCell() }
+////            cell.configureCell(movieList[indexPath.row])
+////             return cell
+//        }
+        guard let cell else {
+            print("123123123123")
             return UITableViewCell()
+            
         }
-        cell.selectionStyle = .none
-        if let movie = movieResult?.movie {
-            cell.configureCell(movie[indexPath.row])
-        }
+        print("asdfhjklhadsfj", cell)
         return cell
     }
     
@@ -87,9 +142,10 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         print(#function)
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
         
-        guard let movie = movieResult?.movie else { return }
+        let movie = movieResult.movie
         
         vc.movie = movie[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+

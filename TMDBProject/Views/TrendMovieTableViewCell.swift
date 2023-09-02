@@ -1,16 +1,14 @@
 //
-//  TrendTableViewCell.swift
+//  TrendMovieTableViewCell.swift
 //  TMDBProject
 //
-//  Created by 한성봉 on 2023/08/11.
+//  Created by 한성봉 on 2023/09/01.
 //
 
 import UIKit
-import Kingfisher
-import SnapKit
 
-class TrendTableViewCell: BaseTableViewCell {
-    
+class TrendMovieTableViewCell: BaseTableViewCell {
+
     let dateLabel = {
         let lb = UILabel()
         lb.font = .systemFont(ofSize: 11)
@@ -232,4 +230,6 @@ class TrendTableViewCell: BaseTableViewCell {
         guard let genre = Movie.genreList[genreId] else { return "" }
         return genre
     }
+
+
 }

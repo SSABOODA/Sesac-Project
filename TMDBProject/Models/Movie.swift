@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - MovieResult
 struct MovieResult: Codable {
@@ -49,6 +50,7 @@ struct Movie: Codable {
     let mediaType: MediaType
     let rate: Double
     let title: String?
+    let name: String?
     let originalTitle: String?
     let description: String
     let imageURL: String
@@ -60,6 +62,7 @@ struct Movie: Codable {
         case mediaType = "media_type"
         case rate = "vote_average"
         case title
+        case name
         case originalTitle = "original_title"
         case description = "overview"
         case imageURL = "backdrop_path"
@@ -85,6 +88,29 @@ struct Movie: Codable {
 enum MediaType: String, Codable {
     case movie = "movie"
     case tv = "tv"
+    case person = "person"
+    
+    var cellIdentifier: String {
+        switch self {
+        case .movie:
+            return TrendViewController.TrendMovieCellIdentifier
+        case .tv:
+            return TrendViewController.TrendTVCellIdentifier
+        case .person:
+            return TrendViewController.TrendPersonCellIdentifier
+        }
+    }
+    
+    var tableViewCellType: UITableViewCell.Type {
+        switch self {
+        case .movie:
+            return TrendMovieTableViewCell.self
+        case .tv:
+            return TrendTVTableViewCell.self
+        case .person:
+            return TrendPersonTableViewCell.self
+        }
+    }
 }
 
 
