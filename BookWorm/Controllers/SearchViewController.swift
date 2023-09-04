@@ -8,8 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
-
+import RealmSwift
 
 class SearchViewController: UIViewController {
     
@@ -19,7 +18,6 @@ class SearchViewController: UIViewController {
     let searchBar = UISearchBar()
     
     var movie = MovieInfo()
-    
     var bookList: [Book] = []
     var searchResultList: [Book] = []
     
@@ -45,13 +43,13 @@ class SearchViewController: UIViewController {
         guard let query else { return }
         let url = "https://dapi.kakao.com/v3/search/book?query=\(query)&size=\(size)&page=\(page)"
         let headers: HTTPHeaders = ["Authorization": "KakaoAK c128737a3485b11c081a3c95239f4420"]
+//        print(url)
         
-        print(url)
         AF.request(url, method: .get, headers: headers).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-//                print("JSON: \(json)")
+                print("JSON: \(json)")
                 
                 self.isEnd = json["meta"]["is_end"].boolValue
                 for item in json["documents"].arrayValue {
@@ -160,6 +158,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         searchResultList.removeAll()
         guard let text = searchBar.text else { return }
+        
         callRequset(query: text)
         bookList = searchResultList
         collectionView.reloadData()
@@ -218,6 +217,27 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // create realm
+        print(searchResultList[indexPath.row])
+        let realm = try! Realm()
+        
+        let book = searchResultList[indexPath.row]
+        
+        let task = BookTable(
+            title: book.title,
+            thumbnail: book.thumbnail,
+            url: book.url,
+            price: book.price,
+            status: book.status,
+            desc: book.desc,
+            author: book.author
+        )
+        
+        try! realm.write {
+            realm.add(task)
+            print("Realm Add Succeed")
+        }
         
         // detailview 이동 대신 web페이지 띄우기
         guard let url = URL(string: searchResultList[indexPath.row].url), UIApplication.shared.canOpenURL(url) else { return }

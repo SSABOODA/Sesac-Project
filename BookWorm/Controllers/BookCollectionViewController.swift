@@ -8,14 +8,15 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 class BookCollectionViewController: UICollectionViewController {
     
     static let identifier = "BookCollectionViewController"
     
     var movie = MovieInfo()
-    
     var bookList = [Book]()
+    var tasks: Results<BookTable>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,17 @@ class BookCollectionViewController: UICollectionViewController {
         setBackgroundColor()
         navigationBar()
 //        designNavigationBackButton()
-        callRequset()
+//        callRequset()
+        
+        let realm = try! Realm()
+        tasks = realm.objects(BookTable.self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+        
     }
     
     func callRequset(_ query: String = "스위프트") {
@@ -150,7 +161,8 @@ class BookCollectionViewController: UICollectionViewController {
     // MARK: - CollectionView Method
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookList.count
+//        return bookList.count
+        return tasks.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -158,7 +170,7 @@ class BookCollectionViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
         
-        cell.configureCell(row: bookList[indexPath.row])
+        cell.configureCell(row: tasks[indexPath.row])
         
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
@@ -171,13 +183,23 @@ class BookCollectionViewController: UICollectionViewController {
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else {
             return
         }
-        vc.book = bookList[indexPath.row]
+        vc.task = tasks[indexPath.row]
+//        vc.book = bookList[indexPath.row]
         vc.type = .main
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
-        bookList[sender.tag].like.toggle()
+        
+        let realm = try! Realm()
+        let task = tasks[sender.tag]
+        
+        try! realm.write {
+            task.like.toggle()
+        }
+        
+//        tasks[sender.tag].like.toggle()
+//        bookList[sender.tag].like.toggle()
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
 }

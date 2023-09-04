@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class BookCollectionViewCell: UICollectionViewCell {
     
@@ -31,25 +32,38 @@ extension BookCollectionViewCell: CollectionViewCellProtocol {
     func designCommonCell() {
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
+        self.backgroundColor = UIColor.systemGray4
     }
     
-    func configureCell(row: Book) {
-        self.backgroundColor = UIColor.systemGray4
-        titleLabel.text = row.title
+    func configure(
+        title: String,
+        thumbnail: String,
+        status: String,
+        like: Bool
+    ) {
+        titleLabel.text = title
         
-        if let imageURL = URL(string: row.thumbnail) {
+        if let imageURL = URL(string: thumbnail) {
             mainImageView.kf.setImage(with: imageURL)
         }
         
-        rateLabel.text = "\(row.status)"
+        rateLabel.text = "\(status)"
         
-        if row.like {
+        if like {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             likeButton.tintColor = .red
         } else {
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
             likeButton.tintColor = .white
         }
+    }
+    
+    func configureCell(row: Book) {
+        configure(title: row.title, thumbnail: row.thumbnail, status: row.status, like: row.like)
+    }
+    
+    func configureCell(row: BookTable) {
+        configure(title: row.title, thumbnail: row.thumbnail, status: row.status, like: row.like)
     }
 }
 

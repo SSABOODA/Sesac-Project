@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailViewController: UIViewController {
     
@@ -24,8 +25,8 @@ class DetailViewController: UIViewController {
     @IBOutlet var detailTextView: UITextView!
     
     var movie: Movie?
-    
     var book: Book?
+    var task: BookTable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,14 +72,14 @@ class DetailViewController: UIViewController {
     
     func configureDetailView() {
         view.backgroundColor = .systemGray4
-        guard let book else { return }
-        if let imageURL = URL(string: book.thumbnail) {
+        guard let task else { return }
+        if let imageURL = URL(string: task.thumbnail) {
             detailMainImageView.kf.setImage(with: imageURL)
         }
-        detailTitleLabel.text = book.title
-        detailRuntimeLabel.text = "\(String(book.price))원"
-        detailRateLabel.text = book.status
-        detailDescriptionLabel.text = book.desc
+        detailTitleLabel.text = task.title
+        detailRuntimeLabel.text = "\(String(task.price))원"
+        detailRateLabel.text = task.status
+        detailDescriptionLabel.text = task.desc
         
         detailDescriptionLabel.numberOfLines = 0
         detailView.layer.cornerRadius = 10
