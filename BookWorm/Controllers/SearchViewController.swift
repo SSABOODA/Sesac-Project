@@ -24,6 +24,8 @@ class SearchViewController: UIViewController {
     var page: Int = 0
     var isEnd: Bool = false
     
+    let realm = try! Realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +37,8 @@ class SearchViewController: UIViewController {
         setCollectionViewLayout()
         setupSearchBar()
 //        callRequset()
+        
+        print(realm.configuration.fileURL)
     }
     
     
@@ -49,7 +53,7 @@ class SearchViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
+//                print("JSON: \(json)")
                 
                 self.isEnd = json["meta"]["is_end"].boolValue
                 for item in json["documents"].arrayValue {
@@ -219,8 +223,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // create realm
-        print(searchResultList[indexPath.row])
-        let realm = try! Realm()
         
         let book = searchResultList[indexPath.row]
         
@@ -231,12 +233,22 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             price: book.price,
             status: book.status,
             desc: book.desc,
-            author: book.author
+            author: book.author,
+            memo: ""
         )
         
         try! realm.write {
             realm.add(task)
             print("Realm Add Succeed")
+        }
+        
+        DispatchQueue.global().async {
+            if let url = URL(string: book.thumbnail), let data = try? Data(contentsOf: url ) {
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)!
+                    self.saveImageToDocument(fileName: "book_\(task._id).jpg", image: image)
+                }
+            }
         }
         
         // detailview 이동 대신 web페이지 띄우기

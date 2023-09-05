@@ -28,6 +28,10 @@ class DetailViewController: UIViewController {
     var book: Book?
     var task: BookTable?
     
+    let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: 100, height: 100))
+    
+    let realm = try! Realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +39,72 @@ class DetailViewController: UIViewController {
         configureTextView()
         designImageView()
         leftNavigationBarButtonItem()
+        addToolbar()
+    }
+    
+    func addToolbar() {
+        view.addSubview(toolbar)
+        
+        var toolbarItems: [UIBarButtonItem] = []
+        
+        let modify = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(modifyButtonClicked))
+        let remove = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(removeButtonClicked))
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        toolbarItems.append(modify)
+        toolbarItems.append(flexibleSpace)
+        toolbarItems.append(remove)
+        
+        toolbarItems.forEach { item in
+            item.tintColor = .black
+        }
+
+        toolbar.setItems(toolbarItems, animated: true)
+        
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 0).isActive = true
+        toolbar.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 0).isActive = true
+        toolbar.trailingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.trailingAnchor, multiplier: 0).isActive = true
+    }
+    
+    @objc func modifyButtonClicked() {
+        print("수정할래")
+        guard let data = task else { return }
+        
+        let item = BookTable(value: [
+            "_id": data._id,
+            "title": data.title,
+            "thumbnail": data.thumbnail,
+            "url": data.url,
+            "price": data.price,
+            "status": data.status,
+            "desc": data.desc,
+            "author": data.author,
+            "like": data.like,
+            "memo": detailTextView.text!
+        ])
+        
+        do {
+            try realm.write {
+                realm.add(item, update: .modified)
+            }
+        } catch {
+            print("error")
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func removeButtonClicked() {
+        print("삭제할래")
+        
+        guard let data = task else { return }
+        
+        try! realm.write {
+            realm.delete(data)
+        }
+        navigationController?.popViewController(animated: true)
     }
 
     func leftNavigationBarButtonItem() {
@@ -53,7 +123,6 @@ class DetailViewController: UIViewController {
         case .around: dismiss(animated: true)
         case .search: dismiss(animated: true)
         }
-        
     }
     
     func designImageView() {
@@ -66,7 +135,7 @@ class DetailViewController: UIViewController {
         detailTextView.delegate = self
         detailTextView.layer.borderWidth = 3
         detailTextView.layer.borderColor = UIColor.black.cgColor
-        detailTextView.text = placeholderText
+//        detailTextView.text = placeholderText
         detailTextView.textColor = .lightGray
     }
     
@@ -80,6 +149,10 @@ class DetailViewController: UIViewController {
         detailRuntimeLabel.text = "\(String(task.price))원"
         detailRateLabel.text = task.status
         detailDescriptionLabel.text = task.desc
+        print(task.memo)
+        print(detailTextView.text)
+        
+        detailTextView.text = task.memo ?? ""
         
         detailDescriptionLabel.numberOfLines = 0
         detailView.layer.cornerRadius = 10
@@ -89,16 +162,16 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == placeholderText {
-            textView.text = nil
-            textView.textColor = .black
-        }
+//        if textView.text == placeholderText {
+//            textView.text = nil
+//            textView.textColor = .black
+//        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = placeholderText
-            textView.textColor = .lightGray
-        }
+//        if textView.text.isEmpty {
+//            textView.text = placeholderText
+//            textView.textColor = .lightGray
+//        }
     }
 }

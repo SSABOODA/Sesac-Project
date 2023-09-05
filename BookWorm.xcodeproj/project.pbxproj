@@ -38,6 +38,7 @@
 		F797E41C2AA5A7FF00B4D8A9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F797E41B2AA5A7FF00B4D8A9 /* Realm */; };
 		F797E41E2AA5A7FF00B4D8A9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F797E41D2AA5A7FF00B4D8A9 /* RealmSwift */; };
 		F797E4212AA5A8F600B4D8A9 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4202AA5A8F600B4D8A9 /* RealmModel.swift */; };
+		F797E4272AA737C600B4D8A9 /* Extension+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4262AA737C600B4D8A9 /* Extension+FileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		F776FEFE2A7B99CF0065ACEB /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		F776FF002A7BB9160065ACEB /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		F797E4202AA5A8F600B4D8A9 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		F797E4262AA737C600B4D8A9 /* Extension+FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+FileManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				F776FECD2A77A0610065ACEB /* Enum.swift */,
 				F776FF002A7BB9160065ACEB /* Protocol.swift */,
 				F73CC8532A838B1400954D45 /* Extension+layer.swift */,
+				F797E4262AA737C600B4D8A9 /* Extension+FileManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				F776FEFD2A7B97F00065ACEB /* SecondViewController.swift in Sources */,
 				F776FEB22A7799B10065ACEB /* ViewController.swift in Sources */,
 				F776FEAE2A7799B10065ACEB /* AppDelegate.swift in Sources */,
+				F797E4272AA737C600B4D8A9 /* Extension+FileManager.swift in Sources */,
 				F776FEB02A7799B10065ACEB /* SceneDelegate.swift in Sources */,
 				F776FEC22A779A4A0065ACEB /* MovieInformation.swift in Sources */,
 				F776FEEA2A7A3C2C0065ACEB /* RecentCollectionViewCell.swift in Sources */,
