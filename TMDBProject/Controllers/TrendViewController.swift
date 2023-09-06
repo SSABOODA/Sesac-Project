@@ -103,13 +103,6 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cellIdentifier = movieList[indexPath.row].mediaType.cellIdentifier
         let mediaType = movieList[indexPath.row].mediaType
-        
-//        var cellType = movieList[indexPath.row].mediaType.tableViewCellType
-//        let customCell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomElementCell
-//        let cellModel = customElements[indexPath.row]
-//        customCell.configure(withModel: cellModel)
-//        return customCell as! UITableViewCell
-        
         switch mediaType {
         case .movie:
             print("MOVIE")
