@@ -20,6 +20,19 @@ extension UIViewController {
             print("file save error", error)
         }
     }
+    
+    func removeImageFromDocument(fileName: String) {
+           // 1. 도큐먼트 경로 찾기
+           guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+           // 2. 저장할 경로 설정(세부 경로, 이미지를 저장할 위치)
+           let fileURL = documentDirectory.appendingPathComponent(fileName)
+           
+           do {
+               try FileManager.default.removeItem(at: fileURL)
+           } catch {
+               print(error)
+           }
+       }    
 }
 
 

@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
     
     let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: 100, height: 100))
     
-    let realm = try! Realm()
+    let bookRepository = BookTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,27 +72,10 @@ class DetailViewController: UIViewController {
         print("수정할래")
         guard let data = task else { return }
         
-        let item = BookTable(value: [
-            "_id": data._id,
-            "title": data.title,
-            "thumbnail": data.thumbnail,
-            "url": data.url,
-            "price": data.price,
-            "status": data.status,
-            "desc": data.desc,
-            "author": data.author,
-            "like": data.like,
-            "memo": detailTextView.text!
-        ])
-        
-        do {
-            try realm.write {
-                realm.add(item, update: .modified)
-            }
-        } catch {
-            print("error")
-        }
-        
+//        bookRepository.updateItem(updateValue: [
+//            "_id": data._id,
+//            "memo": detailTextView.text!
+//        ])
         navigationController?.popViewController(animated: true)
     }
     
@@ -100,10 +83,8 @@ class DetailViewController: UIViewController {
         print("삭제할래")
         
         guard let data = task else { return }
-        
-        try! realm.write {
-            realm.delete(data)
-        }
+        removeImageFromDocument(fileName: "book_\(data._id).jpg")
+        bookRepository.deleteItem(data)
         navigationController?.popViewController(animated: true)
     }
 

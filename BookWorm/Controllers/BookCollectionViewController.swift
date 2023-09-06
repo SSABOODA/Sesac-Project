@@ -17,7 +17,7 @@ class BookCollectionViewController: UICollectionViewController {
     var movie = MovieInfo()
     var bookList = [Book]()
     var tasks: Results<BookTable>!
-    let realm = try! Realm()
+    let bookRepository = BookTableRepository()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,19 +25,15 @@ class BookCollectionViewController: UICollectionViewController {
         setCollectionViewLayout()
         setBackgroundColor()
         navigationBar()
-//        designNavigationBackButton()
-//        callRequset()
         
-        tasks = realm.objects(BookTable.self)
-        
+        tasks = bookRepository.fetch()
+        print(bookRepository.findFileURL())
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
     }
-    
-    
     
     func callRequset(_ query: String = "스위프트") {
         let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -156,7 +152,6 @@ class BookCollectionViewController: UICollectionViewController {
     
     // MARK: - CollectionView Method
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return bookList.count
         return tasks.count
     }
     
@@ -179,20 +174,18 @@ class BookCollectionViewController: UICollectionViewController {
             return
         }
         vc.task = tasks[indexPath.row]
-//        vc.book = bookList[indexPath.row]
         vc.type = .main
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
         let task = tasks[sender.tag]
-        
-        try! realm.write {
-            task.like.toggle()
-        }
-        
-//        tasks[sender.tag].like.toggle()
-//        bookList[sender.tag].like.toggle()
+        bookRepository.updateItem(
+            updateValue: [
+                "_id": task._id,
+                "like": task.like ? false : true
+            ]
+        )
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
 }
