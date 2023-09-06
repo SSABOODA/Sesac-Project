@@ -113,17 +113,17 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         switch mediaType {
         case .movie:
             print("MOVIE")
-            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendMovieTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendMovieTableViewCell else { return UITableViewCell() }
             cell.configureCell(movieList[indexPath.row])
             return cell
         case.tv:
             print("TV")
-            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendTVTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendTVTableViewCell else { return UITableViewCell() }
             cell.configureCell(movieList[indexPath.row])
             return cell
         case .person:
             print("PERSON")
-            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendPersonTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendPersonTableViewCell else { return UITableViewCell() }
             cell.configureCell(movieList[indexPath.row])
             return cell
         }
