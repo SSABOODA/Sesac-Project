@@ -10,7 +10,7 @@ import UIKit
 class TrendPersonTableViewCell: UITableViewCell {
 
     func configureCell(_ rowData: Movie) {
-        print(rowData)
+//        print(rowData)
 
     }
 

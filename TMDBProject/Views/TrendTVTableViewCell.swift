@@ -68,24 +68,24 @@ class TrendTVTableViewCell: BaseTableViewCell {
         dateLabel.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
-        
+
         hashtagLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(10)
             make.top.equalTo(dateLabel.snp.bottom).offset(10)
         }
-        
+
         mainCardView.snp.makeConstraints { make in
             make.top.equalTo(hashtagLabel.snp.bottom).offset(10)
             make.leading.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).offset(-30)
             make.height.equalTo(400)
         }
-        
+
         mainImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(20)
+            make.top.horizontalEdges.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
         }
-        
+
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(mainImageView.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(mainCardView.snp.horizontalEdges).inset(15)
@@ -93,8 +93,6 @@ class TrendTVTableViewCell: BaseTableViewCell {
     }
     
     func configureCell(_ rowData: Movie) {
-        print(rowData)
-        
         dateLabel.text = rowData.convertData
         hashtagLabel.text = "#\(genreIdToString(rowData.genreIds[0]))"
         if let imageURL = URL(string: rowData.fullImageURL) {
@@ -108,3 +106,4 @@ class TrendTVTableViewCell: BaseTableViewCell {
         return genre
     }
 }
+

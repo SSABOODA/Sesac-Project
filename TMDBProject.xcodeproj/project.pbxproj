@@ -27,6 +27,7 @@
 		F7D5C1182AA1CD3E00E4F22C /* TrendPersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D5C1172AA1CD3E00E4F22C /* TrendPersonTableViewCell.swift */; };
 		F7D5C11A2AA1CD5800E4F22C /* TrendTVTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D5C1192AA1CD5800E4F22C /* TrendTVTableViewCell.swift */; };
 		F7D5C11C2AA1CD7700E4F22C /* TrendMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D5C11B2AA1CD7700E4F22C /* TrendMovieTableViewCell.swift */; };
+		F7D5C1272AA390CF00E4F22C /* TableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D5C1262AA390CF00E4F22C /* TableViewCellProtocol.swift */; };
 		F7E5C5372A876303000DA0B9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5362A876303000DA0B9 /* DetailViewController.swift */; };
 		F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5382A8763A1000DA0B9 /* DetailTableViewCell.swift */; };
 		F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C53A2A878F14000DA0B9 /* Extension+Layer.swift */; };
@@ -80,6 +81,7 @@
 		F7D5C1172AA1CD3E00E4F22C /* TrendPersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendPersonTableViewCell.swift; sourceTree = "<group>"; };
 		F7D5C1192AA1CD5800E4F22C /* TrendTVTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTVTableViewCell.swift; sourceTree = "<group>"; };
 		F7D5C11B2AA1CD7700E4F22C /* TrendMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendMovieTableViewCell.swift; sourceTree = "<group>"; };
+		F7D5C1262AA390CF00E4F22C /* TableViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellProtocol.swift; sourceTree = "<group>"; };
 		F7E5C5362A876303000DA0B9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F7E5C5382A8763A1000DA0B9 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		F7E5C53A2A878F14000DA0B9 /* Extension+Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Layer.swift"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */,
 				F7E5C5982A90AF3C000DA0B9 /* CollectionViewProtocol.swift */,
+				F7D5C1262AA390CF00E4F22C /* TableViewCellProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				F7E5C5692A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift in Sources */,
 				F7E5C56E2A8CF0E9000DA0B9 /* Season.swift in Sources */,
 				F7E5C6A32A9E04B0000DA0B9 /* NextViewController.swift in Sources */,
+				F7D5C1272AA390CF00E4F22C /* TableViewCellProtocol.swift in Sources */,
 				F7E5C5392A8763A1000DA0B9 /* DetailTableViewCell.swift in Sources */,
 				F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */,
 				F7E5C69B2A9DDB8C000DA0B9 /* NameSettingViewController.swift in Sources */,

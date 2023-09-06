@@ -77,7 +77,7 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let key = video.video[indexPath.item].key
-        print(key)
+//        print(key)
         
         let vc = WebViewViewController()
         vc.youtubeKey = key

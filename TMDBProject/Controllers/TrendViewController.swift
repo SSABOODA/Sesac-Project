@@ -12,7 +12,7 @@ class TrendViewController: UIViewController {
     static let TrendMovieCellIdentifier = String(describing: type(of: TrendMovieTableViewCell.self))
     static let TrendTVCellIdentifier = String(describing: type(of: TrendTVTableViewCell.self))
     static let TrendPersonCellIdentifier = String(describing: type(of: TrendPersonTableViewCell.self))
-
+    
     private lazy var trendTableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -86,10 +86,13 @@ class TrendViewController: UIViewController {
             self.trendTableView.reloadData()
         }
     }
+    
+//    var customElements: [CustomElementModel]!
 }
 
+
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
-    
+ 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieResult.movie.count
     }
@@ -99,43 +102,31 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let movieList = movieResult.movie
         
         let cellIdentifier = movieList[indexPath.row].mediaType.cellIdentifier
-        
         let mediaType = movieList[indexPath.row].mediaType
         
-        var a = movieList[indexPath.row].mediaType.tableViewCellType
-
+//        var cellType = movieList[indexPath.row].mediaType.tableViewCellType
+//        let customCell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomElementCell
+//        let cellModel = customElements[indexPath.row]
+//        customCell.configure(withModel: cellModel)
+//        return customCell as! UITableViewCell
         
-        var cell: UITableViewCell?
-        
-//        switch mediaType {
-//        case .movie:
-//            print("MOVIE")
-//
-////            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendMovieTableViewCell else { return UITableViewCell() }
-////            cell.configureCell(movieList[indexPath.row])
-////             return cell
-//        case.tv:
-//            print("TV")
-//            cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendTVTableViewCell
-//
-////            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendTVTableViewCell else { return UITableViewCell() }
-////            cell.configureCell(movieList[indexPath.row])
-////             return cell
-//        case .person:
-//            print("PERSON")
-//            cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendPersonTableViewCell
-//
-////            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendPersonTableViewCell else { return UITableViewCell() }
-////            cell.configureCell(movieList[indexPath.row])
-////             return cell
-//        }
-        guard let cell else {
-            print("123123123123")
-            return UITableViewCell()
-            
+        switch mediaType {
+        case .movie:
+            print("MOVIE")
+            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendMovieTableViewCell else { return UITableViewCell() }
+            cell.configureCell(movieList[indexPath.row])
+            return cell
+        case.tv:
+            print("TV")
+            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendTVTableViewCell else { return UITableViewCell() }
+            cell.configureCell(movieList[indexPath.row])
+            return cell
+        case .person:
+            print("PERSON")
+            guard let cell = trendTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendPersonTableViewCell else { return UITableViewCell() }
+            cell.configureCell(movieList[indexPath.row])
+            return cell
         }
-        print("asdfhjklhadsfj", cell)
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

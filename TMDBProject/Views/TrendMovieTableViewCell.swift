@@ -129,6 +129,7 @@ class TrendMovieTableViewCell: BaseTableViewCell {
         contentView.addSubview(dateLabel)
         contentView.addSubview(hashtagLabel)
         contentView.addSubview(mainCardView)
+        
         mainCardView.addSubview(mainImageView)
         mainCardView.addSubview(clipButton)
 
@@ -153,16 +154,16 @@ class TrendMovieTableViewCell: BaseTableViewCell {
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(10)
             make.top.equalTo(dateLabel.snp.bottom).offset(10)
         }
-        
+
         mainCardView.snp.makeConstraints { make in
             make.top.equalTo(hashtagLabel.snp.bottom).offset(10)
             make.leading.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).offset(-30)
             make.height.equalTo(400)
         }
-        
+
         mainImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.horizontalEdges.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
         }
         
@@ -170,44 +171,44 @@ class TrendMovieTableViewCell: BaseTableViewCell {
             make.top.trailing.equalToSuperview().inset(15)
             make.size.equalTo(25)
         }
-        
+
         rateView.snp.makeConstraints { make in
             make.leading.bottom.equalToSuperview().inset(20)
             make.width.equalTo(50)
             make.height.equalTo(25)
         }
-        
+
         rateTitleLabel.snp.makeConstraints { make in
             make.top.leading.bottom.equalTo(rateView).inset(2)
             make.width.equalTo(23)
         }
-        
+
         rateLabel.snp.makeConstraints { make in
             make.top.trailing.bottom.equalTo(rateView).inset(2)
             make.width.equalTo(23)
         }
-        
+
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(mainImageView.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(mainCardView.snp.horizontalEdges).inset(15)
         }
-        
+
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalTo(mainCardView.snp.horizontalEdges).inset(15)
         }
-        
+
         lineView.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(mainCardView.snp.horizontalEdges).inset(15)
             make.height.equalTo(1)
         }
-        
+
         lookDetailTitle.snp.makeConstraints { make in
             make.bottom.equalTo(mainCardView.snp.bottom).offset(-15)
             make.leading.equalToSuperview().offset(15)
         }
-        
+
         lookDetailButton.snp.makeConstraints { make in
             make.trailing.equalTo(mainCardView.snp.trailing).offset(-15)
             make.bottom.equalTo(mainCardView.snp.bottom).offset(-15)
@@ -230,6 +231,23 @@ class TrendMovieTableViewCell: BaseTableViewCell {
         guard let genre = Movie.genreList[genreId] else { return "" }
         return genre
     }
-
+    
+//    var model: TrendMovieTableViewCell!
 
 }
+
+//extension TrendMovieTableViewCell: CustomElementModel, CustomElementCell {
+//    var type: CustomElementType {
+//        return .movie
+//    }
+//
+//    func configure(withModel elementModel: CustomElementModel) {
+//
+//        print(elementModel)
+//        guard let model = elementModel as? TrendMovieTableViewCell else {
+//            print("Unable to cast model as ProfileElement: \(elementModel)")
+//            return
+//        }
+//        self.model = model
+//    }
+//}
