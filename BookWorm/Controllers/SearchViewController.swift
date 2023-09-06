@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 import RealmSwift
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     
     static let identifier = "SearchViewController"
 
@@ -24,7 +24,7 @@ class SearchViewController: UIViewController {
     var page: Int = 0
     var isEnd: Bool = false
     
-    let realm = try! Realm()
+    let bookRepository = BookTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +36,10 @@ class SearchViewController: UIViewController {
         registerBookCollectionViewCell()
         setCollectionViewLayout()
         setupSearchBar()
-//        callRequset()
-        
-        print(realm.configuration.fileURL)
     }
     
     
-    func callRequset(query: String, size: Int = 50, page: Int = 1) {
+    private func callRequset(query: String, size: Int = 50, page: Int = 1) {
         let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard let query else { return }
         let url = "https://dapi.kakao.com/v3/search/book?query=\(query)&size=\(size)&page=\(page)"
@@ -86,20 +83,20 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func setupSearchBar() {
+    private func setupSearchBar() {
         navigationItem.titleView = searchBar
         searchBar.delegate = self
         searchBar.placeholder = SearchBarPlaceHolder.searchViewController.rawValue
     }
     
-    func registerBookCollectionViewCell() {
+    private func registerBookCollectionViewCell() {
         collectionView.register(
             UINib(nibName: BookCollectionViewCell.identifier, bundle: nil),
             forCellWithReuseIdentifier: BookCollectionViewCell.identifier
         )
     }
     
-    func setCollectionViewLayout() {
+    private func setCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 20
         let width = UIScreen.main.bounds.width - (spacing * 3)
@@ -115,13 +112,13 @@ class SearchViewController: UIViewController {
         collectionView.collectionViewLayout = layout
     }
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.prefetchDataSource = self
     }
     
-    func navBarButtonItem() {
+    private func navBarButtonItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "xmark"),
             style: .plain,
@@ -158,7 +155,7 @@ extension SearchViewController: UISearchBarDelegate {
 //        }
 //    }
     
-    func searchResult() {
+    private func searchResult() {
         
         searchResultList.removeAll()
         guard let text = searchBar.text else { return }
@@ -223,7 +220,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // create realm
-        
         let book = searchResultList[indexPath.row]
         
         let task = BookTable(
@@ -237,10 +233,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             memo: ""
         )
         
-        try! realm.write {
-            realm.add(task)
-            print("Realm Add Succeed")
-        }
+        bookRepository.createItem(task)
         
         DispatchQueue.global().async {
             if let url = URL(string: book.thumbnail), let data = try? Data(contentsOf: url ) {
@@ -252,18 +245,18 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         // detailview 이동 대신 web페이지 띄우기
-        guard let url = URL(string: searchResultList[indexPath.row].url), UIApplication.shared.canOpenURL(url) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        return
+//        guard let url = URL(string: searchResultList[indexPath.row].url), UIApplication.shared.canOpenURL(url) else { return }
+//        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//        return
         
-//        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
-////        vc.movie = searchResultList[indexPath.row]
-//        vc.book = searchResultList[indexPath.row]
-//        vc.type = .search
-//
-//        let nav = UINavigationController(rootViewController: vc)
-//        nav.modalPresentationStyle = .fullScreen
-//        present(nav, animated: true)
+        // DetailView 이동
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifer) as? DetailViewController else { return }
+        vc.task = task
+        vc.type = .search
+
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {

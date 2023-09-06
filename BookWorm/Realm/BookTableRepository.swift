@@ -15,6 +15,7 @@ protocol BookTableRepositoryProtocol: AnyObject {
     func fetchFilter() -> Results<BookTable>
     func createItem(_ item: BookTable)
     func updateItem(updateValue: [String: Any])
+    func deleteItem(_ item: BookTable)
 }
 
 class BookTableRepository: BookTableRepositoryProtocol {
@@ -31,6 +32,7 @@ class BookTableRepository: BookTableRepositoryProtocol {
     
     func findFileURL() -> URL? {
         guard let fileURL = realm.configuration.fileURL else { return nil }
+        print("fileURL: \(fileURL)")
         return fileURL
     }
     

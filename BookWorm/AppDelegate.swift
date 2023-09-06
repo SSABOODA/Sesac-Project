@@ -6,14 +6,30 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let config = Realm.Configuration(schemaVersion: 5) { migration, oldSchemaVersion in
+            if oldSchemaVersion < 1 { } // date column 추가
+            if oldSchemaVersion < 2 { } // date column 삭제 (스키마 변경 없음)
+            if oldSchemaVersion < 3 { } // date column 삭제 (스키마 변경 있음)
+            if oldSchemaVersion < 4 { // date column 삭제 (스키마 변경 있음)
+                migration.renameProperty(onType: BookTable.className(), from: "memo", to: "etc")
+            }
+            if oldSchemaVersion < 5 { // CustomTitle 컬럼 추가
+                migration.enumerateObjects(ofType: BookTable.className()) { oldObject, newObject in
+                    guard let new = newObject else { return }
+                    guard let old = oldObject else { return }
+                    new["customTitle"] = "작가 이름은 \(old["author"] ?? "")이고 책 이름은 \(old["title"] ?? "")이다."
+                }
+            }
+        }
+        
+        Realm.Configuration.defaultConfiguration = config
         return true
     }
 

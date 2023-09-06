@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LookAroundViewController: UIViewController {
+final class LookAroundViewController: UIViewController {
     
     static let identifier = "LookAroundViewController"
     
@@ -28,7 +28,7 @@ class LookAroundViewController: UIViewController {
     }
     
     // Register Nib
-    func registerNib() {
+    private func registerNib() {
         popularityTableView.register(
             UINib(nibName: PopularityTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: PopularityTableViewCell.identifier
@@ -41,26 +41,26 @@ class LookAroundViewController: UIViewController {
     }
     
     // tableView Delegate, DataSource
-    func setupTableView() {
+    private func setupTableView() {
         popularityTableView.dataSource = self
         popularityTableView.delegate = self
         configurePopularityTableView()
     }
     
     // collectionView Delegate, DataSource
-    func setupCollectionView() {
+    private func setupCollectionView() {
         RecentCollectionView.dataSource = self
         RecentCollectionView.delegate = self
         configureRecentCollectionViewLayout()
     }
     
     // tableView UI Setting
-    func configurePopularityTableView() {
+    private func configurePopularityTableView() {
         popularityTableView.rowHeight = 120
     }
     
     // collectionView UI Setting
-    func configureRecentCollectionViewLayout() {
+    private func configureRecentCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 85, height: 120)
@@ -71,7 +71,7 @@ class LookAroundViewController: UIViewController {
         RecentCollectionView.isPagingEnabled = true
     }
     
-    func navBarButtonItem() {
+    private func navBarButtonItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "xmark"),
             style: .plain,

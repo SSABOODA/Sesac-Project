@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
     static let identifer = "DetailViewController"
     
@@ -42,7 +42,7 @@ class DetailViewController: UIViewController {
         addToolbar()
     }
     
-    func addToolbar() {
+    private func addToolbar() {
         view.addSubview(toolbar)
         
         var toolbarItems: [UIBarButtonItem] = []
@@ -72,23 +72,33 @@ class DetailViewController: UIViewController {
         print("수정할래")
         guard let data = task else { return }
         
-//        bookRepository.updateItem(updateValue: [
-//            "_id": data._id,
-//            "memo": detailTextView.text!
-//        ])
+        bookRepository.updateItem(updateValue: [
+            "_id": data._id,
+            "memo": detailTextView.text!
+        ])
         navigationController?.popViewController(animated: true)
     }
     
     @objc func removeButtonClicked() {
         print("삭제할래")
-        
-        guard let data = task else { return }
-        removeImageFromDocument(fileName: "book_\(data._id).jpg")
-        bookRepository.deleteItem(data)
-        navigationController?.popViewController(animated: true)
+        removeAlert()
+    }
+    
+    func removeAlert() {
+        let alert = UIAlertController(title: "이 책을 정말 삭제하시겠습니까?", message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            guard let data = self.task else { return }
+            self.removeImageFromDocument(fileName: "book_\(data._id).jpg")
+            self.bookRepository.deleteItem(data)
+            self.navigationController?.popViewController(animated: true)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        present(alert, animated: true)
     }
 
-    func leftNavigationBarButtonItem() {
+    private func leftNavigationBarButtonItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "xmark"),
             style: .plain,
@@ -106,13 +116,13 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func designImageView() {
+    private func designImageView() {
         detailMainImageView.backgroundColor = .clear
         detailMainImageView.layer.cornerRadius = 10
         detailMainImageView.clipsToBounds = true
     }
     
-    func configureTextView() {
+    private func configureTextView() {
         detailTextView.delegate = self
         detailTextView.layer.borderWidth = 3
         detailTextView.layer.borderColor = UIColor.black.cgColor
@@ -120,7 +130,7 @@ class DetailViewController: UIViewController {
         detailTextView.textColor = .lightGray
     }
     
-    func configureDetailView() {
+    private func configureDetailView() {
         view.backgroundColor = .systemGray4
         guard let task else { return }
         if let imageURL = URL(string: task.thumbnail) {
@@ -130,10 +140,7 @@ class DetailViewController: UIViewController {
         detailRuntimeLabel.text = "\(String(task.price))원"
         detailRateLabel.text = task.status
         detailDescriptionLabel.text = task.desc
-        print(task.memo)
-        print(detailTextView.text)
-        
-        detailTextView.text = task.memo ?? ""
+        detailTextView.text = task.etc ?? ""
         
         detailDescriptionLabel.numberOfLines = 0
         detailView.layer.cornerRadius = 10

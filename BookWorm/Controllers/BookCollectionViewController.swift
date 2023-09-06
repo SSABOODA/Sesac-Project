@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 import RealmSwift
 
-class BookCollectionViewController: UICollectionViewController {
+final class BookCollectionViewController: UICollectionViewController {
     
     static let identifier = "BookCollectionViewController"
     
@@ -27,7 +27,10 @@ class BookCollectionViewController: UICollectionViewController {
         navigationBar()
         
         tasks = bookRepository.fetch()
-        print(bookRepository.findFileURL())
+        bookRepository.findFileURL()
+        bookRepository.checkSchemaVersion()
+        let result = bookRepository.fetch()
+        print(result)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,7 +118,7 @@ class BookCollectionViewController: UICollectionViewController {
         present(tabBarVC, animated: true)
     }
     
-    func registerBookCollectionViewCell() {
+    private func registerBookCollectionViewCell() {
         collectionView.register(
             UINib(nibName: BookCollectionViewCell.identifier, bundle: nil),
             forCellWithReuseIdentifier: BookCollectionViewCell.identifier
@@ -124,13 +127,13 @@ class BookCollectionViewController: UICollectionViewController {
     
     // MARK: - 구현 함수
     
-    func designNavigationBackButton() {
+    private func designNavigationBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 
-    func setCollectionViewLayout() {
+    private func setCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 20
         let width = UIScreen.main.bounds.width - (spacing * 3)
@@ -146,7 +149,7 @@ class BookCollectionViewController: UICollectionViewController {
         collectionView.collectionViewLayout = layout
     }
     
-    func navigationBar() {
+    private func navigationBar() {
         navigationController?.navigationBar.layer.addBorder([.bottom], color: .black, width: 1)
     }
     

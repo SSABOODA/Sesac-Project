@@ -18,7 +18,9 @@ class BookTable: Object {
     @Persisted var desc: String?
     @Persisted var author: String?
     @Persisted var like: Bool
-    @Persisted var memo: String?
+    @Persisted var etc: String?
+    @Persisted var date: Date
+    @Persisted var customTitle: String
     
     convenience init(
         title: String,
@@ -39,7 +41,9 @@ class BookTable: Object {
         self.desc = desc
         self.author = author
         self.like = false
-        self.memo = memo
+        self.etc = memo
+        self.date = Date()
+        self.customTitle = "작가 이름은 \(author ?? "미정")이고 책 이름은 \(title)이다."
     }
 }
 
