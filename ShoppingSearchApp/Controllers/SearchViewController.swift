@@ -19,6 +19,11 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     
+    private let searchBar = {
+        let view = UISearchBar()
+        view.placeholder = "검색어를 입력해주세요"
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +32,24 @@ final class SearchViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
+        configureNavigationBar()
+        
+        view.addSubview(searchBar)
         view.addSubview(collectionView)
         
-        configureNavigationBar()
+        
+        
         
     }
     
     override func setConstraints() {
+        searchBar.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
+        }
         collectionView.snp.makeConstraints { make in
-            make.horizontalEdges.verticalEdges.equalToSuperview()
+            make.top.equalTo(searchBar.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
     

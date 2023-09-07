@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         tabBarVC.setViewControllers([vc1, vc2], animated: true)
         tabBarVC.modalPresentationStyle = .fullScreen
+        tabBarVC.tabBar.backgroundColor = .black
         
         guard let items = tabBarVC.tabBar.items else { return }
         items[0].image = Constants.ImageName.searchViewTabBarSystemImage
