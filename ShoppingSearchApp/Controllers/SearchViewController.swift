@@ -6,8 +6,19 @@
 //
 
 import UIKit
+import SnapKit
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
+    
+    private lazy var collectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
+        view.delegate = self
+        view.dataSource = self
+        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
+        view.collectionViewLayout = collectionViewLayout()
+        return view
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +29,49 @@ class SearchViewController: BaseViewController {
         
         title = "쇼핑 목록"
         
+        view.addSubview(collectionView)
+        
     }
     
     override func setConstraints() {
-        
+        collectionView.snp.makeConstraints { make in
+            make.horizontalEdges.verticalEdges.equalToSuperview()
+        }
     }
 
 
 }
 
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 50
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.backgroundColor = .systemBlue
+        return cell
+    }
+    
+    private func collectionViewLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        let layoutCGFloat = Constants.ColletionViewLayoutDesign.self
+        
+        layout.minimumLineSpacing = layoutCGFloat.lineSpacing
+        layout.minimumInteritemSpacing = layoutCGFloat.interItemSpacing
+        let size = UIScreen.main.bounds.width - layoutCGFloat.remainWidthSize
+        layout.itemSize = CGSize(
+            width: size/layoutCGFloat.splitSize,
+            height: size/layoutCGFloat.splitSize
+        )
+        layout.sectionInset = UIEdgeInsets(
+            top: layoutCGFloat.spacing,
+            left: layoutCGFloat.spacing,
+            bottom: layoutCGFloat.spacing,
+            right: layoutCGFloat.spacing
+        )
+        return layout
+    }
+}

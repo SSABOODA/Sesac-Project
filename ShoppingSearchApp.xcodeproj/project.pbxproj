@@ -22,6 +22,8 @@
 		F797E4682AA9B03800B4D8A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4672AA9B03800B4D8A9 /* Constants.swift */; };
 		F797E46A2AA9B04700B4D8A9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4692AA9B04700B4D8A9 /* APIManager.swift */; };
 		F797E46C2AA9B07400B4D8A9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E46B2AA9B07400B4D8A9 /* Color.swift */; };
+		F797E4712AA9B18400B4D8A9 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4702AA9B18400B4D8A9 /* SearchCollectionViewCell.swift */; };
+		F797E4742AA9B1D600B4D8A9 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4732AA9B1D600B4D8A9 /* ReusableProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		F797E4672AA9B03800B4D8A9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F797E4692AA9B04700B4D8A9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F797E46B2AA9B07400B4D8A9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F797E4702AA9B18400B4D8A9 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		F797E4732AA9B1D600B4D8A9 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 				F797E4552AA9AC3400B4D8A9 /* Base */,
 				F797E4652AA9B01500B4D8A9 /* Network */,
 				F797E4662AA9B01A00B4D8A9 /* Utility */,
+				F797E46F2AA9B16F00B4D8A9 /* Cell */,
 				F797E46E2AA9B0D900B4D8A9 /* Models */,
 				F797E46D2AA9B0D300B4D8A9 /* Views */,
 				F797E4542AA9AB6A00B4D8A9 /* Controllers */,
@@ -101,6 +106,7 @@
 		F797E4552AA9AC3400B4D8A9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				F797E4732AA9B1D600B4D8A9 /* ReusableProtocol.swift */,
 				F797E4562AA9AC4100B4D8A9 /* BaseViewController.swift */,
 				F797E4602AA9AE5700B4D8A9 /* BaseCollectionViewCell.swift */,
 				F797E4622AA9AF4800B4D8A9 /* BaseView.swift */,
@@ -137,6 +143,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F797E46F2AA9B16F00B4D8A9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F797E4702AA9B18400B4D8A9 /* SearchCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,10 +234,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F797E46A2AA9B04700B4D8A9 /* APIManager.swift in Sources */,
+				F797E4712AA9B18400B4D8A9 /* SearchCollectionViewCell.swift in Sources */,
 				F797E4432AA9AA1E00B4D8A9 /* SearchViewController.swift in Sources */,
 				F797E4572AA9AC4100B4D8A9 /* BaseViewController.swift in Sources */,
 				F797E43F2AA9AA1E00B4D8A9 /* AppDelegate.swift in Sources */,
 				F797E4632AA9AF4800B4D8A9 /* BaseView.swift in Sources */,
+				F797E4742AA9B1D600B4D8A9 /* ReusableProtocol.swift in Sources */,
 				F797E4682AA9B03800B4D8A9 /* Constants.swift in Sources */,
 				F797E4612AA9AE5700B4D8A9 /* BaseCollectionViewCell.swift in Sources */,
 				F797E4412AA9AA1E00B4D8A9 /* SceneDelegate.swift in Sources */,
