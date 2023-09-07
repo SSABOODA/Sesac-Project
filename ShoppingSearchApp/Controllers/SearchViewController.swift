@@ -17,10 +17,7 @@ final class SearchViewController: BaseViewController {
         )
         view.delegate = self
         view.dataSource = self
-        view.register(
-            SearchCollectionViewCell.self,
-            forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier
-        )
+        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.collectionViewLayout = collectionViewLayout()
         return view
     }()
@@ -31,46 +28,35 @@ final class SearchViewController: BaseViewController {
         view.setValue("취소", forKey: "cancelButtonText")
         view.showsCancelButton = true
         view.delegate = self
+        view.searchBarStyle = .minimal
         return view
     }()
     
     private lazy var accuracyFilterButton = {
         let view = FilterButton()
-        view.setTitle(
-            Constants.FilterButtonTitle.accuracyFilterButtonTitle,
-            for: .normal
-        )
+        view.setTitle(Constants.FilterButtonTitle.accuracyFilterButtonTitle, for: .normal)
         view.addTarget(self, action: #selector(accuracyFilterButtonTapped), for: .touchUpInside)
         return view
     }()
     
     private lazy var dateFilterButton = {
         let view = FilterButton()
-        view.setTitle(
-            Constants.FilterButtonTitle.dateFilterButtonTitle,
-            for: .normal
-        )
+        view.setTitle(Constants.FilterButtonTitle.dateFilterButtonTitle, for: .normal)
         view.addTarget(self, action: #selector(dateFilterButtonTapped), for: .touchUpInside)
         return view
     }()
     
     private lazy var lowPriceFilterButton = {
         let view = FilterButton()
-        view.setTitle(
-            Constants.FilterButtonTitle.lowPriceFilterButtonTitle,
-            for: .normal
-        )
+        view.setTitle(Constants.FilterButtonTitle.lowPriceFilterButtonTitle, for: .normal)
         view.addTarget(self, action: #selector(lowPriceFilterButtonTapped), for: .touchUpInside)
         return view
     }()
     
     private lazy var highPriceFilterButton = {
         let view = FilterButton()
-        view.setTitle(
-            Constants.FilterButtonTitle.highPriceFilterButtonTitle,
-            for: .normal
-        )
-        view.addTarget(self, action: #selector(highPriceFilterButtonTapped), for: .touchUpInside)
+        view.setTitle(Constants.FilterButtonTitle.highPriceFilterButtonTitle, for: .normal)
+        view.addTarget(self,action: #selector(highPriceFilterButtonTapped), for: .touchUpInside)
         return view
     }()
     
@@ -115,7 +101,6 @@ final class SearchViewController: BaseViewController {
             make.top.equalTo(stackView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
         }
-        
     }
     
     private func configureNavigationBar() {
@@ -126,12 +111,22 @@ final class SearchViewController: BaseViewController {
     @objc func dateFilterButtonTapped() { print(#function) }
     @objc func lowPriceFilterButtonTapped() { print(#function) }
     @objc func highPriceFilterButtonTapped() { print(#function) }
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        
+        guard let query = searchBar.text else { return }
+        
+        APIManager.shared.callRequest(query: query, apiType: .shopping) { result in
+            switch result {
+            case .success(let shoppingData):
+                print(shoppingData)
+            case .failure(let error):
+                print(error)
+            }
+        }
         searchBar.text = ""
     }
     
@@ -140,8 +135,6 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-        
     }
     
 }
