@@ -15,6 +15,9 @@ class SearchViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
+        
+        title = "쇼핑 목록"
+        
     }
     
     override func setConstraints() {
