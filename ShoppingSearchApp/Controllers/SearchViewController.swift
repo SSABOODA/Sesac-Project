@@ -7,11 +7,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    }
+    
+    override func configureView() {
+        super.configureView()
+    }
+    
+    override func setConstraints() {
+        
     }
 
 
