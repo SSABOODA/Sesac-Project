@@ -11,5 +11,8 @@ extension Constants {
     enum ImageName {
         static let searchViewTabBarSystemImage: UIImage = UIImage(systemName: "magnifyingglass")!
         static let likeViewTabBarSystemImage: UIImage = UIImage(systemName: "heart")!
+        static let searchViewTabBarSystemSelectImage: UIImage = UIImage(systemName: "text.magnifyingglass")!
+        static let likeViewTabBarSystemSelectImage: UIImage = UIImage(systemName: "heart.fill")!
+        
     }
 }

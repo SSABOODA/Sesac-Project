@@ -73,6 +73,8 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     
+    var shopping = Shopping(lastBuildDate: "", total: 0, start: 0, display: 0, items: [])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -123,6 +125,7 @@ extension SearchViewController: UISearchBarDelegate {
             switch result {
             case .success(let shoppingData):
                 print(shoppingData)
+                self.shopping = shoppingData
             case .failure(let error):
                 print(error)
             }
@@ -136,7 +139,6 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     }
-    
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -148,7 +150,9 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = .systemBlue
+        cell.backgroundColor = .systemBackground
+        
+        
         return cell
     }
     
@@ -161,7 +165,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let size = UIScreen.main.bounds.width - layoutCGFloat.remainWidthSize
         layout.itemSize = CGSize(
             width: size/layoutCGFloat.splitSize,
-            height: size/layoutCGFloat.splitSize
+            height: 250
         )
         layout.sectionInset = UIEdgeInsets(
             top: layoutCGFloat.spacing,

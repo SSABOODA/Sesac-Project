@@ -23,7 +23,8 @@ class FilterButton: UIButton {
         backgroundColor = Constants.BaseColor.background
         layer.cornerRadius = Constants.ButtonDesign.cornerRadius
         layer.borderWidth = Constants.ButtonDesign.borderWidth
-        layer.borderColor = Constants.BaseColor.border
+        layer.borderColor = UIColor.white.cgColor
+//        setTitleColor(UIColor.systemBackground, for: .normal)
         titleLabel?.font = UIFont.systemFont(
             ofSize: Constants.ButtonDesign.fontSize
         )

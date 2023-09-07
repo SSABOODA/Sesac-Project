@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -28,11 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         tabBarVC.setViewControllers([vc1, vc2], animated: true)
         tabBarVC.modalPresentationStyle = .fullScreen
-        tabBarVC.tabBar.backgroundColor = .black
+        tabBarVC.tabBar.backgroundColor = .systemBackground
+        tabBarVC.tabBar.tintColor = .white
         
         guard let items = tabBarVC.tabBar.items else { return }
         items[0].image = Constants.ImageName.searchViewTabBarSystemImage
         items[1].image = Constants.ImageName.likeViewTabBarSystemImage
+        items[0].selectedImage = Constants.ImageName.searchViewTabBarSystemSelectImage
+        items[1].selectedImage = Constants.ImageName.likeViewTabBarSystemSelectImage
         
         window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
