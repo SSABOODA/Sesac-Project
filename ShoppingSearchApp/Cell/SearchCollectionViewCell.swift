@@ -26,14 +26,12 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     
     private let labelView = {
         let view = UIView()
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemBackground
         return view
     }()
     
     private let mallLabel = {
         let view = UILabel()
-        view.backgroundColor = .cyan
-        view.text = "123"
         view.font = .systemFont(ofSize: 11)
         view.textColor = .darkGray
         return view
@@ -41,9 +39,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     
     private let titleLabel = {
         let view = UILabel()
-        view.backgroundColor = .orange
         view.numberOfLines = 2
-        view.text = "123123123123"
         view.font = .systemFont(ofSize: 12)
         view.textColor = .white
         return view
@@ -51,8 +47,6 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     
     private let priceLabel = {
         let view = UILabel()
-        view.backgroundColor = .yellow
-        view.text = "123123123123123123123123123123123123123123123123"
         view.font = .boldSystemFont(ofSize: 13)
         view.textColor = .white
         return view
@@ -83,25 +77,37 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
             make.horizontalEdges.bottom.equalToSuperview()
         }
         mallLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.leading.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(5)
+            make.horizontalEdges.equalToSuperview().inset(10)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(mallLabel.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(10)
+            make.top.equalTo(mallLabel.snp.bottom).offset(5)
+            make.horizontalEdges.equalToSuperview().inset(10)
         }
         priceLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(5)
+            make.horizontalEdges.equalToSuperview().inset(10)
         }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-    
-        
         likeButton.layer.cornerRadius = likeButton.frame.width / 2
         likeButton.clipsToBounds = true
+    }
+    
+    func configureCell(_ row: Item) {
+        let url = URL(string: row.image)
+        DispatchQueue.global().async {
+            if let url = url, let data = try? Data(contentsOf: url) {
+                DispatchQueue.main.async {
+                    self.mainImageView.image = UIImage(data: data)
+                }
+            }
+        }
+        mallLabel.text = row.mallName
+        titleLabel.text = row.title
+        priceLabel.text = row.krwPrice
     }
 }
 

@@ -126,6 +126,9 @@ extension SearchViewController: UISearchBarDelegate {
             case .success(let shoppingData):
                 print(shoppingData)
                 self.shopping = shoppingData
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             case .failure(let error):
                 print(error)
             }
@@ -143,7 +146,8 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        print(shopping.items.count)
+        return shopping.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -151,8 +155,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .systemBackground
-        
-        
+        cell.configureCell(shopping.items[indexPath.row])
         return cell
     }
     

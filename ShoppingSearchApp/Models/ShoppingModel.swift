@@ -35,6 +35,14 @@ struct Item: Codable {
         case brand
 //        case maker, category1, category2, category3, category4
     }
+    
+    var krwPrice: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        guard let price = Int(self.lprice) else { return "" }
+        guard let result = numberFormatter.string(from: NSNumber(value: price)) else { return "" }
+        return result
+    }
 }
 
 //enum Category1: String, Codable {
