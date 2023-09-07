@@ -22,14 +22,14 @@ final class SearchViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func configureView() {
         super.configureView()
-        
-        title = "쇼핑 목록"
-        
         view.addSubview(collectionView)
+        
+        configureNavigationBar()
         
     }
     
@@ -38,6 +38,11 @@ final class SearchViewController: BaseViewController {
             make.horizontalEdges.verticalEdges.equalToSuperview()
         }
     }
+    
+    private func configureNavigationBar() {
+        title = Constants.TextContent.searchViewNavigationTitle
+    }
+    
 
 
 }

@@ -24,6 +24,8 @@
 		F797E46C2AA9B07400B4D8A9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E46B2AA9B07400B4D8A9 /* Color.swift */; };
 		F797E4712AA9B18400B4D8A9 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4702AA9B18400B4D8A9 /* SearchCollectionViewCell.swift */; };
 		F797E4742AA9B1D600B4D8A9 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4732AA9B1D600B4D8A9 /* ReusableProtocol.swift */; };
+		F797E4762AA9BA4300B4D8A9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4752AA9BA4300B4D8A9 /* Text.swift */; };
+		F797E4782AA9BB1700B4D8A9 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4772AA9BB1700B4D8A9 /* LikeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		F797E46B2AA9B07400B4D8A9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F797E4702AA9B18400B4D8A9 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		F797E4732AA9B1D600B4D8A9 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		F797E4752AA9BA4300B4D8A9 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		F797E4772AA9BB1700B4D8A9 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				F797E4422AA9AA1E00B4D8A9 /* SearchViewController.swift */,
+				F797E4772AA9BB1700B4D8A9 /* LikeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			children = (
 				F797E4672AA9B03800B4D8A9 /* Constants.swift */,
 				F797E46B2AA9B07400B4D8A9 /* Color.swift */,
+				F797E4752AA9BA4300B4D8A9 /* Text.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -241,8 +247,10 @@
 				F797E4632AA9AF4800B4D8A9 /* BaseView.swift in Sources */,
 				F797E4742AA9B1D600B4D8A9 /* ReusableProtocol.swift in Sources */,
 				F797E4682AA9B03800B4D8A9 /* Constants.swift in Sources */,
+				F797E4782AA9BB1700B4D8A9 /* LikeViewController.swift in Sources */,
 				F797E4612AA9AE5700B4D8A9 /* BaseCollectionViewCell.swift in Sources */,
 				F797E4412AA9AA1E00B4D8A9 /* SceneDelegate.swift in Sources */,
+				F797E4762AA9BA4300B4D8A9 /* Text.swift in Sources */,
 				F797E46C2AA9B07400B4D8A9 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

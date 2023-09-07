@@ -18,9 +18,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        let vc = SearchViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        window?.rootViewController = nav
+        
+        let tabBarVC = UITabBarController()
+        let vc1 = UINavigationController(rootViewController: SearchViewController())
+        let vc2 = UINavigationController(rootViewController: LikeViewController())
+        
+        vc1.title = "검색"
+        vc2.title = "좋아요"
+        
+        tabBarVC.setViewControllers([vc1, vc2], animated: true)
+        tabBarVC.modalPresentationStyle = .fullScreen
+        
+        guard let items = tabBarVC.tabBar.items else { return }
+        items[0].image = UIImage(systemName: "magnifyingglass")
+        items[1].image = UIImage(systemName: "heart")
+        
+        window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
         
     }
