@@ -19,12 +19,17 @@ final class APIManager {
 
     typealias NetworkCompletion = (Result<Shopping, NetworkError>) -> Void
 
-    func callRequest(query: String, apiType: EndPoint, completionHandler: @escaping NetworkCompletion) {
+    func callRequest(
+        query: String,
+        apiType: EndPoint,
+        sort: String,
+        completionHandler: @escaping NetworkCompletion
+    ) {
     
         
         guard let searchText = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
 
-        let urlString = apiType.requestURL + searchText
+        let urlString = apiType.requestURL + searchText + "&sort=\(sort)"
         guard let url = URL(string: urlString) else { return }
         
         print(url)

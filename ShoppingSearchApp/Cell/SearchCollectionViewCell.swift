@@ -47,7 +47,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     
     private let priceLabel = {
         let view = UILabel()
-        view.font = .boldSystemFont(ofSize: 13)
+        view.font = .boldSystemFont(ofSize: 15)
         view.textColor = .white
         return view
     }()

@@ -74,6 +74,7 @@ final class SearchViewController: BaseViewController {
     }()
     
     var shopping = Shopping(lastBuildDate: "", total: 0, start: 0, display: 0, items: [])
+    var searchText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,12 +96,12 @@ final class SearchViewController: BaseViewController {
         }
         
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
+            make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(Constants.ColletionViewLayoutDesign.spacing)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom)
+            make.top.equalTo(stackView.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalToSuperview()
         }
     }
@@ -109,10 +110,40 @@ final class SearchViewController: BaseViewController {
         title = Constants.TextContent.searchViewNavigationTitle
     }
     
-    @objc func accuracyFilterButtonTapped() { print(#function) }
-    @objc func dateFilterButtonTapped() { print(#function) }
-    @objc func lowPriceFilterButtonTapped() { print(#function) }
-    @objc func highPriceFilterButtonTapped() { print(#function) }
+    @objc func accuracyFilterButtonTapped() {
+        print(#function)
+        fetchAPI(query: searchText, sort: "sim")
+    }
+    @objc func dateFilterButtonTapped() {
+        print(#function)
+        fetchAPI(query: searchText, sort: "date")
+        
+    }
+    @objc func lowPriceFilterButtonTapped() {
+        print(#function)
+        fetchAPI(query: searchText, sort: "dsc")
+    }
+    @objc func highPriceFilterButtonTapped() {
+        print(#function)
+        fetchAPI(query: searchText, sort: "asc")
+    }
+    
+    func fetchAPI(query: String, sort: String) {
+        APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort) { result in
+            switch result {
+            case .success(let shoppingData):
+                print(shoppingData)
+                self.shopping = shoppingData
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    self.collectionView.setContentOffset(.zero, animated: true)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -120,19 +151,8 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         
         guard let query = searchBar.text else { return }
-        
-        APIManager.shared.callRequest(query: query, apiType: .shopping) { result in
-            switch result {
-            case .success(let shoppingData):
-                print(shoppingData)
-                self.shopping = shoppingData
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+        self.searchText = query
+        fetchAPI(query: query, sort: "sim")
         searchBar.text = ""
     }
     
@@ -168,7 +188,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let size = UIScreen.main.bounds.width - layoutCGFloat.remainWidthSize
         layout.itemSize = CGSize(
             width: size/layoutCGFloat.splitSize,
-            height: 250
+            height: 270
         )
         layout.sectionInset = UIEdgeInsets(
             top: layoutCGFloat.spacing,
