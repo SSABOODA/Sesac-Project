@@ -10,24 +10,39 @@ import SnapKit
 
 final class SearchViewController: BaseViewController {
     
-    private lazy var collectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
+    lazy var collectionView = {
+        let view = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: collectionViewLayout()
+        )
         view.delegate = self
         view.dataSource = self
-        view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
+        view.register(
+            SearchCollectionViewCell.self,
+            forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier
+        )
         view.collectionViewLayout = collectionViewLayout()
         return view
     }()
     
-    private let searchBar = {
+    private lazy var searchBar = {
         let view = UISearchBar()
-        view.placeholder = "검색어를 입력해주세요"
+        view.placeholder = Constants.TextContent.searchBarPlaceHolder
+        view.showsCancelButton = true
+        view.delegate = self
         return view
     }()
+    
+    private let accuracyButton = {
+        let view = UIButton()
+        
+        return view
+    }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func configureView() {
@@ -36,10 +51,6 @@ final class SearchViewController: BaseViewController {
         
         view.addSubview(searchBar)
         view.addSubview(collectionView)
-        
-        
-        
-        
     }
     
     override func setConstraints() {
@@ -56,9 +67,23 @@ final class SearchViewController: BaseViewController {
     private func configureNavigationBar() {
         title = Constants.TextContent.searchViewNavigationTitle
     }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+    }
     
-
-
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print(#function)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        
+    }
+    
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {

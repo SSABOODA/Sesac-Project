@@ -15,4 +15,10 @@ enum Constants {
         static let interItemSpacing: CGFloat = 8
         static let remainWidthSize: CGFloat = 40
     }
+    
+    enum ButtonDesign {
+        static let cornerRadius: CGFloat = 10
+        static let borderWidth: CGFloat = 1
+        
+    }
 }
