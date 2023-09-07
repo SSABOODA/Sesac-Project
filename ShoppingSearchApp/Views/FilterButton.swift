@@ -19,10 +19,20 @@ class FilterButton: UIButton {
     }
     
     func setupView() {
+        let edgeInsetSpacing = Constants.ButtonDesign.edgeInsetSpacing
         backgroundColor = Constants.BaseColor.background
         layer.cornerRadius = Constants.ButtonDesign.cornerRadius
         layer.borderWidth = Constants.ButtonDesign.borderWidth
         layer.borderColor = Constants.BaseColor.border
+        titleLabel?.font = UIFont.systemFont(
+            ofSize: Constants.ButtonDesign.fontSize
+        )
+        contentEdgeInsets = UIEdgeInsets(
+            top: edgeInsetSpacing,
+            left: edgeInsetSpacing,
+            bottom: edgeInsetSpacing,
+            right: edgeInsetSpacing
+        )
     }
     
 }

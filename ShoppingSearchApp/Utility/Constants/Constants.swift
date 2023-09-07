@@ -17,8 +17,13 @@ enum Constants {
     }
     
     enum ButtonDesign {
-        static let cornerRadius: CGFloat = 10
+        static let cornerRadius: CGFloat = 8
         static let borderWidth: CGFloat = 1
-        
+        static let edgeInsetSpacing: CGFloat = 7
+        static let fontSize: CGFloat = 15
+    }
+    
+    enum StackViewDesign {
+        static let spacing: CGFloat = 3
     }
 }

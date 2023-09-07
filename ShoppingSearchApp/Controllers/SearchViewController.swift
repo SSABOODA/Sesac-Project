@@ -28,19 +28,65 @@ final class SearchViewController: BaseViewController {
     private lazy var searchBar = {
         let view = UISearchBar()
         view.placeholder = Constants.TextContent.searchBarPlaceHolder
+        view.setValue("취소", forKey: "cancelButtonText")
         view.showsCancelButton = true
         view.delegate = self
         return view
     }()
     
-    private let accuracyButton = {
-        let view = UIButton()
-        
+    private lazy var accuracyFilterButton = {
+        let view = FilterButton()
+        view.setTitle(
+            Constants.FilterButtonTitle.accuracyFilterButtonTitle,
+            for: .normal
+        )
+        view.addTarget(self, action: #selector(accuracyFilterButtonTapped), for: .touchUpInside)
         return view
     }()
     
+    private lazy var dateFilterButton = {
+        let view = FilterButton()
+        view.setTitle(
+            Constants.FilterButtonTitle.dateFilterButtonTitle,
+            for: .normal
+        )
+        view.addTarget(self, action: #selector(dateFilterButtonTapped), for: .touchUpInside)
+        return view
+    }()
     
-
+    private lazy var lowPriceFilterButton = {
+        let view = FilterButton()
+        view.setTitle(
+            Constants.FilterButtonTitle.lowPriceFilterButtonTitle,
+            for: .normal
+        )
+        view.addTarget(self, action: #selector(lowPriceFilterButtonTapped), for: .touchUpInside)
+        return view
+    }()
+    
+    private lazy var highPriceFilterButton = {
+        let view = FilterButton()
+        view.setTitle(
+            Constants.FilterButtonTitle.highPriceFilterButtonTitle,
+            for: .normal
+        )
+        view.addTarget(self, action: #selector(highPriceFilterButtonTapped), for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var stackView = {
+        let view = UIStackView(arrangedSubviews: [
+            accuracyFilterButton,
+            dateFilterButton,
+            lowPriceFilterButton,
+            highPriceFilterButton,
+        ])
+        view.axis = .horizontal
+        view.distribution = .fill
+        view.spacing = 10
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -50,6 +96,7 @@ final class SearchViewController: BaseViewController {
         configureNavigationBar()
         
         view.addSubview(searchBar)
+        view.addSubview(stackView)
         view.addSubview(collectionView)
     }
     
@@ -58,15 +105,28 @@ final class SearchViewController: BaseViewController {
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide)
         }
-        collectionView.snp.makeConstraints { make in
+        
+        stackView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
+            make.leading.equalToSuperview().offset(Constants.ColletionViewLayoutDesign.spacing)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
         }
+        
     }
     
     private func configureNavigationBar() {
         title = Constants.TextContent.searchViewNavigationTitle
     }
+    
+    @objc func accuracyFilterButtonTapped() { print(#function) }
+    @objc func dateFilterButtonTapped() { print(#function) }
+    @objc func lowPriceFilterButtonTapped() { print(#function) }
+    @objc func highPriceFilterButtonTapped() { print(#function) }
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {

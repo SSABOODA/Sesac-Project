@@ -16,6 +16,14 @@ extension Constants {
         static let searchBarPlaceHolder: String = "검색어를 입력해주세요"
     }
     
+    enum FilterButtonTitle {
+        static let accuracyFilterButtonTitle: String = "정확도"
+        static let dateFilterButtonTitle: String = "날짜순"
+        static let lowPriceFilterButtonTitle: String = "가격높은순"
+        static let highPriceFilterButtonTitle: String = "가격낮은순"
+        
+    }
+    
     
     
     
