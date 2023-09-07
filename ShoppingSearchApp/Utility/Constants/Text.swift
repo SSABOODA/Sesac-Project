@@ -10,5 +10,12 @@ import Foundation
 extension Constants {
     enum TextContent {
         static let searchViewNavigationTitle: String = "쇼핑 목록"
+        static let likeViewNavigationTitle: String = "좋아요 목록"
+        static let searchViewTabBarTitle: String = "검색"
+        static let likeViewTabBarTitle: String = "좋아요"
+        
     }
+    
+    
+    
 }

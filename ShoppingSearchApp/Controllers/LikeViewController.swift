@@ -8,10 +8,12 @@
 import UIKit
 
 class LikeViewController: BaseViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     override func configureView() {
-        view.backgroundColor = .brown
-        title = "좋아요 목록"
+        title = Constants.TextContent.likeViewNavigationTitle
     }
     
     override func setConstraints() {

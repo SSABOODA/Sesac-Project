@@ -26,6 +26,7 @@
 		F797E4742AA9B1D600B4D8A9 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4732AA9B1D600B4D8A9 /* ReusableProtocol.swift */; };
 		F797E4762AA9BA4300B4D8A9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4752AA9BA4300B4D8A9 /* Text.swift */; };
 		F797E4782AA9BB1700B4D8A9 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4772AA9BB1700B4D8A9 /* LikeViewController.swift */; };
+		F797E47B2AA9C05200B4D8A9 /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E47A2AA9C05200B4D8A9 /* ImageName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		F797E4732AA9B1D600B4D8A9 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		F797E4752AA9BA4300B4D8A9 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		F797E4772AA9BB1700B4D8A9 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
+		F797E47A2AA9C05200B4D8A9 /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +132,7 @@
 		F797E4662AA9B01A00B4D8A9 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				F797E4672AA9B03800B4D8A9 /* Constants.swift */,
-				F797E46B2AA9B07400B4D8A9 /* Color.swift */,
-				F797E4752AA9BA4300B4D8A9 /* Text.swift */,
+				F797E4792AA9C02900B4D8A9 /* Constants */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -157,6 +157,17 @@
 				F797E4702AA9B18400B4D8A9 /* SearchCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		F797E4792AA9C02900B4D8A9 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F797E4672AA9B03800B4D8A9 /* Constants.swift */,
+				F797E46B2AA9B07400B4D8A9 /* Color.swift */,
+				F797E4752AA9BA4300B4D8A9 /* Text.swift */,
+				F797E47A2AA9C05200B4D8A9 /* ImageName.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 			files = (
 				F797E46A2AA9B04700B4D8A9 /* APIManager.swift in Sources */,
 				F797E4712AA9B18400B4D8A9 /* SearchCollectionViewCell.swift in Sources */,
+				F797E47B2AA9C05200B4D8A9 /* ImageName.swift in Sources */,
 				F797E4432AA9AA1E00B4D8A9 /* SearchViewController.swift in Sources */,
 				F797E4572AA9AC4100B4D8A9 /* BaseViewController.swift in Sources */,
 				F797E43F2AA9AA1E00B4D8A9 /* AppDelegate.swift in Sources */,

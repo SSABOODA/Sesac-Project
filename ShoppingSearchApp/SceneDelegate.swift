@@ -23,15 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc1 = UINavigationController(rootViewController: SearchViewController())
         let vc2 = UINavigationController(rootViewController: LikeViewController())
         
-        vc1.title = "검색"
-        vc2.title = "좋아요"
+        vc1.title = Constants.TextContent.searchViewTabBarTitle
+        vc2.title = Constants.TextContent.likeViewTabBarTitle
         
         tabBarVC.setViewControllers([vc1, vc2], animated: true)
         tabBarVC.modalPresentationStyle = .fullScreen
         
         guard let items = tabBarVC.tabBar.items else { return }
-        items[0].image = UIImage(systemName: "magnifyingglass")
-        items[1].image = UIImage(systemName: "heart")
+        items[0].image = Constants.ImageName.searchViewTabBarSystemImage
+        items[1].image = Constants.ImageName.likeViewTabBarSystemImage
         
         window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
