@@ -17,6 +17,7 @@ final class SearchViewController: BaseViewController {
         )
         view.delegate = self
         view.dataSource = self
+        view.prefetchDataSource = self
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.collectionViewLayout = collectionViewLayout()
         return view
@@ -75,6 +76,10 @@ final class SearchViewController: BaseViewController {
     
     var shopping = Shopping(lastBuildDate: "", total: 0, start: 0, display: 0, items: [])
     var searchText: String = ""
+    
+    var start: Int = 1
+    var isEnd: Bool = false
+    var currentSort: String = "sim"
     
     var accuracyFilterButtonIsSelected: Bool = false
     var dateFilterButtonIsSelected: Bool = false
@@ -138,7 +143,7 @@ final class SearchViewController: BaseViewController {
         print(#function)
         var result: Bool = false
         if sender == accuracyFilterButton {
-            fetchAPI(query: searchText, sort: "sim")
+            fetchAPI(query: searchText, sort: "sim", start: 1)
             accuracyFilterButtonIsSelected = accuracyFilterButtonIsSelected ? false : true
             result = accuracyFilterButtonIsSelected
             
@@ -147,7 +152,8 @@ final class SearchViewController: BaseViewController {
             lowPriceFilterButtonIsSelected = false
             
         } else if sender == dateFilterButton {
-            fetchAPI(query: searchText, sort: "date")
+            fetchAPI(query: searchText, sort: "date", start: 1)
+            currentSort = "date"
             dateFilterButtonIsSelected = dateFilterButtonIsSelected ? false : true
             result = dateFilterButtonIsSelected
             
@@ -156,7 +162,8 @@ final class SearchViewController: BaseViewController {
             lowPriceFilterButtonIsSelected = false
             
         } else if sender == highPriceFilterButton {
-            fetchAPI(query: searchText, sort: "dsc")
+            fetchAPI(query: searchText, sort: "dsc", start: 1)
+            currentSort = "dsc"
             highPriceFilterButtonIsSelected = highPriceFilterButtonIsSelected ? false : true
             result = highPriceFilterButtonIsSelected
             
@@ -165,7 +172,8 @@ final class SearchViewController: BaseViewController {
             lowPriceFilterButtonIsSelected = false
             
         } else if sender == lowPriceFilterButton {
-            fetchAPI(query: searchText, sort: "asc")
+            fetchAPI(query: searchText, sort: "asc", start: 1)
+            currentSort = "asc"
             lowPriceFilterButtonIsSelected = lowPriceFilterButtonIsSelected ? false : true
             result = lowPriceFilterButtonIsSelected
             
@@ -177,23 +185,25 @@ final class SearchViewController: BaseViewController {
         isSelectedFilterButton(result, sender)
     }
     
-   
-    func fetchAPI(query: String, sort: String) {
-        APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort) { result in
+    func fetchAPI(query: String, sort: String, start: Int) {
+        APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort, start: start) { result in
             switch result {
             case .success(let shoppingData):
 //                print(shoppingData)
                 self.shopping = shoppingData
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
-                    self.collectionView.setContentOffset(.zero, animated: true)
+                    
+                    if start == 1 {
+                        self.collectionView.setContentOffset(.zero, animated: true)
+                    }
+                    
                 }
             case .failure(let error):
                 print(error)
             }
         }
     }
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -202,7 +212,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let query = searchBar.text else { return }
         self.searchText = query
-        fetchAPI(query: query, sort: "sim")
+        fetchAPI(query: query, sort: "sim", start: 1)
         accuracyFilterButtonIsSelected = true
         isSelectedFilterButton(accuracyFilterButtonIsSelected, accuracyFilterButton)
         searchBar.text = ""
@@ -216,19 +226,27 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(shopping.items.count)
         return shopping.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .systemBackground
         cell.configureCell(shopping.items[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if shopping.items.count - 1 == indexPath.row && start < 100 && !isEnd {
+                start += 1
+                print(start)
+                fetchAPI(query: searchText, sort: currentSort, start: start)
+            }
+        }
     }
     
     private func collectionViewLayout() -> UICollectionViewFlowLayout {
@@ -240,7 +258,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let size = UIScreen.main.bounds.width - layoutCGFloat.remainWidthSize
         layout.itemSize = CGSize(
             width: size/layoutCGFloat.splitSize,
-//            height: 270
             height: UIScreen.main.bounds.width * 0.65
         )
         layout.sectionInset = UIEdgeInsets(

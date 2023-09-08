@@ -43,6 +43,7 @@ struct Item: Codable {
         guard let result = numberFormatter.string(from: NSNumber(value: price)) else { return "" }
         return result
     }
+
 }
 
 //enum Category1: String, Codable {

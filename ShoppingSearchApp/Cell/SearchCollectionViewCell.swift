@@ -106,8 +106,12 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
             }
         }
         mallLabel.text = row.mallName
-        titleLabel.text = row.title
+        titleLabel.text = row.title.replacingOccurrences(of: "<[^>]+>|&quot;",
+                                                         with: "",
+                                                         options: .regularExpression,
+                                                         range: nil)
         priceLabel.text = row.krwPrice
     }
+    
 }
 

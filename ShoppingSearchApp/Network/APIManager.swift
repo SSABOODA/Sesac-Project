@@ -23,16 +23,17 @@ final class APIManager {
         query: String,
         apiType: EndPoint,
         sort: String,
+        start: Int,
         completionHandler: @escaping NetworkCompletion
     ) {
     
         
         guard let searchText = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
 
-        let urlString = apiType.requestURL + searchText + "&sort=\(sort)"
+        let urlString = apiType.requestURL + searchText + "&sort=\(sort)" + "&display=\(30)" + "&start=\(start)"
         guard let url = URL(string: urlString) else { return }
         
-        print(url)
+//        print(url)
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
