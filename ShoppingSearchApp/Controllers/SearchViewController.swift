@@ -75,8 +75,11 @@ final class SearchViewController: BaseViewController {
     }()
     
     var shopping = Shopping(lastBuildDate: "", total: 0, start: 0, display: 0, items: [])
+    var itemList = [Item]()
     var searchText: String = ""
     
+    var total: Int = 0
+    var display: Int = 30
     var start: Int = 1
     var isEnd: Bool = false
     var currentSort: String = "sim"
@@ -185,15 +188,16 @@ final class SearchViewController: BaseViewController {
         isSelectedFilterButton(result, sender)
     }
     
-    func fetchAPI(query: String, sort: String, start: Int) {
+    fileprivate func fetchAPI(query: String, sort: String, start: Int) {
         APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort, start: start) { result in
             switch result {
             case .success(let shoppingData):
 //                print(shoppingData)
                 self.shopping = shoppingData
+                self.total = shoppingData.total
+                self.itemList += shoppingData.items
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
-                    
                     if start == 1 {
                         self.collectionView.setContentOffset(.zero, animated: true)
                     }
@@ -220,6 +224,8 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -228,22 +234,21 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shopping.items.count
+        return itemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
         cell.backgroundColor = .systemBackground
-        cell.configureCell(shopping.items[indexPath.row])
+        cell.configureCell(itemList[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if shopping.items.count - 1 == indexPath.row && start < 100 && !isEnd {
-                start += 1
-                print(start)
+            if shopping.items.count - 1 == indexPath.row && start < total {
+                start += display
                 fetchAPI(query: searchText, sort: currentSort, start: start)
             }
         }

@@ -112,6 +112,4 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
                                                          range: nil)
         priceLabel.text = row.krwPrice
     }
-    
 }
-
