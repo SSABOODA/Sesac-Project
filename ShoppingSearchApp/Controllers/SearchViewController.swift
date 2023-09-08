@@ -35,28 +35,28 @@ final class SearchViewController: BaseViewController {
     private lazy var accuracyFilterButton = {
         let view = FilterButton()
         view.setTitle(Constants.FilterButtonTitle.accuracyFilterButtonTitle, for: .normal)
-        view.addTarget(self, action: #selector(accuracyFilterButtonTapped), for: .touchUpInside)
+        view.addTarget(self, action: #selector(filterButtonClicked), for: .touchUpInside)
         return view
     }()
     
     private lazy var dateFilterButton = {
         let view = FilterButton()
         view.setTitle(Constants.FilterButtonTitle.dateFilterButtonTitle, for: .normal)
-        view.addTarget(self, action: #selector(dateFilterButtonTapped), for: .touchUpInside)
-        return view
-    }()
-    
-    private lazy var lowPriceFilterButton = {
-        let view = FilterButton()
-        view.setTitle(Constants.FilterButtonTitle.lowPriceFilterButtonTitle, for: .normal)
-        view.addTarget(self, action: #selector(lowPriceFilterButtonTapped), for: .touchUpInside)
+        view.addTarget(self, action: #selector(filterButtonClicked), for: .touchUpInside)
         return view
     }()
     
     private lazy var highPriceFilterButton = {
         let view = FilterButton()
         view.setTitle(Constants.FilterButtonTitle.highPriceFilterButtonTitle, for: .normal)
-        view.addTarget(self,action: #selector(highPriceFilterButtonTapped), for: .touchUpInside)
+        view.addTarget(self,action: #selector(filterButtonClicked), for: .touchUpInside)
+        return view
+    }()
+    
+    private lazy var lowPriceFilterButton = {
+        let view = FilterButton()
+        view.setTitle(Constants.FilterButtonTitle.lowPriceFilterButtonTitle, for: .normal)
+        view.addTarget(self, action: #selector(filterButtonClicked), for: .touchUpInside)
         return view
     }()
     
@@ -64,8 +64,8 @@ final class SearchViewController: BaseViewController {
         let view = UIStackView(arrangedSubviews: [
             accuracyFilterButton,
             dateFilterButton,
-            lowPriceFilterButton,
             highPriceFilterButton,
+            lowPriceFilterButton,
         ])
         view.axis = .horizontal
         view.distribution = .fill
@@ -75,6 +75,30 @@ final class SearchViewController: BaseViewController {
     
     var shopping = Shopping(lastBuildDate: "", total: 0, start: 0, display: 0, items: [])
     var searchText: String = ""
+    
+    var accuracyFilterButtonIsSelected: Bool = false
+    var dateFilterButtonIsSelected: Bool = false
+    var highPriceFilterButtonIsSelected: Bool = false
+    var lowPriceFilterButtonIsSelected: Bool = false
+    
+    func isSelectedFilterButton(_ isSelected: Bool, _ filterButton: UIButton) {
+        accuracyFilterButton.backgroundColor = .black
+        accuracyFilterButton.setTitleColor(UIColor.white, for: .normal)
+        dateFilterButton.backgroundColor = .black
+        dateFilterButton.setTitleColor(UIColor.white, for: .normal)
+        highPriceFilterButton.backgroundColor = .black
+        highPriceFilterButton.setTitleColor(UIColor.white, for: .normal)
+        lowPriceFilterButton.backgroundColor = .black
+        lowPriceFilterButton.setTitleColor(UIColor.white, for: .normal)
+        
+        if isSelected {
+            filterButton.backgroundColor = .white
+            filterButton.setTitleColor(UIColor.black, for: .normal)
+        } else {
+            filterButton.backgroundColor = .black
+            filterButton.setTitleColor(UIColor.white, for: .normal)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,29 +134,55 @@ final class SearchViewController: BaseViewController {
         title = Constants.TextContent.searchViewNavigationTitle
     }
     
-    @objc func accuracyFilterButtonTapped() {
+    @objc func filterButtonClicked(_ sender: UIButton) {
         print(#function)
-        fetchAPI(query: searchText, sort: "sim")
-    }
-    @objc func dateFilterButtonTapped() {
-        print(#function)
-        fetchAPI(query: searchText, sort: "date")
-        
-    }
-    @objc func lowPriceFilterButtonTapped() {
-        print(#function)
-        fetchAPI(query: searchText, sort: "dsc")
-    }
-    @objc func highPriceFilterButtonTapped() {
-        print(#function)
-        fetchAPI(query: searchText, sort: "asc")
+        var result: Bool = false
+        if sender == accuracyFilterButton {
+            fetchAPI(query: searchText, sort: "sim")
+            accuracyFilterButtonIsSelected = accuracyFilterButtonIsSelected ? false : true
+            result = accuracyFilterButtonIsSelected
+            
+            dateFilterButtonIsSelected = false
+            highPriceFilterButtonIsSelected = false
+            lowPriceFilterButtonIsSelected = false
+            
+        } else if sender == dateFilterButton {
+            fetchAPI(query: searchText, sort: "date")
+            dateFilterButtonIsSelected = dateFilterButtonIsSelected ? false : true
+            result = dateFilterButtonIsSelected
+            
+            accuracyFilterButtonIsSelected = false
+            highPriceFilterButtonIsSelected = false
+            lowPriceFilterButtonIsSelected = false
+            
+        } else if sender == highPriceFilterButton {
+            fetchAPI(query: searchText, sort: "dsc")
+            highPriceFilterButtonIsSelected = highPriceFilterButtonIsSelected ? false : true
+            result = highPriceFilterButtonIsSelected
+            
+            dateFilterButtonIsSelected = false
+            accuracyFilterButtonIsSelected = false
+            lowPriceFilterButtonIsSelected = false
+            
+        } else if sender == lowPriceFilterButton {
+            fetchAPI(query: searchText, sort: "asc")
+            lowPriceFilterButtonIsSelected = lowPriceFilterButtonIsSelected ? false : true
+            result = lowPriceFilterButtonIsSelected
+            
+            dateFilterButtonIsSelected = false
+            highPriceFilterButtonIsSelected = false
+            accuracyFilterButtonIsSelected = false
+        }
+//        print("result: \(result)")
+        isSelectedFilterButton(result, sender)
     }
     
+   
     func fetchAPI(query: String, sort: String) {
         APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort) { result in
             switch result {
             case .success(let shoppingData):
-                print(shoppingData)
+//                print(shoppingData)
                 self.shopping = shoppingData
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -153,6 +203,8 @@ extension SearchViewController: UISearchBarDelegate {
         guard let query = searchBar.text else { return }
         self.searchText = query
         fetchAPI(query: query, sort: "sim")
+        accuracyFilterButtonIsSelected = true
+        isSelectedFilterButton(accuracyFilterButtonIsSelected, accuracyFilterButton)
         searchBar.text = ""
     }
     
@@ -188,7 +240,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let size = UIScreen.main.bounds.width - layoutCGFloat.remainWidthSize
         layout.itemSize = CGSize(
             width: size/layoutCGFloat.splitSize,
-            height: 270
+//            height: 270
+            height: UIScreen.main.bounds.width * 0.65
         )
         layout.sectionInset = UIEdgeInsets(
             top: layoutCGFloat.spacing,
@@ -199,3 +252,4 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return layout
     }
 }
+
