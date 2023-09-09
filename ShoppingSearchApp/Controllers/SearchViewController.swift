@@ -276,9 +276,9 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        
         guard let query = searchBar.text else { return }
         self.searchText = query
+        itemList.removeAll()
         fetchAPI(query: query, sort: "sim", start: 1)
         accuracyFilterButtonIsSelected = true
         isSelectedFilterButton(accuracyFilterButtonIsSelected, accuracyFilterButton)

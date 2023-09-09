@@ -44,7 +44,7 @@ class ProductTableRepository: ProductTableRepositoryType {
     
     // realm에 저장된 데이터 확인
     func fetch() -> Results<ProductTable> {
-        let data = realm.objects(ProductTable.self)//.sorted(byKeyPath: "diaryDate", ascending: false)
+        let data = realm.objects(ProductTable.self).sorted(byKeyPath: "date", ascending: false)
         return data
     }
     

@@ -16,6 +16,7 @@ class ProductTable: Object {
     @Persisted var mallName: String
     @Persisted var price: String
     @Persisted var isLike: Bool
+    @Persisted var date: Date
     
     convenience init(
         productId: String,
@@ -31,5 +32,6 @@ class ProductTable: Object {
         self.mallName = mallName
         self.price = price
         self.isLike = false
+        self.date = Date()
     }
 }

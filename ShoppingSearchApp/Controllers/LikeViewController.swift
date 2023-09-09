@@ -8,15 +8,18 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import Toast
 
 final class LikeViewController: BaseViewController {
     
-    private let searchController = {
+    private lazy var searchController = {
         let view = UISearchController(searchResultsController: nil)
         view.searchBar.placeholder = "검색어를 입력해주세요"
         view.searchBar.scopeButtonTitles = ["맥북", "에어팟", "아이패드"]
         view.hidesNavigationBarDuringPresentation = false
         view.searchBar.tintColor = .white
+        view.searchResultsUpdater = self
+        view.searchBar.delegate = self
         return view
     }()
     
@@ -37,7 +40,13 @@ final class LikeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tasks = productTableRepository.fetch()
+        collectionView.reloadData()
     }
     
     override func configureView() {
@@ -47,11 +56,8 @@ final class LikeViewController: BaseViewController {
         title = Constants.TextContent.likeViewNavigationTitle
         // addSubView
         view.addSubview(collectionView)
-        // realm DB 데이터
+        // realm DB 데이터 세팅
         tasks = productTableRepository.fetch()
-        
-        
-        
     }
     
     override func setConstraints() {
@@ -59,7 +65,67 @@ final class LikeViewController: BaseViewController {
             make.verticalEdges.horizontalEdges.equalToSuperview()
         }
     }
+    
+    @objc func likeButtonTapped(_ sender: UIButton) {
+        print(#function)
+        
+        showCancelLikeAlert {
+            let product = self.tasks[sender.tag]
+            self.productTableRepository.deleteItem(product)
+            self.tasks = self.productTableRepository.fetch()
+            self.collectionView.reloadData()
+        }
+        self.view.makeToast("해당 상품이 삭제되었습니다.")
+    }
 }
+
+
+// MARK: - Extension - UISearchController, UISearchBar
+
+extension LikeViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        print(searchText)
+        
+        let data = productTableRepository.fetch().where {
+            $0.title.contains(searchText)
+        }
+
+        if !data.isEmpty {
+            tasks = data
+            collectionView.reloadData()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    }
+}
+
+extension LikeViewController: UISearchControllerDelegate, UISearchBarDelegate {
+    func willPresentSearchController(_ searchController: UISearchController) {
+        print(#function)
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        print(#function)
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        print(#function)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        tasks = productTableRepository.fetch()
+        collectionView.reloadData()
+    }
+    
+}
+
+// MARK: - Extension UICollectionView
 
 extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -70,6 +136,10 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        
         cell.configureCell(tasks[indexPath.row])
         return cell
     }
