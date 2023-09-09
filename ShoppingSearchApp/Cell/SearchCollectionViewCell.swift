@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class SearchCollectionViewCell: BaseCollectionViewCell {
     private let mainImageView = {
@@ -13,10 +14,11 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         view.backgroundColor = .darkGray
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
+        view.isUserInteractionEnabled = true
         return view
     }()
     
-    private lazy var likeButton = {
+    lazy var likeButton = {
         let view = UIButton()
         view.backgroundColor = .white
         view.tintColor = .black
@@ -33,7 +35,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     private let mallLabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 11)
-        view.textColor = .darkGray
+        view.textColor = .lightGray
         return view
     }()
     
@@ -52,7 +54,10 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
+    var tasks: Results<ProductTable>!
+    
     override func configureView() {
+        super.configureView()
         addSubview(mainImageView)
         addSubview(labelView)
         mainImageView.addSubview(likeButton)
@@ -97,7 +102,15 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configureCell(_ row: Item) {
-        let url = URL(string: row.image)
+        configure(image: row.image, mallName: row.mallName, title: row.title, price: row.krwPrice, isLike: row.isLike)
+    }
+    
+    func configureCell(_ row: ProductTable) {
+        
+    }
+    
+    func configure(image: String, mallName: String, title: String, price: String, isLike: Bool) {
+        let url = URL(string: image)
         DispatchQueue.global().async {
             if let url = url, let data = try? Data(contentsOf: url) {
                 DispatchQueue.main.async {
@@ -105,11 +118,20 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
                 }
             }
         }
-        mallLabel.text = row.mallName
-        titleLabel.text = row.title.replacingOccurrences(of: "<[^>]+>|&quot;",
-                                                         with: "",
-                                                         options: .regularExpression,
-                                                         range: nil)
-        priceLabel.text = row.krwPrice
+        mallLabel.text = mallName
+        titleLabel.text = title.replacingOccurrences(
+            of: "<[^>]+>|&quot;",
+            with: "",
+            options: .regularExpression,
+            range: nil
+        )
+        priceLabel.text = price
+        
+        if isLike {
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        
     }
 }

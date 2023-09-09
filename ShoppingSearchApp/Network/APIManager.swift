@@ -26,8 +26,6 @@ final class APIManager {
         start: Int,
         completionHandler: @escaping NetworkCompletion
     ) {
-    
-        
         guard let searchText = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
 
         let urlString = apiType.requestURL + searchText + "&sort=\(sort)" + "&display=\(30)" + "&start=\(start)"

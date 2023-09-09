@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
+import Toast
 
 final class SearchViewController: BaseViewController {
     
@@ -89,6 +91,10 @@ final class SearchViewController: BaseViewController {
     var highPriceFilterButtonIsSelected: Bool = false
     var lowPriceFilterButtonIsSelected: Bool = false
     
+    let productTableRepository = ProductTableRepository.shared
+    
+    var tasks: Results<ProductTable>!
+    
     func isSelectedFilterButton(_ isSelected: Bool, _ filterButton: UIButton) {
         accuracyFilterButton.backgroundColor = .black
         accuracyFilterButton.setTitleColor(UIColor.white, for: .normal)
@@ -110,10 +116,15 @@ final class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        productTableRepository.findFileURL()
+        tasks = productTableRepository.fetch()
+        
     }
     
     override func configureView() {
         super.configureView()
+        
         configureNavigationBar()
         
         view.addSubview(searchBar)
@@ -208,6 +219,57 @@ final class SearchViewController: BaseViewController {
             }
         }
     }
+    
+    @objc func likeButtonTapped(_ sender: UIButton) {
+        
+        var product = itemList[sender.tag]
+        
+        let productData = productTableRepository.fetch().where {
+            $0.productId == product.productId
+        }
+        
+        var imageData: Data?
+        
+        if productData.isEmpty {
+            // 데이터 저장
+            print("SAVE")
+            
+            let url = URL(string: product.image)
+            DispatchQueue.global().async {
+                if let url = url, let data = try? Data(contentsOf: url) {
+                    imageData = data
+                    
+                    DispatchQueue.main.async {
+                        let task = ProductTable(
+                            productId: product.productId,
+                            title: product.title,
+                            image: imageData,
+                            mallName: product.mallName,
+                            price: product.lprice
+                        )
+                        self.productTableRepository.createItem(task)
+                        
+                        self.productTableRepository.updateItem(
+                            updateValue: [
+                                "_id": task._id,
+                                "isLike": task.isLike ? false : true
+                            ]
+                        )
+                    }
+                }
+            }
+        } else {
+            // 데이터 삭제
+            print("DELETE")
+            let task = productData.first!
+            productTableRepository.deleteItem(task)
+        }
+        itemList[sender.tag].isLike.toggle()
+        
+        self.view.makeToast("해당 상품을 찜하셨습니다.")
+        
+        collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -240,10 +302,27 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = .systemBackground
-        cell.configureCell(itemList[indexPath.row])
+        var item = itemList[indexPath.row]
+        
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        
+        // 셀에 넣기 전에 realm에 있는 상품에 productId가 있으면 구조체 '좋아요' 정보 업뎃하고 셀 최신화하기
+        let data = productTableRepository.fetch().where {
+            $0.productId == item.productId
+        }
+        
+        if !data.isEmpty {
+            item.isLike = true
+        }
+        
+        cell.configureCell(item)
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print(#function)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {

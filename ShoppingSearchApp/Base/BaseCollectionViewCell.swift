@@ -22,6 +22,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
     
     
     func configureView() {
+        backgroundColor = .systemBackground
     }
     
     func setConstraints() {
