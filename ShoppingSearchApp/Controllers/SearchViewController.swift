@@ -11,7 +11,6 @@ import RealmSwift
 import Toast
 
 final class SearchViewController: BaseViewController {
-    
     lazy var collectionView = {
         let view = UICollectionView(
             frame: .zero,
@@ -86,6 +85,7 @@ final class SearchViewController: BaseViewController {
     var start: Int = 1
     var isEnd: Bool = false
     var currentSort: String = "sim"
+    var currentQuery: String = ""
     
     var accuracyFilterButtonIsSelected: Bool = false
     var dateFilterButtonIsSelected: Bool = false
@@ -96,36 +96,31 @@ final class SearchViewController: BaseViewController {
     
     var tasks: Results<ProductTable>!
     
-    func isSelectedFilterButton(_ isSelected: Bool, _ filterButton: UIButton) {
-        accuracyFilterButton.backgroundColor = .black
-        accuracyFilterButton.setTitleColor(UIColor.white, for: .normal)
-        dateFilterButton.backgroundColor = .black
-        dateFilterButton.setTitleColor(UIColor.white, for: .normal)
-        highPriceFilterButton.backgroundColor = .black
-        highPriceFilterButton.setTitleColor(UIColor.white, for: .normal)
-        lowPriceFilterButton.backgroundColor = .black
-        lowPriceFilterButton.setTitleColor(UIColor.white, for: .normal)
-        
-        if isSelected {
-            filterButton.backgroundColor = .white
-            filterButton.setTitleColor(UIColor.black, for: .normal)
-        } else {
-            filterButton.backgroundColor = .black
-            filterButton.setTitleColor(UIColor.white, for: .normal)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productTableRepository.findFileURL()
+        let _ = productTableRepository.findFileURL()
         tasks = productTableRepository.fetch()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(123)
+        print(#function)
+        
+        print("currentSort: \(currentSort)")
+        print("currentQuery: \(currentQuery)")
+        print("start: \(start)")
+        
+        itemList.removeAll()
+        fetchAPI(query: currentQuery, sort: currentSort, start: start)
+        
+//        collectionView.reloadData()
     }
     
     override func configureView() {
@@ -153,10 +148,6 @@ final class SearchViewController: BaseViewController {
             make.top.equalTo(stackView.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalToSuperview()
         }
-    }
-    
-    private func configureNavigationBar() {
-        title = Constants.TextContent.searchViewNavigationTitle
     }
     
     @objc func filterButtonClicked(_ sender: UIButton) {
@@ -205,30 +196,9 @@ final class SearchViewController: BaseViewController {
         isSelectedFilterButton(result, sender)
     }
     
-    fileprivate func fetchAPI(query: String, sort: String, start: Int) {
-        APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort, start: start) { result in
-            switch result {
-            case .success(let shoppingData):
-//                print(shoppingData)
-                self.shopping = shoppingData
-                self.total = shoppingData.total
-                self.itemList += shoppingData.items
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                    if start == 1 {
-                        self.collectionView.setContentOffset(.zero, animated: true)
-                    }
-                    
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     @objc func likeButtonTapped(_ sender: UIButton) {
         
-        var product = itemList[sender.tag]
+        let product = itemList[sender.tag]
         
         let productData = productTableRepository.fetch().where {
             $0.productId == product.productId
@@ -264,18 +234,63 @@ final class SearchViewController: BaseViewController {
                     }
                 }
             }
+            self.view.makeToast(Constants.LikeToastMessage.whenUserTapLikeButton)
         } else {
             // 데이터 삭제
             print("DELETE")
             let task = productData.first!
             productTableRepository.deleteItem(task)
+            self.view.makeToast(Constants.LikeToastMessage.whenUserTapCancelLikeButton)
         }
         itemList[sender.tag].isLike.toggle()
-        
-        self.view.makeToast(Constants.LikeToastMessage.whenUserTapLikeButton)
-        
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
+    
+    private func configureNavigationBar() {
+        title = Constants.TextContent.searchViewNavigationTitle
+    }
+    
+    private func fetchAPI(query: String, sort: String, start: Int) {
+        APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort, start: start) { result in
+            switch result {
+            case .success(let shoppingData):
+//                print(shoppingData)
+                self.shopping = shoppingData
+                self.total = shoppingData.total
+                self.itemList += shoppingData.items
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    if start == 1 {
+                        self.collectionView.setContentOffset(.zero, animated: true)
+                    }
+                    
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func isSelectedFilterButton(_ isSelected: Bool, _ filterButton: UIButton) {
+        accuracyFilterButton.backgroundColor = .black
+        accuracyFilterButton.setTitleColor(UIColor.white, for: .normal)
+        dateFilterButton.backgroundColor = .black
+        dateFilterButton.setTitleColor(UIColor.white, for: .normal)
+        highPriceFilterButton.backgroundColor = .black
+        highPriceFilterButton.setTitleColor(UIColor.white, for: .normal)
+        lowPriceFilterButton.backgroundColor = .black
+        lowPriceFilterButton.setTitleColor(UIColor.white, for: .normal)
+        
+        if isSelected {
+            filterButton.backgroundColor = .white
+            filterButton.setTitleColor(UIColor.black, for: .normal)
+        } else {
+            filterButton.backgroundColor = .black
+            filterButton.setTitleColor(UIColor.white, for: .normal)
+        }
+    }
+    
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -284,7 +299,12 @@ extension SearchViewController: UISearchBarDelegate {
         guard let query = searchBar.text else { return }
         self.searchText = query
         itemList.removeAll()
-        fetchAPI(query: query, sort: "sim", start: 1)
+        
+        let sort = "sim"
+        fetchAPI(query: query, sort: sort, start: 1)
+        currentSort = sort
+        currentQuery = query
+        
         accuracyFilterButtonIsSelected = true
         isSelectedFilterButton(accuracyFilterButtonIsSelected, accuracyFilterButton)
         searchBar.text = ""
@@ -310,10 +330,12 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let item = itemList[indexPath.row]
         
+//        print(item.isLike)
+        
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
-        // 셀에 넣기 전에 realm에 있는 상품에 productId가 있으면 구조체 '좋아요' 정보 업뎃하고 셀 최신화하기
+        // 셀 메서드에 넣기 전에 realm에 있는 상품에 productId가 있으면 구조체 '좋아요' 정보 업뎃하고 셀 최신화하기
         let data = productTableRepository.fetch().where {
             $0.productId == item.productId
         }

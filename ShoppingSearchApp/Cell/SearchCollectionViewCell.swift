@@ -110,14 +110,25 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
                 }
             }
         }
-        configure(mallName: row.mallName, title: row.title, price: row.krwPrice, isLike: row.isLike)
+        
+        configure(
+            mallName: row.mallName,
+            title: row.title,
+            price: row.lprice.convertNumberFormatStyleToDecimal(),
+            isLike: row.isLike
+        )
     }
     
     func configureCell(_ row: ProductTable) {
         guard let imageData = row.image else { return }
         guard let image = UIImage(data: imageData) else { return }
         self.mainImageView.image = image
-        configure(mallName: row.mallName, title: row.title, price: row.price, isLike: row.isLike)
+        configure(
+            mallName: row.mallName,
+            title: row.title,
+            price: row.price.convertNumberFormatStyleToDecimal(),
+            isLike: row.isLike
+        )
     }
     
     func configure(mallName: String, title: String, price: String, isLike: Bool) {

@@ -23,7 +23,7 @@ final class LikeViewController: BaseViewController {
         return view
     }()
     
-    lazy var collectionView = {
+    fileprivate lazy var collectionView = {
         let view = UICollectionView(
             frame: .zero,
             collectionViewLayout: self.collectionViewLayout()
@@ -37,10 +37,15 @@ final class LikeViewController: BaseViewController {
     
     var tasks: Results<ProductTable>!
     var productTableRepository = ProductTableRepository.shared
+    var productId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -78,11 +83,9 @@ final class LikeViewController: BaseViewController {
             self.productTableRepository.deleteItem(product)
             self.tasks = self.productTableRepository.fetch()
             self.collectionView.reloadData()
+            self.view.makeToast(Constants.LikeToastMessage.whenUserTapCancelLikeButton)
         }
-        self.view.makeToast(Constants.LikeToastMessage.whenUserTapCancelLikeButton)
     }
-    
-    
 }
 
 
