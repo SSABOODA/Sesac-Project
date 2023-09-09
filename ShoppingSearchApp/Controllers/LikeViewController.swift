@@ -40,7 +40,7 @@ final class LikeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +58,10 @@ final class LikeViewController: BaseViewController {
         view.addSubview(collectionView)
         // realm DB 데이터 세팅
         tasks = productTableRepository.fetch()
+        // tap Gesture
+        self.hideKeyboardWhenTappedAround()
+        // webView
+        
     }
     
     override func setConstraints() {
@@ -75,8 +79,10 @@ final class LikeViewController: BaseViewController {
             self.tasks = self.productTableRepository.fetch()
             self.collectionView.reloadData()
         }
-        self.view.makeToast("해당 상품이 삭제되었습니다.")
+        self.view.makeToast(Constants.LikeToastMessage.whenUserTapCancelLikeButton)
     }
+    
+    
 }
 
 

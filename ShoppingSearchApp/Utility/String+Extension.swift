@@ -8,19 +8,15 @@
 import Foundation
 
 extension String {
-  
-  // MARK: Initializers
-  
-  init?(htmlEncodedString: String) {
-    guard let data = htmlEncodedString.data(using: .utf8) else { return nil }
-    
-    let options: [NSAttributedString.DocumentReadingOptionKey:Any] = [
-      .documentType: NSAttributedString.DocumentType.html,
-      .characterEncoding: String.Encoding.utf8.rawValue
-    ]
-    guard let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else {
-      return nil
+    func removeHtmlTag() -> String {
+        print(self)
+        let result = self.replacingOccurrences(
+            of: "<[^>]+>|&quot;",
+            with: "",
+            options: .regularExpression,
+            range: nil
+        )
+        return result
     }
-    self.init(attributedString.string)
-  }
+   
 }

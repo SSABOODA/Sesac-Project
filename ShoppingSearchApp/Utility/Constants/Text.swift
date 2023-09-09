@@ -21,7 +21,6 @@ extension Constants {
         static let dateFilterButtonTitle: String = "날짜순"
         static let lowPriceFilterButtonTitle: String = "가격낮은순"
         static let highPriceFilterButtonTitle: String = "가격높은순"
-        
     }
     
     

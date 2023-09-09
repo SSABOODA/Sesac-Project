@@ -33,9 +33,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let items = tabBarVC.tabBar.items else { return }
         items[0].image = Constants.ImageName.searchViewTabBarSystemImage
-        items[1].image = Constants.ImageName.likeViewTabBarSystemImage
+        items[1].image = Constants.ImageName.isNotLikeImageName
         items[0].selectedImage = Constants.ImageName.searchViewTabBarSystemSelectImage
-        items[1].selectedImage = Constants.ImageName.likeViewTabBarSystemSelectImage
+        items[1].selectedImage = Constants.ImageName.isLikeImageName
         
         window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()

@@ -123,6 +123,11 @@ final class SearchViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(123)
+    }
+    
     override func configureView() {
         super.configureView()
         
@@ -267,7 +272,7 @@ final class SearchViewController: BaseViewController {
         }
         itemList[sender.tag].isLike.toggle()
         
-        self.view.makeToast("해당 상품을 찜하셨습니다.")
+        self.view.makeToast(Constants.LikeToastMessage.whenUserTapLikeButton)
         
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
@@ -303,7 +308,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        var item = itemList[indexPath.row]
+        let item = itemList[indexPath.row]
         
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
@@ -314,16 +319,20 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         if !data.isEmpty {
-            item.isLike = true
+            itemList[indexPath.row].isLike = true
         }
         
-        cell.configureCell(item)
+        cell.configureCell(itemList[indexPath.row])
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print(#function)
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function)
+        let webView = WebViewController()
+        webView.product = itemList[indexPath.row]
+        webView.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(webView, animated: true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {

@@ -123,12 +123,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     func configure(mallName: String, title: String, price: String, isLike: Bool) {
         
         mallLabel.text = mallName
-        titleLabel.text = title.replacingOccurrences(
-            of: "<[^>]+>|&quot;",
-            with: "",
-            options: .regularExpression,
-            range: nil
-        )
+        titleLabel.text = title.removeHtmlTag()
         priceLabel.text = price
         
         if isLike {
