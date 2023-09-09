@@ -21,6 +21,7 @@ final class SearchViewController: BaseViewController {
         view.prefetchDataSource = self
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.collectionViewLayout = collectionViewLayout()
+        view.keyboardDismissMode = .onDrag
         return view
     }()
     
@@ -127,6 +128,16 @@ final class SearchViewController: BaseViewController {
         view.addSubview(searchBar)
         view.addSubview(stackView)
         view.addSubview(collectionView)
+        
+        // keyboard dismiss
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func didTapView(_ sender: UITapGestureRecognizer) {
+        print("did tap view")
+        searchBar.resignFirstResponder()
     }
     
     override func setConstraints() {

@@ -15,8 +15,9 @@ final class LikeViewController: BaseViewController {
     private lazy var searchController = {
         let view = UISearchController(searchResultsController: nil)
         view.searchBar.placeholder = Constants.TextContent.searchBarPlaceHolder
-        view.searchBar.scopeButtonTitles = ["맥북", "에어팟", "아이패드"]
         view.hidesNavigationBarDuringPresentation = false
+        view.navigationItem.hidesSearchBarWhenScrolling = false
+        view.searchBar.setValue("취소", forKey: "cancelButtonText")
         view.searchBar.tintColor = .white
         view.searchBar.searchBarStyle = .minimal
         view.searchResultsUpdater = self
@@ -33,6 +34,7 @@ final class LikeViewController: BaseViewController {
         view.dataSource = self
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.collectionViewLayout = self.collectionViewLayout()
+        view.keyboardDismissMode = .onDrag
         return view
     }()
     
@@ -63,15 +65,20 @@ final class LikeViewController: BaseViewController {
         view.addSubview(collectionView)
         // realm DB 데이터 세팅
         tasks = productTableRepository.fetch()
-        // tap Gesture
-        self.hideKeyboardWhenTappedAround()
-        // webView
-        
+        // keyboard dismiss
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func didTapView(_ sender: UITapGestureRecognizer) {
+        print("did tap view")
+        searchController.searchBar.resignFirstResponder()
     }
     
     override func setConstraints() {
         collectionView.snp.makeConstraints { make in
-            make.verticalEdges.horizontalEdges.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
@@ -130,6 +137,11 @@ extension LikeViewController: UISearchControllerDelegate, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         tasks = productTableRepository.fetch()
         collectionView.reloadData()
+    }
+//    scopeButtonTitles
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        let a = searchBar.scopeButtonTitles?[selectedScope]
+        print(a)
     }
     
 }
