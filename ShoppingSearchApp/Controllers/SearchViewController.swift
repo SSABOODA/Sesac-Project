@@ -77,6 +77,11 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     
+    private let activityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        return view
+    }()
+    
     var shopping = Shopping(lastBuildDate: "", total: 0, start: 0, display: 0, items: [])
     var itemList = [Item]()
     var searchText: String = ""
@@ -128,6 +133,7 @@ final class SearchViewController: BaseViewController {
         view.addSubview(searchBar)
         view.addSubview(stackView)
         view.addSubview(collectionView)
+        view.addSubview(activityIndicatorView)
         
         // keyboard dismiss
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
@@ -155,10 +161,18 @@ final class SearchViewController: BaseViewController {
             make.top.equalTo(stackView.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalToSuperview()
         }
+        
+        activityIndicatorView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     @objc func filterButtonClicked(_ sender: UIButton) {
         print(#function)
+        itemList.removeAll()
+        collectionView.reloadData()
+        if searchText.isEmpty { self.showNoQueryAlert() }
+        
         var result: Bool = false
         if sender == accuracyFilterButton {
             itemList.removeAll()
@@ -198,20 +212,12 @@ final class SearchViewController: BaseViewController {
             fetchAPI(query: searchText, sort: sort, start: 1)
             currentSort = sort
             result = lowPriceFilterButtonIsSelected ? false : true
-
+            
             dateFilterButtonIsSelected = false
             highPriceFilterButtonIsSelected = false
             accuracyFilterButtonIsSelected = false
         }
-//        print("result: \(result)")
         isSelectedFilterButton(result, sender)
-    }
-    
-    func test(_ filterButton: UIButton) {
-        accuracyFilterButtonIsSelected = false
-        dateFilterButtonIsSelected = false
-        highPriceFilterButtonIsSelected = false
-        lowPriceFilterButtonIsSelected = false
     }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
@@ -269,6 +275,12 @@ final class SearchViewController: BaseViewController {
     }
     
     private func fetchAPI(query: String, sort: String, start: Int) {
+        
+        if query.isEmpty { return }
+        
+        self.activityIndicatorView.startAnimating()
+        self.activityIndicatorView.isHidden = false
+        
         APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort, start: start) { result in
             switch result {
             case .success(let shoppingData):
@@ -277,6 +289,8 @@ final class SearchViewController: BaseViewController {
                 self.total = shoppingData.total
                 self.itemList += shoppingData.items
                 DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                    self.activityIndicatorView.isHidden = true
                     self.collectionView.reloadData()
                     if start == 1 {
                         self.collectionView.setContentOffset(.zero, animated: true)
