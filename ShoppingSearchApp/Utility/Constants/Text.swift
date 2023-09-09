@@ -19,12 +19,14 @@ extension Constants {
     enum FilterButtonTitle {
         static let accuracyFilterButtonTitle: String = "정확도"
         static let dateFilterButtonTitle: String = "날짜순"
-        static let lowPriceFilterButtonTitle: String = "가격낮은순"
         static let highPriceFilterButtonTitle: String = "가격높은순"
+        static let lowPriceFilterButtonTitle: String = "가격낮은순"
     }
     
-    
-    
-    
-    
+    enum FilterSortName {
+        static let accuracy: String = "sim"
+        static let date: String = "date"
+        static let high: String = "dsc"
+        static let low: String = "asc"
+    }
 }

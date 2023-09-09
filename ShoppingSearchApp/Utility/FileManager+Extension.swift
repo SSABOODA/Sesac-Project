@@ -48,16 +48,6 @@ extension UIViewController {
         }
     }
     
-//    func makeDirectory() {
-//        let fileManager = FileManager.default
-//        do {
-//            let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ProductImage")
-//            let filePath =  documentsURL.appendingPathComponent("ProductImage")
-//            try fileManager.createDirectory(at: filePath, withIntermediateDirectories: true, attributes: nil)
-//        } catch {
-//            NSLog("Couldn't create document directory")
-//        }
-//    }
 }
 
 

@@ -84,7 +84,7 @@ final class SearchViewController: BaseViewController {
     var display: Int = 30
     var start: Int = 1
     var isEnd: Bool = false
-    var currentSort: String = "sim"
+    var currentSort: String = Constants.FilterSortName.accuracy
     var currentQuery: String = ""
     
     var accuracyFilterButtonIsSelected: Bool = false
@@ -101,12 +101,10 @@ final class SearchViewController: BaseViewController {
         
         let _ = productTableRepository.findFileURL()
         tasks = productTableRepository.fetch()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,46 +150,57 @@ final class SearchViewController: BaseViewController {
         print(#function)
         var result: Bool = false
         if sender == accuracyFilterButton {
-            fetchAPI(query: searchText, sort: "sim", start: 1)
-            accuracyFilterButtonIsSelected = accuracyFilterButtonIsSelected ? false : true
-            result = accuracyFilterButtonIsSelected
+            itemList.removeAll()
+            let sort = Constants.FilterSortName.accuracy
+            fetchAPI(query: searchText, sort: sort, start: 1)
+            result = accuracyFilterButtonIsSelected ? false : true
             
             dateFilterButtonIsSelected = false
             highPriceFilterButtonIsSelected = false
             lowPriceFilterButtonIsSelected = false
             
         } else if sender == dateFilterButton {
-            fetchAPI(query: searchText, sort: "date", start: 1)
-            currentSort = "date"
-            dateFilterButtonIsSelected = dateFilterButtonIsSelected ? false : true
-            result = dateFilterButtonIsSelected
+            itemList.removeAll()
+            let sort = Constants.FilterSortName.date
+            fetchAPI(query: searchText, sort: sort, start: 1)
+            currentSort = sort
+            result = dateFilterButtonIsSelected ? false : true
             
             accuracyFilterButtonIsSelected = false
             highPriceFilterButtonIsSelected = false
             lowPriceFilterButtonIsSelected = false
             
         } else if sender == highPriceFilterButton {
-            fetchAPI(query: searchText, sort: "dsc", start: 1)
-            currentSort = "dsc"
-            highPriceFilterButtonIsSelected = highPriceFilterButtonIsSelected ? false : true
-            result = highPriceFilterButtonIsSelected
+            itemList.removeAll()
+            let sort = Constants.FilterSortName.high
+            fetchAPI(query: searchText, sort: sort, start: 1)
+            currentSort = sort
+            result = highPriceFilterButtonIsSelected ? false : true
             
             dateFilterButtonIsSelected = false
             accuracyFilterButtonIsSelected = false
             lowPriceFilterButtonIsSelected = false
             
         } else if sender == lowPriceFilterButton {
-            fetchAPI(query: searchText, sort: "asc", start: 1)
-            currentSort = "asc"
-            lowPriceFilterButtonIsSelected = lowPriceFilterButtonIsSelected ? false : true
-            result = lowPriceFilterButtonIsSelected
-            
+            itemList.removeAll()
+            let sort = Constants.FilterSortName.low
+            fetchAPI(query: searchText, sort: sort, start: 1)
+            currentSort = sort
+            result = lowPriceFilterButtonIsSelected ? false : true
+
             dateFilterButtonIsSelected = false
             highPriceFilterButtonIsSelected = false
             accuracyFilterButtonIsSelected = false
         }
 //        print("result: \(result)")
         isSelectedFilterButton(result, sender)
+    }
+    
+    func test(_ filterButton: UIButton) {
+        accuracyFilterButtonIsSelected = false
+        dateFilterButtonIsSelected = false
+        highPriceFilterButtonIsSelected = false
+        lowPriceFilterButtonIsSelected = false
     }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
@@ -287,8 +296,6 @@ final class SearchViewController: BaseViewController {
             filterButton.setTitleColor(UIColor.white, for: .normal)
         }
     }
-    
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -298,7 +305,7 @@ extension SearchViewController: UISearchBarDelegate {
         self.searchText = query
         itemList.removeAll()
         
-        let sort = "sim"
+        let sort = Constants.FilterSortName.accuracy
         fetchAPI(query: query, sort: sort, start: 1)
         currentSort = sort
         currentQuery = query
@@ -326,19 +333,11 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        let item = itemList[indexPath.row]
-        
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
-        // 셀 메서드에 넣기 전에 realm에 있는 상품에 productId가 있으면 구조체 '좋아요' 정보 업뎃하고 셀 최신화하기
-        let data = productTableRepository.fetch().where {
-            $0.productId == item.productId
-        }
-        
-        if !data.isEmpty {
-            itemList[indexPath.row].isLike = true
-        }
+        // 셀 메서드에 넣기 전에 realm에 있는 상품에 productId가 있으면 구조체 'like' 정보 업뎃하고 셀 최신화하기
+        comparingDataAfterUpdateLike(indexPath: indexPath)
         
         cell.configureCell(itemList[indexPath.row])
         return cell
@@ -358,6 +357,17 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 start += display
                 fetchAPI(query: searchText, sort: currentSort, start: start)
             }
+        }
+    }
+    
+    private func comparingDataAfterUpdateLike(indexPath: IndexPath) {
+        let item = itemList[indexPath.row]
+        let data = productTableRepository.fetch().where {
+            $0.productId == item.productId
+        }
+        
+        if !data.isEmpty {
+            itemList[indexPath.row].isLike = true
         }
     }
     

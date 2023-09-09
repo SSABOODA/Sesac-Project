@@ -14,10 +14,11 @@ final class LikeViewController: BaseViewController {
     
     private lazy var searchController = {
         let view = UISearchController(searchResultsController: nil)
-        view.searchBar.placeholder = "검색어를 입력해주세요"
+        view.searchBar.placeholder = Constants.TextContent.searchBarPlaceHolder
         view.searchBar.scopeButtonTitles = ["맥북", "에어팟", "아이패드"]
         view.hidesNavigationBarDuringPresentation = false
         view.searchBar.tintColor = .white
+        view.searchBar.searchBarStyle = .minimal
         view.searchResultsUpdater = self
         view.searchBar.delegate = self
         return view

@@ -107,7 +107,9 @@ class WebViewController: BaseViewController, WKUIDelegate {
     
     func loadWebView() {
         guard let product else { return }
-        let link = "https://msearch.shopping.naver.com/product/\(product.productId)"
+        
+        let link = URL.naverProductPurchaseBaseURL + "\(product.productId)"
+//        let link = "https://msearch.shopping.naver.com/product/\(product.productId)"
         guard let url = URL(string: link) else { return }
         let request = URLRequest(url: url)
         webView.load(request)

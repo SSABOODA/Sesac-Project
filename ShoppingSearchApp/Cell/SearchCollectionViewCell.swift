@@ -138,9 +138,9 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         priceLabel.text = price
         
         if isLike {
-            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            likeButton.setImage(Constants.ImageName.isLikeImageName, for: .normal)
         } else {
-            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButton.setImage(Constants.ImageName.isNotLikeImageName, for: .normal)
         }
         
     }
