@@ -119,8 +119,6 @@ final class SearchViewController: BaseViewController {
         
         itemList.removeAll()
         fetchAPI(query: currentQuery, sort: currentSort, start: start)
-        
-//        collectionView.reloadData()
     }
     
     override func configureView() {
@@ -329,8 +327,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
         let item = itemList[indexPath.row]
-        
-//        print(item.isLike)
         
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)

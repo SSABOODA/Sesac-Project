@@ -41,7 +41,6 @@ final class LikeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -151,6 +150,19 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.configureCell(tasks[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let webView = WebViewController()
+        let task = tasks[indexPath.row]
+        
+        var product = Item(title: task.title, link: "", image: "", lprice: task.price, hprice: "", mallName: task.mallName, productId: task.productId, productType: "", brand: "")
+        
+        product.isLike = task.isLike
+        webView.product = product
+        
+        webView.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(webView, animated: true)
     }
     
     private func collectionViewLayout() -> UICollectionViewFlowLayout {
