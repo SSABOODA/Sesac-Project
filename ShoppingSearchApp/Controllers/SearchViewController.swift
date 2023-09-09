@@ -32,6 +32,7 @@ final class SearchViewController: BaseViewController {
         view.showsCancelButton = true
         view.delegate = self
         view.searchBarStyle = .minimal
+        view.tintColor = .white
         return view
     }()
     

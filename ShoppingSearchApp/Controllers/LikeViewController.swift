@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import RealmSwift
 
 final class LikeViewController: BaseViewController {
     
@@ -14,10 +16,11 @@ final class LikeViewController: BaseViewController {
         view.searchBar.placeholder = "검색어를 입력해주세요"
         view.searchBar.scopeButtonTitles = ["맥북", "에어팟", "아이패드"]
         view.hidesNavigationBarDuringPresentation = false
+        view.searchBar.tintColor = .white
         return view
     }()
     
-    private lazy var collectionView = {
+    lazy var collectionView = {
         let view = UICollectionView(
             frame: .zero,
             collectionViewLayout: self.collectionViewLayout()
@@ -27,32 +30,47 @@ final class LikeViewController: BaseViewController {
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.collectionViewLayout = self.collectionViewLayout()
         return view
-    }
+    }()
     
+    var tasks: Results<ProductTable>!
+    var productTableRepository = ProductTableRepository.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.searchController = searchController
     }
     
     override func configureView() {
+        // 서치바 네비게이션바에 내장
+        self.navigationItem.searchController = searchController
+        // 네비게이션바 타이틀
         title = Constants.TextContent.likeViewNavigationTitle
+        // addSubView
+        view.addSubview(collectionView)
+        // realm DB 데이터
+        tasks = productTableRepository.fetch()
+        
+        
+        
     }
     
     override func setConstraints() {
+        collectionView.snp.makeConstraints { make in
+            make.verticalEdges.horizontalEdges.equalToSuperview()
+        }
     }
 }
 
 extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return tasks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else {
             return UICollectionViewCell()
         }
+        cell.configureCell(tasks[indexPath.row])
         return cell
     }
     

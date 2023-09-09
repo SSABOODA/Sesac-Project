@@ -102,15 +102,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configureCell(_ row: Item) {
-        configure(image: row.image, mallName: row.mallName, title: row.title, price: row.krwPrice, isLike: row.isLike)
-    }
-    
-    func configureCell(_ row: ProductTable) {
-        
-    }
-    
-    func configure(image: String, mallName: String, title: String, price: String, isLike: Bool) {
-        let url = URL(string: image)
+        let url = URL(string: row.image)
         DispatchQueue.global().async {
             if let url = url, let data = try? Data(contentsOf: url) {
                 DispatchQueue.main.async {
@@ -118,6 +110,18 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
                 }
             }
         }
+        configure(mallName: row.mallName, title: row.title, price: row.krwPrice, isLike: row.isLike)
+    }
+    
+    func configureCell(_ row: ProductTable) {
+        guard let imageData = row.image else { return }
+        guard let image = UIImage(data: imageData) else { return }
+        self.mainImageView.image = image
+        configure(mallName: row.mallName, title: row.title, price: row.price, isLike: row.isLike)
+    }
+    
+    func configure(mallName: String, title: String, price: String, isLike: Bool) {
+        
         mallLabel.text = mallName
         titleLabel.text = title.replacingOccurrences(
             of: "<[^>]+>|&quot;",
