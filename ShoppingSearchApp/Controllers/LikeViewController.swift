@@ -68,10 +68,9 @@ final class LikeViewController: BaseViewController {
         view.addSubview(likeEmptyView)
         // realm DB 데이터 세팅
         tasks = productTableRepository.fetch()
+        
         // keyboard dismiss
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(tap)
+//        keyboardDismiss()
     }
     
     override func setConstraints() {
@@ -99,6 +98,12 @@ final class LikeViewController: BaseViewController {
             self.collectionView.reloadData()
             self.view.makeToast(Constants.LikeToastMessage.whenUserTapCancelLikeButton)
         }
+    }
+    
+    private func keyboardDismiss() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
     }
 }
 

@@ -28,6 +28,7 @@ class SearchEmptyView: BaseView {
     override func configureView() {
         addSubview(searchEmptyImageView)
         addSubview(searchEmptyLabel)
+        isUserInteractionEnabled = false
     }
     
     override func setConstraints() {
@@ -42,5 +43,4 @@ class SearchEmptyView: BaseView {
             make.centerX.equalToSuperview()
         }
     }
-
 }

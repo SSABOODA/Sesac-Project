@@ -14,6 +14,5 @@ extension Constants {
         static let border = UIColor.white.cgColor
         static let text = UIColor.white
         static let placeholder = UIColor.lightGray
-        static let point = UIColor.systemRed
     }
 }

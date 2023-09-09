@@ -131,17 +131,14 @@ final class SearchViewController: BaseViewController {
         super.configureView()
         
         configureNavigationBar()
+        // keyboard dismiss
+//        keyboardDismiss()
         
         view.addSubview(searchBar)
         view.addSubview(stackView)
         view.addSubview(collectionView)
         view.addSubview(activityIndicatorView)
         view.addSubview(searchEmptyView)
-        
-        // keyboard dismiss
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(tap)
     }
     
     @objc func didTapView(_ sender: UITapGestureRecognizer) {
@@ -154,25 +151,22 @@ final class SearchViewController: BaseViewController {
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide)
         }
-        
         stackView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(Constants.ColletionViewLayoutDesign.spacing)
         }
-        
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalToSuperview()
         }
-        
+        activityIndicatorView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         searchEmptyView.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
         }
         
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
     }
     
     @objc func filterButtonClicked(_ sender: UIButton) {
@@ -276,6 +270,12 @@ final class SearchViewController: BaseViewController {
         }
         itemList[sender.tag].isLike.toggle()
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
+    }
+    
+    private func keyboardDismiss() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
     }
     
     private func configureNavigationBar() {

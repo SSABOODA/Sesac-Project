@@ -72,7 +72,7 @@ class WebViewController: BaseViewController, WKUIDelegate {
                         self.productTableRepository.updateItem(
                             updateValue: [
                                 "_id": task._id,
-                                "isLike": false
+                                "isLike": true
                             ]
                         )
                     }
@@ -84,6 +84,7 @@ class WebViewController: BaseViewController, WKUIDelegate {
     
     func setNavigationBar() {
         guard let product else { return }
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         title = product.title.removeHtmlTag()
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground

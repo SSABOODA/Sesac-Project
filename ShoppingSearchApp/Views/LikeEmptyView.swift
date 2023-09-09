@@ -28,6 +28,7 @@ class LikeEmptyView: BaseView {
     override func configureView() {
         addSubview(likeEmptyImageView)
         addSubview(likeEmptyLabel)
+        isUserInteractionEnabled = false
     }
     
     override func setConstraints() {
