@@ -40,6 +40,8 @@
 		F7D0EB8B2AAC42A400F12852 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7D0EB8A2AAC42A400F12852 /* Toast */; };
 		F7D0EB8D2AAC6C3D00F12852 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB8C2AAC6C3D00F12852 /* WebViewController.swift */; };
 		F7D0EB8F2AAC772B00F12852 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB8E2AAC772B00F12852 /* ToastMessage.swift */; };
+		F7D0EB932AACCCB000F12852 /* LikeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB922AACCCB000F12852 /* LikeEmptyView.swift */; };
+		F7D0EB952AACD50900F12852 /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB942AACD50900F12852 /* SearchEmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		F797E49B2AAB38EF00B4D8A9 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		F7D0EB8C2AAC6C3D00F12852 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F7D0EB8E2AAC772B00F12852 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
+		F7D0EB922AACCCB000F12852 /* LikeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeEmptyView.swift; sourceTree = "<group>"; };
+		F7D0EB942AACD50900F12852 /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				F797E47E2AA9DC8800B4D8A9 /* FilterButton.swift */,
+				F7D0EB922AACCCB000F12852 /* LikeEmptyView.swift */,
+				F7D0EB942AACD50900F12852 /* SearchEmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 				F797E47F2AA9DC8800B4D8A9 /* FilterButton.swift in Sources */,
 				F7D0EB8D2AAC6C3D00F12852 /* WebViewController.swift in Sources */,
 				F797E4742AA9B1D600B4D8A9 /* ReusableProtocol.swift in Sources */,
+				F7D0EB932AACCCB000F12852 /* LikeEmptyView.swift in Sources */,
 				F797E4812AA9E72C00B4D8A9 /* URL+Extension.swift in Sources */,
 				F797E4682AA9B03800B4D8A9 /* Constants.swift in Sources */,
 				F797E4782AA9BB1700B4D8A9 /* LikeViewController.swift in Sources */,
@@ -321,6 +328,7 @@
 				F797E4612AA9AE5700B4D8A9 /* BaseCollectionViewCell.swift in Sources */,
 				F797E4412AA9AA1E00B4D8A9 /* SceneDelegate.swift in Sources */,
 				F797E4762AA9BA4300B4D8A9 /* Text.swift in Sources */,
+				F7D0EB952AACD50900F12852 /* SearchEmptyView.swift in Sources */,
 				F797E4872AA9E95100B4D8A9 /* APIKey.swift in Sources */,
 				F797E49A2AAB376100B4D8A9 /* ProductTableRepository.swift in Sources */,
 				F797E46C2AA9B07400B4D8A9 /* Color.swift in Sources */,

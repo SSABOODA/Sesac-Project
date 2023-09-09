@@ -25,7 +25,7 @@ final class LikeViewController: BaseViewController {
         return view
     }()
     
-    fileprivate lazy var collectionView = {
+    private lazy var collectionView = {
         let view = UICollectionView(
             frame: .zero,
             collectionViewLayout: self.collectionViewLayout()
@@ -37,6 +37,8 @@ final class LikeViewController: BaseViewController {
         view.keyboardDismissMode = .onDrag
         return view
     }()
+    
+    private let likeEmptyView = LikeEmptyView()
     
     var tasks: Results<ProductTable>!
     var productTableRepository = ProductTableRepository.shared
@@ -63,6 +65,7 @@ final class LikeViewController: BaseViewController {
         title = Constants.TextContent.likeViewNavigationTitle
         // addSubView
         view.addSubview(collectionView)
+        view.addSubview(likeEmptyView)
         // realm DB 데이터 세팅
         tasks = productTableRepository.fetch()
         // keyboard dismiss
@@ -71,15 +74,19 @@ final class LikeViewController: BaseViewController {
         view.addGestureRecognizer(tap)
     }
     
-    @objc func didTapView(_ sender: UITapGestureRecognizer) {
-        print("did tap view")
-        searchController.searchBar.resignFirstResponder()
-    }
-    
     override func setConstraints() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        likeEmptyView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    @objc func didTapView(_ sender: UITapGestureRecognizer) {
+        print("did tap view")
+        searchController.searchBar.resignFirstResponder()
     }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
@@ -138,11 +145,6 @@ extension LikeViewController: UISearchControllerDelegate, UISearchBarDelegate {
         tasks = productTableRepository.fetch()
         collectionView.reloadData()
     }
-//    scopeButtonTitles
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        let a = searchBar.scopeButtonTitles?[selectedScope]
-        print(a)
-    }
     
 }
 
@@ -150,6 +152,7 @@ extension LikeViewController: UISearchControllerDelegate, UISearchBarDelegate {
 
 extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        likeEmptyView.isHidden = tasks.isEmpty ? false : true
         return tasks.count
     }
     
@@ -157,7 +160,7 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
+       
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         

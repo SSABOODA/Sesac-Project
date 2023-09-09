@@ -36,8 +36,6 @@ class WebViewController: BaseViewController, WKUIDelegate {
         print(#function)
         guard let product else { return }
         
-        print(product.isLike)
-        
         if product.isLike {
             // 좋아요 상태일 경우
             navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -109,7 +107,6 @@ class WebViewController: BaseViewController, WKUIDelegate {
         guard let product else { return }
         
         let link = URL.naverProductPurchaseBaseURL + "\(product.productId)"
-//        let link = "https://msearch.shopping.naver.com/product/\(product.productId)"
         guard let url = URL(string: link) else { return }
         let request = URLRequest(url: url)
         webView.load(request)

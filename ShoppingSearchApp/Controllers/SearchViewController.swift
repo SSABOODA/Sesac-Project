@@ -77,6 +77,8 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     
+    private let searchEmptyView = SearchEmptyView()
+    
     private let activityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
         return view
@@ -117,9 +119,9 @@ final class SearchViewController: BaseViewController {
         super.viewWillAppear(animated)
         print(#function)
         
-        print("currentSort: \(currentSort)")
-        print("currentQuery: \(currentQuery)")
-        print("start: \(start)")
+//        print("currentSort: \(currentSort)")
+//        print("currentQuery: \(currentQuery)")
+//        print("start: \(start)")
         
         itemList.removeAll()
         fetchAPI(query: currentQuery, sort: currentSort, start: start)
@@ -134,6 +136,7 @@ final class SearchViewController: BaseViewController {
         view.addSubview(stackView)
         view.addSubview(collectionView)
         view.addSubview(activityIndicatorView)
+        view.addSubview(searchEmptyView)
         
         // keyboard dismiss
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
@@ -159,6 +162,11 @@ final class SearchViewController: BaseViewController {
         
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(10)
+            make.horizontalEdges.bottom.equalToSuperview()
+        }
+        
+        searchEmptyView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
         }
         
@@ -284,7 +292,6 @@ final class SearchViewController: BaseViewController {
         APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort, start: start) { result in
             switch result {
             case .success(let shoppingData):
-//                print(shoppingData)
                 self.shopping = shoppingData
                 self.total = shoppingData.total
                 self.itemList += shoppingData.items
@@ -352,6 +359,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        searchEmptyView.isHidden = itemList.isEmpty ? false : true
         return itemList.count
     }
     
