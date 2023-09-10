@@ -40,7 +40,7 @@ class WebViewController: BaseViewController, WKUIDelegate {
         
         if product.isLike {
             // 좋아요 상태일 경우
-            changeRightBarButtonItemImage(image: Constants.ImageName.isNotLikeImageName)
+            navigationRightBarButtonItem(image: Constants.ImageName.isNotLikeImageName, style: .plain, target: self, selector: nil)
             
             let data = productTableRepository.fetch().where {
                 $0.productId == product.productId
@@ -53,7 +53,7 @@ class WebViewController: BaseViewController, WKUIDelegate {
             
         } else {
             // 좋아요 상태가 아닐 경우
-            changeRightBarButtonItemImage(image: Constants.ImageName.isLikeImageName)
+            navigationRightBarButtonItem(image: Constants.ImageName.isLikeImageName, style: .plain, target: self, selector: nil)
             
             let url = URL(string: product.image)
             DispatchQueue.global().async {
@@ -73,22 +73,7 @@ class WebViewController: BaseViewController, WKUIDelegate {
                 }
             }
         }
-        
         passDataHandler?(product.productId)
-    }
-    
-    @objc func backBarButtonTapped(_ sender: UIBarButtonItem) {
-        print(#function)
-        print(123123123123)
-    }
-    
-    func changeRightBarButtonItemImage(image: UIImage) {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: image,
-            style: .plain,
-            target: self,
-            action: nil
-        )
     }
     
     func setNavigationBar() {
@@ -97,7 +82,12 @@ class WebViewController: BaseViewController, WKUIDelegate {
         title = product.title.removeHtmlTag()
         
         // Back 버튼
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backBarButtonTapped))
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: self,
+            action: nil
+        )
         
         // 네비게이션 바 appearance 세팅
         let appearance = UINavigationBarAppearance()
@@ -112,13 +102,7 @@ class WebViewController: BaseViewController, WKUIDelegate {
         image = product.isLike ? Constants.ImageName.isLikeImageName : Constants.ImageName.isNotLikeImageName
         guard let image else { return }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: image,
-            style: .plain,
-            target: self,
-            action: #selector(likeButtonTapped)
-        )
-        
+        navigationRightBarButtonItem(image: image, style: .plain, target: self, selector: #selector(likeButtonTapped))
     }
     
     func loadWebView() {

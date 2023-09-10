@@ -27,4 +27,13 @@ extension UIViewController {
         alert.addAction(ok)
         present(alert, animated: true)
     }
+    
+    func navigationRightBarButtonItem(image: UIImage, style: UIBarButtonItem.Style, target: Any?, selector: Selector?) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: image,
+            style: style,
+            target: target,
+            action: selector
+        )
+    }
 }
