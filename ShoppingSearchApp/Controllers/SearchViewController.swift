@@ -103,12 +103,14 @@ final class SearchViewController: BaseViewController {
     let productTableRepository = ProductTableRepository.shared
     
     var tasks: Results<ProductTable>!
+    var productId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let _ = productTableRepository.findFileURL()
         tasks = productTableRepository.fetch()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -117,14 +119,17 @@ final class SearchViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(#function)
         
-//        print("currentSort: \(currentSort)")
-//        print("currentQuery: \(currentQuery)")
-//        print("start: \(start)")
+        print("productId: \(productId)")
         
-        itemList.removeAll()
-        fetchAPI(query: currentQuery, sort: currentSort, start: start)
+        if !productId.isEmpty {
+            for (index, item) in itemList.enumerated() {
+                if item.productId == productId {
+                    itemList[index].isLike = false
+                    collectionView.reloadData()
+                }
+            }
+        }
     }
     
     override func configureView() {
@@ -276,8 +281,8 @@ final class SearchViewController: BaseViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
-    }
-    
+    } // 삭제 예정
+ 
     private func configureNavigationBar() {
         title = Constants.TextContent.searchViewNavigationTitle
     }
@@ -377,8 +382,13 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function)
         let webView = WebViewController()
+        
+        webView.passDataHandler = { data in
+            print("completionHandler")
+            self.productId = data
+        }
+        
         webView.product = itemList[indexPath.row]
         webView.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(webView, animated: true)

@@ -29,4 +29,9 @@ extension Constants {
         static let high: String = "dsc"
         static let low: String = "asc"
     }
+    
+    enum EmptyViewText {
+        static let searchEmptyViewText = "상품을 검색해보세요."
+        static let likeEmptyViewText = "좋아요한 상품이 없습니다."
+    }
 }

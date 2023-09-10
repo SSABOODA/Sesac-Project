@@ -46,6 +46,7 @@ final class LikeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -90,9 +91,13 @@ final class LikeViewController: BaseViewController {
     
     @objc func likeButtonTapped(_ sender: UIButton) {
         print(#function)
-        
         showCancelLikeAlert {
             let product = self.tasks[sender.tag]
+            
+            // SearchVC에 데이터 전달
+            self.passDataTabBarController(productId: product.productId)
+            
+            // Realm DB에 데이터 삭제하고 reloadData()
             self.productTableRepository.deleteItem(product)
             self.tasks = self.productTableRepository.fetch()
             self.collectionView.reloadData()
@@ -100,11 +105,17 @@ final class LikeViewController: BaseViewController {
         }
     }
     
+    func passDataTabBarController(productId: String) {
+        let navVC = self.tabBarController?.viewControllers![0] as! UINavigationController
+        let searchVC = navVC.topViewController as! SearchViewController
+        searchVC.productId = productId
+    }
+    
     private func keyboardDismiss() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
-    }
+    } // 삭제 예정
 }
 
 

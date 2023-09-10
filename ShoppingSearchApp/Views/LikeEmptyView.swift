@@ -13,15 +13,15 @@ class LikeEmptyView: BaseView {
     private let likeEmptyImageView = {
         let view = UIImageView()
         view.image = Constants.ImageName.isNotLikeImageName
-        view.tintColor = .white
+        view.tintColor = Constants.EmptyViewColor.tintColor
         return view
     }()
 
     private let likeEmptyLabel = {
         let view = UILabel()
-        view.text = "좋아요한 상품이 없습니다."
+        view.text = Constants.EmptyViewText.likeEmptyViewText
         view.font = .boldSystemFont(ofSize: 20)
-        view.textColor = .white
+        view.textColor = Constants.EmptyViewColor.textColor
         return view
     }()
 

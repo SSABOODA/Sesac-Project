@@ -15,4 +15,9 @@ extension Constants {
         static let text = UIColor.white
         static let placeholder = UIColor.lightGray
     }
+    
+    enum EmptyViewColor {
+        static let tintColor = UIColor.darkGray
+        static let textColor = UIColor.darkGray
+    }
 }

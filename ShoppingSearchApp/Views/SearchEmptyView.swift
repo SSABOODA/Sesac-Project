@@ -13,15 +13,15 @@ class SearchEmptyView: BaseView {
     private let searchEmptyImageView = {
         let view = UIImageView()
         view.image = Constants.ImageName.searchViewTabBarSystemSelectImage
-        view.tintColor = .white
+        view.tintColor = Constants.EmptyViewColor.tintColor
         return view
     }()
 
     private let searchEmptyLabel = {
         let view = UILabel()
-        view.text = "상품을 검색해보세요."
+        view.text = Constants.EmptyViewText.searchEmptyViewText
         view.font = .boldSystemFont(ofSize: 20)
-        view.textColor = .white
+        view.textColor = Constants.EmptyViewColor.textColor
         return view
     }()
 
