@@ -294,8 +294,8 @@ final class SearchViewController: BaseViewController {
             switch result {
             case .success(let shoppingData):
                 self.shopping = shoppingData
-                self.total = shoppingData.total
-                self.itemList += shoppingData.items
+                self.total = shoppingData.total ?? 0
+                self.itemList += shoppingData.items ?? []
                 
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -311,11 +311,9 @@ final class SearchViewController: BaseViewController {
                     switch error {
                     case .networkingError:
                         self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.networkingError) {
-                            self.collectionView.reloadData()
                         }
                     case .parseError:
                         self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.parseError) {
-                            self.collectionView.reloadData()
                         }
                     case .dataError:
                         print("")
@@ -369,7 +367,6 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
-    
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -405,6 +402,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(#function)
         let contentOffsetY = scrollView.contentOffset.y
         let collectionViewContentSizeY = self.collectionView.contentSize.height
         let paginationY = collectionViewContentSizeY * 0.5

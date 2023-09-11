@@ -32,6 +32,8 @@ final class APIManager {
         let urlString = apiType.requestURL + searchText + "&sort=\(sort)" + "&display=\(display)" + "&start=\(start)"
         guard let url = URL(string: urlString) else { return }
         
+        print(url)
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(APIKey.navaerClientId, forHTTPHeaderField: "X-Naver-Client-Id")

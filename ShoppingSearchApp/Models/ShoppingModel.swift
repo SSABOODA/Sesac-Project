@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - Shopping
 struct Shopping: Codable {
-    let lastBuildDate: String
-    let total: Int
-    let start: Int
-    let display: Int
-    let items: [Item]
+    let lastBuildDate: String?
+    let total: Int?
+    let start: Int?
+    let display: Int?
+    let items: [Item]?
 }
 
 // MARK: - Item
