@@ -22,13 +22,13 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         let view = UIButton()
         view.backgroundColor = .white
         view.tintColor = .black
-        view.setImage(UIImage(systemName: "heart"), for: .normal)
+        view.setImage(Constants.ImageName.isNotLikeImageName, for: .normal)
         return view
     }()
     
     private let labelView = {
         let view = UIView()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Constants.BaseColor.systemBackground
         return view
     }()
     
@@ -43,14 +43,14 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         let view = UILabel()
         view.numberOfLines = 2
         view.font = .systemFont(ofSize: 12)
-        view.textColor = .white
+        view.textColor = Constants.BaseColor.text
         return view
     }()
     
     private let priceLabel = {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 15)
-        view.textColor = .white
+        view.textColor = Constants.BaseColor.text
         return view
     }()
     

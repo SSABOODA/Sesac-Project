@@ -28,7 +28,8 @@ final class APIManager {
     ) {
         guard let searchText = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         
-        let urlString = apiType.requestURL + searchText + "&sort=\(sort)" + "&display=\(30)" + "&start=\(start)"
+        let display = Constants.APIParameter.display
+        let urlString = apiType.requestURL + searchText + "&sort=\(sort)" + "&display=\(display)" + "&start=\(start)"
         guard let url = URL(string: urlString) else { return }
         
         var request = URLRequest(url: url)

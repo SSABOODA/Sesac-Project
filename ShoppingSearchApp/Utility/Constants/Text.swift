@@ -34,4 +34,16 @@ extension Constants {
         static let searchEmptyViewText = "상품을 검색해보세요."
         static let likeEmptyViewText = "좋아요한 상품이 없습니다."
     }
+    
+    enum NetworkErrorAlertText {
+        static let networkingError = "잠시 후 다시 시도해주세요.😭"
+        static let parseError = "검색어를 확인해주세요.✏️"
+    }
+    
+    enum AlertText {
+        static let ok = "확인"
+        static let cancel = "취소"
+        static let showNoQueryText = "검색어를 입력해주세요"
+        static let showCancelLikeText = "삭제하시겠습니까?"
+    }
 }

@@ -36,13 +36,13 @@
 		F797E4952AAB0D6B00B4D8A9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4942AAB0D6B00B4D8A9 /* String+Extension.swift */; };
 		F797E4982AAB276A00B4D8A9 /* ProductTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4972AAB276A00B4D8A9 /* ProductTable.swift */; };
 		F797E49A2AAB376100B4D8A9 /* ProductTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4992AAB376100B4D8A9 /* ProductTableRepository.swift */; };
-		F797E49C2AAB38EF00B4D8A9 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E49B2AAB38EF00B4D8A9 /* FileManager+Extension.swift */; };
 		F7D0EB8B2AAC42A400F12852 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7D0EB8A2AAC42A400F12852 /* Toast */; };
 		F7D0EB8D2AAC6C3D00F12852 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB8C2AAC6C3D00F12852 /* WebViewController.swift */; };
 		F7D0EB8F2AAC772B00F12852 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB8E2AAC772B00F12852 /* ToastMessage.swift */; };
 		F7D0EB932AACCCB000F12852 /* LikeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB922AACCCB000F12852 /* LikeEmptyView.swift */; };
 		F7D0EB952AACD50900F12852 /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB942AACD50900F12852 /* SearchEmptyView.swift */; };
 		F7D0EBD02AAF0A4800F12852 /* alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */; };
+		F7D0EBD22AAF130400F12852 /* APIParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EBD12AAF130400F12852 /* APIParameter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,12 +74,12 @@
 		F797E4942AAB0D6B00B4D8A9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F797E4972AAB276A00B4D8A9 /* ProductTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTable.swift; sourceTree = "<group>"; };
 		F797E4992AAB376100B4D8A9 /* ProductTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableRepository.swift; sourceTree = "<group>"; };
-		F797E49B2AAB38EF00B4D8A9 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		F7D0EB8C2AAC6C3D00F12852 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F7D0EB8E2AAC772B00F12852 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		F7D0EB922AACCCB000F12852 /* LikeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeEmptyView.swift; sourceTree = "<group>"; };
 		F7D0EB942AACD50900F12852 /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "alert+Extension.swift"; sourceTree = "<group>"; };
+		F7D0EBD12AAF130400F12852 /* APIParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIParameter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +173,6 @@
 				F797E4922AAAEC1600B4D8A9 /* UIViewController+Extension.swift */,
 				F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */,
 				F797E4942AAB0D6B00B4D8A9 /* String+Extension.swift */,
-				F797E49B2AAB38EF00B4D8A9 /* FileManager+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -212,6 +211,7 @@
 				F797E4752AA9BA4300B4D8A9 /* Text.swift */,
 				F797E47A2AA9C05200B4D8A9 /* ImageName.swift */,
 				F7D0EB8E2AAC772B00F12852 /* ToastMessage.swift */,
+				F7D0EBD12AAF130400F12852 /* APIParameter.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -327,10 +327,10 @@
 				F797E4812AA9E72C00B4D8A9 /* URL+Extension.swift in Sources */,
 				F797E4682AA9B03800B4D8A9 /* Constants.swift in Sources */,
 				F797E4782AA9BB1700B4D8A9 /* LikeViewController.swift in Sources */,
-				F797E49C2AAB38EF00B4D8A9 /* FileManager+Extension.swift in Sources */,
 				F7D0EB8F2AAC772B00F12852 /* ToastMessage.swift in Sources */,
 				F797E4612AA9AE5700B4D8A9 /* BaseCollectionViewCell.swift in Sources */,
 				F797E4412AA9AA1E00B4D8A9 /* SceneDelegate.swift in Sources */,
+				F7D0EBD22AAF130400F12852 /* APIParameter.swift in Sources */,
 				F797E4762AA9BA4300B4D8A9 /* Text.swift in Sources */,
 				F7D0EB952AACD50900F12852 /* SearchEmptyView.swift in Sources */,
 				F797E4872AA9E95100B4D8A9 /* APIKey.swift in Sources */,

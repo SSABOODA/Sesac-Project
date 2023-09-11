@@ -88,9 +88,9 @@ final class SearchViewController: BaseViewController {
     var searchText: String = ""
     
     var total: Int = 0
-    var display: Int = 30
-    var start: Int = 1
-    var isEnd: Bool = false
+    var display: Int = Constants.APIParameter.display
+    var start: Int = Constants.APIParameter.start
+    
     var currentSort: String = Constants.FilterSortName.accuracy
     var currentQuery: String = ""
     
@@ -300,7 +300,7 @@ final class SearchViewController: BaseViewController {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                     self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: false)
-                    if start == 1 {
+                    if start == Constants.APIParameter.start {
                         self.collectionView.setContentOffset(.zero, animated: true)
                     }
                 }
@@ -310,11 +310,11 @@ final class SearchViewController: BaseViewController {
                     self.searchEmptyView.isHidden = true
                     switch error {
                     case .networkingError:
-                        self.showNetworkingErrorAlert(title: "잠시 후 다시 시도해주세요!") {
+                        self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.networkingError) {
                             self.collectionView.reloadData()
                         }
                     case .parseError:
-                        self.showNetworkingErrorAlert(title: "검색어를 확인해주세요") {
+                        self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.parseError) {
                             self.collectionView.reloadData()
                         }
                     case .dataError:
