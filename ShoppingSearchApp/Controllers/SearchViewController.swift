@@ -406,6 +406,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if itemList.count - 1 == indexPath.row && start < total {
+                start += display
                 let newStart = start + display
                 fetchAPI(query: searchText, sort: currentSort, start: newStart)
             }
