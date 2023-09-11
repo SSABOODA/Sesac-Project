@@ -42,6 +42,7 @@
 		F7D0EB8F2AAC772B00F12852 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB8E2AAC772B00F12852 /* ToastMessage.swift */; };
 		F7D0EB932AACCCB000F12852 /* LikeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB922AACCCB000F12852 /* LikeEmptyView.swift */; };
 		F7D0EB952AACD50900F12852 /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB942AACD50900F12852 /* SearchEmptyView.swift */; };
+		F7D0EBD02AAF0A4800F12852 /* alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		F7D0EB8E2AAC772B00F12852 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		F7D0EB922AACCCB000F12852 /* LikeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeEmptyView.swift; sourceTree = "<group>"; };
 		F7D0EB942AACD50900F12852 /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
+		F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "alert+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			children = (
 				F797E4792AA9C02900B4D8A9 /* Constants */,
 				F797E4922AAAEC1600B4D8A9 /* UIViewController+Extension.swift */,
+				F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */,
 				F797E4942AAB0D6B00B4D8A9 /* String+Extension.swift */,
 				F797E49B2AAB38EF00B4D8A9 /* FileManager+Extension.swift */,
 			);
@@ -307,6 +310,7 @@
 				F797E46A2AA9B04700B4D8A9 /* APIManager.swift in Sources */,
 				F797E4952AAB0D6B00B4D8A9 /* String+Extension.swift in Sources */,
 				F797E48C2AA9EB9500B4D8A9 /* ShoppingModel.swift in Sources */,
+				F7D0EBD02AAF0A4800F12852 /* alert+Extension.swift in Sources */,
 				F797E4712AA9B18400B4D8A9 /* SearchCollectionViewCell.swift in Sources */,
 				F797E47B2AA9C05200B4D8A9 /* ImageName.swift in Sources */,
 				F797E4432AA9AA1E00B4D8A9 /* SearchViewController.swift in Sources */,

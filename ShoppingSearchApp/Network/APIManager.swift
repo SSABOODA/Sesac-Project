@@ -39,7 +39,7 @@ final class APIManager {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { data, response, error in
             guard error == nil else {
-                print(error)
+                print("ERROR: \(error)")
                 completionHandler(.failure(.networkingError))
                 return
             }

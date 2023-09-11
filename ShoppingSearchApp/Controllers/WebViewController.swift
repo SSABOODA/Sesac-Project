@@ -83,7 +83,7 @@ final class WebViewController: BaseViewController, WKUIDelegate {
         
         // Back 버튼
         navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: "",
+            title: nil,
             style: .plain,
             target: self,
             action: nil

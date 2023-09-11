@@ -18,7 +18,6 @@ final class SearchViewController: BaseViewController {
         )
         view.delegate = self
         view.dataSource = self
-        view.prefetchDataSource = self
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.collectionViewLayout = collectionViewLayout()
         view.keyboardDismissMode = .onDrag
@@ -289,8 +288,7 @@ final class SearchViewController: BaseViewController {
         
         if query.isEmpty { return }
         
-        self.activityIndicatorView.startAnimating()
-        self.activityIndicatorView.isHidden = false
+        self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: true)
         
         APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort, start: start) { result in
             switch result {
@@ -298,17 +296,31 @@ final class SearchViewController: BaseViewController {
                 self.shopping = shoppingData
                 self.total = shoppingData.total
                 self.itemList += shoppingData.items
+                
                 DispatchQueue.main.async {
-                    self.activityIndicatorView.stopAnimating()
-                    self.activityIndicatorView.isHidden = true
                     self.collectionView.reloadData()
+                    self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: false)
                     if start == 1 {
                         self.collectionView.setContentOffset(.zero, animated: true)
                     }
-                    
                 }
             case .failure(let error):
-                print(error)
+                DispatchQueue.main.async {
+                    self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: false)
+                    self.searchEmptyView.isHidden = true
+                    switch error {
+                    case .networkingError:
+                        self.showNetworkingErrorAlert(title: "잠시 후 다시 시도해주세요!") {
+                            self.collectionView.reloadData()
+                        }
+                    case .parseError:
+                        self.showNetworkingErrorAlert(title: "검색어를 확인해주세요") {
+                            self.collectionView.reloadData()
+                        }
+                    case .dataError:
+                        print("")
+                    }
+                }
             }
         }
     }
@@ -358,11 +370,9 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-    }
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         searchEmptyView.isHidden = itemList.isEmpty ? false : true
         return itemList.count
@@ -394,12 +404,13 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         navigationController?.pushViewController(webView, animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            if shopping.items.count - 1 == indexPath.row && start < total {
-                start += display
-                fetchAPI(query: searchText, sort: currentSort, start: start)
-            }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffsetY = scrollView.contentOffset.y
+        let collectionViewContentSizeY = self.collectionView.contentSize.height
+        let paginationY = collectionViewContentSizeY * 0.5
+        if contentOffsetY > collectionViewContentSizeY - paginationY && start < total {
+            start += display
+            fetchAPI(query: searchText, sort: currentSort, start: start)
         }
     }
     

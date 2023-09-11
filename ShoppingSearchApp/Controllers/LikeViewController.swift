@@ -135,9 +135,6 @@ extension LikeViewController: UISearchResultsUpdating {
             collectionView.reloadData()
         }
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    }
 }
 
 extension LikeViewController: UISearchControllerDelegate, UISearchBarDelegate {
