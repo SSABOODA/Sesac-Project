@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 class SearchEmptyView: BaseView {
     private let searchEmptyImageView = {
         let view = UIImageView()

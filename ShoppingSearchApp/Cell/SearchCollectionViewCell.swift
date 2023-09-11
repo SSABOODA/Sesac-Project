@@ -18,7 +18,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    lazy var likeButton = {
+    let likeButton = {
         let view = UIButton()
         view.backgroundColor = .white
         view.tintColor = .black
@@ -131,7 +131,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         )
     }
     
-    func configure(mallName: String, title: String, price: String, isLike: Bool) {
+    private func configure(mallName: String, title: String, price: String, isLike: Bool) {
         
         mallLabel.text = mallName
         titleLabel.text = title.removeHtmlTag()

@@ -64,7 +64,7 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     
-    lazy var stackView = {
+    private lazy var stackView = {
         let view = UIStackView(arrangedSubviews: [
             accuracyFilterButton,
             dateFilterButton,
@@ -112,23 +112,12 @@ final class SearchViewController: BaseViewController {
         tasks = productTableRepository.fetch()
         
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("productId: \(productId)")
-        
         if !productId.isEmpty {
-            for (index, item) in itemList.enumerated() {
-                if item.productId == productId {
-                    itemList[index].isLike = false
-                    collectionView.reloadData()
-                }
-            }
+            updateProductLikeData()
         }
     }
     
@@ -144,11 +133,6 @@ final class SearchViewController: BaseViewController {
         view.addSubview(collectionView)
         view.addSubview(activityIndicatorView)
         view.addSubview(searchEmptyView)
-    }
-    
-    @objc func didTapView(_ sender: UITapGestureRecognizer) {
-        print("did tap view")
-        searchBar.resignFirstResponder()
     }
     
     override func setConstraints() {
@@ -172,6 +156,11 @@ final class SearchViewController: BaseViewController {
             make.horizontalEdges.bottom.equalToSuperview()
         }
         
+    }
+    
+    @objc func didTapView(_ sender: UITapGestureRecognizer) {
+        print("did tap view")
+        searchBar.resignFirstResponder()
     }
     
     @objc func filterButtonClicked(_ sender: UIButton) {
@@ -277,6 +266,15 @@ final class SearchViewController: BaseViewController {
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
     
+    private func updateProductLikeData() {
+        for (index, item) in itemList.enumerated() {
+            if item.productId == productId {
+                itemList[index].isLike = false
+                collectionView.reloadData()
+            }
+        }
+    }
+    
     private func keyboardDismiss() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
@@ -354,6 +352,8 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
+        itemList.removeAll()
+        collectionView.reloadData()
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }

@@ -10,7 +10,7 @@ import WebKit
 import SnapKit
 import RealmSwift
 
-class WebViewController: BaseViewController, WKUIDelegate {
+final class WebViewController: BaseViewController, WKUIDelegate {
     
     var webView = WKWebView()
     var product: Item?
