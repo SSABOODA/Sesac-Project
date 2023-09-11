@@ -18,6 +18,7 @@ final class SearchViewController: BaseViewController {
         )
         view.delegate = self
         view.dataSource = self
+        view.prefetchDataSource = self
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         view.collectionViewLayout = collectionViewLayout()
         view.keyboardDismissMode = .onDrag
@@ -351,7 +352,7 @@ extension SearchViewController: UISearchBarDelegate {
         itemList.removeAll()
         
         let sort = Constants.FilterSortName.accuracy
-        fetchAPI(query: query, sort: sort, start: 1)
+        fetchAPI(query: query, sort: sort, start: Constants.APIParameter.start)
         currentSort = sort
         currentQuery = query
         
@@ -369,7 +370,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         searchEmptyView.isHidden = itemList.isEmpty ? false : true
         return itemList.count
@@ -401,17 +403,15 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         navigationController?.pushViewController(webView, animated: true)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(#function)
-        let contentOffsetY = scrollView.contentOffset.y
-        let collectionViewContentSizeY = self.collectionView.contentSize.height
-        let paginationY = collectionViewContentSizeY * 0.5
-        if contentOffsetY > collectionViewContentSizeY - paginationY && start < total {
-            start += display
-            fetchAPI(query: searchText, sort: currentSort, start: start)
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if itemList.count - 1 == indexPath.row && start < total {
+                let newStart = start + display
+                fetchAPI(query: searchText, sort: currentSort, start: newStart)
+            }
         }
     }
-    
+
     private func comparingDataAfterUpdateLike(indexPath: IndexPath) {
         let item = itemList[indexPath.row]
         let data = productTableRepository.fetch().where {
