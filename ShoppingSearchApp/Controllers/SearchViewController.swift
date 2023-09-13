@@ -116,12 +116,6 @@ final class SearchViewController: BaseViewController {
         
         let _ = productTableRepository.findFileURL()
         tasks = productTableRepository.fetch()
-        
-        if NetworkMonitor.shared.isConnected {
-            print("연결됨")
-        } else {
-            print("연결 안됨")
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -135,7 +129,7 @@ final class SearchViewController: BaseViewController {
         configureNavigationBar()
         
         // keyboard dismiss
-        keyboardDismiss()
+//        keyboardDismiss()
         
         view.addSubview(searchBar)
         view.addSubview(stackView)
@@ -328,11 +322,14 @@ final class SearchViewController: BaseViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
-        collectionView.addGestureRecognizer(tap)
     }
  
     private func configureNavigationBar() {
         title = Constants.TextContent.searchViewNavigationTitle
+        
+        let backBarBtnItem = UIBarButtonItem()
+        backBarBtnItem.title = title
+        navigationItem.backBarButtonItem = backBarBtnItem
     }
     
     private func fetchAPI(query: String, sort: String, start: Int) {

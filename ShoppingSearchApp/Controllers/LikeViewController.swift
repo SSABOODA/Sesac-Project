@@ -64,14 +64,20 @@ final class LikeViewController: BaseViewController {
         self.navigationItem.searchController = searchController
         // 네비게이션바 타이틀
         title = Constants.TextContent.likeViewNavigationTitle
+        // 네비게이션 BackButton 설정
+        let backBarBtnItem = UIBarButtonItem()
+        backBarBtnItem.title = ""
+        navigationItem.backBarButtonItem = backBarBtnItem
+        
         // addSubView
         view.addSubview(collectionView)
         view.addSubview(likeEmptyView)
+        
         // realm DB 데이터 세팅
         tasks = productTableRepository.fetch()
         
         // keyboard dismiss
-        keyboardDismiss()
+//        keyboardDismiss()
     }
     
     override func setConstraints() {
@@ -115,7 +121,6 @@ final class LikeViewController: BaseViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
-        collectionView.addGestureRecognizer(tap)
     }
 }
 

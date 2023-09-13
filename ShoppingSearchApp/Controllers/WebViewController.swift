@@ -19,17 +19,16 @@ final class WebViewController: BaseViewController, WKUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("WebView", #function)
+        print("WebView viewWillAppear", #function)
         
         guard let product = self.product else { return }
         let productList = productTableRepository.fetch()
-        
-        print("product: \(product)")
-        print("productList: \(productList)")
         
         if !productList.map({ $0.productId }).contains(product.productId) {
             self.product?.isLike = false
@@ -107,13 +106,13 @@ final class WebViewController: BaseViewController, WKUIDelegate {
         title = product.title.removeHtmlTag()
         
         // Back 버튼
-        navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: nil,
-            style: .plain,
-            target: self,
-            action: nil
-        )
-        
+//        navigationItem.backBarButtonItem = UIBarButtonItem(
+//            title: "Cancel",
+//            style: .plain,
+//            target: nil,
+//            action: nil
+//        )
+
         // 네비게이션 바 appearance 세팅
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemBackground
@@ -121,6 +120,12 @@ final class WebViewController: BaseViewController, WKUIDelegate {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(
+//            title: "Cancel",
+//            style: .plain,
+//            target: nil,
+//            action: nil
+//        )
         
         // rightBarItem
         let image = product.isLike ? Constants.ImageName.isLikeImageName : Constants.ImageName.isNotLikeImageName
