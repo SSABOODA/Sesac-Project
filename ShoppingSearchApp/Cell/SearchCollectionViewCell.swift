@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Kingfisher
 
 final class SearchCollectionViewCell: BaseCollectionViewCell {
     private let mainImageView = {
@@ -101,14 +102,11 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         likeButton.clipsToBounds = true
     }
     
+    // NSCache
     func configureCell(_ row: Item) {
-        let url = URL(string: row.image)
-        DispatchQueue.global().async {
-            if let url = url, let data = try? Data(contentsOf: url) {
-                DispatchQueue.main.async {
-                    self.mainImageView.image = UIImage(data: data)
-                }
-            }
+        
+        if let imageURL = URL(string: row.image) {
+            mainImageView.kf.setImage(with: imageURL)
         }
         
         configure(

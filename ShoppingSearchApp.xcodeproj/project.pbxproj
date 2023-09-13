@@ -33,6 +33,7 @@
 		F797E4952AAB0D6B00B4D8A9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4942AAB0D6B00B4D8A9 /* String+Extension.swift */; };
 		F797E4982AAB276A00B4D8A9 /* ProductTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4972AAB276A00B4D8A9 /* ProductTable.swift */; };
 		F797E49A2AAB376100B4D8A9 /* ProductTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4992AAB376100B4D8A9 /* ProductTableRepository.swift */; };
+		F7CEF5782AB0ACA900CCA3FF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F7CEF5772AB0ACA900CCA3FF /* Kingfisher */; };
 		F7D0EB8D2AAC6C3D00F12852 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB8C2AAC6C3D00F12852 /* WebViewController.swift */; };
 		F7D0EB8F2AAC772B00F12852 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB8E2AAC772B00F12852 /* ToastMessage.swift */; };
 		F7D0EB932AACCCB000F12852 /* LikeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EB922AACCCB000F12852 /* LikeEmptyView.swift */; };
@@ -43,6 +44,7 @@
 		F7D0EBD72AAF306300F12852 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F7D0EBD62AAF306300F12852 /* RealmSwift */; };
 		F7D0EBDA2AAF306F00F12852 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F7D0EBD92AAF306F00F12852 /* SnapKit */; };
 		F7D0EBDD2AAF307D00F12852 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7D0EBDC2AAF307D00F12852 /* Toast */; };
+		F7D132B72AB1BC030028D6E5 /* FilterButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D132B62AB1BC030028D6E5 /* FilterButtonType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,7 @@
 		F7D0EB942AACD50900F12852 /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "alert+Extension.swift"; sourceTree = "<group>"; };
 		F7D0EBD12AAF130400F12852 /* APIParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIParameter.swift; sourceTree = "<group>"; };
+		F7D132B62AB1BC030028D6E5 /* FilterButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,7 @@
 				F7D0EBDA2AAF306F00F12852 /* SnapKit in Frameworks */,
 				F7D0EBD72AAF306300F12852 /* RealmSwift in Frameworks */,
 				F7D0EBD52AAF306300F12852 /* Realm in Frameworks */,
+				F7CEF5782AB0ACA900CCA3FF /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +177,7 @@
 				F797E4922AAAEC1600B4D8A9 /* UIViewController+Extension.swift */,
 				F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */,
 				F797E4942AAB0D6B00B4D8A9 /* String+Extension.swift */,
+				F7D132B62AB1BC030028D6E5 /* FilterButtonType.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				F7D0EBD62AAF306300F12852 /* RealmSwift */,
 				F7D0EBD92AAF306F00F12852 /* SnapKit */,
 				F7D0EBDC2AAF307D00F12852 /* Toast */,
+				F7CEF5772AB0ACA900CCA3FF /* Kingfisher */,
 			);
 			productName = ShoppingSearchApp;
 			productReference = F797E43B2AA9AA1E00B4D8A9 /* ShoppingSearchApp.app */;
@@ -279,6 +285,7 @@
 				F7D0EBD32AAF306300F12852 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				F7D0EBD82AAF306F00F12852 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F7D0EBDB2AAF307D00F12852 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				F7CEF5762AB0ACA900CCA3FF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F797E43C2AA9AA1E00B4D8A9 /* Products */;
 			projectDirPath = "";
@@ -318,6 +325,7 @@
 				F797E4982AAB276A00B4D8A9 /* ProductTable.swift in Sources */,
 				F797E4832AA9E75C00B4D8A9 /* EndPoint.swift in Sources */,
 				F797E43F2AA9AA1E00B4D8A9 /* AppDelegate.swift in Sources */,
+				F7D132B72AB1BC030028D6E5 /* FilterButtonType.swift in Sources */,
 				F797E4932AAAEC1600B4D8A9 /* UIViewController+Extension.swift in Sources */,
 				F797E4632AA9AF4800B4D8A9 /* BaseView.swift in Sources */,
 				F797E47F2AA9DC8800B4D8A9 /* FilterButton.swift in Sources */,
@@ -555,6 +563,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F7CEF5762AB0ACA900CCA3FF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		F7D0EBD32AAF306300F12852 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -582,6 +598,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F7CEF5772AB0ACA900CCA3FF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7CEF5762AB0ACA900CCA3FF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		F7D0EBD42AAF306300F12852 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F7D0EBD32AAF306300F12852 /* XCRemoteSwiftPackageReference "realm-swift" */;

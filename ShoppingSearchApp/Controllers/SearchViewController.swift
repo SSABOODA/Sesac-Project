@@ -84,6 +84,13 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     
+    private lazy var filterButtonList = [
+        accuracyFilterButton,
+        dateFilterButton,
+        highPriceFilterButton,
+        lowPriceFilterButton
+    ]
+    
     var shopping = Shopping(lastBuildDate: "", total: 0, start: 0, display: 0, items: [])
     var itemList = [Item]()
     var searchText: String = ""
@@ -110,7 +117,6 @@ final class SearchViewController: BaseViewController {
         
         let _ = productTableRepository.findFileURL()
         tasks = productTableRepository.fetch()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -165,55 +171,65 @@ final class SearchViewController: BaseViewController {
     
     @objc func filterButtonClicked(_ sender: UIButton) {
         print(#function)
-        itemList.removeAll()
-        collectionView.reloadData()
+        
         if searchText.isEmpty { self.showNoQueryAlert() }
         
-        var result: Bool = false
         if sender == accuracyFilterButton {
-            itemList.removeAll()
-            let sort = Constants.FilterSortName.accuracy
-            fetchAPI(query: searchText, sort: sort, start: 1)
-            result = accuracyFilterButtonIsSelected ? false : true
+        
+            print("accuracyFilterButtonIsSelected: \(accuracyFilterButtonIsSelected)")
             
-            dateFilterButtonIsSelected = false
-            highPriceFilterButtonIsSelected = false
-            lowPriceFilterButtonIsSelected = false
+            if accuracyFilterButtonIsSelected == false {
+                itemList.removeAll()
+                fetchAPI(
+                    query: searchText,
+                    sort: Constants.FilterSortName.accuracy,
+                    start: 1
+                )
+                accuracyFilterButtonIsSelected = accuracyFilterButtonIsSelected ? false : true
+            }
             
+            isSelectedFilterButton(accuracyFilterButtonIsSelected, sender)
+            changeValueIsSelectedRemainFilterButton(filterButtonType: .accuracy)
+
         } else if sender == dateFilterButton {
-            itemList.removeAll()
-            let sort = Constants.FilterSortName.date
-            fetchAPI(query: searchText, sort: sort, start: 1)
-            currentSort = sort
-            result = dateFilterButtonIsSelected ? false : true
+            print("dateFilterButtonIsSelected: \(dateFilterButtonIsSelected)")
             
-            accuracyFilterButtonIsSelected = false
-            highPriceFilterButtonIsSelected = false
-            lowPriceFilterButtonIsSelected = false
+            if dateFilterButtonIsSelected == false {
+                itemList.removeAll()
+                let sort = Constants.FilterSortName.date
+                fetchAPI(query: searchText, sort: sort, start: 1)
+                currentSort = sort
+                dateFilterButtonIsSelected = dateFilterButtonIsSelected ? false : true
+            }
+            isSelectedFilterButton(dateFilterButtonIsSelected, sender)
+            changeValueIsSelectedRemainFilterButton(filterButtonType: .date)
             
         } else if sender == highPriceFilterButton {
-            itemList.removeAll()
-            let sort = Constants.FilterSortName.high
-            fetchAPI(query: searchText, sort: sort, start: 1)
-            currentSort = sort
-            result = highPriceFilterButtonIsSelected ? false : true
+            print("highPriceFilterButtonIsSelected: \(highPriceFilterButtonIsSelected)")
+            if highPriceFilterButtonIsSelected == false {
+                itemList.removeAll()
+                let sort = Constants.FilterSortName.high
+                fetchAPI(query: searchText, sort: sort, start: 1)
+                currentSort = sort
+                highPriceFilterButtonIsSelected = highPriceFilterButtonIsSelected ? false : true
+            }
             
-            dateFilterButtonIsSelected = false
-            accuracyFilterButtonIsSelected = false
-            lowPriceFilterButtonIsSelected = false
-            
+            isSelectedFilterButton(highPriceFilterButtonIsSelected, sender)
+            changeValueIsSelectedRemainFilterButton(filterButtonType: .high)
         } else if sender == lowPriceFilterButton {
-            itemList.removeAll()
-            let sort = Constants.FilterSortName.low
-            fetchAPI(query: searchText, sort: sort, start: 1)
-            currentSort = sort
-            result = lowPriceFilterButtonIsSelected ? false : true
+            print("lowPriceFilterButtonIsSelected: \(lowPriceFilterButtonIsSelected)")
             
-            dateFilterButtonIsSelected = false
-            highPriceFilterButtonIsSelected = false
-            accuracyFilterButtonIsSelected = false
+            if lowPriceFilterButtonIsSelected == false {
+                itemList.removeAll()
+                let sort = Constants.FilterSortName.low
+                fetchAPI(query: searchText, sort: sort, start: 1)
+                currentSort = sort
+                lowPriceFilterButtonIsSelected = lowPriceFilterButtonIsSelected ? false : true
+            }
+            isSelectedFilterButton(lowPriceFilterButtonIsSelected, sender)
+            changeValueIsSelectedRemainFilterButton(filterButtonType: .low)
         }
-        isSelectedFilterButton(result, sender)
+
     }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
@@ -266,6 +282,27 @@ final class SearchViewController: BaseViewController {
         collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
     
+    private func changeValueIsSelectedRemainFilterButton(filterButtonType: FilterButtonType) {
+        switch filterButtonType {
+        case .accuracy:
+            dateFilterButtonIsSelected = false
+            highPriceFilterButtonIsSelected = false
+            lowPriceFilterButtonIsSelected = false
+        case .date:
+            accuracyFilterButtonIsSelected = false
+            highPriceFilterButtonIsSelected = false
+            lowPriceFilterButtonIsSelected = false
+        case .high:
+            dateFilterButtonIsSelected = false
+            accuracyFilterButtonIsSelected = false
+            lowPriceFilterButtonIsSelected = false
+        case .low:
+            dateFilterButtonIsSelected = false
+            highPriceFilterButtonIsSelected = false
+            accuracyFilterButtonIsSelected = false
+        }
+    }
+    
     private func updateProductLikeData() {
         for (index, item) in itemList.enumerated() {
             if item.productId == productId {
@@ -275,11 +312,12 @@ final class SearchViewController: BaseViewController {
         }
     }
     
+    // @deprecated
     private func keyboardDismiss() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
-    } // 삭제 예정
+    }
  
     private func configureNavigationBar() {
         title = Constants.TextContent.searchViewNavigationTitle
@@ -287,7 +325,10 @@ final class SearchViewController: BaseViewController {
     
     private func fetchAPI(query: String, sort: String, start: Int) {
         
-        if query.isEmpty { return }
+        if query.isEmpty {
+            showNoQueryAlert()
+            return
+        }
         
         self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: true)
         
@@ -325,14 +366,10 @@ final class SearchViewController: BaseViewController {
     }
     
     private func isSelectedFilterButton(_ isSelected: Bool, _ filterButton: UIButton) {
-        accuracyFilterButton.backgroundColor = .black
-        accuracyFilterButton.setTitleColor(UIColor.white, for: .normal)
-        dateFilterButton.backgroundColor = .black
-        dateFilterButton.setTitleColor(UIColor.white, for: .normal)
-        highPriceFilterButton.backgroundColor = .black
-        highPriceFilterButton.setTitleColor(UIColor.white, for: .normal)
-        lowPriceFilterButton.backgroundColor = .black
-        lowPriceFilterButton.setTitleColor(UIColor.white, for: .normal)
+        filterButtonList.forEach { item in
+            item.backgroundColor = .black
+            item.setTitleColor(UIColor.white, for: .normal)
+        }
         
         if isSelected {
             filterButton.backgroundColor = .white
@@ -363,10 +400,23 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
-        itemList.removeAll()
-        collectionView.reloadData()
+        
+        // 검색창 초기화
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        
+        // 버튼 초기화
+        filterButtonList.forEach { filterButton in
+            isSelectedFilterButton(false, filterButton)
+        }
+        
+        // api query 초기화
+        self.searchText = ""
+        
+        // 데이터 초기화
+        itemList.removeAll()
+        collectionView.reloadData()
+        
     }
 }
 
@@ -383,7 +433,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
-        // 셀 메서드에 넣기 전에 realm에 있는 상품에 productId가 있으면 구조체 'like' 정보 업뎃하고 셀 최신화하기
+        // 셀 메서드에 넣기 전에 realm에 있는 상품에 productId가 있으면 구조체 'like' 정보 업데이트하고 셀 최신화하기
         comparingDataAfterUpdateLike(indexPath: indexPath)
         
         cell.configureCell(itemList[indexPath.row])
