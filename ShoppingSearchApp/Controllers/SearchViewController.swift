@@ -121,10 +121,7 @@ final class SearchViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if !productId.isEmpty {
-            updateProductLikeData()
-        }
+        updateProductLikeData()
     }
     
     override func configureView() {
@@ -304,12 +301,16 @@ final class SearchViewController: BaseViewController {
     }
     
     private func updateProductLikeData() {
+        let productList = productTableRepository.fetch()
         for (index, item) in itemList.enumerated() {
-            if item.productId == productId {
-                itemList[index].isLike = false
-                collectionView.reloadData()
+            itemList[index].isLike = false
+            for product in productList {
+                if item.productId == product.productId {
+                    itemList[index].isLike = true
+                }
             }
         }
+        collectionView.reloadData()
     }
     
     // @deprecated
@@ -339,7 +340,13 @@ final class SearchViewController: BaseViewController {
                 self.total = shoppingData.total ?? 0
                 self.itemList += shoppingData.items ?? []
                 
+                
                 DispatchQueue.main.async {
+                    // 검색 결과 없을 때 얼럿
+                    if self.itemList.isEmpty {
+                        self.noResultQueryAlert()
+                    }
+                    
                     self.collectionView.reloadData()
                     self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: false)
                     if start == Constants.APIParameter.start {

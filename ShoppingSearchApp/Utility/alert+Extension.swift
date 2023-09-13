@@ -16,6 +16,22 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
+    // 네트워크 결과 없을 경우 alert
+    func noResultQueryAlert() {
+        let alert = UIAlertController(
+            title: Constants.AlertText.noResultQueryAlertText,
+            message: nil,
+            preferredStyle: .alert
+        )
+        let ok = UIAlertAction(
+            title: Constants.AlertText.ok,
+            style: .default
+        )
+        
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+    
     // 좋아요 취소 Alert
     func showCancelLikeAlert(completionHandler: @escaping () -> ()) {
         let alert = UIAlertController(title: Constants.AlertText.showCancelLikeText, message: nil, preferredStyle: .alert)

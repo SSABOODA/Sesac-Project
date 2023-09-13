@@ -13,7 +13,7 @@ extension Constants {
         static let likeViewNavigationTitle: String = "좋아요 목록"
         static let searchViewTabBarTitle: String = "검색"
         static let likeViewTabBarTitle: String = "좋아요"
-        static let searchBarPlaceHolder: String = "검색어를 입력해보세요😀"
+        static let searchBarPlaceHolder: String = "검색어를 입력해보세요"
     }
     
     enum FilterButtonTitle {
@@ -43,7 +43,8 @@ extension Constants {
     enum AlertText {
         static let ok = "확인"
         static let cancel = "취소"
-        static let showNoQueryText = "검색어를 입력해주세요"
+        static let showNoQueryText = "검색어를 입력해보세요 ✏️"
         static let showCancelLikeText = "삭제하시겠습니까?"
+        static let noResultQueryAlertText = "검색하신 단어의 결과가 없습니다. 😭"
     }
 }
