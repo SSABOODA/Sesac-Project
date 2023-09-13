@@ -127,8 +127,9 @@ final class SearchViewController: BaseViewController {
         super.configureView()
         
         configureNavigationBar()
+        
         // keyboard dismiss
-//        keyboardDismiss()
+        keyboardDismiss()
         
         view.addSubview(searchBar)
         view.addSubview(stackView)
@@ -168,7 +169,10 @@ final class SearchViewController: BaseViewController {
     @objc func filterButtonClicked(_ sender: UIButton) {
         print(#function)
         
-        if searchText.isEmpty { self.showNoQueryAlert() }
+        if searchText.isEmpty {
+            self.showNoQueryAlert()
+            return
+        }
         
         if sender == accuracyFilterButton {
         
@@ -317,6 +321,7 @@ final class SearchViewController: BaseViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
+        collectionView.addGestureRecognizer(tap)
     }
  
     private func configureNavigationBar() {

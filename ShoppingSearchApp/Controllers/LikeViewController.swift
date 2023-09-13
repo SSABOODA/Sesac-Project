@@ -71,7 +71,7 @@ final class LikeViewController: BaseViewController {
         tasks = productTableRepository.fetch()
         
         // keyboard dismiss
-//        keyboardDismiss()
+        keyboardDismiss()
     }
     
     override func setConstraints() {
@@ -106,10 +106,11 @@ final class LikeViewController: BaseViewController {
         }
     }
     
-    private func keyboardDismiss() {  // 삭제 예정
+    private func keyboardDismiss() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
+        collectionView.addGestureRecognizer(tap)
     }
 }
 
