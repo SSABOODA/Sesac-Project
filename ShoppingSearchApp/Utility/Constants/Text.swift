@@ -46,5 +46,6 @@ extension Constants {
         static let showNoQueryText = "검색어를 입력해보세요 ✏️"
         static let showCancelLikeText = "삭제하시겠습니까?"
         static let noResultQueryAlertText = "검색하신 단어의 결과가 없습니다. 😭"
+        static let noInternetNetworkConnectionAlertText = "인터넷 연결을 확인해주세요 🛜"
     }
 }

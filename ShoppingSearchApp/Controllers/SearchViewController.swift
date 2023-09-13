@@ -116,6 +116,12 @@ final class SearchViewController: BaseViewController {
         
         let _ = productTableRepository.findFileURL()
         tasks = productTableRepository.fetch()
+        
+        if NetworkMonitor.shared.isConnected {
+            print("연결됨")
+        } else {
+            print("연결 안됨")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -234,6 +240,7 @@ final class SearchViewController: BaseViewController {
     
     @objc func likeButtonTapped(_ sender: UIButton) {
         
+        if !checkNetworkStatus() { return }
         let product = itemList[sender.tag]
         
         let productData = productTableRepository.fetch().where {
@@ -363,7 +370,15 @@ final class SearchViewController: BaseViewController {
                     self.searchEmptyView.isHidden = true
                     switch error {
                     case .networkingError:
-                        self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.networkingError) {
+                        
+                        let networkStatus = self.checkNetworkStatus()
+                        if !networkStatus {
+                            // 네트워크 연결을 확인 요청 얼럿
+                            self.showAlertIfNoInternetNetworkConnection()
+                        } else {
+                            // 인터넷 연결은 되어 있지만 api 통신시 네트워크 에러 시 얼럿
+                            self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.networkingError) {
+                            }
                         }
                     case .parseError:
                         self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.parseError) {
@@ -371,9 +386,14 @@ final class SearchViewController: BaseViewController {
                     case .dataError:
                         print("")
                     }
+                    self.collectionView.reloadData()
                 }
             }
         }
+    }
+    
+    private func checkNetworkStatus() -> Bool {
+        return NetworkMonitor.shared.isConnected
     }
     
     private func isSelectedFilterButton(_ isSelected: Bool, _ filterButton: UIButton) {

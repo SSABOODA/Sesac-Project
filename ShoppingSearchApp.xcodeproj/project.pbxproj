@@ -45,6 +45,7 @@
 		F7D0EBDA2AAF306F00F12852 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F7D0EBD92AAF306F00F12852 /* SnapKit */; };
 		F7D0EBDD2AAF307D00F12852 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7D0EBDC2AAF307D00F12852 /* Toast */; };
 		F7D132B72AB1BC030028D6E5 /* FilterButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D132B62AB1BC030028D6E5 /* FilterButtonType.swift */; };
+		F7D132B92AB1DC730028D6E5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D132B82AB1DC730028D6E5 /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		F7D0EBCF2AAF0A4800F12852 /* alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "alert+Extension.swift"; sourceTree = "<group>"; };
 		F7D0EBD12AAF130400F12852 /* APIParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIParameter.swift; sourceTree = "<group>"; };
 		F7D132B62AB1BC030028D6E5 /* FilterButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonType.swift; sourceTree = "<group>"; };
+		F7D132B82AB1DC730028D6E5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				F797E4802AA9E72C00B4D8A9 /* URL+Extension.swift */,
 				F797E4822AA9E75C00B4D8A9 /* EndPoint.swift */,
 				F797E4862AA9E95100B4D8A9 /* APIKey.swift */,
+				F7D132B82AB1DC730028D6E5 /* NetworkMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				F797E46A2AA9B04700B4D8A9 /* APIManager.swift in Sources */,
 				F797E4952AAB0D6B00B4D8A9 /* String+Extension.swift in Sources */,
 				F797E48C2AA9EB9500B4D8A9 /* ShoppingModel.swift in Sources */,
+				F7D132B92AB1DC730028D6E5 /* NetworkMonitor.swift in Sources */,
 				F7D0EBD02AAF0A4800F12852 /* alert+Extension.swift in Sources */,
 				F797E4712AA9B18400B4D8A9 /* SearchCollectionViewCell.swift in Sources */,
 				F797E47B2AA9C05200B4D8A9 /* ImageName.swift in Sources */,

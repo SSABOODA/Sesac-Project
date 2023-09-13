@@ -97,10 +97,15 @@ final class LikeViewController: BaseViewController {
             // Realm DB에 데이터 삭제하고 reloadData()
             self.productTableRepository.deleteItem(product)
             guard let searchText = self.searchController.searchBar.text else { return }
-            self.tasks = self.productTableRepository.fetch().where({
-                $0.title.contains(searchText)
-            })
-    
+            
+            if !searchText.isEmpty {
+                self.tasks = self.productTableRepository.fetch().where({
+                    $0.title.contains(searchText)
+                })
+            } else {
+                self.tasks = self.productTableRepository.fetch()
+            }
+            
             self.collectionView.reloadData()
             self.view.makeToast(Constants.LikeToastMessage.whenUserTapCancelLikeButton)
         }
