@@ -110,7 +110,6 @@ final class SearchViewController: BaseViewController {
     let productTableRepository = ProductTableRepository.shared
     
     var tasks: Results<ProductTable>!
-    var productId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -271,7 +270,7 @@ final class SearchViewController: BaseViewController {
         } else {
             // 데이터 삭제
             print("DELETE")
-            let task = productData.first!
+            guard let task = productData.first else { return }
             productTableRepository.deleteItem(task)
             self.view.makeToast(Constants.LikeToastMessage.whenUserTapCancelLikeButton)
         }
@@ -449,11 +448,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let webView = WebViewController()
-        
-        webView.passDataHandler = { data in
-            print("completionHandler")
-            self.productId = data
-        }
         
         webView.product = itemList[indexPath.row]
         webView.modalPresentationStyle = .fullScreen

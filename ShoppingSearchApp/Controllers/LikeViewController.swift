@@ -94,9 +94,6 @@ final class LikeViewController: BaseViewController {
         showCancelLikeAlert {
             let product = self.tasks[sender.tag]
             
-            // SearchVC에 데이터 전달
-            self.passDataTabBarController(productId: product.productId)
-            
             // Realm DB에 데이터 삭제하고 reloadData()
             self.productTableRepository.deleteItem(product)
             self.tasks = self.productTableRepository.fetch()
@@ -105,17 +102,11 @@ final class LikeViewController: BaseViewController {
         }
     }
     
-    func passDataTabBarController(productId: String) {
-        let navVC = self.tabBarController?.viewControllers![0] as! UINavigationController
-        let searchVC = navVC.topViewController as! SearchViewController
-        searchVC.productId = productId
-    }
-    
-    private func keyboardDismiss() {
+    private func keyboardDismiss() {  // 삭제 예정
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
-    } // 삭제 예정
+    }
 }
 
 
@@ -185,7 +176,17 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let webView = WebViewController()
         let task = tasks[indexPath.row]
         
-        var product = Item(title: task.title, link: "", image: "", lprice: task.price, hprice: "", mallName: task.mallName, productId: task.productId, productType: "", brand: "")
+        var product = Item(
+            title: task.title,
+            link: "",
+            image: "",
+            lprice: task.price,
+            hprice: "",
+            mallName: task.mallName,
+            productId: task.productId,
+            productType: "",
+            brand: ""
+        )
         
         product.isLike = task.isLike
         webView.product = product

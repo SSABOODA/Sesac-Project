@@ -16,12 +16,31 @@ final class WebViewController: BaseViewController, WKUIDelegate {
     var product: Item?
     let productTableRepository = ProductTableRepository.shared
     
-    var passDataHandler: ((String) -> Void)?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("WebView", #function)
+        
+        guard let product = self.product else { return }
+        let productList = productTableRepository.fetch()
+        
+        print("product: \(product)")
+        print("productList: \(productList)")
+        
+        if !productList.map({ $0.productId }).contains(product.productId) {
+            self.product?.isLike = false
+        }
+  
+        guard let like = self.product?.isLike else { return }
+        let image = like ? Constants.ImageName.isLikeImageName : Constants.ImageName.isNotLikeImageName
+        navigationRightBarButtonItem(image: image, style: .plain, target: self, selector: #selector(likeButtonTapped))
+
+    }
+    
     override func configureView() {
         view.addSubview(webView)
         setNavigationBar()
@@ -46,9 +65,8 @@ final class WebViewController: BaseViewController, WKUIDelegate {
                 $0.productId == product.productId
             }
             
-            if !data.isEmpty {
-                productTableRepository.deleteItem(data.first!)
-            }
+            guard let deleteItem = data.first else { return }
+            productTableRepository.deleteItem(deleteItem)
             self.product?.isLike = false
             
         } else {
@@ -62,18 +80,25 @@ final class WebViewController: BaseViewController, WKUIDelegate {
                         let task = ProductTable(
                             productId: product.productId, title: product.title, image: data, mallName: product.mallName, price: product.lprice
                         )
-                        self.productTableRepository.createItem(task)
-                        self.productTableRepository.updateItem(
-                            updateValue: [
-                                "_id": task._id,
-                                "isLike": true
-                            ]
-                        )
+                        
+                        let data = self.productTableRepository.fetch().where {
+                            $0.productId == task.productId
+                        }
+                        
+                        if data.isEmpty {
+                            self.productTableRepository.createItem(task)
+                            self.productTableRepository.updateItem(
+                                updateValue: [
+                                    "_id": task._id,
+                                    "isLike": true
+                                ]
+                            )
+                        }
+
                     }
                 }
             }
         }
-        passDataHandler?(product.productId)
     }
     
     func setNavigationBar() {
@@ -98,10 +123,7 @@ final class WebViewController: BaseViewController, WKUIDelegate {
         navigationController?.navigationBar.tintColor = .white
         
         // rightBarItem
-        var image: UIImage?
-        image = product.isLike ? Constants.ImageName.isLikeImageName : Constants.ImageName.isNotLikeImageName
-        guard let image else { return }
-        
+        let image = product.isLike ? Constants.ImageName.isLikeImageName : Constants.ImageName.isNotLikeImageName
         navigationRightBarButtonItem(image: image, style: .plain, target: self, selector: #selector(likeButtonTapped))
     }
     
