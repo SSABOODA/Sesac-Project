@@ -40,7 +40,5 @@ protocol ExampleProtocol {
 class Mobile: ExampleProtocol {
     // required: 프로토콜에서 생성된 경우 사용하는 키워드
     // required Initializer (필수 생성자)
-    required init(name: String) {
-        print(123)
-    }
+    required init(name: String) {}
 }

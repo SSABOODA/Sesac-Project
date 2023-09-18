@@ -19,8 +19,6 @@ class LocationViewController: UIViewController {
     let martButton = UIButton()
     let schoolButton = UIButton()
     
-    let num = Int.random(in: 1...100)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,10 +63,7 @@ class LocationViewController: UIViewController {
     }
     
     @objc func schoolButtonClicked() {
-        
     }
-    
-    
     
     func setAnnotation(type: Int) {
         // 37.604709, 127.031089 이마트

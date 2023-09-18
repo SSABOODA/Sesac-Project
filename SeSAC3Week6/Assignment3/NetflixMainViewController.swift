@@ -101,20 +101,20 @@ class NetflixMainViewController: UIViewController {
     }()
     
     let previewImageView1 = {
-        let view = PreviewImageView(frame: CGRect(x: 0, y: 0, width: 115, height: 115))
+        let view = PreviewImageView(frame: .zero)
         view.image = UIImage(named: "겨울왕국2")
         return view
     }()
     
     let previewImageView2 = {
-        let view = PreviewImageView(frame: CGRect(x: 0, y: 0, width: 115, height: 115))
-        view.image = UIImage(named: "부산행")
+        let view = PreviewImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        view.image = UIImage(named: "아바타")
         return view
     }()
     
     let previewImageView3 = {
-        let view = PreviewImageView(frame: CGRect(x: 0, y: 0, width: 115, height: 115))
-        view.image = UIImage(named: "명량")
+        let view = PreviewImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        view.image = UIImage(named: "암살")
         return view
     }()
     
@@ -143,6 +143,21 @@ class NetflixMainViewController: UIViewController {
         
         setConstraints()
     }
+
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print(#function)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print(#function)
+    }
+    
+    
+    
+    
     
     func setConstraints() {
         mainImageView.snp.makeConstraints { make in
@@ -178,18 +193,21 @@ class NetflixMainViewController: UIViewController {
         }
         
         previewImageView2.snp.makeConstraints { make in
+            print("previewImageView2 Constraints", previewImageView1.frame.width, previewImageView1.frame)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-50)
             make.size.equalTo(115)
         }
         
         previewImageView1.snp.makeConstraints { make in
+            print("previewImageView1 Constraints", previewImageView1.frame.width, previewImageView1.frame)
             make.trailing.equalTo(previewImageView2.snp.leading).offset(-15)
             make.bottom.equalToSuperview().offset(-50)
             make.size.equalTo(115)
         }
         
         previewImageView3.snp.makeConstraints { make in
+            print("previewImageView3 Constraints", previewImageView1.frame.width, previewImageView1.frame)
             make.leading.equalTo(previewImageView2.snp.trailing).offset(15)
             make.bottom.equalToSuperview().offset(-50)
             make.size.equalTo(115)

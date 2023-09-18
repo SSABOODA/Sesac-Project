@@ -32,8 +32,17 @@ class MapKitViewController: UIViewController {
         return bnt
     }()
     
-    let locationManager = CLLocationManager()
-    let mapView = MKMapView()
+    private lazy var locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        return locationManager
+    }()
+    
+    private lazy var mapView: MKMapView = {
+        let mapView = MKMapView()
+        mapView.delegate = self
+        return mapView
+    }()
     
     let theater: TheaterList = TheaterList()
     
@@ -41,9 +50,7 @@ class MapKitViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .darkGray
-        locationManager.delegate = self
-        mapView.delegate = self
-        
+    
         view.addSubview(mapView)
         view.addSubview(homeButton)
         

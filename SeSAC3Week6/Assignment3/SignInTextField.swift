@@ -27,6 +27,9 @@ class SignInTextField: UITextField {
         clipsToBounds = true
         textColor = .white
         tintColor = .white
-        attributedPlaceholder = NSAttributedString(string: "플레이스 홀더 색상 바꾸기!", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        attributedPlaceholder = NSAttributedString(
+            string: "플레이스 홀더 색상 바꾸기!",
+            attributes: [NSAttributedString.Key.foregroundColor : UIColor.white]
+        )
     }
 }

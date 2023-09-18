@@ -15,9 +15,29 @@ struct Sample {
 
 class CustomTableViewController: UIViewController {
     
-    let tableView = {
-       let view = UITableView()
-        view.rowHeight = UITableView.automaticDimension // 1. automaticDimention
+    // viewDidLoad보다 클로저 구문이 먼저 실행됨
+    // CustomTableViewController 인스턴스 생성 직전에 클로저 구문이 우선 실행
+    
+    // -> 현재 클래스의 인스턴스 생성 전에 클로저가 호출되며 실행되어 버려서 self가 없는 상태이기 때문에 지연 저장 속성을 활용해서 사용해야함. ⭐️
+    lazy var tableView = {
+        let tableView = UITableView()
+        tableView.rowHeight = UITableView.automaticDimension // 1. automaticDimention
+        
+        tableView.delegate = self // self => 자기 자신의 인스턴스
+        tableView.dataSource = self
+        // uinib - xib
+        tableView.register(
+            CustomTableViewCell.self, // 시스템 셀 기반으로 사용
+            forCellReuseIdentifier: "customCell" // -> 스토리보드 할떄는 잘 등록했어야했는데 코드 베이스 일때는 마음대로 정하고 cellForRowAt에서만 잘 맞으면 됨
+        )
+        
+        return tableView
+    }()
+    
+    let imageView = {
+        let view = PosterImageView(frame: .zero)
+        // == CGRect(x: 0, y: 0, width: 0, height: 0)
+        // == (frame: .zero)
         return view
     }()
     
@@ -32,19 +52,16 @@ class CustomTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        // uinib - xib
-        tableView.register(
-            UITableViewCell.self, // 시스템 셀 기반으로 사용
-            forCellReuseIdentifier: "customCell"
-        )
-        
         view.addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            print("constraints")
+            make.size.equalTo(200)
+            make.center.equalTo(view)
         }
         
     }
@@ -57,10 +74,12 @@ extension CustomTableViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell")!
-        cell.textLabel?.text = list[indexPath.row].text
-        cell.textLabel?.textAlignment = .center
-        cell.textLabel?.numberOfLines = list[indexPath.row].isExpand ? 0 : 2
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? CustomTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.label.text = list[indexPath.row].text
+        cell.label.textAlignment = .center
+        cell.label.numberOfLines = list[indexPath.row].isExpand ? 0 : 2
         return cell
     }
     

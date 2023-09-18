@@ -12,7 +12,7 @@ class NetflixSignInViewController: UIViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Netflix"
+        label.text = "NETFLIX"
         label.font = .boldSystemFont(ofSize: 50)
         label.textColor = .systemRed
         return label
@@ -48,16 +48,15 @@ class NetflixSignInViewController: UIViewController {
         return tf
     }()
     
-    let signInTextField = {
-        let tf = UITextField()
-        tf.text = "회원가입"
-        tf.backgroundColor = .white
-        tf.textColor = .black
-        tf.font = .boldSystemFont(ofSize: 13)
-        tf.textAlignment = .center
-        tf.layer.cornerRadius = 8
-        tf.clipsToBounds = true
-        return tf
+    let signInButton = {
+        let view = UIButton()
+        view.setTitleColor(UIColor.black, for: .normal)
+        view.setTitle("회원가입", for: .normal)
+        view.titleLabel?.font = .boldSystemFont(ofSize: 13)
+//        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        return view
     }()
     
     let extraInfoLabel = {
@@ -74,26 +73,65 @@ class NetflixSignInViewController: UIViewController {
         return bnt
     }()
     
+    var viewModel = SigninViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureView()
+        setConstraints()
+        bindData()
+                
+        emailTextField.addTarget(self, action: #selector(emailTextFieldClicked), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(passwordTextFieldClicked), for: .editingChanged)
+        nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldClicked), for: .editingChanged)
+        locationTextField.addTarget(self, action: #selector(locationTextFieldClicked), for: .editingChanged)
+        recommendationTextField.addTarget(self, action: #selector(recommendationTextFieldClicked), for: .editingChanged)
+        signInButton.addTarget(self, action: #selector(signInButtonClicked), for: .touchUpInside)
+    }
+    
+    private func bindData() {
+        viewModel.email.bind { text in
+            print("email bind text: \(text)")
+        }
+        
+        viewModel.password.bind { text in
+            print("password bind text: \(text)")
+        }
+        
+        viewModel.nickname.bind { text in
+            print("nickname bind text: \(text)")
+        }
+        
+        viewModel.location.bind { text in
+            print("location bind text: \(text)")
+        }
+        
+        viewModel.recommendation.bind { text in
+            print("recommendation bind text: \(text)")
+        }
+        
+        viewModel.isVaild.bind { bool in
+            print("isVaild bind: \(bool)")
+            self.signInButton.isEnabled = bool
+            self.signInButton.backgroundColor = bool == true ? .red : .white
+        }
+    }
+    
+    private func configureView() {
         view.addSubview(titleLabel)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(nicknameTextField)
         view.addSubview(locationTextField)
         view.addSubview(recommendationTextField)
-        view.addSubview(signInTextField)
+        view.addSubview(signInButton)
         
         view.addSubview(extraInfoLabel)
         view.addSubview(switchButton)
-                
-        setConstraints()
-
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide).inset(50)
@@ -134,7 +172,7 @@ class NetflixSignInViewController: UIViewController {
             make.width.equalTo(280)
         }
         
-        signInTextField.snp.makeConstraints { make in
+        signInButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(recommendationTextField.snp.bottom).offset(15)
             make.height.equalTo(50)
@@ -142,15 +180,72 @@ class NetflixSignInViewController: UIViewController {
         }
         
         extraInfoLabel.snp.makeConstraints { make in
-            make.top.equalTo(signInTextField.snp.bottom).offset(15)
-            make.leading.equalTo(signInTextField.snp.leading)
+            make.top.equalTo(signInButton.snp.bottom).offset(15)
+            make.leading.equalTo(signInButton.snp.leading)
         }
         
         switchButton.snp.makeConstraints { make in
-            make.top.equalTo(signInTextField.snp.bottom).offset(15)
-            make.trailing.equalTo(signInTextField.snp.trailing)
+            make.top.equalTo(signInButton.snp.bottom).offset(15)
+            make.trailing.equalTo(signInButton.snp.trailing)
         }
         
         
     }
+    
+    @objc func emailTextFieldClicked() {
+        print(#function)
+        viewModel.email.value = emailTextField.text!
+        viewModel.checkValidation()
+        print(emailTextField.text!)
+        
+    }
+    
+    @objc func passwordTextFieldClicked() {
+        print(#function)
+        viewModel.password.value = passwordTextField.text!
+        viewModel.checkValidation()
+        print(passwordTextField.text!)
+        
+    }
+    
+    @objc func nicknameTextFieldClicked() {
+        print(#function)
+        viewModel.nickname.value = nicknameTextField.text!
+        viewModel.checkValidation()
+        print(nicknameTextField.text!)
+        
+    }
+    
+    @objc func locationTextFieldClicked() {
+        print(#function)
+        viewModel.location.value = locationTextField.text!
+        viewModel.checkValidation()
+        print(locationTextField.text!)
+        
+    }
+    
+    @objc func recommendationTextFieldClicked() {
+        print(#function)
+        viewModel.recommendation.value = recommendationTextField.text!
+        viewModel.checkValidation()
+        print(recommendationTextField.text!)
+    }
+    
+    @objc func signInButtonClicked() {
+        if viewModel.isVaild.value {
+            let alert = UIAlertController(title: "회원가입이 완료되었습니다.", message: nil, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(ok)
+            present(alert, animated: true)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

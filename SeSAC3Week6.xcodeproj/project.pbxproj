@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F7D0EBF62AB079FA00F12852 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EBF52AB079FA00F12852 /* Observable.swift */; };
+		F7D0EBF82AB07A7900F12852 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D0EBF72AB07A7900F12852 /* SigninViewModel.swift */; };
 		F7E5C5AD2A9309FD000DA0B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5AC2A9309FD000DA0B9 /* AppDelegate.swift */; };
 		F7E5C5AF2A9309FD000DA0B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5AE2A9309FD000DA0B9 /* SceneDelegate.swift */; };
 		F7E5C5B12A9309FD000DA0B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5B02A9309FD000DA0B9 /* ViewController.swift */; };
@@ -33,9 +35,14 @@
 		F7E5C5FB2A9741F5000DA0B9 /* SignInTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5FA2A9741F5000DA0B9 /* SignInTextField.swift */; };
 		F7E5C5FD2A9763D9000DA0B9 /* MainViewMenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5FC2A9763D9000DA0B9 /* MainViewMenuLabel.swift */; };
 		F7E5C5FF2A976629000DA0B9 /* PreviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C5FE2A976629000DA0B9 /* PreviewImageView.swift */; };
+		F7E5C6012A982B02000DA0B9 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6002A982B02000DA0B9 /* CustomTableViewCell.swift */; };
+		F7E5C6032A9840A4000DA0B9 /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6022A9840A4000DA0B9 /* PosterImageView.swift */; };
+		F7E5C6062A984B48000DA0B9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5C6052A984B48000DA0B9 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F7D0EBF52AB079FA00F12852 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		F7D0EBF72AB07A7900F12852 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		F7E5C5A92A9309FD000DA0B9 /* SeSAC3Week6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC3Week6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E5C5AC2A9309FD000DA0B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7E5C5AE2A9309FD000DA0B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +70,9 @@
 		F7E5C5FA2A9741F5000DA0B9 /* SignInTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTextField.swift; sourceTree = "<group>"; };
 		F7E5C5FC2A9763D9000DA0B9 /* MainViewMenuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuLabel.swift; sourceTree = "<group>"; };
 		F7E5C5FE2A976629000DA0B9 /* PreviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageView.swift; sourceTree = "<group>"; };
+		F7E5C6002A982B02000DA0B9 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		F7E5C6022A9840A4000DA0B9 /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
+		F7E5C6052A984B48000DA0B9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +106,7 @@
 		F7E5C5AB2A9309FD000DA0B9 /* SeSAC3Week6 */ = {
 			isa = PBXGroup;
 			children = (
+				F7E5C6042A984B13000DA0B9 /* Onboarding */,
 				F7E5C5AC2A9309FD000DA0B9 /* AppDelegate.swift */,
 				F7E5C5AE2A9309FD000DA0B9 /* SceneDelegate.swift */,
 				F7E5C5D52A949AA2000DA0B9 /* Assignment */,
@@ -166,6 +177,8 @@
 				F7E5C5EF2A971CE3000DA0B9 /* CustomViewController.swift */,
 				F7E5C5F12A971E99000DA0B9 /* BlackRadiusTextField.swift */,
 				F7E5C5F32A972A13000DA0B9 /* CustomTableViewController.swift */,
+				F7E5C6002A982B02000DA0B9 /* CustomTableViewCell.swift */,
+				F7E5C6022A9840A4000DA0B9 /* PosterImageView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -173,6 +186,8 @@
 		F7E5C5F52A974084000DA0B9 /* Assignment3 */ = {
 			isa = PBXGroup;
 			children = (
+				F7D0EBF52AB079FA00F12852 /* Observable.swift */,
+				F7D0EBF72AB07A7900F12852 /* SigninViewModel.swift */,
 				F7E5C5F62A974159000DA0B9 /* NetflixMainViewController.swift */,
 				F7E5C5F82A974168000DA0B9 /* NetflixSignInViewController.swift */,
 				F7E5C5FA2A9741F5000DA0B9 /* SignInTextField.swift */,
@@ -180,6 +195,14 @@
 				F7E5C5FE2A976629000DA0B9 /* PreviewImageView.swift */,
 			);
 			path = Assignment3;
+			sourceTree = "<group>";
+		};
+		F7E5C6042A984B13000DA0B9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C6052A984B48000DA0B9 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +283,7 @@
 			files = (
 				F7E5C5D22A945CA8000DA0B9 /* TextViewController.swift in Sources */,
 				F7E5C5B12A9309FD000DA0B9 /* ViewController.swift in Sources */,
+				F7D0EBF62AB079FA00F12852 /* Observable.swift in Sources */,
 				F7E5C5FF2A976629000DA0B9 /* PreviewImageView.swift in Sources */,
 				F7E5C5F22A971E99000DA0B9 /* BlackRadiusTextField.swift in Sources */,
 				F7E5C5E82A95E09A000DA0B9 /* Theater.swift in Sources */,
@@ -271,13 +295,17 @@
 				F7E5C5FD2A9763D9000DA0B9 /* MainViewMenuLabel.swift in Sources */,
 				F7E5C5D42A947926000DA0B9 /* LocationViewController.swift in Sources */,
 				F7E5C5ED2A96F144000DA0B9 /* Extension+UIViewController.swift in Sources */,
+				F7E5C6062A984B48000DA0B9 /* OnboardingViewController.swift in Sources */,
 				F7E5C5E52A95D3C7000DA0B9 /* MapKitViewController.swift in Sources */,
+				F7E5C6032A9840A4000DA0B9 /* PosterImageView.swift in Sources */,
 				F7E5C5F92A974168000DA0B9 /* NetflixSignInViewController.swift in Sources */,
 				F7E5C5AF2A9309FD000DA0B9 /* SceneDelegate.swift in Sources */,
 				F7E5C5F72A974159000DA0B9 /* NetflixMainViewController.swift in Sources */,
 				F7E5C5DD2A94AC7D000DA0B9 /* Example3ViewController.swift in Sources */,
+				F7E5C6012A982B02000DA0B9 /* CustomTableViewCell.swift in Sources */,
 				F7E5C5D02A944653000DA0B9 /* SnapKitViewController.swift in Sources */,
 				F7E5C5DB2A94A32C000DA0B9 /* Example2ViewController.swift in Sources */,
+				F7D0EBF82AB07A7900F12852 /* SigninViewModel.swift in Sources */,
 				F7E5C5DF2A94D283000DA0B9 /* PaddingLabel.swift in Sources */,
 				F7E5C5F42A972A13000DA0B9 /* CustomTableViewController.swift in Sources */,
 				F7E5C5F02A971CE3000DA0B9 /* CustomViewController.swift in Sources */,

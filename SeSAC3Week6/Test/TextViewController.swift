@@ -13,7 +13,7 @@ class TextViewController: UIViewController {
     // 방법 3 -> 클로저
     let photoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemMint
+        imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -27,6 +27,15 @@ class TextViewController: UIViewController {
         tf.textAlignment = .center
         tf.font = .boldSystemFont(ofSize: 15)
         return tf
+    }()
+    
+    let pickerButton: UIButton = {
+        let bnt = UIButton()
+        bnt.setTitle("버튼", for: .normal)
+        bnt.backgroundColor = .systemBlue
+        bnt.layer.cornerRadius = 10
+        bnt.clipsToBounds = true
+        return bnt
     }()
     
     //1.
@@ -54,35 +63,14 @@ class TextViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(photoImageView)
-        view.addSubview(titleTextField)
-        
-        let uiSet = [photoImageView, titleTextField]
-        uiSet.forEach { view.addSubview($0) }
+//        view.addSubview(titleTextField)
+        view.addSubview(pickerButton)
         
         setConstraints()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
-        //2. available
-//        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-//            print("갤러리 사용 불가, 사용자에게 트스트/얼럿")
-//            // 갤러리 허용 설정 페이지 이동 로직 작성해야함.
-//            return
-//        }
-//
-//        // 카메러 사진 가져올 떄는 권한 요청 X
-//        // 갤러리 이미지 추가, 삭제, 등은 권한 요청 O
-//        picker.delegate = self
-////        picker.sourceType =
-//        picker.sourceType = .camera // 카메라 // .photoLibrary // 사진
-//        picker.allowsEditing = true // 사진 찍고 -> 수정 허용할지
-        
-//        let picker = UIFontPickerViewController()
-        let picker = UIColorPickerViewController()
-        
-        present(picker, animated: true)
     }
     
     func setConstraints() {
@@ -91,12 +79,41 @@ class TextViewController: UIViewController {
             make.height.equalTo(view).multipliedBy(0.3)
         }
         
-        titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView.snp.bottom).offset(20)
-            make.leadingMargin.equalTo(20) // == make.leading.equalTo(view).inset(20)
-            make.trailingMargin.equalTo(-20)
+//        titleTextField.snp.makeConstraints { make in
+//            make.top.equalTo(photoImageView.snp.bottom).offset(20)
+//            make.leadingMargin.equalTo(20) // == make.leading.equalTo(view).inset(20)
+//            make.trailingMargin.equalTo(-20)
+//            make.height.equalTo(50)
+//        }
+        
+        pickerButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(250)
             make.height.equalTo(50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
         }
+        
+        pickerButton.addTarget(self, action: #selector(pickerButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func pickerButtonClicked() {
+        //2. available
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("갤러리 사용 불가, 사용자에게 트스트/얼럿")
+            // 갤러리 허용 설정 페이지 이동 로직 작성해야함.
+            return
+        }
+
+        // 카메러 사진 가져올 떄는 권한 요청 X
+        // 갤러리 이미지 추가, 삭제, 등은 권한 요청 O
+        picker.delegate = self
+        picker.sourceType = .camera // 카메라 // .photoLibrary // 사진
+        picker.allowsEditing = true // 사진 찍고 -> 수정 허용할지
+        
+//        let picker = UIFontPickerViewController()
+//        let picker = UIColorPickerViewController()
+        
+        present(picker, animated: true)
     }
 }
 
@@ -113,7 +130,11 @@ extension TextViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.photoImageView.image = image
+            
+            DispatchQueue.main.async {
+                self.photoImageView.image = image
+            }
+            
             dismiss(animated: true)
         }
     }

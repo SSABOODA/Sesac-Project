@@ -12,7 +12,7 @@ extension UIViewController {
     enum TransitionStyle {
         case present // 네비게이션 없이 present
         case presentNavigation // 네비게이션 임베드 된 preset
-        case presentFullNavigation // 네비게이션 임베드 된 fullscreen presetn
+        case presentFullNavigation // 네비게이션 임베드 된 fullscreen present
         case push //
     }
     
