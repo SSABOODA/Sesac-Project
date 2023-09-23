@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 import Kingfisher
 
 final class SearchCollectionViewCell: BaseCollectionViewCell {
@@ -54,8 +53,6 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         view.textColor = Constants.BaseColor.text
         return view
     }()
-    
-    var tasks: Results<ProductTable>!
     
     override func configureView() {
         super.configureView()

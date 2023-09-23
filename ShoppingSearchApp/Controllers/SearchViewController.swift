@@ -114,7 +114,7 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let _ = productTableRepository.findFileURL()
+        productTableRepository.findFileURL()
         tasks = productTableRepository.fetch()
     }
 

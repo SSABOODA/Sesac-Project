@@ -31,9 +31,7 @@ final class APIManager {
         let display = Constants.APIParameter.display
         let urlString = apiType.requestURL + searchText + "&sort=\(sort)" + "&display=\(display)" + "&start=\(start)"
         guard let url = URL(string: urlString) else { return }
-        
-        print(url)
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(APIKey.navaerClientId, forHTTPHeaderField: "X-Naver-Client-Id")
@@ -42,7 +40,7 @@ final class APIManager {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { data, response, error in
             guard error == nil else {
-                print("ERROR: \(error)")
+                print("Error: \(error)")
                 completionHandler(.failure(.networkingError))
                 return
             }

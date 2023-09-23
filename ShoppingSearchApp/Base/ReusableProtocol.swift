@@ -12,19 +12,19 @@ protocol ReusableViewProtocol: AnyObject {
 }
 
 extension UIViewController: ReusableViewProtocol {
-    public static var reuseIdentifier: String {
+    internal static var reuseIdentifier: String {
         return String(describing: self)
     }
 }
 
 extension UICollectionViewCell: ReusableViewProtocol {
-    public static var reuseIdentifier: String {
+    internal static var reuseIdentifier: String {
         return String(describing: self)
     }
 }
 
 extension UITableViewCell: ReusableViewProtocol {
-    public static var reuseIdentifier: String {
+    internal static var reuseIdentifier: String {
         return String(describing: self)
     }
 }

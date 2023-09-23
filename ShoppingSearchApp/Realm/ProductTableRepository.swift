@@ -18,10 +18,9 @@ protocol ProductTableRepositoryType: AnyObject {
     func deleteItem(_ item: ProductTable)
 }
 
-class ProductTableRepository: ProductTableRepositoryType {
+final class ProductTableRepository: ProductTableRepositoryType {
     
     static let shared = ProductTableRepository()
-    private init() {}
     
     private let realm = try! Realm()
     
@@ -36,6 +35,7 @@ class ProductTableRepository: ProductTableRepositoryType {
     }
     
     // Document file Path 확인
+    @discardableResult
     func findFileURL() -> URL? {
         guard let fileURL = realm.configuration.fileURL else { return nil }
         print(fileURL)
