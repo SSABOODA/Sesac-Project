@@ -15,15 +15,14 @@
 		F7CCFB5D2A6E1134006C6CC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFB5B2A6E1134006C6CC8 /* LaunchScreen.storyboard */; };
 		F7CCFB652A6E3E60006C6CC8 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFB642A6E3E60006C6CC8 /* TransitionViewController.swift */; };
 		F7CCFBCB2A6EBB6F006C6CC8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBCA2A6EBB6F006C6CC8 /* TestViewController.swift */; };
-		F7CCFBCD2A6F4B4B006C6CC8 /* TapGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBCC2A6F4B4A006C6CC8 /* TapGestureViewController.swift */; };
 		F7CCFBD02A6F5A6D006C6CC8 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = F7CCFBCF2A6F5A6D006C6CC8 /* FSCalendar */; };
 		F7CCFBD32A6F5AB9006C6CC8 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = F7CCFBD22A6F5AB9006C6CC8 /* TextFieldEffects */; };
 		F7CCFBD62A6F5ADF006C6CC8 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F7CCFBD52A6F5ADF006C6CC8 /* IQKeyboardManagerSwift */; };
 		F7CCFBD92A6F5B0A006C6CC8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F7CCFBD82A6F5B0A006C6CC8 /* Kingfisher */; };
-		F7CCFBDB2A6F6E05006C6CC8 /* Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CCFBDA2A6F6E05006C6CC8 /* Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png */; };
 		F7CCFBDD2A6F9359006C6CC8 /* TestEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBDC2A6F9359006C6CC8 /* TestEnum.swift */; };
 		F7CCFBDF2A6F98EA006C6CC8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBDE2A6F98EA006C6CC8 /* CalendarViewController.swift */; };
 		F7CCFBE12A6FA24E006C6CC8 /* LifeCycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFBE02A6FA24E006C6CC8 /* LifeCycleViewController.swift */; };
+		F7CCFC0D2A70A3C0006C6CC8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCFC0C2A70A3C0006C6CC8 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +36,10 @@
 		F7CCFB5E2A6E1134006C6CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7CCFB642A6E3E60006C6CC8 /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		F7CCFBCA2A6EBB6F006C6CC8 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		F7CCFBCC2A6F4B4A006C6CC8 /* TapGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureViewController.swift; sourceTree = "<group>"; };
-		F7CCFBDA2A6F6E05006C6CC8 /* Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png"; sourceTree = "<group>"; };
 		F7CCFBDC2A6F9359006C6CC8 /* TestEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnum.swift; sourceTree = "<group>"; };
 		F7CCFBDE2A6F98EA006C6CC8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F7CCFBE02A6FA24E006C6CC8 /* LifeCycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleViewController.swift; sourceTree = "<group>"; };
+		F7CCFC0C2A70A3C0006C6CC8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,16 +76,15 @@
 		F7CCFB4F2A6E1134006C6CC8 /* SeSAC3Week2 */ = {
 			isa = PBXGroup;
 			children = (
-				F7CCFBDA2A6F6E05006C6CC8 /* Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png */,
 				F7CCFB502A6E1134006C6CC8 /* AppDelegate.swift */,
 				F7CCFB522A6E1134006C6CC8 /* SceneDelegate.swift */,
 				F7CCFB542A6E1134006C6CC8 /* ViewController.swift */,
 				F7CCFB642A6E3E60006C6CC8 /* TransitionViewController.swift */,
 				F7CCFBDC2A6F9359006C6CC8 /* TestEnum.swift */,
 				F7CCFB562A6E1134006C6CC8 /* Main.storyboard */,
+				F7CCFC0C2A70A3C0006C6CC8 /* SignUpViewController.swift */,
 				F7CCFBE02A6FA24E006C6CC8 /* LifeCycleViewController.swift */,
 				F7CCFBDE2A6F98EA006C6CC8 /* CalendarViewController.swift */,
-				F7CCFBCC2A6F4B4A006C6CC8 /* TapGestureViewController.swift */,
 				F7CCFBCA2A6EBB6F006C6CC8 /* TestViewController.swift */,
 				F7CCFB592A6E1134006C6CC8 /* Assets.xcassets */,
 				F7CCFB5B2A6E1134006C6CC8 /* LaunchScreen.storyboard */,
@@ -166,7 +163,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7CCFBDB2A6F6E05006C6CC8 /* Simulator Screenshot - iPhone 14 Pro - 2023-07-24 at 14.56.57.png in Resources */,
 				F7CCFB5D2A6E1134006C6CC8 /* LaunchScreen.storyboard in Resources */,
 				F7CCFB5A2A6E1134006C6CC8 /* Assets.xcassets in Resources */,
 				F7CCFB582A6E1134006C6CC8 /* Main.storyboard in Resources */,
@@ -182,9 +178,9 @@
 			files = (
 				F7CCFBE12A6FA24E006C6CC8 /* LifeCycleViewController.swift in Sources */,
 				F7CCFBDF2A6F98EA006C6CC8 /* CalendarViewController.swift in Sources */,
-				F7CCFBCD2A6F4B4B006C6CC8 /* TapGestureViewController.swift in Sources */,
 				F7CCFBCB2A6EBB6F006C6CC8 /* TestViewController.swift in Sources */,
 				F7CCFB552A6E1134006C6CC8 /* ViewController.swift in Sources */,
+				F7CCFC0D2A70A3C0006C6CC8 /* SignUpViewController.swift in Sources */,
 				F7CCFB512A6E1134006C6CC8 /* AppDelegate.swift in Sources */,
 				F7CCFB532A6E1134006C6CC8 /* SceneDelegate.swift in Sources */,
 				F7CCFB652A6E3E60006C6CC8 /* TransitionViewController.swift in Sources */,

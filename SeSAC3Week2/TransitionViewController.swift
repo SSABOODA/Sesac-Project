@@ -17,6 +17,8 @@ class TransitionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("폴더 이동 테스트")
+        
         // 100M라면?....
         setImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrCa0fKRwgS8a5_2ftkdYuuRdRIpzxC8AFxQ&usqp=CAU")
     }
