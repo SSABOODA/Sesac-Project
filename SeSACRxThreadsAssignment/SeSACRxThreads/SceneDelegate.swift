@@ -6,6 +6,7 @@
 //
 
 // 과제
+// Git 추적 테스트
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
