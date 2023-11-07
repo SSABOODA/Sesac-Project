@@ -22,7 +22,10 @@
 		F70959A12AF918A600F0218B /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959A02AF918A600F0218B /* SearchDetailViewController.swift */; };
 		F70959A52AF9196000F0218B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959A42AF9196000F0218B /* SearchViewModel.swift */; };
 		F70959A82AF91B8900F0218B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F70959A72AF91B8900F0218B /* Kingfisher */; };
-		F70959AA2AF92A5700F0218B /* SearchTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959A92AF92A5700F0218B /* SearchTableFooterView.swift */; };
+		F70959B02AFA8E6600F0218B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959AF2AFA8E6600F0218B /* SecondViewController.swift */; };
+		F70959B22AFA8E7800F0218B /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959B12AFA8E7800F0218B /* ThirdViewController.swift */; };
+		F70959B42AFA8E9800F0218B /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959B32AFA8E9800F0218B /* FourthViewController.swift */; };
+		F70959B62AFA8EB700F0218B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959B52AFA8EB700F0218B /* FirstViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,10 @@
 		F709599E2AF9180B00F0218B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		F70959A02AF918A600F0218B /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		F70959A42AF9196000F0218B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		F70959A92AF92A5700F0218B /* SearchTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableFooterView.swift; sourceTree = "<group>"; };
+		F70959AF2AFA8E6600F0218B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F70959B12AFA8E7800F0218B /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		F70959B32AFA8E9800F0218B /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		F70959B52AFA8EB700F0218B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,10 @@
 			children = (
 				F70959A32AF9194C00F0218B /* Detail */,
 				F70959A22AF9194600F0218B /* Main */,
+				F70959AF2AFA8E6600F0218B /* SecondViewController.swift */,
+				F70959B12AFA8E7800F0218B /* ThirdViewController.swift */,
+				F70959B32AFA8E9800F0218B /* FourthViewController.swift */,
+				F70959B52AFA8EB700F0218B /* FirstViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -112,7 +122,6 @@
 				F70959802AF913ED00F0218B /* SearchViewController.swift */,
 				F709599E2AF9180B00F0218B /* SearchTableViewCell.swift */,
 				F70959A42AF9196000F0218B /* SearchViewModel.swift */,
-				F70959A92AF92A5700F0218B /* SearchTableFooterView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -209,8 +218,11 @@
 			files = (
 				F70959A12AF918A600F0218B /* SearchDetailViewController.swift in Sources */,
 				F70959812AF913ED00F0218B /* SearchViewController.swift in Sources */,
-				F70959AA2AF92A5700F0218B /* SearchTableFooterView.swift in Sources */,
+				F70959B42AFA8E9800F0218B /* FourthViewController.swift in Sources */,
+				F70959B62AFA8EB700F0218B /* FirstViewController.swift in Sources */,
+				F70959B22AFA8E7800F0218B /* ThirdViewController.swift in Sources */,
 				F70959A52AF9196000F0218B /* SearchViewModel.swift in Sources */,
+				F70959B02AFA8E6600F0218B /* SecondViewController.swift in Sources */,
 				F709597D2AF913ED00F0218B /* AppDelegate.swift in Sources */,
 				F709597F2AF913ED00F0218B /* SceneDelegate.swift in Sources */,
 				F709599F2AF9180B00F0218B /* SearchTableViewCell.swift in Sources */,

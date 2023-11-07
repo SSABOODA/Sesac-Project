@@ -25,6 +25,8 @@ final class SearchTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         return imageView
     }()
     
@@ -36,6 +38,85 @@ final class SearchTableViewCell: UITableViewCell {
         button.backgroundColor = .lightGray
         button.layer.cornerRadius = 16
         return button
+    }()
+    
+    let starImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "star.fill")
+        return view
+    }()
+    
+    let rateLabel = {
+        let lb = UILabel()
+        lb.text = "4.7"
+        lb.textColor = .darkGray
+        return lb
+    }()
+    
+    let appCompanyNameLabel = {
+        let lb = UILabel()
+        lb.text = "Kakao Mobility Corp."
+        lb.textColor = .darkGray
+        lb.textAlignment = .center
+        lb.font = UIFont.systemFont(ofSize: 13)
+        return lb
+    }()
+    
+    let appCategoryLabel = {
+        let lb = UILabel()
+        lb.text = "여행"
+        lb.textColor = .darkGray
+        lb.font = UIFont.systemFont(ofSize: 13)
+        return lb
+    }()
+    
+    lazy var rateStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            starImageView,
+            rateLabel
+        ])
+        sv.axis = .horizontal
+        sv.distribution = .fillEqually
+        sv.spacing = 5
+        return sv
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            rateStackView,
+            appCompanyNameLabel,
+            appCategoryLabel
+        ])
+        sv.axis = .horizontal
+        sv.distribution = .fill
+        sv.alignment = .center
+        sv.spacing = 10
+        return sv
+    }()
+    
+    let screenshot1 = {
+        let v = UIImageView()
+        return v
+    }()
+    let screenshot2 = {
+        let v = UIImageView()
+        return v
+    }()
+    let screenshot3 = {
+        let v = UIImageView()
+        return v
+    }()
+    
+    lazy var screenshotStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            screenshot1,
+            screenshot2,
+            screenshot3
+        ])
+        sv.axis = .horizontal
+        sv.spacing = 10
+        sv.distribution = .fillEqually
+        return sv
     }()
     
     var disposeBag = DisposeBag()
@@ -59,9 +140,15 @@ final class SearchTableViewCell: UITableViewCell {
         contentView.addSubview(appNameLabel)
         contentView.addSubview(appIconImageView)
         contentView.addSubview(downloadButton)
+        contentView.addSubview(stackView)
+        contentView.addSubview(screenshotStackView)
         
+        stackView.addSubview(rateStackView)
+        stackView.addSubview(appCompanyNameLabel)
+        stackView.addSubview(appCategoryLabel)
+
         appIconImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().inset(10)
             $0.leading.equalTo(20)
             $0.size.equalTo(60)
         }
@@ -77,6 +164,23 @@ final class SearchTableViewCell: UITableViewCell {
             $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(32)
             $0.width.equalTo(72)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(appIconImageView.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(25)
+        }
+        
+        rateStackView.snp.makeConstraints { make in
+            make.width.equalTo(60)
+        }
+        
+        screenshotStackView.backgroundColor = .systemMint
+        screenshotStackView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview()
         }
     }
 }

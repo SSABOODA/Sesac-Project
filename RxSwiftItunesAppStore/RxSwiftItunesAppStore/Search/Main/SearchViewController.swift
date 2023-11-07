@@ -16,9 +16,8 @@ final class SearchViewController: UIViewController {
     private let tableView: UITableView = {
         let view = UITableView()
         view.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
-        view.register(WeatherTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: WeatherTableViewHeaderView.headerViewID)
         view.backgroundColor = .white
-        view.rowHeight = 130
+        view.rowHeight = UIScreen.main.bounds.height * 0.38
         view.separatorStyle = .none
         return view
     }()
@@ -64,10 +63,12 @@ final class SearchViewController: UIViewController {
                 owner.navigationController?.pushViewController(SearchDetailViewController(), animated: true)
             }
             .disposed(by: disposeBag)
+    
     }
     
     private func bindSearchBar() {
         searchBar.rx.searchButtonClicked
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(searchBar.rx.text.orEmpty, resultSelector: { _, text in
                 return text
             })
@@ -94,41 +95,23 @@ final class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: WeatherTableViewHeaderView.headerViewID)
-                as? WeatherTableViewHeaderView else { return UIView() }
-        return header
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-}
 
 extension SearchViewController {
     private func configureView() {
         view.backgroundColor = .white
         
         view.addSubview(searchBar)
-        searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.horizontalEdges.equalToSuperview()
-        }
-        
         view.addSubview(tableView)
         tableView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom)
-            $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
     }
 
     private func setNavigationBar() {
         title = "검색"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationItem.titleView = searchBar
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.titleView = searchBar
     }
 }
 

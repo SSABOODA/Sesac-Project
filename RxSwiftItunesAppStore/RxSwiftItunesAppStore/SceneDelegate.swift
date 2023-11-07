@@ -10,8 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -19,10 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        let vc = SearchViewController()
-        let rootViewController = UINavigationController(rootViewController: vc)
-         
-        window?.rootViewController = rootViewController
+//        let vc = SearchViewController()
+//        let rootViewController = UINavigationController(rootViewController: vc)
+        
+        let tabbarVC = makeTabBarController()
+        window?.rootViewController = tabbarVC
         window?.makeKeyAndVisible()
     }
 
@@ -57,3 +57,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+
+extension SceneDelegate {
+    func makeTabBarController() -> UITabBarController {
+        let tabBarVC = UITabBarController()
+                
+        // 첫번째 화면은 네비게이션컨트롤러로 만들기 (기본루트뷰 설정)
+        let vc1 = UINavigationController(rootViewController: FirstViewController())
+        let vc2 = SecondViewController()
+        let vc3 = ThirdViewController()
+        let vc4 = FourthViewController()
+        let vc5 = UINavigationController(rootViewController: SearchViewController())
+        
+        // 탭바 이름들 설정
+        vc1.title = "투데이"
+        vc2.title = "게임"
+        vc3.title = "앱"
+        vc4.title = "아케이드"
+        vc5.title = "검색"
+        
+        // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
+        tabBarVC.setViewControllers([vc1, vc2, vc3, vc4, vc5], animated: false)
+        tabBarVC.modalPresentationStyle = .fullScreen
+        tabBarVC.tabBar.backgroundColor = .white
+        
+        // 탭바 이미지 설정 (이미지는 애플이 제공하는 것으로 사용)
+        guard let items = tabBarVC.tabBar.items else { return UITabBarController() }
+        items[0].image = UIImage(systemName: "book")
+        items[1].image = UIImage(systemName: "gamecontroller")
+        items[2].image = UIImage(systemName: "rectangle.fill.on.rectangle.fill")
+        items[3].image = UIImage(systemName: "star")
+        items[4].image = UIImage(systemName: "magnifyingglass")
+        
+        return tabBarVC
+    }
+}

@@ -8,29 +8,49 @@
 import Foundation
 import RxSwift
 
-final class SearchViewModel {
+protocol ViewModelType {
+    associatedtype Input
+    associatedtype Output
+    
+    var disposeBag: DisposeBag { get set }
+    
+    func transform(input: Input) -> Output
+}
+
+final class SearchViewModel: ViewModelType {
+    struct Input {
+            let inputMessage: Observable<String>
+        }
+        
+    struct Output {
+        let outputMessage: Observable<String>
+    }
+    
+    var disposeBag = DisposeBag()
+    
+    func transform(input: Input) -> Output {
+        let a = Observable.of("")
+        return Output(
+            outputMessage: a
+        )
+    }
+    
     var data: [AppInfo] = []
     lazy var items = BehaviorSubject(value: data)
     
     var searchQuery = BehaviorSubject(value: "")
-    let disposeBag = DisposeBag()
+    
+    
+    
     
     func bindAPIService() {
         searchQuery
-            .subscribe(with: self) { owner, text in
-                print("searchQuery: \(text)")
-                BasicAPIManager.shared
-                    .fetchData(query: text)
-                    .asDriver(
-                        onErrorJustReturn: SearchAppModel(resultCount: 0, results: [])
-                    )
-                    .drive(with: self) { owner, result in
-//                        dump(result)
-                        owner.items.onNext(result.results)
-                    }
-                    .disposed(by: owner.disposeBag)
+            .flatMap {
+                BasicAPIManager.shared.fetchData(query: $0)
+            }
+            .subscribe(with: self) { owner, data in
+                owner.items.onNext(data.results)
             }
             .disposed(by: disposeBag)
-    
     }
 }
