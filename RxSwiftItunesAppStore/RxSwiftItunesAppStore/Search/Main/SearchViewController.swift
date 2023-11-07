@@ -46,9 +46,27 @@ final class SearchViewController: UIViewController {
         viewModel.items
             .bind(to: tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { (row, element, cell) in
                 cell.appNameLabel.text = element.trackName
+                
                 if let imageURL = URL(string: element.artworkUrl512) {
                     cell.appIconImageView.kf.setImage(with: imageURL)
                 }
+                
+                if let imageURL = URL(string: element.screenshotUrls[0]) {
+                    cell.screenshot1.kf.setImage(with: imageURL)
+                }
+                
+                if let imageURL = URL(string: element.screenshotUrls[1]) {
+                    cell.screenshot2.kf.setImage(with: imageURL)
+                }
+                
+                if let imageURL = URL(string: element.screenshotUrls[2]) {
+                    cell.screenshot3.kf.setImage(with: imageURL)
+                }
+                
+                cell.appCompanyNameLabel.text = element.sellerName
+                cell.appCategoryLabel.text = element.genres[0]
+                cell.rateLabel.text = String(round(element.averageUserRating*10)/10)
+
                 cell.downloadButton.rx.tap
                     .subscribe(with: self) { owner, _ in
                         print("downloadButton tapped")

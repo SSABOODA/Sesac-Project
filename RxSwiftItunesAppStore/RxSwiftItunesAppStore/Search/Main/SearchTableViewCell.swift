@@ -96,14 +96,32 @@ final class SearchTableViewCell: UITableViewCell {
     
     let screenshot1 = {
         let v = UIImageView()
+        v.layer.cornerRadius = 10
+        v.clipsToBounds = true
+        v.layer.borderWidth = 0.5
+        v.layer.borderColor = UIColor.lightGray.cgColor
+        v.backgroundColor = .systemMint
+        v.contentMode = .scaleToFill
         return v
     }()
     let screenshot2 = {
         let v = UIImageView()
+        v.layer.cornerRadius = 10
+        v.clipsToBounds = true
+        v.layer.borderWidth = 0.5
+        v.layer.borderColor = UIColor.lightGray.cgColor
+        v.backgroundColor = .systemMint
+        v.contentMode = .scaleToFill
         return v
     }()
     let screenshot3 = {
         let v = UIImageView()
+        v.layer.cornerRadius = 10
+        v.clipsToBounds = true
+        v.layer.borderWidth = 0.5
+        v.layer.borderColor = UIColor.lightGray.cgColor
+        v.backgroundColor = .systemMint
+        v.contentMode = .scaleToFill
         return v
     }()
     
@@ -176,7 +194,6 @@ final class SearchTableViewCell: UITableViewCell {
             make.width.equalTo(60)
         }
         
-        screenshotStackView.backgroundColor = .systemMint
         screenshotStackView.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview().inset(20)

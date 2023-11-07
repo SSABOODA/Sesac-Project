@@ -40,15 +40,13 @@ final class SearchViewModel: ViewModelType {
     
     var searchQuery = BehaviorSubject(value: "")
     
-    
-    
-    
     func bindAPIService() {
         searchQuery
             .flatMap {
                 BasicAPIManager.shared.fetchData(query: $0)
             }
             .subscribe(with: self) { owner, data in
+                dump(data)
                 owner.items.onNext(data.results)
             }
             .disposed(by: disposeBag)
