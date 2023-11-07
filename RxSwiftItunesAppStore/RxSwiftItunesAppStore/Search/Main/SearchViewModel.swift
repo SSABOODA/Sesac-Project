@@ -25,7 +25,7 @@ final class SearchViewModel {
                         onErrorJustReturn: SearchAppModel(resultCount: 0, results: [])
                     )
                     .drive(with: self) { owner, result in
-        //                dump(result)
+//                        dump(result)
                         owner.items.onNext(result.results)
                     }
                     .disposed(by: owner.disposeBag)

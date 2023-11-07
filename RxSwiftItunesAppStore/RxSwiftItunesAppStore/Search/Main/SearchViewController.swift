@@ -22,7 +22,7 @@ final class SearchViewController: UIViewController {
         view.separatorStyle = .none
         return view
     }()
-
+    
     let searchBar = UISearchBar()
     let disposeBag = DisposeBag()
     let viewModel = SearchViewModel()
