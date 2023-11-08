@@ -95,33 +95,17 @@ final class SearchTableViewCell: UITableViewCell {
     }()
     
     let screenshot1 = {
-        let v = UIImageView()
-        v.layer.cornerRadius = 10
-        v.clipsToBounds = true
-        v.layer.borderWidth = 0.5
-        v.layer.borderColor = UIColor.lightGray.cgColor
-        v.backgroundColor = .systemMint
-        v.contentMode = .scaleToFill
+        let v = AppScreenshotImageView(frame: .zero)
         return v
     }()
+    
     let screenshot2 = {
-        let v = UIImageView()
-        v.layer.cornerRadius = 10
-        v.clipsToBounds = true
-        v.layer.borderWidth = 0.5
-        v.layer.borderColor = UIColor.lightGray.cgColor
-        v.backgroundColor = .systemMint
-        v.contentMode = .scaleToFill
+        let v = AppScreenshotImageView(frame: .zero)
         return v
     }()
+    
     let screenshot3 = {
-        let v = UIImageView()
-        v.layer.cornerRadius = 10
-        v.clipsToBounds = true
-        v.layer.borderWidth = 0.5
-        v.layer.borderColor = UIColor.lightGray.cgColor
-        v.backgroundColor = .systemMint
-        v.contentMode = .scaleToFill
+        let v = AppScreenshotImageView(frame: .zero)
         return v
     }()
     

@@ -76,12 +76,15 @@ final class SearchViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        tableView.rx.itemSelected
-            .bind(with: self) { owner, indexPath in
-                owner.navigationController?.pushViewController(SearchDetailViewController(), animated: true)
+        Observable.zip(tableView.rx.modelSelected(AppInfo.self), tableView.rx.itemSelected)
+            .bind(with: self) { owner, value in
+                
+                let detailVC = SearchDetailViewController()
+                detailVC.appInfo = value.0
+                owner.navigationController?.pushViewController(detailVC, animated: true)
             }
             .disposed(by: disposeBag)
-    
+
     }
     
     private func bindSearchBar() {

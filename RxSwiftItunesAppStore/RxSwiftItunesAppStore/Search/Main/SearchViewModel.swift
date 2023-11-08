@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol ViewModelType {
     associatedtype Input
@@ -29,9 +30,8 @@ final class SearchViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
     func transform(input: Input) -> Output {
-        let a = Observable.of("")
         return Output(
-            outputMessage: a
+            outputMessage: Observable.of("")
         )
     }
     
@@ -46,9 +46,11 @@ final class SearchViewModel: ViewModelType {
                 BasicAPIManager.shared.fetchData(query: $0)
             }
             .subscribe(with: self) { owner, data in
-                dump(data)
+//                dump(data)
                 owner.items.onNext(data.results)
             }
             .disposed(by: disposeBag)
     }
+
+    
 }
