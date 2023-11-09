@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70959CF2AFCE66500F0218B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959CE2AFCE66500F0218B /* APIKey.swift */; };
 		F7C6F1A52A862307006E19CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1A42A862307006E19CD /* AppDelegate.swift */; };
 		F7C6F1A72A862307006E19CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1A62A862307006E19CD /* SceneDelegate.swift */; };
 		F7C6F1A92A862307006E19CD /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1A82A862307006E19CD /* TrendViewController.swift */; };
@@ -16,7 +17,6 @@
 		F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */; };
 		F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */; };
 		F7C6F1C52A864447006E19CD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F7C6F1C42A864447006E19CD /* .gitignore */; };
-		F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1C62A864468006E19CD /* APIKey.swift */; };
 		F7C6F1CA2A864502006E19CD /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6F1C92A864502006E19CD /* TMDBAPIManager.swift */; };
 		F7C6F1CD2A864541006E19CD /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F7C6F1CC2A864541006E19CD /* SwiftyJSON */; };
 		F7C6F1D02A864549006E19CD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7C6F1CF2A864549006E19CD /* Alamofire */; };
@@ -62,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F70959CE2AFCE66500F0218B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		F7C6F1A12A862307006E19CD /* TMDBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C6F1A42A862307006E19CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7C6F1A62A862307006E19CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		F7C6F1BC2A862AA4006E19CD /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
 		F7C6F1C42A864447006E19CD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		F7C6F1C62A864468006E19CD /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		F7C6F1C92A864502006E19CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		F7C6F1D12A864620006E19CD /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		F7C6F1D42A86466A006E19CD /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
@@ -132,6 +132,7 @@
 		F7C6F1982A862307006E19CD = {
 			isa = PBXGroup;
 			children = (
+				F7C6F1AD2A862308006E19CD /* Assets.xcassets */,
 				F7C6F1A32A862307006E19CD /* TMDBProject */,
 				F7C6F1A22A862307006E19CD /* Products */,
 			);
@@ -158,7 +159,6 @@
 				F7C6F1BA2A86234C006E19CD /* Models */,
 				F7C6F1B92A862344006E19CD /* Views */,
 				F7C6F1B82A86233B006E19CD /* Controllers */,
-				F7C6F1AD2A862308006E19CD /* Assets.xcassets */,
 				F7C6F1B22A862308006E19CD /* Info.plist */,
 				F7C6F1C42A864447006E19CD /* .gitignore */,
 			);
@@ -230,9 +230,9 @@
 		F7C6F1C82A8644CC006E19CD /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				F7C6F1C62A864468006E19CD /* APIKey.swift */,
 				F7C6F1C92A864502006E19CD /* TMDBAPIManager.swift */,
 				F7C6F1D12A864620006E19CD /* EndPoint.swift */,
+				F70959CE2AFCE66500F0218B /* APIKey.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -363,7 +363,6 @@
 				F7E5C5992A90AF3C000DA0B9 /* CollectionViewProtocol.swift in Sources */,
 				F7E5C59B2A90BC5A000DA0B9 /* SimilarMovie.swift in Sources */,
 				F7D5C11C2AA1CD7700E4F22C /* TrendMovieTableViewCell.swift in Sources */,
-				F7C6F1C72A864468006E19CD /* APIKey.swift in Sources */,
 				F7E5C53B2A878F14000DA0B9 /* Extension+Layer.swift in Sources */,
 				F7C6F1D52A86466A006E19CD /* Extension+URL.swift in Sources */,
 				F7E5C6972A9DD047000DA0B9 /* ProfileViewController.swift in Sources */,
@@ -389,6 +388,7 @@
 				F7E5C59D2A90BC69000DA0B9 /* YoutubeVideo.swift in Sources */,
 				F7C6F1BF2A862CBF006E19CD /* TrendTableViewCell.swift in Sources */,
 				F7C6F1BD2A862AA4006E19CD /* ReusableViewProtocol.swift in Sources */,
+				F70959CF2AFCE66500F0218B /* APIKey.swift in Sources */,
 				F7C6F1A52A862307006E19CD /* AppDelegate.swift in Sources */,
 				F7C6F1A72A862307006E19CD /* SceneDelegate.swift in Sources */,
 				F7E5C5932A90AC97000DA0B9 /* SimilarViewController.swift in Sources */,

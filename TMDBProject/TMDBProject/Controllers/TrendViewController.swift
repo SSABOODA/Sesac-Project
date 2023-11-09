@@ -18,7 +18,6 @@ class TrendViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
-//        tableView.register(TrendTableViewCell.self, forCellReuseIdentifier: "TrendCell")
         tableView.register(
             TrendMovieTableViewCell.self,
             forCellReuseIdentifier: TrendViewController.TrendMovieCellIdentifier
