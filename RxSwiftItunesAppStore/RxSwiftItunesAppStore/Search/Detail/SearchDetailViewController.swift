@@ -84,6 +84,12 @@ final class SearchDetailViewController: UIViewController {
         collectionViewLayout: layout()
     )
     
+    let descLabel = {
+        let lb = UILabel()
+        lb.numberOfLines = 0
+        return lb
+    }()
+    
     var viewModel = SearchDetailViewModel()
     var appInfo: ControlEvent<AppInfo>.Element?
     let disposeBag = DisposeBag()
@@ -118,6 +124,7 @@ final class SearchDetailViewController: UIViewController {
         appNameLabel.text = info.trackName
         appCompanyNameLabel.text = info.sellerName
         releaseInfoLabel.text = info.releaseNotes
+        descLabel.text = info.description
     }
     
     private func configureHierarchy() {
@@ -133,6 +140,7 @@ final class SearchDetailViewController: UIViewController {
         contentView.addSubview(releaseView)
         contentView.addSubview(releaseInfoLabel)
         contentView.addSubview(collectionView)
+        contentView.addSubview(descLabel)
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -184,12 +192,21 @@ final class SearchDetailViewController: UIViewController {
             SearchDetailScreenshotCollectionViewCell.self,
             forCellWithReuseIdentifier: SearchDetailScreenshotCollectionViewCell.description()
         )
+        
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(releaseInfoLabel.snp.bottom).inset(-10)
             make.horizontalEdges.equalToSuperview().inset(10)
             make.height.equalTo(400)
         }
+        
+        descLabel.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).inset(-10)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.bottom.equalTo(contentView.snp.bottom)
+        }
+        
     }
+    
 }
 
 extension SearchDetailViewController {
