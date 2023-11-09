@@ -66,6 +66,19 @@ final class SearchDetailViewController: UIViewController {
         return button
     }()
     
+    let releaseView: UIView = {
+        let v = UIView()
+        return v
+    }()
+    
+    let releaseInfoLabel: UILabel = {
+        let l = UILabel()
+        l.numberOfLines = 0
+        return l
+    }()
+    
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    
     var viewModel = SearchDetailViewModel()
     var appInfo: ControlEvent<AppInfo>.Element?
     
@@ -85,7 +98,7 @@ final class SearchDetailViewController: UIViewController {
         
         appNameLabel.text = info.trackName
         appCompanyNameLabel.text = info.sellerName
-        
+        releaseInfoLabel.text = info.releaseNotes
     }
     
     private func configureHierarchy() {
@@ -97,6 +110,9 @@ final class SearchDetailViewController: UIViewController {
         appInfoView.addSubview(appNameLabel)
         appInfoView.addSubview(appCompanyNameLabel)
         appInfoView.addSubview(downloadButton)
+        
+        contentView.addSubview(releaseView)
+        releaseView.addSubview(releaseInfoLabel)
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -139,8 +155,24 @@ final class SearchDetailViewController: UIViewController {
             make.width.equalTo(72)
         }
         
+        releaseView.backgroundColor = .systemPink
+        releaseView.snp.makeConstraints { make in
+            make.top.equalTo(appInfoView.snp.bottom)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(300)
+        }
         
+        releaseInfoLabel.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalToSuperview().inset(10)
+        }
     }
-    
-    
+}
+
+extension SearchDetailViewController {
+    static func layout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 100, height: 40)
+        layout.scrollDirection = .horizontal
+        return layout
+    }
 }
