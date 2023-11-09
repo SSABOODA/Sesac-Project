@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70959D12AFCE8EA00F0218B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70959D02AFCE8EA00F0218B /* APIKey.swift */; };
 		F797E43F2AA9AA1E00B4D8A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E43E2AA9AA1E00B4D8A9 /* AppDelegate.swift */; };
 		F797E4412AA9AA1E00B4D8A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4402AA9AA1E00B4D8A9 /* SceneDelegate.swift */; };
 		F797E4432AA9AA1E00B4D8A9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4422AA9AA1E00B4D8A9 /* SearchViewController.swift */; };
@@ -27,7 +28,6 @@
 		F797E47F2AA9DC8800B4D8A9 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E47E2AA9DC8800B4D8A9 /* FilterButton.swift */; };
 		F797E4812AA9E72C00B4D8A9 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4802AA9E72C00B4D8A9 /* URL+Extension.swift */; };
 		F797E4832AA9E75C00B4D8A9 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4822AA9E75C00B4D8A9 /* EndPoint.swift */; };
-		F797E4872AA9E95100B4D8A9 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4862AA9E95100B4D8A9 /* APIKey.swift */; };
 		F797E48C2AA9EB9500B4D8A9 /* ShoppingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E48B2AA9EB9500B4D8A9 /* ShoppingModel.swift */; };
 		F797E4932AAAEC1600B4D8A9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4922AAAEC1600B4D8A9 /* UIViewController+Extension.swift */; };
 		F797E4952AAB0D6B00B4D8A9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F797E4942AAB0D6B00B4D8A9 /* String+Extension.swift */; };
@@ -49,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F70959D02AFCE8EA00F0218B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		F797E43B2AA9AA1E00B4D8A9 /* ShoppingSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F797E43E2AA9AA1E00B4D8A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F797E4402AA9AA1E00B4D8A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		F797E47E2AA9DC8800B4D8A9 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		F797E4802AA9E72C00B4D8A9 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		F797E4822AA9E75C00B4D8A9 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		F797E4862AA9E95100B4D8A9 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		F797E48B2AA9EB9500B4D8A9 /* ShoppingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingModel.swift; sourceTree = "<group>"; };
 		F797E4922AAAEC1600B4D8A9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		F797E4942AAB0D6B00B4D8A9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -167,8 +167,8 @@
 				F797E4692AA9B04700B4D8A9 /* APIManager.swift */,
 				F797E4802AA9E72C00B4D8A9 /* URL+Extension.swift */,
 				F797E4822AA9E75C00B4D8A9 /* EndPoint.swift */,
-				F797E4862AA9E95100B4D8A9 /* APIKey.swift */,
 				F7D132B82AB1DC730028D6E5 /* NetworkMonitor.swift */,
+				F70959D02AFCE8EA00F0218B /* APIKey.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -344,8 +344,8 @@
 				F797E4412AA9AA1E00B4D8A9 /* SceneDelegate.swift in Sources */,
 				F7D0EBD22AAF130400F12852 /* APIParameter.swift in Sources */,
 				F797E4762AA9BA4300B4D8A9 /* Text.swift in Sources */,
+				F70959D12AFCE8EA00F0218B /* APIKey.swift in Sources */,
 				F7D0EB952AACD50900F12852 /* SearchEmptyView.swift in Sources */,
-				F797E4872AA9E95100B4D8A9 /* APIKey.swift in Sources */,
 				F797E49A2AAB376100B4D8A9 /* ProductTableRepository.swift in Sources */,
 				F797E46C2AA9B07400B4D8A9 /* Color.swift in Sources */,
 			);

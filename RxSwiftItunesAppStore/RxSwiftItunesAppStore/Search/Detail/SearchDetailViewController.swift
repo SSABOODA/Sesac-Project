@@ -77,17 +77,36 @@ final class SearchDetailViewController: UIViewController {
         return l
     }()
     
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    let tableView = UITableView()
+    
+    let collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: layout()
+    )
     
     var viewModel = SearchDetailViewModel()
     var appInfo: ControlEvent<AppInfo>.Element?
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureHierarchy()
         configureView()
-//        print(appInfo)
+        bind()
+    }
+    
+    private func bind() {
+        guard let info = appInfo else { return }
+        
+        Observable.of(info.screenshotUrls).bind(to: collectionView.rx.items(cellIdentifier: SearchDetailScreenshotCollectionViewCell.description(), cellType: SearchDetailScreenshotCollectionViewCell.self)) { index, url, cell in
+
+            if let imageURL = URL(string: url) {
+                print(imageURL)
+                cell.imageView.kf.setImage(with: imageURL)
+            }
+        }
+        .disposed(by: disposeBag)
     }
     
     private func configureView() {
@@ -112,7 +131,8 @@ final class SearchDetailViewController: UIViewController {
         appInfoView.addSubview(downloadButton)
         
         contentView.addSubview(releaseView)
-        releaseView.addSubview(releaseInfoLabel)
+        contentView.addSubview(releaseInfoLabel)
+        contentView.addSubview(collectionView)
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -154,16 +174,20 @@ final class SearchDetailViewController: UIViewController {
             make.height.equalTo(32)
             make.width.equalTo(72)
         }
-        
-        releaseView.backgroundColor = .systemPink
-        releaseView.snp.makeConstraints { make in
+
+        releaseInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(appInfoView.snp.bottom)
-            make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(300)
+            make.horizontalEdges.equalToSuperview().inset(10)
         }
         
-        releaseInfoLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview().inset(10)
+        collectionView.register(
+            SearchDetailScreenshotCollectionViewCell.self,
+            forCellWithReuseIdentifier: SearchDetailScreenshotCollectionViewCell.description()
+        )
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(releaseInfoLabel.snp.bottom).inset(-10)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.height.equalTo(400)
         }
     }
 }
@@ -171,7 +195,7 @@ final class SearchDetailViewController: UIViewController {
 extension SearchDetailViewController {
     static func layout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 40)
+        layout.itemSize = CGSize(width: 300, height: 400)
         layout.scrollDirection = .horizontal
         return layout
     }
