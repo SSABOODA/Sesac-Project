@@ -138,6 +138,30 @@ final class SearchTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureCell(element: AppInfo) {
+        appNameLabel.text = element.trackName
+        
+        if let imageURL = URL(string: element.artworkUrl512) {
+            appIconImageView.kf.setImage(with: imageURL)
+        }
+        
+        if let imageURL = URL(string: element.screenshotUrls[0]) {
+            screenshot1.kf.setImage(with: imageURL)
+        }
+        
+        if let imageURL = URL(string: element.screenshotUrls[1]) {
+            screenshot2.kf.setImage(with: imageURL)
+        }
+        
+        if let imageURL = URL(string: element.screenshotUrls[2]) {
+            screenshot3.kf.setImage(with: imageURL)
+        }
+        
+        appCompanyNameLabel.text = element.sellerName
+        appCategoryLabel.text = element.genres[0]
+        rateLabel.text = String(round(element.averageUserRating*10)/10)
+    }
+    
     private func configure() {
         contentView.addSubview(appNameLabel)
         contentView.addSubview(appIconImageView)

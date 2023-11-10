@@ -108,7 +108,6 @@ final class SearchDetailViewController: UIViewController {
         Observable.of(info.screenshotUrls).bind(to: collectionView.rx.items(cellIdentifier: SearchDetailScreenshotCollectionViewCell.description(), cellType: SearchDetailScreenshotCollectionViewCell.self)) { index, url, cell in
 
             if let imageURL = URL(string: url) {
-                print(imageURL)
                 cell.imageView.kf.setImage(with: imageURL)
             }
         }
@@ -206,7 +205,6 @@ final class SearchDetailViewController: UIViewController {
         }
         
     }
-    
 }
 
 extension SearchDetailViewController {

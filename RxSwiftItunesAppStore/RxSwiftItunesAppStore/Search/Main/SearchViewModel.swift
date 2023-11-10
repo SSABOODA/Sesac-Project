@@ -20,37 +20,37 @@ protocol ViewModelType {
 
 final class SearchViewModel: ViewModelType {
     struct Input {
-            let inputMessage: Observable<String>
-        }
-        
+        let searchButtonClicked: ControlEvent<Void>
+        let searchTextDidBeginEditing: ControlEvent<Void>
+        let searchCancelButtonClicked: ControlEvent<Void>
+        let searchText: ControlProperty<String>
+    }
+    
     struct Output {
-        let outputMessage: Observable<String>
+        var items: BehaviorSubject<[AppInfo]>
     }
     
     var disposeBag = DisposeBag()
     
     func transform(input: Input) -> Output {
-        return Output(
-            outputMessage: Observable.of("")
-        )
-    }
-    
-    var data: [AppInfo] = []
-    lazy var items = BehaviorSubject(value: data)
-    
-    var searchQuery = BehaviorSubject(value: "")
-    
-    func bindAPIService() {
-        searchQuery
+        lazy var items = BehaviorSubject(value: [AppInfo]())
+        
+        input.searchButtonClicked
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .withLatestFrom(input.searchText, resultSelector: { _, query in
+                return query
+            })
             .flatMap {
                 BasicAPIManager.shared.fetchData(query: $0)
             }
-            .subscribe(with: self) { owner, data in
-//                dump(data)
-                owner.items.onNext(data.results)
-            }
+            .subscribe(with: self, onNext: { owner, value in
+                items.onNext(value.results)
+            })
             .disposed(by: disposeBag)
+        
+        return Output(
+            items: items
+        )
     }
-
     
 }

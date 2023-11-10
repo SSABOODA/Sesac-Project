@@ -35,42 +35,24 @@ final class SearchViewController: UIViewController {
     }
     
     private func bind() {
-        bindTableView()
-        bindSearchBar()
+        let input = SearchViewModel.Input(
+            searchButtonClicked: searchBar.rx.searchButtonClicked,
+            searchTextDidBeginEditing: searchBar.rx.textDidBeginEditing,
+            searchCancelButtonClicked: searchBar.rx.cancelButtonClicked,
+            searchText: searchBar.rx.text.orEmpty
+        )
         
-        viewModel.bindAPIService()
-    }
-    
-    private func bindTableView() {
-        print(#function)
-        viewModel.items
+        let output = viewModel.transform(input: input)
+        
+        output.items
             .bind(to: tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { (row, element, cell) in
-                cell.appNameLabel.text = element.trackName
-                
-                if let imageURL = URL(string: element.artworkUrl512) {
-                    cell.appIconImageView.kf.setImage(with: imageURL)
-                }
-                
-                if let imageURL = URL(string: element.screenshotUrls[0]) {
-                    cell.screenshot1.kf.setImage(with: imageURL)
-                }
-                
-                if let imageURL = URL(string: element.screenshotUrls[1]) {
-                    cell.screenshot2.kf.setImage(with: imageURL)
-                }
-                
-                if let imageURL = URL(string: element.screenshotUrls[2]) {
-                    cell.screenshot3.kf.setImage(with: imageURL)
-                }
-                
-                cell.appCompanyNameLabel.text = element.sellerName
-                cell.appCategoryLabel.text = element.genres[0]
-                cell.rateLabel.text = String(round(element.averageUserRating*10)/10)
+            
+                cell.configureCell(element: element)
 
                 cell.downloadButton.rx.tap
                     .subscribe(with: self) { owner, _ in
-                        print("downloadButton tapped")
-                        owner.navigationController?.pushViewController(SearchDetailViewController(), animated: true)
+                        //let detailVC = SearchDetailViewController()
+                        //owner.navigationController?.pushViewController(detailVC, animated: true)
                     }
                     .disposed(by: cell.disposeBag)
             }
@@ -78,25 +60,9 @@ final class SearchViewController: UIViewController {
         
         Observable.zip(tableView.rx.modelSelected(AppInfo.self), tableView.rx.itemSelected)
             .bind(with: self) { owner, value in
-                
                 let detailVC = SearchDetailViewController()
                 detailVC.appInfo = value.0
                 owner.navigationController?.pushViewController(detailVC, animated: true)
-            }
-            .disposed(by: disposeBag)
-
-    }
-    
-    private func bindSearchBar() {
-        searchBar.rx.searchButtonClicked
-            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .withLatestFrom(searchBar.rx.text.orEmpty, resultSelector: { _, text in
-                return text
-            })
-            .subscribe(with: self) { owner, text in
-                print("searchButtonClicked")
-                owner.viewModel.searchQuery.onNext(text)
-                owner.searchBar.resignFirstResponder()
             }
             .disposed(by: disposeBag)
         
@@ -116,7 +82,6 @@ final class SearchViewController: UIViewController {
     }
 }
 
-
 extension SearchViewController {
     private func configureView() {
         view.backgroundColor = .white
@@ -128,10 +93,10 @@ extension SearchViewController {
         }
         
     }
-
+    
     private func setNavigationBar() {
         title = "검색"
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        //        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.titleView = searchBar
     }
 }
