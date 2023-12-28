@@ -45,7 +45,7 @@ class TrendViewController: UIViewController {
         super.viewDidLoad()
         callRequest()
         view.backgroundColor = .white
-        
+        navigationItem.title = "영화 목록"
         configureView()
         setConstraints()
         
@@ -58,7 +58,7 @@ class TrendViewController: UIViewController {
     
     private func setConstraints() {
         trendTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
         indicatorView.snp.makeConstraints { make in
@@ -85,8 +85,6 @@ class TrendViewController: UIViewController {
             self.trendTableView.reloadData()
         }
     }
-    
-//    var customElements: [CustomElementModel]!
 }
 
 
@@ -104,17 +102,14 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let mediaType = movieList[indexPath.row].mediaType
         switch mediaType {
         case .movie:
-            print("MOVIE")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendMovieTableViewCell else { return UITableViewCell() }
             cell.configureCell(movieList[indexPath.row])
             return cell
         case.tv:
-            print("TV")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendTVTableViewCell else { return UITableViewCell() }
             cell.configureCell(movieList[indexPath.row])
             return cell
         case .person:
-            print("PERSON")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrendPersonTableViewCell else { return UITableViewCell() }
             cell.configureCell(movieList[indexPath.row])
             return cell
@@ -122,7 +117,6 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function)
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
         
         let movie = movieResult.movie

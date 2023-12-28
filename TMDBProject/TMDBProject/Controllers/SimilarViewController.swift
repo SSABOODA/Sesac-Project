@@ -42,6 +42,7 @@ class SimilarViewController: UIViewController {
             print(data)
             group.leave()
         }
+        
         group.enter()
         TMDBAPIManager.shared.callRequest(of: SimilarMovieData.self, type: .similar, movieId: movieId, seriesId: nil, seasonId: nil) { data in
             self.similarVideo = data
@@ -77,12 +78,10 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let key = video.video[indexPath.item].key
-//        print(key)
-        
         let vc = WebViewViewController()
         vc.youtubeKey = key
         let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
+        nav.modalPresentationStyle = .formSheet
         present(nav, animated: true)
     }
 }

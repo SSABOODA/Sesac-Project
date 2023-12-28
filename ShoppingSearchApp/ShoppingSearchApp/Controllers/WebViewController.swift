@@ -18,9 +18,6 @@ final class WebViewController: BaseViewController, WKUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +90,6 @@ final class WebViewController: BaseViewController, WKUIDelegate {
                                 ]
                             )
                         }
-
                     }
                 }
             }

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zer-Ll-iVl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lBW-2i-MuF">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--영화 목록-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrendViewController" id="BYZ-38-t0r" customClass="TrendViewController" customModule="TMDBProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eU0-PW-W9p">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrendTableViewCell" rowHeight="398" id="Knm-DY-qxN" customClass="TrendTableViewCell" customModule="TMDBProject" customModuleProvider="target">
@@ -235,14 +235,18 @@
                             <constraint firstItem="eU0-PW-W9p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bpG-ew-Oqc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="I3J-Gx-5KO">
-                        <barButtonItem key="leftBarButtonItem" image="list.bullet" catalog="system" id="6SE-XZ-6i4"/>
-                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="LaG-Tt-ons"/>
+                    <navigationItem key="navigationItem" title="영화 목록" id="I3J-Gx-5KO">
+                        <barButtonItem key="leftBarButtonItem" image="list.bullet" catalog="system" id="6SE-XZ-6i4">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="LaG-Tt-ons">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064.885496183206" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="3815" y="-2"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="O6I-tr-v6T">
@@ -384,27 +388,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpR-fq-OJ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1820.6106870229007" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="4666" y="-2"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0af-1t-qdj">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fjX-PE-Tyz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Uq-Ya-VNQ">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="OTi-wX-nHn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q2m-Po-wJs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
-        </scene>
-        <!--Series View Controller-->
+        <!--시리즈-->
         <scene sceneID="LlB-iK-iML">
             <objects>
                 <viewController storyboardIdentifier="SeriesViewController" id="zer-Ll-iVl" customClass="SeriesViewController" customModule="TMDBProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -413,7 +399,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0aF-cA-ktY">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rZh-0h-6rT">
                                     <size key="itemSize" width="128" height="128"/>
@@ -442,15 +428,16 @@
                             <constraint firstItem="sbT-Wm-hjz" firstAttribute="trailing" secondItem="0aF-cA-ktY" secondAttribute="trailing" id="fX2-ww-p8h"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="시리즈" id="2ao-TF-WpH"/>
                     <connections>
                         <outlet property="seriesCollectionView" destination="0aF-cA-ktY" id="ZXx-AU-XGh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05f-os-Cal" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="702"/>
+            <point key="canvasLocation" x="3816" y="704"/>
         </scene>
-        <!--Similar View Controller-->
+        <!--비디오-->
         <scene sceneID="Jjx-py-5xS">
             <objects>
                 <viewController storyboardIdentifier="SimilarViewController" id="h2K-1b-FMz" customClass="SimilarViewController" customModule="TMDBProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -459,10 +446,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yM2-cg-1mP">
-                                <rect key="frame" x="0.0" y="59.000000000000007" width="393" height="127.66666666666669"/>
+                                <rect key="frame" x="0.0" y="103.00000000000001" width="393" height="59.666666666666671"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="S4m-T4-FEg">
-                                        <rect key="frame" x="135" y="48.333333333333329" width="123" height="32"/>
+                                        <rect key="frame" x="135" y="14.333333333333329" width="123" height="32"/>
                                         <segments>
                                             <segment title="Video"/>
                                             <segment title="Similar"/>
@@ -479,7 +466,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GFz-Ww-IOv">
-                                <rect key="frame" x="0.0" y="186.66666666666669" width="393" height="631.33333333333326"/>
+                                <rect key="frame" x="0.0" y="162.66666666666669" width="393" height="606.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hBA-By-quZ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -502,7 +489,7 @@
                         <viewLayoutGuide key="safeArea" id="gB4-8X-p5A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="yM2-cg-1mP" firstAttribute="height" secondItem="8db-yI-dID" secondAttribute="height" multiplier="0.15" id="2WW-ad-jbS"/>
+                            <constraint firstItem="yM2-cg-1mP" firstAttribute="height" secondItem="8db-yI-dID" secondAttribute="height" multiplier="0.07" id="2WW-ad-jbS"/>
                             <constraint firstItem="gB4-8X-p5A" firstAttribute="trailing" secondItem="GFz-Ww-IOv" secondAttribute="trailing" id="2jD-Aq-o4L"/>
                             <constraint firstItem="gB4-8X-p5A" firstAttribute="trailing" secondItem="yM2-cg-1mP" secondAttribute="trailing" id="BQf-O1-l2s"/>
                             <constraint firstItem="gB4-8X-p5A" firstAttribute="bottom" secondItem="GFz-Ww-IOv" secondAttribute="bottom" id="fdq-dI-JZH"/>
@@ -512,6 +499,7 @@
                             <constraint firstItem="yM2-cg-1mP" firstAttribute="leading" secondItem="gB4-8X-p5A" secondAttribute="leading" id="ylB-NK-g4M"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="비디오" id="vhm-4N-Dmg"/>
                     <connections>
                         <outlet property="movieCollectionView" destination="GFz-Ww-IOv" id="00d-vv-ghN"/>
                         <outlet property="videoSegmentControl" destination="S4m-T4-FEg" id="DIR-q6-het"/>
@@ -519,15 +507,101 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tlv-Mk-xdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065" y="701"/>
+            <point key="canvasLocation" x="3816" y="1413"/>
+        </scene>
+        <!--영화 목록-->
+        <scene sceneID="tax-U7-IFk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="glP-On-VxY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="영화 목록" image="list.dash" catalog="system" selectedImage="list.dash" id="xKa-11-Nft">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8E7-i1-iVW">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ltO-gN-umZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="evk-Co-ghj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2918.320610687023" y="-2.1126760563380285"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="p7J-zW-IsK">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lBW-2i-MuF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7M5-6c-j6O">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="glP-On-VxY" kind="relationship" relationship="viewControllers" id="AjP-dv-8ey"/>
+                        <segue destination="h7f-tJ-NHR" kind="relationship" relationship="viewControllers" id="ynC-IG-lk7"/>
+                        <segue destination="elr-JM-UfP" kind="relationship" relationship="viewControllers" id="v89-hR-2lW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pV3-iO-uQj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1799" y="704"/>
+        </scene>
+        <!--시리즈-->
+        <scene sceneID="73U-54-7LK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h7f-tJ-NHR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="시리즈" image="movieclapper" catalog="system" id="bC5-pn-X0S">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ivP-AK-Qkm">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zer-Ll-iVl" kind="relationship" relationship="rootViewController" id="aOl-0p-fNF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QmT-je-LoB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2916.7938931297708" y="703.52112676056345"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="5uN-lD-Lvx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="elr-JM-UfP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="video" catalog="system" id="1Z9-Ee-605">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6mJ-H3-fWw">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="h2K-1b-FMz" kind="relationship" relationship="rootViewController" id="h36-t7-54A"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mWY-jk-dVg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2917" y="1414"/>
         </scene>
     </scenes>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="movieclapper" catalog="system" width="128" height="113"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
+        <image name="video" catalog="system" width="128" height="82"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

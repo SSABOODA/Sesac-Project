@@ -8,18 +8,15 @@
 import UIKit
 
 class SimilarCollectionViewCell: UICollectionViewCell {
-
     
     @IBOutlet var backView: UIView!
     @IBOutlet var movieTitleLabel: UILabel!
     @IBOutlet var moviePosterImageView: UIImageView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         designCell()
     }
-    
     
     func configureVideo(_ row: Video) {
         let urlString = "https://img.youtube.com/vi/\(row.key)/0.jpg"
@@ -50,6 +47,4 @@ class SimilarCollectionViewCell: UICollectionViewCell {
         moviePosterImageView.image = nil
         movieTitleLabel.text = nil
     }
-    
-
 }
