@@ -94,14 +94,17 @@ extension SimilarViewController: CollectionViewAttributeProtocol {
     }
     
     func registerUINib() {
-        movieCollectionView.register(UINib(nibName: SimilarCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: SimilarCollectionViewCell.identifier)
+        movieCollectionView.register(
+            UINib(nibName: SimilarCollectionViewCell.identifier, bundle: nil),
+            forCellWithReuseIdentifier: SimilarCollectionViewCell.identifier
+        )
     }
     
     func collectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 15
-        let width = UIScreen.main.bounds.width - (spacing * 4)
-        layout.itemSize = CGSize(width: width/3, height: 170)
+        let width = UIScreen.main.bounds.width - (spacing * 3)
+        layout.itemSize = CGSize(width: width/2, height: 200)
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing

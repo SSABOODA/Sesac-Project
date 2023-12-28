@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,10 +35,10 @@
                         <constraints>
                             <constraint firstItem="a3R-hB-i4W" firstAttribute="top" secondItem="fuV-tI-xRF" secondAttribute="top" constant="5" id="5X2-Bd-zr2"/>
                             <constraint firstItem="l37-J0-itW" firstAttribute="leading" secondItem="fuV-tI-xRF" secondAttribute="leading" constant="10" id="Er1-vj-Yqw"/>
-                            <constraint firstItem="l37-J0-itW" firstAttribute="top" secondItem="a3R-hB-i4W" secondAttribute="bottom" constant="10" id="HfG-Az-cwi"/>
                             <constraint firstItem="a3R-hB-i4W" firstAttribute="leading" secondItem="fuV-tI-xRF" secondAttribute="leading" constant="10" id="OU7-Zl-0d1"/>
                             <constraint firstAttribute="trailing" secondItem="a3R-hB-i4W" secondAttribute="trailing" constant="10" id="ZiP-60-FiD"/>
                             <constraint firstAttribute="bottom" secondItem="l37-J0-itW" secondAttribute="bottom" constant="10" id="hcq-o6-m7o"/>
+                            <constraint firstItem="l37-J0-itW" firstAttribute="top" secondItem="a3R-hB-i4W" secondAttribute="bottom" constant="10" id="o6I-CJ-0av"/>
                             <constraint firstAttribute="trailing" secondItem="l37-J0-itW" secondAttribute="trailing" constant="10" id="oAa-iW-LHN"/>
                         </constraints>
                     </view>

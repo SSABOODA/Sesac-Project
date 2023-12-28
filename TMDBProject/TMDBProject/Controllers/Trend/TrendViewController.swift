@@ -48,7 +48,6 @@ class TrendViewController: UIViewController {
         navigationItem.title = "영화 목록"
         configureView()
         setConstraints()
-        
     }
     
     private func configureView() {
@@ -67,6 +66,8 @@ class TrendViewController: UIViewController {
     }
     
     private func callRequest() {
+        
+        
         self.indicatorView.startAnimating()
         self.indicatorView.isHidden = false
         
