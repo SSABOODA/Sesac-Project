@@ -244,8 +244,8 @@
 		F7C6F1B82A86233B006E19CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F77884E82B3D509600F03A2D /* Profile */,
 				F77884E72B3D508500F03A2D /* Onboarding */,
+				F77884E82B3D509600F03A2D /* Profile */,
 				F77884E62B3D507D00F03A2D /* Video */,
 				F77884E52B3D507300F03A2D /* Series */,
 				F77884E42B3D506A00F03A2D /* Trend */,

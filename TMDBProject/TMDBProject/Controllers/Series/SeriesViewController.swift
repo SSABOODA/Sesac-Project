@@ -7,21 +7,34 @@
 
 import UIKit
 
-class SeriesViewController: UIViewController {
+final class SeriesViewController: UIViewController {
 
     @IBOutlet var seriesCollectionView: UICollectionView!
     
-    var series: Series?
-    var seasonList: [SeasonInfo] = []
+    private var series: Series?
+    private var seasonList: [SeasonInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionViewDelegate()
+            
+        setNavigationBar()
         registerUINib()
+        collectionViewDelegate()
         collectionViewLayout()
-        
         fetchSeriesData()
+        
+    
+    }
+    
+    private func setNavigationBar() {
+        let rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "magnifyingglass"),
+            style: .plain,
+            target: self,
+            action: nil
+        )
+        rightBarButtonItem.tintColor = .white
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     // 66732 기묘한 이야기
@@ -30,27 +43,29 @@ class SeriesViewController: UIViewController {
     // 60735 플래시
     // 1396 브레이킹 배드
 
-    func fetchSeriesData() {
+    private func fetchSeriesData() {
         TMDBAPIManager.shared.callRequest(
             of: Series.self,
             type: EndPoint.series,
             movieId: nil,
-            seriesId: 1396,
+            seriesId: 66732,
             seasonId: nil
-        ) { response in
-            self.series = response
-            guard let series = self.series else { return }
+        ) { [weak self] response in
+            self?.series = response
+            guard let series = self?.series else { return }
+            
+            self?.navigationItem.title = series.name
             
             for item in series.seasons {
-                self.fetchSeries(seriesId: series.id, seasonId: item.seasonNumber) { data in
-                    self.seasonList.append(data)
-                    self.seriesCollectionView.reloadData()
+                self?.fetchSeries(seriesId: series.id, seasonId: item.seasonNumber) { data in
+                    self?.seasonList.append(data)
+                    self?.seriesCollectionView.reloadData()
                 }
             }
         }
     }
     
-    func fetchSeries(seriesId: Int, seasonId: Int, completionHandler: @escaping (SeasonInfo) -> Void ) {
+    private func fetchSeries(seriesId: Int, seasonId: Int, completionHandler: @escaping (SeasonInfo) -> Void ) {
         TMDBAPIManager.shared.callRequest(
             of: SeasonInfo.self,
             type: EndPoint.season,
