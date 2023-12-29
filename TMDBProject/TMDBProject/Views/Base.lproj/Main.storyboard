@@ -30,15 +30,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8p-Ut-Kdp">
-                                                    <rect key="frame" x="20" y="16" width="353" height="15.666666666666664"/>
+                                                    <rect key="frame" x="25" y="16" width="343" height="15.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-1Q-NvW">
-                                                    <rect key="frame" x="20" y="37.666666666666664" width="353" height="24"/>
+                                                    <rect key="frame" x="25" y="37.666666666666664" width="343" height="24"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeh-Zx-OHi">
@@ -165,7 +165,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="oYc-Qu-y3G" secondAttribute="bottom" constant="10" id="2gx-TQ-mCC"/>
                                                         <constraint firstItem="cUO-h6-ifq" firstAttribute="leading" secondItem="zeh-Zx-OHi" secondAttribute="leading" id="37f-Z4-jkb"/>
@@ -195,16 +195,16 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="oF6-1Q-NvW" secondAttribute="trailing" constant="20" id="98M-ws-EUp"/>
+                                                <constraint firstAttribute="trailing" secondItem="oF6-1Q-NvW" secondAttribute="trailing" constant="25" id="98M-ws-EUp"/>
                                                 <constraint firstAttribute="trailing" secondItem="zeh-Zx-OHi" secondAttribute="trailing" constant="20" id="DCB-qD-md9"/>
-                                                <constraint firstAttribute="trailing" secondItem="W8p-Ut-Kdp" secondAttribute="trailing" constant="20" id="LfI-IL-wsb"/>
+                                                <constraint firstAttribute="trailing" secondItem="W8p-Ut-Kdp" secondAttribute="trailing" constant="25" id="LfI-IL-wsb"/>
                                                 <constraint firstItem="W8p-Ut-Kdp" firstAttribute="top" secondItem="l2S-l0-HOH" secondAttribute="top" constant="16" id="Lu0-VZ-uKt"/>
                                                 <constraint firstItem="oF6-1Q-NvW" firstAttribute="top" secondItem="W8p-Ut-Kdp" secondAttribute="bottom" constant="6" id="e42-kM-Mar"/>
-                                                <constraint firstItem="oF6-1Q-NvW" firstAttribute="leading" secondItem="l2S-l0-HOH" secondAttribute="leading" constant="20" id="evj-G7-qOG"/>
+                                                <constraint firstItem="oF6-1Q-NvW" firstAttribute="leading" secondItem="l2S-l0-HOH" secondAttribute="leading" constant="25" id="evj-G7-qOG"/>
                                                 <constraint firstAttribute="bottom" secondItem="zeh-Zx-OHi" secondAttribute="bottom" constant="30" id="iTd-AC-IBZ"/>
                                                 <constraint firstItem="zeh-Zx-OHi" firstAttribute="top" secondItem="oF6-1Q-NvW" secondAttribute="bottom" constant="8" id="kF6-cO-CaW"/>
                                                 <constraint firstItem="zeh-Zx-OHi" firstAttribute="leading" secondItem="l2S-l0-HOH" secondAttribute="leading" constant="20" id="q1e-Xb-jYW"/>
-                                                <constraint firstItem="W8p-Ut-Kdp" firstAttribute="leading" secondItem="l2S-l0-HOH" secondAttribute="leading" constant="20" id="rL0-6z-Bug"/>
+                                                <constraint firstItem="W8p-Ut-Kdp" firstAttribute="leading" secondItem="l2S-l0-HOH" secondAttribute="leading" constant="25" id="rL0-6z-Bug"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -235,14 +235,7 @@
                             <constraint firstItem="eU0-PW-W9p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bpG-ew-Oqc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="영화 목록" id="I3J-Gx-5KO">
-                        <barButtonItem key="leftBarButtonItem" image="list.bullet" catalog="system" id="6SE-XZ-6i4">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="LaG-Tt-ons">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="영화 목록" id="I3J-Gx-5KO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -520,6 +513,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8E7-i1-iVW">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -536,8 +532,9 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lBW-2i-MuF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7M5-6c-j6O">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
@@ -596,9 +593,7 @@
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="movieclapper" catalog="system" width="128" height="113"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="video" catalog="system" width="128" height="82"/>

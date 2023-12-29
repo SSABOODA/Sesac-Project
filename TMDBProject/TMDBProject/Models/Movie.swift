@@ -54,14 +54,15 @@ struct Movie: Codable {
     
     let id: Int
     let date: String?
-    let mediaType: MediaType
+    let mediaType: MediaType?
     let rate: Double
     let title: String?
     let name: String?
     let originalTitle: String?
     let description: String
-    let imageURL: String
+    let imageURL: String?
     let genreIds: [Int]
+    let posterPath: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -73,6 +74,7 @@ struct Movie: Codable {
         case originalTitle = "original_title"
         case description = "overview"
         case imageURL = "backdrop_path"
+        case posterPath = "poster_path"
         case genreIds = "genre_ids"
     }
 
@@ -88,7 +90,11 @@ struct Movie: Codable {
     }
     
     var fullImageURL: String {
-        return URL.baseImageURL + self.imageURL
+        return URL.baseImageURL + (self.imageURL ?? "")
+    }
+    
+    var fullPosterURL: String {
+        return URL.baseImageURL + (self.posterPath ?? "")
     }
 }
 
@@ -118,7 +124,6 @@ enum MediaType: String, Codable {
             return TrendPersonTableViewCell()
         }
     }
-    
 }
 
 
@@ -156,3 +161,27 @@ struct Cast: Codable {
         return URL.baseImageURL + (self.profileImageURL ?? "")
     }
 }
+
+
+/*
+ Search
+ */
+
+
+//struct MovieSearch: Decodable {
+//    let page: Int
+//    let results: [MovieData]
+//    let totalResults: Int
+//    let totalPages: Int
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case totalResults = "total_results"
+//        case totalPages = "total_pages"
+//        case page
+//        case results
+//    }
+//}
+//
+//struct MovieData: Decodable {
+//    let id: Int
+//}

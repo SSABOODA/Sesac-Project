@@ -29,7 +29,7 @@ class TrendTableViewCell: BaseTableViewCell {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.clipsToBounds = false
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 15
@@ -221,7 +221,13 @@ class TrendTableViewCell: BaseTableViewCell {
         hashtagLabel.text = "#\(genreIdToString(rowData.genreIds[0]))"
         mainImageView.backgroundColor = .lightGray
         if let imageURL = URL(string: rowData.fullImageURL) {
-            mainImageView.kf.setImage(with: imageURL)
+            [
+                mainImageView,
+//                blurImageView,
+            ].forEach { image in
+                image.kf.indicatorType = .activity
+                image.kf.setImage(with: imageURL)
+            }
         }
         rateLabel.text = rowData.roundRate
         titleLabel.text = rowData.title

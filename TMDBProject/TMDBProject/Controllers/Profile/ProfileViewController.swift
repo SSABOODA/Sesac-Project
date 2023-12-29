@@ -21,6 +21,7 @@ class ProfileViewController: BaseViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(#function)
     }
     
     override func viewWillAppear(_ animated: Bool) {

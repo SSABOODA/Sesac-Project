@@ -11,7 +11,6 @@ import Foundation
 // https://api.themoviedb.org/3/trending/movie/{time_window}
 // https://api.themoviedb.org/3/trending/person/{time_window}
 // https://api.themoviedb.org/3/trending/tv/{time_window}
-
 // https://api.themoviedb.org/3/movie/{movie_id}/credits
 
 extension URL {

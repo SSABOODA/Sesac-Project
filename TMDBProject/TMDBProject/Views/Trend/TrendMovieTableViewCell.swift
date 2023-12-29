@@ -7,27 +7,37 @@
 
 import UIKit
 
-class TrendMovieTableViewCell: BaseTableViewCell {
-
+// main으로 사용
+final class TrendMovieTableViewCell: BaseTableViewCell {
+    
     let dateLabel = {
         let lb = UILabel()
-        lb.font = .systemFont(ofSize: 11)
+        lb.font = .systemFont(ofSize: 13)
         lb.textColor = .lightGray
         return lb
     }()
     
     let hashtagLabel = {
         let lb = UILabel()
-        lb.font = .boldSystemFont(ofSize: 13)
-        lb.textColor = .black
+        lb.font = .boldSystemFont(ofSize: 15)
+        lb.textColor = .white
         return lb
+    }()
+    
+    let blurImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = true
+        return view
     }()
     
     let mainCardView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.clipsToBounds = false
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 15
@@ -49,8 +59,6 @@ class TrendMovieTableViewCell: BaseTableViewCell {
         bnt.setImage(UIImage(systemName: "paperclip"), for: .normal)
         bnt.setTitleColor(UIColor.black, for: .normal)
         bnt.backgroundColor = .white
-        bnt.layer.cornerRadius = bnt.frame.width / 2
-        bnt.clipsToBounds = true
         bnt.tintColor = .black
         return bnt
     }()
@@ -83,7 +91,7 @@ class TrendMovieTableViewCell: BaseTableViewCell {
     let titleLabel = {
         let lb = UILabel()
         lb.font = .boldSystemFont(ofSize: 18)
-        lb.textColor = .black
+        lb.textColor = .white
         lb.numberOfLines = 1
         lb.text = "Alice In Borderland"
         return lb
@@ -92,7 +100,7 @@ class TrendMovieTableViewCell: BaseTableViewCell {
     let subTitleLabel = {
         let lb = UILabel()
         lb.font = .systemFont(ofSize: 13)
-        lb.textColor = .lightGray
+        lb.textColor = .white
         lb.numberOfLines = 1
         lb.text = "Alice In Borderland,, Borderland, Borderland,"
         return lb
@@ -100,7 +108,7 @@ class TrendMovieTableViewCell: BaseTableViewCell {
     
     let lineView = {
         let view = UIView()
-        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -108,7 +116,7 @@ class TrendMovieTableViewCell: BaseTableViewCell {
     let lookDetailTitle = {
         let lb = UILabel()
         lb.font = .systemFont(ofSize: 15)
-        lb.textColor = .black
+        lb.textColor = .white
         lb.text = "자세히 보기"
         return lb
     }()
@@ -116,13 +124,21 @@ class TrendMovieTableViewCell: BaseTableViewCell {
     let lookDetailButton = {
         let bnt = UIButton()
         bnt.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        bnt.tintColor = .black
+        bnt.tintColor = .white
         return bnt
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
+        
+    }
+    
+    private func setBlurEffect() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = blurImageView.bounds;
+        blurImageView.addSubview(blurView)
     }
     
     @available(*, unavailable)
@@ -132,7 +148,48 @@ class TrendMovieTableViewCell: BaseTableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        print(#function)
+        clipButton.layoutIfNeeded()
         clipButton.layer.cornerRadius = clipButton.frame.width / 2
+        blurImageView.layoutIfNeeded()
+        setBlurEffect()
+    }
+
+    func configureCell(_ rowData: Movie) {
+        
+        dateLabel.text = rowData.convertData
+        hashtagLabel.text = "#\(genreIdToString(rowData.genreIds.first ?? 0))"
+        
+        var imageURL: URL?
+        
+        if rowData.imageURL != nil {
+            imageURL = URL(string: rowData.fullImageURL)
+        } else if rowData.posterPath != nil {
+            imageURL = URL(string: rowData.fullPosterURL)
+        }
+        
+        [
+            mainImageView,
+            blurImageView,
+        ].forEach { image in
+            image.kf.indicatorType = .activity
+            image.kf.setImage(with: imageURL)
+        }
+        
+        rateLabel.text = rowData.roundRate
+        titleLabel.text = rowData.title
+        subTitleLabel.text = rowData.description
+    }
+    
+    func genreIdToString(_ genreId: Int) -> String {
+        guard let genre = Movie.genreList[genreId] else { return "genre" }
+        return genre
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        mainImageView.image = nil
+        blurImageView.image = nil
     }
     
     override func configureView() {
@@ -140,9 +197,10 @@ class TrendMovieTableViewCell: BaseTableViewCell {
         contentView.addSubview(hashtagLabel)
         contentView.addSubview(mainCardView)
         
+        mainCardView.addSubview(blurImageView)
         mainCardView.addSubview(mainImageView)
         mainCardView.addSubview(clipButton)
-
+        
         mainImageView.addSubview(rateView)
         rateView.addSubview(rateTitleLabel)
         rateView.addSubview(rateLabel)
@@ -156,11 +214,11 @@ class TrendMovieTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         dateLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.top.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(15)
         }
         
         hashtagLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(15)
             make.top.equalTo(dateLabel.snp.bottom).offset(10)
         }
 
@@ -170,9 +228,14 @@ class TrendMovieTableViewCell: BaseTableViewCell {
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).offset(-30)
             make.height.equalTo(400)
         }
+        
+        blurImageView.snp.makeConstraints { make in
+            make.edges.equalTo(mainCardView.snp.edges)
+        }
 
         mainImageView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview()
+            make.top.equalTo(mainCardView.snp.top)
+            make.horizontalEdges.equalTo(mainCardView.snp.horizontalEdges)
             make.height.equalToSuperview().multipliedBy(0.7)
         }
         
@@ -223,40 +286,5 @@ class TrendMovieTableViewCell: BaseTableViewCell {
             make.bottom.equalTo(mainCardView.snp.bottom).offset(-15)
         }
     }
-
-    func configureCell(_ rowData: Movie) {
-        dateLabel.text = rowData.convertData
-        hashtagLabel.text = "#\(genreIdToString(rowData.genreIds[0]))"
-        mainImageView.backgroundColor = .lightGray
-        if let imageURL = URL(string: rowData.fullImageURL) {
-            mainImageView.kf.setImage(with: imageURL)
-        }
-        rateLabel.text = rowData.roundRate
-        titleLabel.text = rowData.title
-        subTitleLabel.text = rowData.description
-    }
-    
-    func genreIdToString(_ genreId: Int) -> String {
-        guard let genre = Movie.genreList[genreId] else { return "" }
-        return genre
-    }
-    
-//    var model: TrendMovieTableViewCell!
-
 }
 
-//extension TrendMovieTableViewCell: CustomElementModel, CustomElementCell {
-//    var type: CustomElementType {
-//        return .movie
-//    }
-//
-//    func configure(withModel elementModel: CustomElementModel) {
-//
-//        print(elementModel)
-//        guard let model = elementModel as? TrendMovieTableViewCell else {
-//            print("Unable to cast model as ProfileElement: \(elementModel)")
-//            return
-//        }
-//        self.model = model
-//    }
-//}

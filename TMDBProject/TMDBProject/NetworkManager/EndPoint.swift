@@ -14,6 +14,7 @@ enum EndPoint {
     case season
     case video
     case similar
+    case search
     
     var requestURL: String {
         switch self {
@@ -23,6 +24,7 @@ enum EndPoint {
         case .season: return URL.makeEndPointString("tv/")
         case .video: return URL.makeEndPointString("movie/")
         case .similar: return URL.makeEndPointString("movie/")
+        case .search: return URL.makeEndPointString("search/movie")
         }
     }
 }

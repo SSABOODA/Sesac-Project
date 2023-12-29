@@ -27,7 +27,7 @@ class TrendTVTableViewCell: BaseTableViewCell {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.clipsToBounds = false
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 15
@@ -74,7 +74,6 @@ class TrendTVTableViewCell: BaseTableViewCell {
     }
     
     override func setConstraints() {
-        print(#function)
         dateLabel.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
@@ -106,7 +105,12 @@ class TrendTVTableViewCell: BaseTableViewCell {
         dateLabel.text = rowData.convertData
         hashtagLabel.text = "#\(genreIdToString(rowData.genreIds[0]))"
         if let imageURL = URL(string: rowData.fullImageURL) {
-            mainImageView.kf.setImage(with: imageURL)
+            [
+                mainImageView,
+            ].forEach { image in
+                image.kf.indicatorType = .activity
+                image.kf.setImage(with: imageURL)
+            }
         }
         titleLabel.text = rowData.name
     }

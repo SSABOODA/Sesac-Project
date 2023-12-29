@@ -27,16 +27,25 @@ class TMDBAPIManager {
         movieId: Int?,
         seriesId: Int?,
         seasonId: Int?,
+        query: String? = "",
         completionHandler: @escaping (T) -> ()) {
             
-        url = getEndpointTypeURL(type: type, movieId: movieId, seriesId: seriesId, seasonId: seasonId)
-        print(url)
+        url = getEndpointTypeURL(
+            type: type,
+            movieId: movieId,
+            seriesId: seriesId,
+            seasonId: seasonId,
+            query: query
+        )
+            
+        print("url: \(url)")
             
         AF.request(
             url,
             method: .get,
             headers: header
         ).validate(statusCode: 200...500).responseDecodable(of: T.self) { response in
+//            print("response: \(response)")
             switch response.result {
             case .success(let value):
                 completionHandler(value)
@@ -46,17 +55,12 @@ class TMDBAPIManager {
         }
     }
     
-//    func callRequestVideo() {
-////        let url = "https://api.themoviedb.org/3/movie/872585/videos?language=en-US"
-//
-//        let url = getEndpointTypeURL(type: .video, movieId: 872585, seriesId: nil, seasonId: nil)
-//    }
-    
     func getEndpointTypeURL(
         type: EndPoint,
         movieId: Int?,
         seriesId: Int?,
-        seasonId: Int?
+        seasonId: Int?,
+        query: String?
     ) -> String {
         switch type {
         case .trend:
@@ -71,6 +75,10 @@ class TMDBAPIManager {
             return type.requestURL + "\(movieId ?? 0)" + "/videos?language=en-US"
         case .similar:
             return type.requestURL + "\(movieId ?? 0)" + "/similar?language=en-US"
+        case .search:
+            guard let query else { return "" }
+            let text = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            return type.requestURL + "?query=\(text ?? "")"
         }
     }
 }

@@ -46,7 +46,6 @@ final class LikeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -10,24 +10,43 @@ import UIKit
 class SimilarCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var backView: UIView!
+    @IBOutlet var blurImageView: UIImageView!
     @IBOutlet var movieTitleLabel: UILabel!
     @IBOutlet var moviePosterImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        designCell()
+        self.designCell()
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = blurImageView.bounds;
+        blurImageView.addSubview(blurView)
     }
     
     func configureVideo(_ row: Video) {
         let urlString = "https://img.youtube.com/vi/\(row.key)/0.jpg"
-        let fileURL = URL(string: urlString)
-        moviePosterImageView.kf.setImage(with: fileURL)
+        if let imageURL = URL(string: urlString) {
+            [
+                moviePosterImageView,
+                blurImageView,
+            ].forEach { image in
+                image.kf.indicatorType = .activity
+                image.kf.setImage(with: imageURL)
+            }
+        }
         movieTitleLabel.text = row.name
     }
     
     func configureSimilarVideo(_ row: SimilarMovie) {
         if let imageURL = URL(string: row.fullImageURL) {
-            moviePosterImageView.kf.setImage(with: imageURL)
+            [
+                moviePosterImageView,
+                blurImageView,
+            ].forEach { image in
+                image.kf.indicatorType = .activity
+                image.kf.setImage(with: imageURL)
+            }
         }
         movieTitleLabel.text = row.title
     }
@@ -37,7 +56,7 @@ class SimilarCollectionViewCell: UICollectionViewCell {
         moviePosterImageView.contentMode = .scaleAspectFill
         moviePosterImageView.layer.cornerRadius = 15
         moviePosterImageView.clipsToBounds = true
-        backView.backgroundColor = .lightGray
+        backView.backgroundColor = .clear
         backView.layer.cornerRadius = 15
         backView.clipsToBounds = true
     }
@@ -46,5 +65,6 @@ class SimilarCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         moviePosterImageView.image = nil
         movieTitleLabel.text = nil
+        blurImageView.image = nil
     }
 }

@@ -129,6 +129,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F77884E12B3D501E00F03A2D /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */,
+				F7D5C11B2AA1CD7700E4F22C /* TrendMovieTableViewCell.swift */,
+				F7D5C1192AA1CD5800E4F22C /* TrendTVTableViewCell.swift */,
+				F7D5C1172AA1CD3E00E4F22C /* TrendPersonTableViewCell.swift */,
+				F7E5C5382A8763A1000DA0B9 /* DetailTableViewCell.swift */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		F77884E22B3D504100F03A2D /* Series */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5632A8CB867000DA0B9 /* SeriesCollectionViewCell.swift */,
+				F7E5C5642A8CB867000DA0B9 /* SeriesCollectionViewCell.xib */,
+				F7E5C5672A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift */,
+				F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */,
+			);
+			path = Series;
+			sourceTree = "<group>";
+		};
+		F77884E32B3D505000F03A2D /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5942A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift */,
+				F7E5C5952A90AE2A000DA0B9 /* SimilarCollectionViewCell.xib */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		F77884E42B3D506A00F03A2D /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				F7C6F1A82A862307006E19CD /* TrendViewController.swift */,
+				F7E5C5362A876303000DA0B9 /* DetailViewController.swift */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		F77884E52B3D507300F03A2D /* Series */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5612A8CB837000DA0B9 /* SeriesViewController.swift */,
+			);
+			path = Series;
+			sourceTree = "<group>";
+		};
+		F77884E62B3D507D00F03A2D /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C5922A90AC97000DA0B9 /* SimilarViewController.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		F77884E72B3D508500F03A2D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C6072A988F9A000DA0B9 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F77884E82B3D509600F03A2D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5C6962A9DD047000DA0B9 /* ProfileViewController.swift */,
+				F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */,
+				F7E5C69C2A9DE304000DA0B9 /* UserNameSettingViewController.swift */,
+				F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		F7C6F1982A862307006E19CD = {
 			isa = PBXGroup;
 			children = (
@@ -168,15 +244,11 @@
 		F7C6F1B82A86233B006E19CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F7C6F1A82A862307006E19CD /* TrendViewController.swift */,
-				F7E5C5362A876303000DA0B9 /* DetailViewController.swift */,
-				F7E5C5612A8CB837000DA0B9 /* SeriesViewController.swift */,
-				F7E5C5922A90AC97000DA0B9 /* SimilarViewController.swift */,
-				F7E5C6072A988F9A000DA0B9 /* OnboardingViewController.swift */,
-				F7E5C6962A9DD047000DA0B9 /* ProfileViewController.swift */,
-				F7E5C69A2A9DDB8C000DA0B9 /* NameSettingViewController.swift */,
-				F7E5C69C2A9DE304000DA0B9 /* UserNameSettingViewController.swift */,
-				F7E5C69E2A9DE3F3000DA0B9 /* GenderSettingViewController.swift */,
+				F77884E82B3D509600F03A2D /* Profile */,
+				F77884E72B3D508500F03A2D /* Onboarding */,
+				F77884E62B3D507D00F03A2D /* Video */,
+				F77884E52B3D507300F03A2D /* Series */,
+				F77884E42B3D506A00F03A2D /* Trend */,
 				F7E5C6A02A9E0124000DA0B9 /* BeforeViewController.swift */,
 				F7E5C6A22A9E04B0000DA0B9 /* NextViewController.swift */,
 				F7E5C6A42A9E0F73000DA0B9 /* WebViewViewController.swift */,
@@ -189,17 +261,9 @@
 			children = (
 				F7C6F1AF2A862308006E19CD /* LaunchScreen.storyboard */,
 				F7C6F1AA2A862307006E19CD /* Main.storyboard */,
-				F7C6F1BE2A862CBF006E19CD /* TrendTableViewCell.swift */,
-				F7D5C11B2AA1CD7700E4F22C /* TrendMovieTableViewCell.swift */,
-				F7D5C1192AA1CD5800E4F22C /* TrendTVTableViewCell.swift */,
-				F7D5C1172AA1CD3E00E4F22C /* TrendPersonTableViewCell.swift */,
-				F7E5C5382A8763A1000DA0B9 /* DetailTableViewCell.swift */,
-				F7E5C5632A8CB867000DA0B9 /* SeriesCollectionViewCell.swift */,
-				F7E5C5642A8CB867000DA0B9 /* SeriesCollectionViewCell.xib */,
-				F7E5C5672A8CB87A000DA0B9 /* SeriesCollectionReusableView.swift */,
-				F7E5C5682A8CB87A000DA0B9 /* SeriesCollectionReusableView.xib */,
-				F7E5C5942A90AE2A000DA0B9 /* SimilarCollectionViewCell.swift */,
-				F7E5C5952A90AE2A000DA0B9 /* SimilarCollectionViewCell.xib */,
+				F77884E32B3D505000F03A2D /* Video */,
+				F77884E22B3D504100F03A2D /* Series */,
+				F77884E12B3D501E00F03A2D /* Trend */,
 				F7E5C6982A9DD1DD000DA0B9 /* ProfileView.swift */,
 			);
 			path = Views;

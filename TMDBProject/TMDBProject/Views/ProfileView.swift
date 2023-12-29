@@ -332,6 +332,4 @@ class ProfileView: BaseView {
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
         avartarImageView.layer.cornerRadius = avartarImageView.frame.width / 2
     }
-    
-    
 }

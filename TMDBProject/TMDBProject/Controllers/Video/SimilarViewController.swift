@@ -32,7 +32,6 @@ class SimilarViewController: UIViewController {
         movieCollectionView.reloadData()
     }
     
-    
     func callRequestVideo() {
         let group = DispatchGroup()
         

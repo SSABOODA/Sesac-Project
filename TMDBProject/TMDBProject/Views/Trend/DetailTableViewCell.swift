@@ -31,7 +31,13 @@ class DetailTableViewCell: UITableViewCell {
     
     func configureCell(_ rowData: Cast) {
         if let imageURL = URL(string: rowData.fullImageURL) {
-            castImageView.kf.setImage(with: imageURL)
+            [
+                castImageView,
+            ].forEach { image in
+                image.kf.indicatorType = .activity
+                image.kf.setImage(with: imageURL)
+            }
+            
         }
         realNameLabel.text = rowData.name
         castNameLabel.text = rowData.subTitleText

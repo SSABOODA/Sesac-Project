@@ -10,8 +10,6 @@ import Network
 
 class DetailViewController: UIViewController {
     
-    // tableView header
-    
     @IBOutlet var detailTableView: UITableView!
     @IBOutlet var overviewBackView: UIView!
     @IBOutlet var headerImageView: UIImageView!
@@ -27,7 +25,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         callRequest()
-        
         delegateTableView()
         configureTableView()
         
@@ -35,7 +32,6 @@ class DetailViewController: UIViewController {
         configureHeaderView()
         designHeaderView()
     }
-    
     
     @IBAction func expandButtonClicked(_ sender: UIButton) {
         expandButton.isHidden.toggle()
@@ -49,29 +45,36 @@ class DetailViewController: UIViewController {
             type: EndPoint.credit,
             movieId: movie.id,
             seriesId: nil,
-            seasonId: nil
+            seasonId: nil,
+            query: nil
         ) { response in
             self.castInfo = response
             self.detailTableView.reloadData()
         }
     }
     
-    func configureNavigationBar() {
+    private func configureNavigationBar() {
         title = "출연/제작"
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.topItem?.title = ""
     }
     
-    func configureHeaderView() {
+    private func configureHeaderView() {
         headerImageView.contentMode = .scaleAspectFill
         overviewLabel.numberOfLines = 2
         overviewBackView.layer.addBorder([.top, .bottom], color: UIColor.systemGray5, width: 1)
     }
     
-    func designHeaderView() {
+    private func designHeaderView() {
         guard let movie else { return }
         if let imageURL = URL(string: movie.fullImageURL) {
-            headerImageView.kf.setImage(with: imageURL)
+            [
+                headerImageView,
+            ].forEach { image in
+                image.kf.indicatorType = .activity
+                image.kf.setImage(with: imageURL)
+            }
+            
         }
         overviewLabel.text = movie.description
     }
