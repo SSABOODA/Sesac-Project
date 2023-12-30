@@ -16,14 +16,11 @@ final class SeriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
         setNavigationBar()
         registerUINib()
         collectionViewDelegate()
         collectionViewLayout()
         fetchSeriesData()
-        
-    
     }
     
     private func setNavigationBar() {
