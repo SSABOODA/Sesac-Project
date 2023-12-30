@@ -21,7 +21,7 @@ protocol ProductTableRepositoryType: AnyObject {
 final class ProductTableRepository: ProductTableRepositoryType {
     
     static let shared = ProductTableRepository()
-    
+    private init() {}
     private let realm = try! Realm()
     
     // 현재 Schema migration version을 체크하는 메서드

@@ -108,14 +108,36 @@ final class SearchViewController: BaseViewController {
     var lowPriceFilterButtonIsSelected: Bool = false
     
     let productTableRepository = ProductTableRepository.shared
-    
     var tasks: Results<ProductTable>!
+    var notificationToken: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         productTableRepository.findFileURL()
         tasks = productTableRepository.fetch()
+//        setRealmNotification()
+    }
+    
+    private func setRealmNotification() {
+        let realm = try! Realm()
+        tasks = realm.objects(ProductTable.self)
+        
+        notificationToken = tasks?.observe { [unowned self] changes in
+            switch changes {
+            case .initial(let products):
+                print("Initial count: \(products.count)")
+            case .update(let products, let deletions, let insertions, let modifications):
+                print("Update count: \(products.count)")
+                print("Delete count: \(deletions.count)")
+                print("Insert count: \(insertions.count)")
+                print("Modification count: \(modifications.count)")
+                self.collectionView.reloadData()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -341,33 +363,48 @@ final class SearchViewController: BaseViewController {
         
         self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: true)
         
-        APIManager.shared.callRequest(query: query, apiType: .shopping, sort: sort, start: start) { result in
+        APIManager.shared.callRequest(
+            query: query,
+            apiType: .shopping,
+            sort: sort,
+            start: start
+        ) { result in
+            
             switch result {
             case .success(let shoppingData):
                 self.shopping = shoppingData
                 self.total = shoppingData.total ?? 0
                 self.itemList += shoppingData.items ?? []
                 
-                
                 DispatchQueue.main.async {
-                    // 검색 결과 없을 때 얼럿
-                    if self.itemList.isEmpty {
-                        self.noResultQueryAlert()
+                    guard !self.itemList.isEmpty else {
+                        self.noResultQueryAlert() // 검색 결과 없을 때 얼럿
+                        self.showIndicatorView(
+                            activityIndicatorView: self.activityIndicatorView,
+                            status: false
+                        )
+                        return
                     }
                     
                     self.collectionView.reloadData()
-                    self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: false)
+                    self.showIndicatorView(
+                        activityIndicatorView: self.activityIndicatorView,
+                        status: false
+                    )
+                    
                     if start == Constants.APIParameter.start {
                         self.collectionView.setContentOffset(.zero, animated: true)
                     }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: false)
+                    self.showIndicatorView(
+                        activityIndicatorView: self.activityIndicatorView,
+                        status: false
+                    )
                     self.searchEmptyView.isHidden = true
                     switch error {
                     case .networkingError:
-                        
                         let networkStatus = self.checkNetworkStatus()
                         if !networkStatus {
                             // 네트워크 연결을 확인 요청 얼럿

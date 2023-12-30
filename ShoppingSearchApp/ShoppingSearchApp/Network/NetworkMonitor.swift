@@ -42,7 +42,6 @@ final class NetworkMonitor {
             } else {
                 print("연결 안된 상태")
             }
-            
         }
     }
     

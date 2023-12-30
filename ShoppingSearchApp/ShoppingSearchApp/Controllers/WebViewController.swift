@@ -32,7 +32,7 @@ final class WebViewController: BaseViewController, WKUIDelegate {
         }
   
         guard let like = self.product?.isLike else { return }
-        let image = like ? Constants.ImageName.isLikeImageName : Constants.ImageName.isNotLikeImageName
+        let image: UIImage = like ? Constants.ImageName.isLikeImageName : Constants.ImageName.isNotLikeImageName
         navigationRightBarButtonItem(image: image, style: .plain, target: self, selector: #selector(likeButtonTapped))
 
     }
