@@ -108,8 +108,12 @@ final class SearchViewController: BaseViewController {
     var lowPriceFilterButtonIsSelected: Bool = false
     
     let productTableRepository = ProductTableRepository.shared
+
+    
+    let realm = try! Realm()
     var tasks: Results<ProductTable>!
     var notificationToken: NotificationToken?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,11 +122,9 @@ final class SearchViewController: BaseViewController {
         tasks = productTableRepository.fetch()
 //        setRealmNotification()
     }
-    
-    private func setRealmNotification() {
-        let realm = try! Realm()
+
+    private func setRealmNotification<T: Object>(object: T) {
         tasks = realm.objects(ProductTable.self)
-        
         notificationToken = tasks?.observe { [unowned self] changes in
             switch changes {
             case .initial(let products):
@@ -137,7 +139,6 @@ final class SearchViewController: BaseViewController {
                 fatalError("\(error)")
             }
         }
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -180,7 +181,6 @@ final class SearchViewController: BaseViewController {
             make.top.equalTo(stackView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
         }
-        
     }
     
     @objc func didTapView(_ sender: UITapGestureRecognizer) {
@@ -356,12 +356,15 @@ final class SearchViewController: BaseViewController {
     
     private func fetchAPI(query: String, sort: String, start: Int) {
         
-        if query.isEmpty {
-            showNoQueryAlert()
+        guard !query.isEmpty else {
+            self.showNoQueryAlert()
             return
         }
         
-        self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: true)
+        self.showIndicatorView(
+            activityIndicatorView: self.activityIndicatorView,
+            status: true
+        )
         
         APIManager.shared.callRequest(
             query: query,

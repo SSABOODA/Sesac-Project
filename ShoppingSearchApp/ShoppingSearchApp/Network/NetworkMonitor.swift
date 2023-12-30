@@ -10,7 +10,6 @@ import Network
 
 final class NetworkMonitor {
     static let shared = NetworkMonitor()
-    
     private let queue = DispatchQueue.global()
     private let monitor: NWPathMonitor
     public private(set) var isConnected: Bool = false
@@ -24,7 +23,6 @@ final class NetworkMonitor {
     }
     
     private init() {
-        print("init 호출")
         monitor = NWPathMonitor()
     }
     
@@ -32,8 +30,6 @@ final class NetworkMonitor {
         print(#function)
         monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
-            print("path: \(path)")
-            
             self?.isConnected = path.status == .satisfied
             self?.getConnectionType(path)
             

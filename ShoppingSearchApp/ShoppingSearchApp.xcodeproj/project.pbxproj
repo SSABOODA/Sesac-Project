@@ -489,7 +489,7 @@
 				DEVELOPMENT_TEAM = 2K3Y93YF8Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShoppingSearchApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "한성봉";
+				INFOPLIST_KEY_CFBundleDisplayName = ShoPick;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -521,7 +521,7 @@
 				DEVELOPMENT_TEAM = 2K3Y93YF8Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShoppingSearchApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "한성봉";
+				INFOPLIST_KEY_CFBundleDisplayName = ShoPick;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
