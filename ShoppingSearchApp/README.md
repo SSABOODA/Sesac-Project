@@ -50,20 +50,12 @@
      * Qux
 
   ### Some Javascript
-  ```js
-  function logSomething(something) {
-    console.log('Something', something);
+  ```swift
+  override func viewWillAppear(_ animated: Bool) {
+	super.viewWillAppear(animated)
+	updateProductLikeData()
   }
   ```
-</details>
-
-<details>
-	<summary>click here</summary>
-	```js
-	func test() {
-		console.log('something')
-	}
-	```
 </details>
 
 
