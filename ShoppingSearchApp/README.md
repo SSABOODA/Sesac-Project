@@ -58,7 +58,7 @@
 </details>
 
 <details>
-	<summary>토글</summary>
+	<summary>click here</summary>
 	```js
 	func test() {
 		console.log('something')
