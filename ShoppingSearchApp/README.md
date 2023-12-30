@@ -117,7 +117,6 @@ final class SearchViewController: BaseViewController {
 #### 문제 해결
 문제 해결을 위해 우선 네트워크 연결을 감지할 수 있는 기능을 구현해야했습니다. `Network` 프레임워크에`NWPathMonitor` 라는 클래스를 통해 네트워크 연결을 감지할 수 있었습니다.
 
-
 <details>
 	<summary>NetworkMonitor.swift</summary>
 
@@ -183,7 +182,9 @@ final class NetworkMonitor {
 ```
 </details>
 
-- SearchViewController.swift
+<details>
+	<summary>SearchViewController.swift</summary>
+
 ```swift
 private func fetchData(query: String, sort: String, start: Int) {
         guard !query.isEmpty else {
@@ -255,6 +256,27 @@ private func fetchData(query: String, sort: String, start: Int) {
             }
         }
     }
+
+```
+</details>
+
+##### 네트워크 에러 핸들링
+```swift
+switch error {
+    case .networkingError:
+    let networkStatus = self.checkNetworkStatus()
+    if !networkStatus {
+        // 네트워크 연결을 확인 요청 얼럿
+        self.showAlertIfNoInternetNetworkConnection()
+    } else {
+        // 인터넷 연결은 되어 있지만 api 통신시 네트워크 에러 시 얼럿
+        self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.networkingError) {}
+    }
+    case .parseError:
+        self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.parseError) {}
+    case .dataError:
+        print("dataError")
+}
 ```
 
 앱 사용 중 사용자가 `Wifi` 나 `Cellular` 둘 중 하나라도 연결된 상태가 아닌 상태에서 검색을 시도하여 Network Request를 보낸다면  인터넷 연결이 되어 있지 않다라는 얼럿의 띄워 사용자에게 인터넷 연결을 유도할 수 있도록 처리하였습니다.
