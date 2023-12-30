@@ -1,4 +1,4 @@
-TMDB
+# TMDB
 
 ## 프로젝트 소개
 영화 검색 앱
@@ -8,14 +8,20 @@ TMDB
 
 ## 🗓️ 프로젝트 기간
 2023.09.25 ~ 23.10.21(4주) - 현재 업데이트 진행 중
+
 ## 👥 프로젝트 참여 인원
 1명(개인 출시)
 
 ## 🛠️ 사용된 기술 스택
 ### Framework
-- UIKit
+- UIKit(+Storyboard)
 ### Library
+- Alamofire
+- Kingfisher
+- Snapkit
+- SwiftJSON
 ### Design Pattern
+- MVC
 
 ## 🔍 구현 기능
 
