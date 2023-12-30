@@ -39,7 +39,7 @@
 
 <details>
   <summary>토글</summary>
-```
+```swift
 override func viewWillAppear(_ animated: Bool) {
 	super.viewWillAppear(animated)
 	updateProductLikeData()
