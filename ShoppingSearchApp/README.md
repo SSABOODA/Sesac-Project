@@ -39,7 +39,25 @@
 
 <details>
   <summary><b>두번째토글</b></summary>
-  왜 안돼?
+  ```swift
+override func viewWillAppear(_ animated: Bool) {
+	super.viewWillAppear(animated)
+	updateProductLikeData()
+}
+
+private func updateProductLikeData() {
+	let productList = productTableRepository.fetch()
+	for (index, item) in itemList.enumerated() {
+		itemList[index].isLike = false
+		for product in productList {
+			if item.productId == product.productId {
+				itemList[index].isLike = true
+			}
+		}
+	}
+	collectionView.reloadData()
+}
+```
 </details>
 
 
