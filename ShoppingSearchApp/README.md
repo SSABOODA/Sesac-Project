@@ -38,7 +38,7 @@
   - 처음부터 열거형 구조를 설계하지 않고 모두 적용 후에 처리하려고 하니 마감기한내에 다하지 못했던 부분이 아쉬웠습니다.
 
 <details>
-  <summary><b>두번째토글</b></summary>
+  <summary>토글</summary>
 ```
 override func viewWillAppear(_ animated: Bool) {
 	super.viewWillAppear(animated)
