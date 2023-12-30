@@ -187,71 +187,70 @@ final class NetworkMonitor {
 
 ```swift
 private func fetchData(query: String, sort: String, start: Int) {
-        guard !query.isEmpty else {
-            self.showNoQueryAlert()
-            return
-        }
+    guard !query.isEmpty else {
+        self.showNoQueryAlert()
+        return
+    }
         
-        self.showIndicatorView(activityIndicatorView: self.activityIndicatorView, status: true)
+    self.showIndicatorView(
+        activityIndicatorView: self.activityIndicatorView,
+        status: true
+    )
         
-        APIManager.shared.callRequest(
-            query: query,
-            apiType: .shopping,
-            sort: sort,
-            start: start
-        ) { result in
-            
-            switch result {
-            case .success(let shoppingData):
-                self.shopping = shoppingData
-                self.total = shoppingData.total ?? 0
-                self.itemList += shoppingData.items ?? []
-                
-                DispatchQueue.main.async {
-                    guard !self.itemList.isEmpty else {
-                        self.noResultQueryAlert() // 검색 결과 없을 때 얼럿
-                        self.showIndicatorView(
-                            activityIndicatorView: self.activityIndicatorView,
-                            status: false
-                        )
-                        return
-                    }
-                    
-                    self.collectionView.reloadData()
+    APIManager.shared.callRequest(
+        query: query,
+        apiType: .shopping,
+        sort: sort,
+        start: start
+    ) { result in
+        switch result {
+        case .success(let shoppingData):
+            self.shopping = shoppingData
+            self.total = shoppingData.total ?? 0
+            self.itemList += shoppingData.items ?? []
+
+	    DispatchQueue.main.async {
+                guard !self.itemList.isEmpty else {
+                    self.noResultQueryAlert() // 검색 결과 없을 때 얼럿
                     self.showIndicatorView(
                         activityIndicatorView: self.activityIndicatorView,
                         status: false
                     )
-                    
-                    if start == Constants.APIParameter.start {
-                        self.collectionView.setContentOffset(.zero, animated: true)
-                    }
+                    return
                 }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.showIndicatorView(
-                        activityIndicatorView: self.activityIndicatorView,
-                        status: false
-                    )
-                    self.searchEmptyView.isHidden = true
-                    switch error {
-                    case .networkingError:
-                        let networkStatus = self.checkNetworkStatus()
-                        if !networkStatus {
-                            // 네트워크 연결을 확인 요청 얼럿
-                            self.showAlertIfNoInternetNetworkConnection()
-                        } else {
-                            // 인터넷 연결은 되어 있지만 api 통신시 네트워크 에러 시 얼럿
-                            self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.networkingError) {
-                            }
-                        }
-                    case .parseError:
-                        self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.parseError) {
-                        }
-                    case .dataError:
-                        print("")
+
+                self.collectionView.reloadData()
+                self.showIndicatorView(
+                    activityIndicatorView: self.activityIndicatorView,
+                    status: false
+                )
+
+                if start == Constants.APIParameter.start {
+                    self.collectionView.setContentOffset(.zero, animated: true)
+                }
+            }
+        case .failure(let error):
+            DispatchQueue.main.async {
+                self.showIndicatorView(
+                    activityIndicatorView: self.activityIndicatorView,
+                    status: false
+                )
+                self.searchEmptyView.isHidden = true
+                switch error {case .networkingError:
+                    let networkStatus = self.checkNetworkStatus()
+                    if !networkStatus {
+                        // 네트워크 연결을 확인 요청 얼럿
+                        self.showAlertIfNoInternetNetworkConnection()
+                    } else {
+                        // 인터넷 연결은 되어 있지만 api 통신시 네트워크 에러 시 얼럿
+                        self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.networkingError) {}
                     }
-                    self.collectionView.reloadData()
+                case .parseError:
+                    self.showNetworkingErrorAlert(title: Constants.NetworkErrorAlertText.parseError) {}
+                case .dataError:
+                    print("dataError")
+                }
+                self.collectionView.reloadData()
                 }
             }
         }
