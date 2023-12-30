@@ -31,8 +31,7 @@
 ## 🔍 구현 기능
 ### 상품 데이터 검색
 - 상품 데이터는 `UICollectionViewFlowLayout` 기반의 CollectionView를 사용하여 Cell을 구성하였습니다.
-- 네이버 ‘검색’ API를 활용하여 검색 View를 구성하였습니다. 네트워크 통신에는 `URLSession` 을 사용하
-- 여 상품 데이터를 요청하였습니다.
+- 네이버 ‘검색’ API를 활용하여 검색 View를 구성하였습니다. 네트워크 통신에는 `URLSession` 을 사용하여 상품 데이터를 요청하였습니다.
 - `Network` 프레임워크의 `NWPathMonitor` 객체를 활용해 현재 기기의 인터넷 연결 상태를 감지한 후 연결 상태에 따른 얼럿을 사용자에게 알리도록 구현하였습니다.
 - 상품 목록 View에서는 `Pagination`을 구현하였고   `UICollectionViewDataSourcePrefetching` protocol을 채택하여 `prefetchItemsAt` 메서드를 활용하여 구현하였습니다. 
 - 상품 데이터에 대해서는 여러 조건(정확도, 날짜순, 가격순) `Filter` 를 적용하여 유저의 편의성을 높이도록 하였습니다.
