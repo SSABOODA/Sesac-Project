@@ -81,18 +81,18 @@ private func updateProductLikeData() {
 `Realm` 데이터베이스에 KVO 기반의 `Notification`을 지원하고 있었습니다. 해당 객체 또는 해당 객체의 특정 필드의 변화가 감지될 때 변경 결과를 알수 있도록 `observer`를 설정할 수 있습니다.
 ```swift
 final class SearchViewController: BaseViewController {
-	var products: Results<ProductTable>!
+    var products: Results<ProductTable>!
     var notificationToken: NotificationToken?
 
-	override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-		setRealmNotification()
+            setRealmNotification()
 	}
 
-	private func setRealmNotification() {
+    private func setRealmNotification() {
         let realm = try! Realm()
         products = realm.objects(ProductTable.self)
-        
+
         notificationToken = products?.observe { [unowned self] changes in
             switch changes {
             case .initial(let products):
