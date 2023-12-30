@@ -27,7 +27,9 @@
 ### Design Pattern
 - MVC Design Pattern
 - Repository Pattern
-# ⭐️ 주요 기능
+- Singleton Pattern
+  
+## ⭐️ 주요 기능
 - 상품 검색 기능
   - 네이버 쇼핑 '검색' API를 활용하였기 때문에 현재 네이버 쇼핑에 올라와있는 상품 기반으로 검색
 - 정확도, 날짜순, 가격순으로 상품 filter 기능
@@ -35,6 +37,7 @@
   - 좋아요한 상품 목록 List 확인 기능
   - 좋아요한 상품 목록 검색 기능
 - 상품 클릭 시 상세화면(웹뷰) 처리
+  
 ## 🔍 구현 기능
 ### 상품 데이터 검색
 - 상품 데이터는 `UICollectionViewFlowLayout` 기반의 CollectionView를 사용하여 Cell을 구성하였습니다.
