@@ -60,7 +60,7 @@
 
 <details>
     <summary>토글 테스트</summary>
-    ```swift
+    ```js
     override func viewWillAppear(_ animated: Bool) {
 	super.viewWillAppear(animated)
 	updateProductLikeData()
