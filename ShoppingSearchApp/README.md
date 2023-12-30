@@ -1,4 +1,6 @@
 # ShoPick
+<img src="[https://github.com/SSABOODA/PictureFlow/assets/69753846/b63db0ff-9b89-4180-a53f-a9f6b4f7e86a](https://github.com/SSABOODA/Sesac-Project/assets/69753846/088747c2-2fb4-4c58-b53a-fe6fbebf0147)" height="200" width="200">
+
 # 프로젝트 소개
 네이버 ‘검색’ API를 활용하여 상품을 검색하여 상품을 확인하고 좋아요를 통해 상품을 관리하고 네이버 쇼핑과 연결되어 상품을 직접 구매할 수 있는 앱입니다.
 ## 🗓️ 프로젝트 기간
