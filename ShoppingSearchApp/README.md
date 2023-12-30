@@ -38,18 +38,8 @@
   - 처음부터 열거형 구조를 설계하지 않고 모두 적용 후에 처리하려고 하니 마감기한내에 다하지 못했던 부분이 아쉬웠습니다.
  
 
-# How to add a collapsible section in markdown
-## 1. Example
 <details>
   <summary>Click me</summary>
-
-  ### Heading
-  1. Foo
-  2. Bar
-     * Baz
-     * Qux
-
-  ### Some Javascript
   ```swift
   override func viewWillAppear(_ animated: Bool) {
 	super.viewWillAppear(animated)
@@ -57,9 +47,6 @@
   }
   ```
 </details>
-
-
-# How to add a collapsible section in markdown
 
 
 
