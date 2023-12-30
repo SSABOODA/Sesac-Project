@@ -97,9 +97,8 @@ final class SearchViewController: BaseViewController {
             switch changes {
             case .initial(let products):
                 print("Initial count: \(products.count)")
-             
             case .update(let products, let deletions, let insertions, let modifications):
-				self.collectionView.reloadData()
+		self.collectionView.reloadData()
             case .error(let error):
                 fatalError("\(error)")
             }
