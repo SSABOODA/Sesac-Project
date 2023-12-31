@@ -3,7 +3,7 @@
 
 ## 프로젝트 소개
 <p align="center" width="100%">    
-	<img src="https://github.com/SSABOODA/Sesac-Project/assets/69753846/d68b18c6-c15d-4edd-b46e-8a72f4d900e9" width="100%">
+    <img src="https://github.com/SSABOODA/Sesac-Project/assets/69753846/607bbd5c-1f21-4ba2-a6ea-dcc681881319" width="100%">
 </p>
 
 네이버 ‘검색’ API를 활용하여 상품을 검색하여 상품을 확인하고 좋아요를 통해 상품을 관리하고 네이버 쇼핑과 연결되어 상품을 직접 구매할 수 있는 앱입니다.
