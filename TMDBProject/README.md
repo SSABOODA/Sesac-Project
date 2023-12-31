@@ -3,7 +3,7 @@
 ## 프로젝트 소개
 영화 검색 앱
 <p align="center" width="100%">
-  <img src="https://github.com/SSABOODA/Sesac-Project/assets/69753846/7d2d034b-e31b-4d02-ad67-458dc71563db" width="100%">
+  <img src="https://github.com/SSABOODA/Sesac-Project/assets/69753846/03a83f02-2e05-41d1-896a-bcb8a49ff894" width="100%">
 </p>
 
 ## 🗓️ 프로젝트 기간
