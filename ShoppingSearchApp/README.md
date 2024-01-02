@@ -35,6 +35,8 @@
 `Kingfisher`, `Snapkit`, `Realm`, `Toast`
 - **Design Pattern** <br>
 `MVC Design Pattern`, `Repository Pattern`, `Singleton Pattern`
+- **Etc**<br>
+`Code Base UI`
 
 <br>
 <br>
