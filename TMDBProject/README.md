@@ -66,7 +66,7 @@ func callRequestVideo() {
         group.leave()
     }
 	
-	group.notify(queue: .main) {
+    group.notify(queue: .main) {
         print("END")
         self.movieCollectionView.reloadData()
     }
