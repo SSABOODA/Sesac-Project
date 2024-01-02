@@ -83,7 +83,7 @@ cell은 재사용 매커니즘에 의해 상단에서 사용되었던 cell이 �
 ```swift
 override func prepareForReuse() {
     super.prepareForReuse()
-	  moviePosterImageView.image = UIImage(named: "emptyImage")
+    moviePosterImageView.image = UIImage(named: "emptyImage")
     blurImageView.image = UIImage(named: "emptyImage")
     movieTitleLabel.text = ""
 }
