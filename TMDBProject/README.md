@@ -21,11 +21,11 @@
 - 1명(개인)
 
 ### 사용된 기술 스택
-- **Framework**<br>
+- **Framework**
 `UIKit(+Storyboard)`
-- **Library**<br>
+- **Library**
 `Alamofire`, `Kingfisher`, `Snapkit`, `SwiftJSON`
-- **Design Pattern**<br>
+- **Design Pattern**
 `MVC`
 
 <br>
