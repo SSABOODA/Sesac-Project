@@ -54,13 +54,13 @@
 <br>
 <br>
 
-Trouble Shooting
+## Trouble Shooting
 ### 1. ViewController들 간에 좋아요 동기화 이슈
 #### 문제 상황
 모든 View(상품 검색, 상품 상세, 상품 좋아요)에서 ‘좋아요’ 데이터가 동기화될 수 있도록 해결하는 과정에서 문제가 발생했습니다. **viewWillApper**에서 항상 reloadData를 한다면 데이터 변화가 없을 때도 로직을 실행하는 리소스 낭비가 발생하게 되었습니다.
 
 #### 문제 해결
-- Realm Notification
+- Realm Notification<br>
 `Realm` 데이터베이스에 KVO 기반의 `Notification`을 지원하고 있었습니다. 해당 객체 또는 해당 객체의 특정 필드의 변화가 감지될 때 변경 결과를 알수 있도록 `observer`를 설정할 수 있습니다.
 
 ```swift
