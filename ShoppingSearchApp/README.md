@@ -60,8 +60,7 @@
 모든 View(상품 검색, 상품 상세, 상품 좋아요)에서 ‘좋아요’ 데이터가 동기화될 수 있도록 해결하는 과정에서 문제가 발생했습니다. **viewWillApper**에서 항상 reloadData를 한다면 데이터 변화가 없을 때도 로직을 실행하는 리소스 낭비가 발생하게 되었습니다.
 
 #### 문제 해결
-- Realm Notification<br>
-`Realm` 데이터베이스에 KVO 기반의 `Notification`을 지원하고 있었습니다. 해당 객체 또는 해당 객체의 특정 필드의 변화가 감지될 때 변경 결과를 알수 있도록 `observer`를 설정할 수 있습니다.
+**Realm** 데이터베이스에 **KVO** 기반의 **Notification**을 지원하고 있었습니다. 해당 객체 또는 해당 객체의 특정 필드의 변화가 감지될 때 변경 결과를 알수 있도록 **observer**를 설정할 수 있습니다.
 
 ```swift
 final class SearchViewController: BaseViewController {
@@ -91,15 +90,15 @@ final class SearchViewController: BaseViewController {
 }
 ```
 
-`ProductTable` 에 변화가 생겼을 때 Observer를 통해서 변화의 결과를 받게 되고 `.update` case에서 변화가 있을 때만 collectionView를 reloadData 하게 설계를 했습니다. 
-그 결과 데이터 변화가 없음에도 Realm DB에서 데이터를 `fetch` 하여 리소스를 낭비하는 상황을 없앨 수 있게 되었습니다.
+**ProductTable** 에 변화가 생겼을 때 **Observer**를 통해서 변화의 결과를 받게 되고 **.update** case에서 변화가 있을 때만 collectionView를 reloadData 하게 설계를 했습니다. 
+그 결과 데이터 변화가 없음에도 Realm DB에서 데이터를 fetch하여 리소스를 낭비하는 상황을 없앨 수 있게 되었습니다.
 
 ### 2. 네트워크 상태 감지 후 에러 핸들링
 #### 문제 상황
 네트워크 연결 상황에 따라 만약 어떤 네트워크에도 연결되어 있지 않다면 사용자에게 해당 **Alert**을 보내 연결 네트워크 연결 상태가 없다는 정보를 알려주어 이후 액션을 유도할 수 있도록 하였음.
 
 #### 문제 해결
-문제 해결을 위해 우선 네트워크 연결을 감지할 수 있는 기능을 구현해야했습니다. `Network` 프레임워크에`NWPathMonitor` 라는 클래스를 통해 네트워크 연결을 감지할 수 있었습니다.
+문제 해결을 위해 우선 네트워크 연결을 감지할 수 있는 기능을 구현해야했습니다. Network 프레임워크에 **NWPathMonitor** 라는 클래스를 통해 네트워크 연결을 감지할 수 있었습니다.
 
 <details>
 	<summary>NetworkMonitor.swift</summary>
@@ -262,4 +261,4 @@ switch error {
 }
 ```
 
-앱 사용 중 사용자가 `Wifi` 나 `Cellular` 둘 중 하나라도 연결된 상태가 아닌 상태에서 검색을 시도하여 Network Request를 보낸다면  인터넷 연결이 되어 있지 않다라는 얼럿의 띄워 사용자에게 인터넷 연결을 유도할 수 있도록 처리하였습니다.
+앱 사용 중 사용자가 **Wifi** 나 **Cellular** 둘 중 하나라도 연결된 상태가 아닌 상태에서 검색을 시도하여 Network Request를 보낸다면  인터넷 연결이 되어 있지 않다라는 얼럿의 띄워 사용자에게 인터넷 연결을 유도할 수 있도록 처리하였습니다.
