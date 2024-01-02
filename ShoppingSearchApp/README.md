@@ -28,14 +28,13 @@
 <br>
 
 ## 사용된 기술 스택
-- **Framework** <br>
-`UIKit`,<br>
-`URLSesstion`, `Network(NWPathMonitor)`
-- **Library** <br>
+- **Framework**
+`UIKit`, `URLSesstion`, `Network(NWPathMonitor)`
+- **Library**
 `Kingfisher`, `Snapkit`, `Realm`, `Toast`
-- **Design Pattern** <br>
-`MVC Design Pattern`, `Repository Pattern`, `Singleton Pattern`
-- **Etc**<br>
+- **Design Pattern**
+`MVC`, `Repository Pattern`, `Singleton Pattern`
+- **Etc**
 `Code Base UI`
 
 <br>
