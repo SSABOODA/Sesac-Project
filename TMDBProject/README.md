@@ -41,7 +41,7 @@
 <br>
 
 ## Trouble Shooting
-### 1. 여러 네트워크 통신의 작업 중단 시점에 cell reload 하기.
+### 1. 여러 네트워크 통신의 작업 중단 시점에 cell reload 하기
 #### 문제 상황
 하나의 View에 동시에 네트워크 요청을 할 때 해당 View의 cell을 갱신하기 위해 각각의 네트워크 요청 작업마다 reload를 하기 보다 모든 작업이 끝났을 때 한번만 cell을 reload한다면 계속 reload하는 리소스 낭비를 줄여볼 수 있을 것 같다는 생각을 하게되었습니다.
 #### 문제 해결
@@ -54,13 +54,13 @@
 func callRequestVideo() {
     let group = DispatchGroup()
     
-	group.enter()
+    group.enter()
     TMDBAPIManager.shared.callRequest(of: YoutubeVideo.self, type: .video, movieId: movieId, seriesId: nil, seasonId: nil) { data in
         self.video = data
         group.leave()
 	}
-        
-	group.enter()
+
+    group.enter()
     TMDBAPIManager.shared.callRequest(of: SimilarMovieData.self, type: .similar, movieId: movieId, seriesId: nil, seasonId: nil) { data in
         self.similarVideo = data
         group.leave()
