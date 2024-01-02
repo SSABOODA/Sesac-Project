@@ -33,7 +33,7 @@
 
 ## 구현 기능
 - **UITableView**를 활용하여 영화, 드라마 데이터를 메인 검색 View UI를 구성하였습니다.
-- **UICollectionViewFlowLayout**기반의 **UICollectionView**를 사용하였고 Section HeaderView를 구성하여 시리즈별 컨테츠 UI를 구성하였습니다.
+- **UICollectionViewFlowLayout**기반의 **UICollectionView**를 사용하였고 Section HeaderView를 구성하여 시리즈별 컨텐츠 UI를 구성하였습니다.
 - **WebKit**을 활용하여 Video와 유사한 장르 컨텐츠의 유튜브 광고 영상을 WebView로 나타낼 수 있도록 하였습니다.
 - **Alamofire**를 사용하였고 TMDB의 API를 활용하여 UI를 구성하였습니다.
 
