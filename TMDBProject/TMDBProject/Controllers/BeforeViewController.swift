@@ -54,7 +54,4 @@ class BeforeViewController: BaseViewController {
         super.viewDidLoad()
         
     }
-    
-    
-    
 }

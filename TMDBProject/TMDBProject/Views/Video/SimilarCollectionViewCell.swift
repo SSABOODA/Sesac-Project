@@ -65,6 +65,6 @@ class SimilarCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         moviePosterImageView.image = nil
         movieTitleLabel.text = nil
-        blurImageView.image = nil
+        blurImageView.image = nil        
     }
 }

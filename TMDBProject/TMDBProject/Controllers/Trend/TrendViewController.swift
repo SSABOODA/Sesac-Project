@@ -148,12 +148,7 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
 //        let mediaType = movieList[indexPath.row].mediaType
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendViewController.TrendMovieCellIdentifier, for: indexPath) as? TrendMovieTableViewCell else { return UITableViewCell() }
-        
-        print(indexPath.row, movieResult.movie[indexPath.row].originalTitle)
-        print(movieResult.movie[indexPath.row].posterPath)
-        print(movieResult.movie[indexPath.row].imageURL)
-        print("==============================")
-        
+
         if movieResult.movie[indexPath.row].posterPath != nil ||
             movieResult.movie[indexPath.row].imageURL != nil {
             cell.configureCell(movieResult.movie[indexPath.row])

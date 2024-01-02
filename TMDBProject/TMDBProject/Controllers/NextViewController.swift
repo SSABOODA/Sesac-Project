@@ -39,6 +39,4 @@ class NextViewController: BaseViewController {
         super.viewDidLoad()
         label.text = textData
     }
-    
-
 }

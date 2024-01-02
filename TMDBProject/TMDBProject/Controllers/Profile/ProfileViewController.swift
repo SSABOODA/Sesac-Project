@@ -72,7 +72,6 @@ class ProfileViewController: BaseViewController {
         super.configureView()
         title = "프로필 편집"
         
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneButtonClicked))
         
@@ -83,7 +82,6 @@ class ProfileViewController: BaseViewController {
     }
     
     override func setConstraints() {
-        
     }
     
 }
