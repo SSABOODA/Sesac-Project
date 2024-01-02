@@ -54,45 +54,15 @@
 <br>
 <br>
 
-## Trouble Shooting
+Trouble Shooting
 ### 1. ViewController들 간에 좋아요 동기화 이슈
 #### 문제 상황
-여러가지 뷰에서 어떤 데이터에 대한 상태를 동기화하는 부분과 하나의 뷰에서 상태가 변경되었을 때 다른 뷰에서 상태가 실시간으로 변경되어야 하는 상황이 발생하였습니다.
+모든 View(상품 검색, 상품 상세, 상품 좋아요)에서 ‘좋아요’ 데이터가 동기화될 수 있도록 해결하는 과정에서 문제가 발생했습니다. **viewWillApper**에서 항상 reloadData를 한다면 데이터 변화가 없을 때도 로직을 실행하는 리소스 낭비가 발생하게 되었습니다.
 
-문제는 상품 검색 후 ‘좋아요’를 눌렀을 경우 다른 뷰(좋아요 목록, 상품 상세 웹뷰, 상품 리스트)에서 상태가 동기화되어야하는 문제가 있었습니다.
 #### 문제 해결
-1. viewWillAppear
-첫번째로 생각했던 방법은 사용자가 해당 View에 진입했을 경우 항상 데이터가 갱신되어야한다고 생각했습니다.
-이전 화면에서 ‘좋아요’를 눌렀다면 다른 화면에서 이전 화면에서 변경했던 데이터를 갱신해야했기에 `viewWillAppear` 메서드에서 항상 최신 데이터를 받아서 해당 View의 UI를 갱신해주는 방식으로 해결했습니다.
-
-<details>
-	<summary>SearchViewController.swift</summary>
-
-```swift
-override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    updateProductLikeData()
-}
-
-private func updateProductLikeData() {
-    let productList = productTableRepository.fetch()
-    for (index, item) in itemList.enumerated() {
-        itemList[index].isLike = false
-        for product in productList {
-            if item.productId == product.productId {
-                itemList[index].isLike = true
-            }
-        }
-    }
-    collectionView.reloadData()
-}
-```
-</details>
-
-하지만 곧 이 방식에 문제점이 존재한다는 사실을 깨달았습니다. 물론 데이터 갱신도 잘되고 사용자가 보기에도 UI상에 전혀 문제가 없었습니다. 만약 유저가 이전 화면에서 데이터를 변경하지 않고 다른 화면으로 넘어갔을 때도 항상 Realm DB에 해당 데이터를 fetch하고 데이터에 대한 변화가 있는지 조건 확인을 하는 로직이 항상 실행되게 됩니다. 물론 데이터가 작을 때는 문제가 되지 않겠지만 좋아요 데이터가 수십, 수백만개?가 된다고 가정한다면 불필요한 로직처리로 인한 리소스 낭비가 야기 될 것 같았습니다.
-
-2. Realm Notification
+- Realm Notification
 `Realm` 데이터베이스에 KVO 기반의 `Notification`을 지원하고 있었습니다. 해당 객체 또는 해당 객체의 특정 필드의 변화가 감지될 때 변경 결과를 알수 있도록 `observer`를 설정할 수 있습니다.
+
 ```swift
 final class SearchViewController: BaseViewController {
     var products: Results<ProductTable>!
@@ -122,11 +92,11 @@ final class SearchViewController: BaseViewController {
 ```
 
 `ProductTable` 에 변화가 생겼을 때 Observer를 통해서 변화의 결과를 받게 되고 `.update` case에서 변화가 있을 때만 collectionView를 reloadData 하게 설계를 했습니다. 
-그 결과 데이터 변화가 없음에도 Realm DB에서 데이터를 `fetch`하는 상황을 없앨 수 있게 되었습니다.
+그 결과 데이터 변화가 없음에도 Realm DB에서 데이터를 `fetch` 하여 리소스를 낭비하는 상황을 없앨 수 있게 되었습니다.
 
 ### 2. 네트워크 상태 감지 후 에러 핸들링
 #### 문제 상황
-네트워크 연결 상황에 따라 만약 어떤 네트워크에도 연결되어 있지 않다면 사용자에게 얼럿을 보내 연결 네트워크 연결 상태가 없다는 정보를 알려주고 싶었습니다.
+네트워크 연결 상황에 따라 만약 어떤 네트워크에도 연결되어 있지 않다면 사용자에게 해당 **Alert**을 보내 연결 네트워크 연결 상태가 없다는 정보를 알려주어 이후 액션을 유도할 수 있도록 하였음.
 
 #### 문제 해결
 문제 해결을 위해 우선 네트워크 연결을 감지할 수 있는 기능을 구현해야했습니다. `Network` 프레임워크에`NWPathMonitor` 라는 클래스를 통해 네트워크 연결을 감지할 수 있었습니다.
