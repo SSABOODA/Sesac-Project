@@ -24,7 +24,10 @@
 ### 프로젝트 참여 인원
 1명(개인)
 
-### 사용된 기술 스택
+<br>
+<br>
+
+## 사용된 기술 스택
 - **Framework** <br>
 `UIKit`,<br>
 `URLSesstion`, `Network(NWPathMonitor)`
@@ -32,6 +35,9 @@
 `Kingfisher`, `Snapkit`, `Realm`, `Toast`
 - **Design Pattern** <br>
 `MVC Design Pattern`, `Repository Pattern`, `Singleton Pattern`
+
+<br>
+<br>
     
 ## 구현 기능
 ### 상품 데이터 검색
@@ -45,6 +51,9 @@
 - 상품의 상세정보는 `WebKit` 을 사용하여 직접 네이버 쇼핑 사이트로 이동하여 확인할 수 있도록 하였습니다.
 - 좋아요 View의 상품들은 `실시간 검색`이 가능하도록 적용하였습니다.
 - `Realm Notification Observer`를 활용해 모든 View에서 좋아요 상태가 `동기화` 되도록 구현하였습니다.
+
+<br>
+<br>
 
 ## Trouble Shooting
 ### 1. ViewController들 간에 좋아요 동기화 이슈
