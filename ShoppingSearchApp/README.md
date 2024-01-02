@@ -6,30 +6,10 @@
     <img src="https://github.com/SSABOODA/Sesac-Project/assets/69753846/7abe5b6a-761b-4055-a49c-e84ac575b47c" width="100%">
 </p>
 
+### 앱 소개
 네이버 ‘검색’ API를 활용하여 상품을 검색하여 상품을 확인하고 좋아요를 통해 상품을 관리하고 네이버 쇼핑과 연결되어 상품을 직접 구매할 수 있는 앱입니다.
 
-## 🗓️ 프로젝트 기간
-2023.09.07 ~ 2023.9.13
-## 👥 프로젝트 참여 인원
-1명(개인)
-## 🛠️ 사용된 기술 스택
-### Framework
-- UIKit
-- Foundation
-  - URLSession
-- Network
-  - NWPathMonitor
-### Library
-- Kingfisher
-- Snapkit
-- Realm
-- Toast
-### Design Pattern
-- MVC Design Pattern
-- Repository Pattern
-- Singleton Pattern
-  
-## ⭐️ 주요 기능
+### 주요 기능
 - 상품 검색 기능
   - 네이버 쇼핑 '검색' API를 활용하였기 때문에 현재 네이버 쇼핑에 올라와있는 상품 기반으로 검색
 - 정확도, 날짜순, 가격순으로 상품 filter 기능
@@ -38,7 +18,22 @@
   - 좋아요한 상품 목록 검색 기능
 - 상품 클릭 시 상세화면(웹뷰) 처리
   
-## 🔍 구현 기능
+### 프로젝트 기간
+- 2023.09.07 ~ 2023.9.13
+- 
+### 프로젝트 참여 인원
+1명(개인)
+
+### 사용된 기술 스택
+- **Framework** <br>
+`UIKit`,<br>
+`URLSesstion`, `Network(NWPathMonitor)`
+- **Library** <br>
+`Kingfisher`, `Snapkit`, `Realm`, `Toast`
+- **Design Pattern** <br>
+`MVC Design Pattern`, `Repository Pattern`, `Singleton Pattern`
+    
+## 구현 기능
 ### 상품 데이터 검색
 - 상품 데이터는 `UICollectionViewFlowLayout` 기반의 CollectionView를 사용하여 Cell을 구성하였습니다.
 - 네이버 ‘검색’ API를 활용하여 검색 View를 구성하였습니다. 네트워크 통신에는 `URLSession` 을 사용하여 상품 데이터를 요청하였습니다.
@@ -51,8 +46,8 @@
 - 좋아요 View의 상품들은 `실시간 검색`이 가능하도록 적용하였습니다.
 - `Realm Notification Observer`를 활용해 모든 View에서 좋아요 상태가 `동기화` 되도록 구현하였습니다.
 
-## 🔥 Trouble Shooting
-### ViewController들 간에 좋아요 동기화 이슈
+## Trouble Shooting
+### 1. ViewController들 간에 좋아요 동기화 이슈
 #### 문제 상황
 여러가지 뷰에서 어떤 데이터에 대한 상태를 동기화하는 부분과 하나의 뷰에서 상태가 변경되었을 때 다른 뷰에서 상태가 실시간으로 변경되어야 하는 상황이 발생하였습니다.
 
@@ -121,7 +116,7 @@ final class SearchViewController: BaseViewController {
 `ProductTable` 에 변화가 생겼을 때 Observer를 통해서 변화의 결과를 받게 되고 `.update` case에서 변화가 있을 때만 collectionView를 reloadData 하게 설계를 했습니다. 
 그 결과 데이터 변화가 없음에도 Realm DB에서 데이터를 `fetch`하는 상황을 없앨 수 있게 되었습니다.
 
-### 네트워크 상태 감지 후 에러 핸들링
+### 2. 네트워크 상태 감지 후 에러 핸들링
 #### 문제 상황
 네트워크 연결 상황에 따라 만약 어떤 네트워크에도 연결되어 있지 않다면 사용자에게 얼럿을 보내 연결 네트워크 연결 상태가 없다는 정보를 알려주고 싶었습니다.
 
