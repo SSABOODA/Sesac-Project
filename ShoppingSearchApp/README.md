@@ -29,7 +29,7 @@
 
 ## 사용된 기술 스택
 - **Framework**
-`UIKit`, `URLSesstion`, `Network(NWPathMonitor)`
+`UIKit`, `URLSession`, `Network(NWPathMonitor)`
 - **Library**
 `Kingfisher`, `Snapkit`, `Realm`, `Toast`
 - **Design Pattern**
