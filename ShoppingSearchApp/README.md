@@ -47,8 +47,8 @@
 - **UICollectionViewDataSourcePrefetching** protocol을 활용한 상품 데이터 **offset** 기반**pagination**을 구현하였습니다.
 - 상품 데이터에 대해서는 **Filter**(정확도, 날짜순, 가격순)를 적용하여 사용자 편의성을 증대하도록 UI를 구성하였습니다.
 ### 상품 좋아요
-- **WebKit**을 통해 상품 상세정보를 ‘네이버 쇼핑’과 연동하도록 구현하였습니다.
-- **Realm Notification Observer** 를 활용하여 상품 ‘좋아요’ 데이터가 연동되도록 하였습니다.
+- **Webkit**을 사용하여 상품에 대하여 즉시 구매할 수 있는 **상품 구매 페이지 랜딩**
+- **Realm Notification Observer**를 사용하여 모든 View에서 ‘좋아요’ 데이터가 동기화 되도록 구현함으로써 매번 reloadData를 하는 비효율적인 코드 개선 및 구현
 
 <br>
 <br>
