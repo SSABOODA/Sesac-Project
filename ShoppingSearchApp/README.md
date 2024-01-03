@@ -44,7 +44,7 @@
 ### 상품 데이터 검색
 - **URLSession** 기반의 Network 통신을 하였고 네이버 ‘검색’ API 를 사용한 상품 데이터를 활용하여 UI를 구성하였습니다.
 - **NWPathMonitor** 객체를 활용하여 인터넷 연결 상태에 따른 에러 처리를 하였습니다.
-- **UICollectionViewDataSourcePrefetching** protocol을 활용한 상품 데이터 **pagination**을 구현하였습니다.
+- **UICollectionViewDataSourcePrefetching** protocol을 활용한 상품 데이터 **offset** 기반**pagination**을 구현하였습니다.
 - 상품 데이터에 대해서는 **Filter**(정확도, 날짜순, 가격순)를 적용하여 사용자 편의성을 증대하도록 UI를 구성하였습니다.
 ### 상품 좋아요
 - **WebKit**을 통해 상품 상세정보를 ‘네이버 쇼핑’과 연동하도록 구현하였습니다.
