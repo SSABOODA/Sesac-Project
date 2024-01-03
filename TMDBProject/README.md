@@ -1,4 +1,5 @@
-# TMDB
+# TodayMovie
+<img src="https://github.com/SSABOODA/Sesac-Project/assets/69753846/b9ece1f7-e781-400c-b3ec-4759191c2085" height="100" width="100">
 
 ## 프로젝트 소개
 <p align="center" width="100%">
